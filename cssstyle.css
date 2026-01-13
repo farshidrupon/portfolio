@@ -1,0 +1,8 @@
+body { font-family: Arial, sans-serif; margin:0; padding:0; }
+header { background:#333; color:#fff; padding:20px; text-align:center; }
+section { padding:40px 20px; }
+h1,h2,h3 { margin:10px 0; }
+img { max-width:100%; cursor:pointer; }
+.edit-btn { position:fixed; bottom:20px; right:20px; padding:10px 20px; background:#333; color:#fff; cursor:pointer; border:none; border-radius:5px; }
+.editable { border: 1px dashed transparent; padding: 2px; }
+.editable:hover { border:1px dashed #666; }
