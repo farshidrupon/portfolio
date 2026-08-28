@@ -1,45 +1,717 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Portfolio</title>
-<link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Md. Farshid Rupon | Professional Portfolio</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #0f172a;
+            --bg-light: #f8fafc;
+            --surface: #ffffff;
+            --text-main: #334155;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1.5rem;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--secondary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 6rem 1.5rem 3rem 1.5rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--primary);
+            margin-bottom: 1.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-pic:hover {
+            transform: scale(1.05);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .typed-container {
+            font-size: 1.5rem;
+            color: #60a5fa;
+            min-height: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-meta {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+            color: #94a3b8;
+            font-size: 0.95rem;
+        }
+
+        .hero-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .social-links-hero {
+            display: flex;
+            justify-content: center;
+            gap: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-links-hero a {
+            color: white;
+            font-size: 1.25rem;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links-hero a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Section Layout */
+        section {
+            padding: 5rem 1.5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 2.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        /* Grid Layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: var(--surface);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+
+        .skills-tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+        }
+
+        .skill-tag {
+            background: #eff6ff;
+            color: var(--primary-dark);
+            padding: 0.25rem 0.65rem;
+            border-radius: 0.25rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid #dbeafe;
+        }
+
+        /* Contact Section Details Layout */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* Experience Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+            border-left: 2px solid var(--border);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.4rem;
+            top: 0.2rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 3px solid var(--bg-light);
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            margin-bottom: 0.5rem;
+        }
+
+        .role-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+
+        .company {
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        .dept-tag {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: normal;
+        }
+
+        .date-badge {
+            background: #eff6ff;
+            color: var(--primary-dark);
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .responsibilities {
+            margin-top: 1rem;
+            padding-left: 1.25rem;
+        }
+
+        .responsibilities li {
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+
+        /* Key Skills Sub-table within experience */
+        .tech-matrix {
+            margin-top: 1rem;
+            background: #f8fafc;
+            padding: 1rem;
+            border-radius: 0.375rem;
+            border: 1px solid var(--border);
+        }
+
+        .tech-matrix h4 {
+            font-size: 0.95rem;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--surface);
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            background: #f1f5f9;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+
+        /* Contact Section */
+        .info-group {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-group i {
+            width: 40px;
+            height: 40px;
+            background: #eff6ff;
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .info-group a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .info-group a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background: var(--secondary);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.25rem; }
+            .nav-links { display: none; }
+            .timeline-header { flex-direction: column; }
+        }
+    </style>
 </head>
 <body>
 
-<header>
-  <h1 class="editable" id="name">Your Name</h1>
-  <p class="editable" id="title">Web Developer | Designer</p>
-</header>
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">MD. FARSHID RUPON</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#training">Training</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
 
-<section id="about">
-  <h2>About Me</h2>
-  <p class="editable" id="about-text">Write a short introduction about yourself here.</p>
-  <img src="images/profile.jpg" class="editable-img" alt="Profile Image">
-</section>
+    <header class="hero">
+        <div class="hero-content">
+            <img src="profile.jpg" alt="Md. Farshid Rupon" class="profile-pic" data-aos="fade-down">
 
-<section id="projects">
-  <h2>Projects</h2>
-  <div class="project">
-    <h3 class="editable" id="proj1-title">Project 1</h3>
-    <p class="editable" id="proj1-desc">Description of project 1.</p>
-    <img src="images/project1.jpg" class="editable-img" alt="Project 1 Image">
-  </div>
-  <div class="project">
-    <h3 class="editable" id="proj2-title">Project 2</h3>
-    <p class="editable" id="proj2-desc">Description of project 2.</p>
-    <img src="images/project2.jpg" class="editable-img" alt="Project 2 Image">
-  </div>
-</section>
+            <h1 data-aos="fade-down" data-aos-delay="100">Md. Farshid Rupon</h1>
+            <div class="typed-container" data-aos="fade-down" data-aos-delay="200">
+                <span id="typed"></span>
+            </div>
+            <div class="hero-meta" data-aos="fade-up" data-aos-delay="300">
+                <span><i class="fa-solid fa-location-dot"></i> Thakurgaon, Bangladesh</span>
+                <span><i class="fa-solid fa-envelope"></i> farshidrupon@gmail.com</span>
+                <span><i class="fa-solid fa-phone"></i> 01711-305367</span>
+            </div>
 
-<section id="contact">
-  <h2>Contact</h2>
-  <p class="editable" id="contact-text">Your email or contact info here.</p>
-</section>
+            <div class="social-links-hero" data-aos="fade-up" data-aos-delay="350">
+                <a href="https://www.linkedin.com/in/FarshidRupon" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://m.me/FarshidRupon" target="_blank" title="Messenger"><i class="fa-brands fa-facebook-messenger"></i></a>
+                <a href="https://wa.me/8801711305367" target="_blank" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
 
-<button class="edit-btn" id="editBtn">Edit Portfolio</button>
+            <a href="#contact" class="btn" data-aos="fade-up" data-aos-delay="400">Get In Touch</a>
+        </div>
+    </header>
 
-<script src="js/script.js"></script>
+    <section id="about" data-aos="fade-up">
+        <h2 class="section-title">Personal Overview</h2>
+        <div class="grid-2">
+            <div class="card">
+                <h3><i class="fa-solid fa-user-check" style="color: var(--primary);"></i> Key Details</h3>
+                <br>
+                <p><strong>Father's Name:</strong> Md. Mofidul Haque</p>
+                <p><strong>Mother's Name:</strong> Mst. Fardusi Begum</p>
+                <p><strong>Date of Birth:</strong> October 20, 1991</p>
+                <p><strong>Nationality:</strong> Bangladeshi</p>
+                <p><strong>Religion:</strong> Islam</p>
+                <p><strong>Marital Status:</strong> Married</p>
+            </div>
+            <div class="card">
+                <h3><i class="fa-solid fa-id-card" style="color: var(--primary);"></i> Identification & Skills</h3>
+                <br>
+                <p><strong>National ID:</strong> 956 287 0544</p>
+                <p><strong>Passport No:</strong> EB 0866217</p>
+                <p><strong>Driving License:</strong> Valid Motorcycle License</p>
+                <p><strong>Languages:</strong> Bengali (Native), English (Proficient)</p>
+                <p style="margin-top: 0.5rem;"><strong>Areas of Expertise:</strong></p>
+                <div class="skills-tag-container">
+                    <span class="skill-tag">Decipher (Forsta)</span>
+                    <span class="skill-tag">HTML5 & CSS3</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">XML & Python</span>
+                    <span class="skill-tag">SPSS & CSV Data</span>
+                    <span class="skill-tag">MS Office & Excel</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2 class="section-title" data-aos="fade-up">Work Experience</h2>
+        <div class="timeline">
+            
+            <div class="timeline-item" data-aos="fade-up">
+                <div class="timeline-header">
+                    <div>
+                        <div class="role-title">Programmer</div>
+                        <div class="company">Analyticsify Research Ltd <span class="dept-tag">(Market Research / SP Team)</span></div>
+                    </div>
+                    <span class="date-badge">01 Dec 2022 – Present</span>
+                </div>
+                <ul class="responsibilities">
+                    <li><strong>Survey Coding & Development:</strong> Program questionnaires into market research platforms including Decipher (Forsta), Qualtrics, Confirmit, and SPSS Dimensions using HTML, CSS, JavaScript, and platform-specific XML/Python syntax.</li>
+                    <li><strong>Logic & Routing Implementation:</strong> Code complex survey logic, including skip patterns, quotas, piping/looping, randomization, and masking to ensure accurate data collection.</li>
+                    <li><strong>Quality Assurance & Testing:</strong> Debug custom scripts, perform extensive cross-device and browser testing, and verify logic conditions before launching live field links.</li>
+                    <li><strong>Data Integration & Cleaning:</strong> Set up data export structures (SPSS .sav, CSV, JSON, Excel), map variables, and automate data cleaning scripts for analytics handoffs.</li>
+                    <li><strong>UI/UX Optimization:</strong> Style custom interface elements (sliders, rank-order tools, media test players) to enhance respondent engagement and maintain responsive mobile layouts.</li>
+                    <li><strong>Troubleshooting & Field Maintenance:</strong> Monitor live field links, patch logic glitches in real-time without compromising collected data, and manage dynamic quota updates.</li>
+                </ul>
+
+                <div class="tech-matrix">
+                    <h4><i class="fa-solid fa-code" style="color: var(--primary);"></i> Technical Skill Matrix</h4>
+                    <p><strong>Survey Platforms:</strong> Decipher (Forsta), Qualtrics, Confirmit, Unramer, Alchemer</p>
+                    <p><strong>Languages & Web:</strong> JavaScript, HTML5/CSS3, Python, SQL, XML</p>
+                    <p><strong>Data Formats:</strong> SPSS (.sav), CSV, JSON, Excel, Tableau-ready files</p>
+                </div>
+            </div>
+
+            <div class="timeline-item" data-aos="fade-up">
+                <div class="timeline-header">
+                    <div>
+                        <div class="role-title">Paralegal</div>
+                        <div class="company">RDRS Bangladesh (Thakurgaon)</div>
+                    </div>
+                    <span class="date-badge">18 Jan 2016 – 28 Feb 2022</span>
+                </div>
+                <ul class="responsibilities">
+                    <li>Educated prisoners and accused persons in basic criminal law and procedure through paralegal aid clinics in prisons and Juvenile Development Centres.</li>
+                    <li>Referred legal cases from prisons and police to District Legal Aid Committees, NGOs, and constitutional bodies.</li>
+                    <li>Traced parents/guardians of children in conflict with the law and traced sureties for criminal justice agencies.</li>
+                    <li>Compiled comprehensive data and prepared monthly, quarterly, and annual operational reports.</li>
+                    <li>Facilitated Case Coordination Meetings and visited public health facilities for medico-legal support.</li>
+                    <li>Coordinated with the Judiciary, Police Services, Directorate of Prisons, and relevant Ministries to streamline judicial operations.</li>
+                    <li>Managed financial workflows including advance monthly expense processing, bill voucher adjustments, and VAT/TAX submissions.</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item" data-aos="fade-up">
+                <div class="timeline-header">
+                    <div>
+                        <div class="role-title">Sell Exclusive</div>
+                        <div class="company">Grameenphone Authorized Distribution House (Thakurgaon)</div>
+                    </div>
+                    <span class="date-badge">01 Oct 2014 – 30 Sep 2015</span>
+                </div>
+                <ul class="responsibilities">
+                    <li>Achieved assigned company product sales targets consistently.</li>
+                    <li>Submitted daily sales accounts and cash settlements directly to financial compliance managers.</li>
+                    <li>Participated in regular corporate sales strategy trainings.</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item" data-aos="fade-up">
+                <div class="timeline-header">
+                    <div>
+                        <div class="role-title">Compliance Officer</div>
+                        <div class="company">Grameenphone Authorized Distribution House (Thakurgaon)</div>
+                    </div>
+                    <span class="date-badge">02 Dec 2013 – 31 Jul 2014</span>
+                </div>
+                <ul class="responsibilities">
+                    <li>Performed quality assurance audits on SIM registration records.</li>
+                    <li>Imported, scanned, and updated tracking records within the central Grameenphone Sales System.</li>
+                    <li>Maintained systematic daily sales log databases.</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="education" data-aos="fade-up">
+        <h2 class="section-title">Academic Qualifications</h2>
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Degree Obtained</th>
+                        <th>Institution</th>
+                        <th>Board / University</th>
+                        <th>Passing Year</th>
+                        <th>Result</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>BSS (PASS)</strong></td>
+                        <td>Thakurgaon Govt. College</td>
+                        <td>National University</td>
+                        <td>2018</td>
+                        <td>CGPA 2.51</td>
+                    </tr>
+                    <tr>
+                        <td><strong>HSC</strong></td>
+                        <td>Thakurgaon Govt. Technical School & College</td>
+                        <td>Technical Board</td>
+                        <td>2009</td>
+                        <td>GPA 3.50</td>
+                    </tr>
+                    <tr>
+                        <td><strong>SSC</strong></td>
+                        <td>Thakurgaon Govt. Technical School & College</td>
+                        <td>Technical Board</td>
+                        <td>2007</td>
+                        <td>GPA 3.36</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="training" data-aos="fade-up">
+        <h2 class="section-title">Professional Training</h2>
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Course Title</th>
+                        <th>Duration</th>
+                        <th>Organized By</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Training on Wrap Up</td>
+                        <td>11–15 Dec 2016</td>
+                        <td>GIZ Bangladesh</td>
+                    </tr>
+                    <tr>
+                        <td>Training on Basic Counseling</td>
+                        <td>05–08 Nov 2016</td>
+                        <td>Ahsania Mission & GIZ Bangladesh</td>
+                    </tr>
+                    <tr>
+                        <td>Training on Information Management System</td>
+                        <td>14–19 Feb 2016</td>
+                        <td>GIZ Bangladesh</td>
+                    </tr>
+                    <tr>
+                        <td>Training on Paralegal Aid Clinic</td>
+                        <td>09–13 Feb 2016</td>
+                        <td>GIZ Bangladesh</td>
+                    </tr>
+                    <tr>
+                        <td>Training on Basic Criminal Law & Procedure</td>
+                        <td>25 Jan – 07 Feb 2016</td>
+                        <td>GIZ Bangladesh</td>
+                    </tr>
+                    <tr>
+                        <td>Training on Project Orientation & Gender</td>
+                        <td>19–22 Jan 2016</td>
+                        <td>GIZ Bangladesh</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="contact" data-aos="fade-up">
+        <h2 class="section-title">Contact & Social Channels</h2>
+        <div class="card">
+            <div class="contact-grid">
+                <div class="info-group">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <div>
+                        <strong>Address</strong>
+                        <p>Muslim Nagar, Thakurgaon Sadar, Thakurgaon-5100</p>
+                    </div>
+                </div>
+                <div class="info-group">
+                    <i class="fa-solid fa-envelope"></i>
+                    <div>
+                        <strong>Email</strong>
+                        <p>farshidrupon@gmail.com</p>
+                    </div>
+                </div>
+                <div class="info-group">
+                    <i class="fa-solid fa-phone"></i>
+                    <div>
+                        <strong>Phone</strong>
+                        <p>+880 1711-305367</p>
+                    </div>
+                </div>
+                <div class="info-group">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                    <div>
+                        <strong>LinkedIn</strong>
+                        <p><a href="https://www.linkedin.com/in/FarshidRupon" target="_blank">linkedin.com/in/FarshidRupon</a></p>
+                    </div>
+                </div>
+                <div class="info-group">
+                    <i class="fa-brands fa-facebook-messenger"></i>
+                    <div>
+                        <strong>Messenger</strong>
+                        <p><a href="https://m.me/FarshidRupon" target="_blank">m.me/FarshidRupon</a></p>
+                    </div>
+                </div>
+                <div class="info-group">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <div>
+                        <strong>WhatsApp</strong>
+                        <p><a href="https://wa.me/8801711305367" target="_blank">Chat on WhatsApp (FarshidRupon)</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Md. Farshid Rupon. All rights reserved.</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize Scroll Animations
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        // Initialize Animated Typing Text
+        var typed = new Typed('#typed', {
+            strings: [
+                'Survey Design Programmer at Analyticsify Research',
+                'Decipher (Forsta) & Data Specialist',
+                'Former Paralegal at RDRS Bangladesh'
+            ],
+            typeSpeed: 50,
+            backSpeed: 30,
+            backDelay: 2000,
+            loop: true
+        });
+    </script>
 </body>
 </html>
