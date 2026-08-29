@@ -854,17 +854,14 @@
     </section>
 
 <!-- Image Gallery Section -->
-    <style>
-       
+<style>
         .scrollable-gallery-wrapper {
             max-height: 480px;
             overflow-y: auto;
             padding-right: 8px;
-            tabindex: 0;
             outline: none;
         }
 
-       
         .scrollable-gallery-wrapper::-webkit-scrollbar {
             width: 8px;
         }
@@ -890,11 +887,11 @@
             overflow: hidden;
             border-radius: 12px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            background-color: var(--surface);
+            background-color: var(--surface, #ffffff);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             aspect-ratio: 4 / 3;
             cursor: pointer;
-            border: 1px solid var(--border);
+            border: 1px solid var(--border, #e5e7eb);
         }
 
         .gallery-item:hover {
@@ -913,7 +910,70 @@
             transform: scale(1.08);
         }
 
-        
+        /* --- FIXED LIGHTBOX MODAL CSS --- */
+        .lightbox-modal {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(5px);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox-modal.active {
+            display: flex;
+        }
+
+        .lightbox-img-wrapper {
+            max-width: 85vw;
+            max-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .lightbox-img-wrapper img {
+            max-width: 100%;
+            max-height: 85vh;
+            object-fit: contain;
+            transition: transform 0.15s ease-out;
+            user-select: none;
+        }
+
+        .lightbox-controls {
+            position: absolute;
+            top: 25px;
+            right: 30px;
+            display: flex;
+            gap: 12px;
+            z-index: 100000;
+        }
+
+        .lightbox-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            border: none;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+
+        .lightbox-btn:hover {
+            background: var(--primary, #007bff);
+        }
+
         @media (max-width: 992px) {
             .gallery-container {
                 grid-template-columns: repeat(2, 1fr);
@@ -930,10 +990,8 @@
     <section id="gallery" data-aos="fade-up">
         <h2 class="section-title">My Gallery</h2>
         <div class="card">
-            
             <div class="scrollable-gallery-wrapper" tabindex="0">
                 <div class="gallery-container">
-                    
                     
                     <div class="gallery-item" onclick="openLightbox(this)">
                         <img src="https://via.placeholder.com/600x450?text=My+Work+1" alt="My Work 1">
@@ -947,7 +1005,6 @@
                         <img src="https://via.placeholder.com/600x450?text=My+Work+3" alt="My Work 3">
                     </div>
 
-                    
                     <div class="gallery-item" onclick="openLightbox(this)">
                         <img src="https://via.placeholder.com/600x450?text=My+Work+4" alt="My Work 4">
                     </div>
@@ -965,7 +1022,6 @@
         </div>
     </section>
 
-    <!-- Lightbox Modal Popup Container -->
     <div id="lightboxModal" class="lightbox-modal">
         <div class="lightbox-controls">
             <button class="lightbox-btn" onclick="zoomIn()"><i class="fa-solid fa-plus"></i></button>
@@ -977,6 +1033,62 @@
             <img id="lightboxImg" src="" alt="Popup Preview">
         </div>
     </div>
+
+    <script>
+        let zoomLevel = 1;
+        const modal = document.getElementById('lightboxModal');
+        const lightboxImg = document.getElementById('lightboxImg');
+
+        function openLightbox(element) {
+            const imgSrc = element.querySelector('img').src;
+            lightboxImg.src = imgSrc;
+            modal.classList.add('active');
+            resetZoom();
+        }
+
+        function closeLightbox() {
+            modal.classList.remove('active');
+        }
+
+        function zoomIn() {
+            zoomLevel += 0.25;
+            lightboxImg.style.transform = `scale(${zoomLevel})`;
+        }
+
+        function zoomOut() {
+            if (zoomLevel > 0.5) {
+                zoomLevel -= 0.25;
+                lightboxImg.style.transform = `scale(${zoomLevel})`;
+            }
+        }
+
+        function resetZoom() {
+            zoomLevel = 1;
+            lightboxImg.style.transform = `scale(1)`;
+        }
+
+        // Mouse Roller Zoom Support
+        lightboxImg.addEventListener('wheel', function(e) {
+            e.preventDefault();
+            if (e.deltaY < 0) {
+                zoomIn();
+            } else {
+                zoomOut();
+            }
+        }, { passive: false });
+
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal || e.target.classList.contains('lightbox-img-wrapper')) {
+                closeLightbox();
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+    </script>
     
 <section id="contact" data-aos="fade-up">
         <h2 class="section-title">Contact & Social Channels</h2>
