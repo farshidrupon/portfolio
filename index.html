@@ -610,45 +610,151 @@
         </div>
     </section>
 
+<!-- Academic Qualifications -->
+    <style>
+        .edu-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+        
+        .edu-card {
+            background: var(--surface);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+
+        .edu-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 0.75rem;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 0.4rem;
+        }
+
+        .edu-row {
+            display: flex;
+            margin-bottom: 0.35rem;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .edu-label {
+            width: 170px;
+            font-weight: 500;
+            color: var(--text-main);
+            flex-shrink: 0;
+        }
+
+        .edu-colon {
+            margin-right: 0.75rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .edu-value {
+            color: var(--text-main);
+            word-break: break-word;
+        }
+
+        @media (max-width: 600px) {
+            .edu-label {
+                width: 135px;
+                font-size: 0.88rem;
+            }
+            .edu-value {
+                font-size: 0.88rem;
+            }
+        }
+    </style>
+
     <section id="education" data-aos="fade-up">
         <h2 class="section-title">Academic Qualifications</h2>
-        <div class="table-responsive">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Degree Obtained</th>
-                        <th>Institution</th>
-                        <th>Subject</th>
-                        <th>Result</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Bachelor of Laws (LL.B Part 1 Professional Masters)</strong></td>
-                        <td>Dinajpur Law College, Dinajpur</td>
-                        <td>Bachelor of Laws</td>
-                        <td>2nd Class</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Bachelor of Social Science (BSS)</strong></td>
-                        <td>Thakurgaon Govt. College, Thakurgaon</td>
-                        <td>Political Science</td>
-                        <td>CGPA: 2.51 (out of 4)</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Higher Secondary Certificate (HSC)</strong></td>
-                        <td>Thakurgaon Govt. Technical School & College, Thakurgaon</td>
-                        <td>Computer Science</td>
-                        <td>GPA: 3.50 (out of 5)</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Secondary School Certificate (SSC)</strong></td>
-                        <td>Thakurgaon Govt. Technical School & College, Thakurgaon</td>
-                        <td>Computer Science</td>
-                        <td>GPA: 3.36 (out of 5)</td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="edu-container">
+            
+            <!-- LL.B -->
+            <div class="edu-card">
+                <div class="edu-title">Bachelor of Laws (LL.B Part 1 Professional Masters)</div>
+                <div class="edu-row">
+                    <div class="edu-label">Name of the institute</div>
+                    <div class="edu-colon">:</div>
+                    <div class="edu-value">Dinajpur Law College, Dinajpur.</div>
+                </div>
+                <div class="edu-row">
+                    <div class="edu-label">Subject</div>
+                    <div class="edu-colon">:</div>
+                    <div class="edu-value">Bachelor of Laws</div>
+                </div>
+                <div class="edu-row">
+                    <div class="edu-label">Result</div>
+                    <div class="edu-colon">:</div>
+                    <div class="edu-value">2nd Class</div>
+                </div>
+            </div>
+
+            <!-- BSS -->
+            <div class="edu-card">
+                <div class="edu-title">Bachelor of Social Science (BSS)</div>
+                <div class="edu-row">
+                    <div class="edu-label">Name of the institute</div>
+                    <div class="edu-colon">:</div>
+                    <div class="edu-value">Thakurgaon Govt. College, Thakurgaon.</div>
+                </div>
+                <div class="edu-row">
+                    <div class="edu-label">Subject</div>
+                    <div class="edu-colon">:</div>
+                    <div class="edu-value">Political Science</div>
+                </div>
+                <div class="edu-row">
+                    <div class="edu-label">Result</div>
+                    <div class="edu-colon">:</div>
+                    <div class="edu-value">CGPA: 2.51 (out of 4)</div>
+                </div>
+            </div>
+
+            <!-- HSC -->
+            <div class="edu-card">
+                <div class="edu-title">Higher Secondary Certificate (HSC)</div>
+                <div class="edu-row">
+                    <div class="edu-label">Name of the institute</div>
+                    <div class="edu-colon">:</div>
+                    <div class="edu-value">Thakurgaon Govt. Technical School & College, Thakurgaon.</div>
+                </div>
+                <div class="edu-row">
+                    <div class="edu-label">Subject</div>
+                    <div class="edu-colon">:</div>
+                    <div class="edu-value">Computer Science</div>
+                </div>
+                <div class="edu-row">
+                    <div class="edu-label">Result</div>
+                    <div class="edu-colon">:</div>
+                    <div class="edu-value">GPA: 3.50 (out of 5)</div>
+                </div>
+            </div>
+
+            <!-- SSC -->
+            <div class="edu-card">
+                <div class="edu-title">Secondary School Certificate (SSC)</div>
+                <div class="edu-row">
+                    <div class="edu-label">Name of the institute</div>
+                    <div class="edu-colon">:</div>
+                    <div class="edu-value">Thakurgaon Govt. Technical School & College, Thakurgaon.</div>
+                </div>
+                <div class="edu-row">
+                    <div class="edu-label">Subject</div>
+                    <div class="edu-colon">:</div>
+                    <div class="edu-value">Computer Science</div>
+                </div>
+                <div class="edu-row">
+                    <div class="edu-label">Result</div>
+                    <div class="edu-colon">:</div>
+                    <div class="edu-value">GPA: 3.36 (out of 5)</div>
+                </div>
+            </div>
+
         </div>
     </section>
 
