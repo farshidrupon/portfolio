@@ -613,20 +613,22 @@
     </section>
 
 <!-- Academic Qualifications -->
-<style>
-        .edu-no-line {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
+
+    <style>
+        .edu-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem 1.5rem;
+            margin-top: 1rem;
         }
 
-        .edu-item-clean {
+        .edu-grid-item {
             position: relative;
             padding-left: 1.5rem;
         }
 
-        
-        .edu-item-clean::before {
+        /* নীল ডট */
+        .edu-grid-item::before {
             content: '';
             position: absolute;
             left: 0;
@@ -652,7 +654,7 @@
         }
 
         .edu-timeline-list .edu-label {
-            width: 160px;
+            width: 120px;
             font-weight: 500;
             flex-shrink: 0;
         }
@@ -667,23 +669,20 @@
             word-break: break-word;
         }
 
-        @media (max-width: 600px) {
-            .edu-timeline-list .edu-label {
-                width: 130px;
-                font-size: 0.88rem;
-            }
-            .edu-timeline-list li {
-                font-size: 0.88rem;
+        
+        @media (max-width: 768px) {
+            .edu-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 
     <section id="education">
         <h2 class="section-title" data-aos="fade-up">Academic Qualifications</h2>
-        <div class="edu-no-line">
+        <div class="edu-grid">
 
-            <!-- LL.B -->
-            <div class="edu-item-clean" data-aos="fade-up">
+            <!-- Row 1: Left (LL.B) -->
+            <div class="edu-grid-item" data-aos="fade-up">
                 <div class="role-title">Bachelor of Laws (LL.B Part 1 Professional Masters)</div>
                 <div class="company" style="margin-top: 0.25rem;">Dinajpur Law College, Dinajpur</div>
                 
@@ -701,8 +700,8 @@
                 </ul>
             </div>
 
-            <!-- BSS -->
-            <div class="edu-item-clean" data-aos="fade-up">
+            <!-- Row 1: Right (BSS) -->
+            <div class="edu-grid-item" data-aos="fade-up">
                 <div class="role-title">Bachelor of Social Science (BSS)</div>
                 <div class="company" style="margin-top: 0.25rem;">Thakurgaon Govt. College, Thakurgaon</div>
                 
@@ -720,8 +719,8 @@
                 </ul>
             </div>
 
-            <!-- HSC -->
-            <div class="edu-item-clean" data-aos="fade-up">
+            <!-- Row 2: Left (HSC) -->
+            <div class="edu-grid-item" data-aos="fade-up">
                 <div class="role-title">Higher Secondary Certificate (HSC)</div>
                 <div class="company" style="margin-top: 0.25rem;">Thakurgaon Govt. Technical School & College, Thakurgaon</div>
                 
@@ -739,8 +738,8 @@
                 </ul>
             </div>
 
-            <!-- SSC -->
-            <div class="edu-item-clean" data-aos="fade-up">
+            <!-- Row 2: Right (SSC) -->
+            <div class="edu-grid-item" data-aos="fade-up">
                 <div class="role-title">Secondary School Certificate (SSC)</div>
                 <div class="company" style="margin-top: 0.25rem;">Thakurgaon Govt. Technical School & College, Thakurgaon</div>
                 
