@@ -611,44 +611,66 @@
     </section>
 
 <!-- Academic Qualifications -->
-    <style>
-        .edu-details-list {
-            margin-top: 0.75rem;
-            list-style: none;
-            padding-left: 0;
+<style>
+        .edu-no-line {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
         }
 
-        .edu-details-list li {
-            font-size: 0.95rem;
-            color: var(--text-main);
-            margin-bottom: 0.3rem;
+        .edu-item-clean {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        
+        .edu-item-clean::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.35rem;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--primary);
+        }
+
+        .edu-timeline-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 0.5rem;
+        }
+
+        .edu-timeline-list li {
             display: flex;
             align-items: flex-start;
+            font-size: 0.95rem;
+            margin-bottom: 0.35rem;
+            color: var(--text-main);
         }
 
-        .edu-details-list .edu-label-col {
+        .edu-timeline-list .edu-label {
             width: 160px;
             font-weight: 500;
             flex-shrink: 0;
-            color: var(--text-main);
         }
 
-        .edu-details-list .edu-colon-col {
+        .edu-timeline-list .edu-colon {
             margin-right: 0.75rem;
             font-weight: 600;
         }
 
-        .edu-details-list .edu-value-col {
+        .edu-timeline-list .edu-val {
             flex-grow: 1;
             word-break: break-word;
         }
 
         @media (max-width: 600px) {
-            .edu-details-list .edu-label-col {
+            .edu-timeline-list .edu-label {
                 width: 130px;
                 font-size: 0.88rem;
             }
-            .edu-details-list li {
+            .edu-timeline-list li {
                 font-size: 0.88rem;
             }
         }
@@ -656,116 +678,100 @@
 
     <section id="education">
         <h2 class="section-title" data-aos="fade-up">Academic Qualifications</h2>
-        <div class="timeline">
+        <div class="edu-no-line">
 
             <!-- LL.B -->
-            <div class="timeline-item" data-aos="fade-up">
-                <div class="timeline-header">
-                    <div>
-                        <div class="role-title">Bachelor of Laws (LL.B Part 1 Professional Masters)</div>
-                        <div class="company">Dinajpur Law College, Dinajpur</div>
-                    </div>
-                    <span class="date-badge">2025</span>
-                </div>
-                <ul class="edu-details-list">
+            <div class="edu-item-clean" data-aos="fade-up">
+                <div class="role-title">Bachelor of Laws (LL.B Part 1 Professional Masters)</div>
+                <div class="company" style="margin-top: 0.25rem;">Dinajpur Law College, Dinajpur</div>
+                
+                <ul class="edu-timeline-list">
                     <li>
-                        <span class="edu-label-col">Name of the institute</span>
-                        <span class="edu-colon-col">:</span>
-                        <span class="edu-value-col">Dinajpur Law College, Dinajpur.</span>
+                        <span class="edu-label">Name of the institute</span>
+                        <span class="edu-colon">:</span>
+                        <span class="edu-val">Dinajpur Law College, Dinajpur.</span>
                     </li>
                     <li>
-                        <span class="edu-label-col">Subject</span>
-                        <span class="edu-colon-col">:</span>
-                        <span class="edu-value-col">Bachelor of Laws</span>
+                        <span class="edu-label">Subject</span>
+                        <span class="edu-colon">:</span>
+                        <span class="edu-val">Bachelor of Laws</span>
                     </li>
                     <li>
-                        <span class="edu-label-col">Result</span>
-                        <span class="edu-colon-col">:</span>
-                        <span class="edu-value-col">2nd Class</span>
+                        <span class="edu-label">Result</span>
+                        <span class="edu-colon">:</span>
+                        <span class="edu-val">2nd Class</span>
                     </li>
                 </ul>
             </div>
 
             <!-- BSS -->
-            <div class="timeline-item" data-aos="fade-up">
-                <div class="timeline-header">
-                    <div>
-                        <div class="role-title">Bachelor of Social Science (BSS)</div>
-                        <div class="company">Thakurgaon Govt. College, Thakurgaon</div>
-                    </div>
-                    <span class="date-badge">2018</span>
-                </div>
-                <ul class="edu-details-list">
+            <div class="edu-item-clean" data-aos="fade-up">
+                <div class="role-title">Bachelor of Social Science (BSS)</div>
+                <div class="company" style="margin-top: 0.25rem;">Thakurgaon Govt. College, Thakurgaon</div>
+                
+                <ul class="edu-timeline-list">
                     <li>
-                        <span class="edu-label-col">Name of the institute</span>
-                        <span class="edu-colon-col">:</span>
-                        <span class="edu-value-col">Thakurgaon Govt. College, Thakurgaon.</span>
+                        <span class="edu-label">Name of the institute</span>
+                        <span class="edu-colon">:</span>
+                        <span class="edu-val">Thakurgaon Govt. College, Thakurgaon.</span>
                     </li>
                     <li>
-                        <span class="edu-label-col">Subject</span>
-                        <span class="edu-colon-col">:</span>
-                        <span class="edu-value-col">Political Science</span>
+                        <span class="edu-label">Subject</span>
+                        <span class="edu-colon">:</span>
+                        <span class="edu-val">Political Science</span>
                     </li>
                     <li>
-                        <span class="edu-label-col">Result</span>
-                        <span class="edu-colon-col">:</span>
-                        <span class="edu-value-col">CGPA: 2.51 (out of 4)</span>
+                        <span class="edu-label">Result</span>
+                        <span class="edu-colon">:</span>
+                        <span class="edu-val">CGPA: 2.51 (out of 4)</span>
                     </li>
                 </ul>
             </div>
 
             <!-- HSC -->
-            <div class="timeline-item" data-aos="fade-up">
-                <div class="timeline-header">
-                    <div>
-                        <div class="role-title">Higher Secondary Certificate (HSC)</div>
-                        <div class="company">Thakurgaon Govt. Technical School & College, Thakurgaon</div>
-                    </div>
-                    <span class="date-badge">2009</span>
-                </div>
-                <ul class="edu-details-list">
+            <div class="edu-item-clean" data-aos="fade-up">
+                <div class="role-title">Higher Secondary Certificate (HSC)</div>
+                <div class="company" style="margin-top: 0.25rem;">Thakurgaon Govt. Technical School & College, Thakurgaon</div>
+                
+                <ul class="edu-timeline-list">
                     <li>
-                        <span class="edu-label-col">Name of the institute</span>
-                        <span class="edu-colon-col">:</span>
-                        <span class="edu-value-col">Thakurgaon Govt. Technical School & College, Thakurgaon.</span>
+                        <span class="edu-label">Name of the institute</span>
+                        <span class="edu-colon">:</span>
+                        <span class="edu-val">Thakurgaon Govt. Technical School & College, Thakurgaon.</span>
                     </li>
                     <li>
-                        <span class="edu-label-col">Subject</span>
-                        <span class="edu-colon-col">:</span>
-                        <span class="edu-value-col">Computer Science</span>
+                        <span class="edu-label">Subject</span>
+                        <span class="edu-colon">:</span>
+                        <span class="edu-val">Computer Science</span>
                     </li>
                     <li>
-                        <span class="edu-label-col">Result</span>
-                        <span class="edu-colon-col">:</span>
-                        <span class="edu-value-col">GPA: 3.50 (out of 5)</span>
+                        <span class="edu-label">Result</span>
+                        <span class="edu-colon">:</span>
+                        <span class="edu-val">GPA: 3.50 (out of 5)</span>
                     </li>
                 </ul>
             </div>
 
             <!-- SSC -->
-            <div class="timeline-item" data-aos="fade-up">
-                <div class="timeline-header">
-                    <div>
-                        <div class="role-title">Secondary School Certificate (SSC)</div>
-                        <div class="company">Thakurgaon Govt. Technical School & College, Thakurgaon</div>
-                    </div>
-                    <span class="date-badge">2007</span>
-                </div>
-                <ul class="edu-details-list">
+            <div class="edu-item-clean" data-aos="fade-up">
+                <div class="role-title">Secondary School Certificate (SSC)</div>
+                <div class="company" style="margin-top: 0.25rem;">Thakurgaon Govt. Technical School & College, Thakurgaon</div>
+                
+                <ul class="edu-timeline-list">
                     <li>
-                        <span class="edu-label-col">Name of the institute</span>
-                        <span class="edu-colon-col">:</span>
-                        <span class="edu-value-col">Thakurgaon Govt. Technical School & College, Thakurgaon.</span>
+                        <span class="edu-label">Name of the institute</span>
+                        <span class="edu-colon">:</span>
+                        <span class="edu-val">Thakurgaon Govt. Technical School & College, Thakurgaon.</span>
                     </li>
                     <li>
-                        <span class="edu-label-col">Subject</span>
-                        <span class="edu-colon-col">:</span>
-                        <span class="edu-value-col">Computer Science</span>
+                        <span class="edu-label">Subject</span>
+                        <span class="edu-colon">:</span>
+                        <span class="edu-val">Computer Science</span>
                     </li>
                     <li>
-                        <span class="edu-label-col">Result</span>
-                        <span class="edu-colon-col">:</span>
-                        <span class="edu-value-col">GPA: 3.36 (out of 5)</span>
+                        <span class="edu-label">Result</span>
+                        <span class="edu-colon">:</span>
+                        <span class="edu-val">GPA: 3.36 (out of 5)</span>
                     </li>
                 </ul>
             </div>
