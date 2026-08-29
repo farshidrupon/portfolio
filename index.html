@@ -412,6 +412,179 @@
             text-decoration: underline;
         }
 
+        /* Education & Training Grid */
+        .edu-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .edu-grid-item {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .edu-grid-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.35rem;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--primary);
+        }
+
+        .edu-timeline-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 0.5rem;
+        }
+
+        .edu-timeline-list li {
+            display: flex;
+            align-items: flex-start;
+            font-size: 0.95rem;
+            margin-bottom: 0.35rem;
+            color: var(--text-main);
+        }
+
+        .edu-timeline-list .edu-label {
+            width: 120px;
+            font-weight: 500;
+            flex-shrink: 0;
+        }
+
+        .edu-timeline-list .edu-colon {
+            margin-right: 0.75rem;
+            font-weight: 600;
+        }
+
+        .edu-timeline-list .edu-val {
+            flex-grow: 1;
+            word-break: break-word;
+        }
+
+        /* Image Gallery & Lightbox CSS */
+        .scrollable-gallery-wrapper {
+            max-height: 480px;
+            overflow-y: auto;
+            padding-right: 8px;
+            outline: none;
+        }
+
+        .scrollable-gallery-wrapper::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .scrollable-gallery-wrapper::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+        }
+
+        .scrollable-gallery-wrapper::-webkit-scrollbar-thumb {
+            background: var(--primary, #007bff);
+            border-radius: 10px;
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            background-color: var(--surface, #ffffff);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            aspect-ratio: 4 / 3;
+            cursor: pointer;
+            border: 1px solid var(--border, #e5e7eb);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .lightbox-modal {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(5px);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox-modal.active {
+            display: flex;
+        }
+
+        .lightbox-img-wrapper {
+            max-width: 85vw;
+            max-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .lightbox-img-wrapper img {
+            max-width: 100%;
+            max-height: 85vh;
+            object-fit: contain;
+            transition: transform 0.15s ease-out;
+            user-select: none;
+        }
+
+        .lightbox-controls {
+            position: absolute;
+            top: 25px;
+            right: 30px;
+            display: flex;
+            gap: 12px;
+            z-index: 100000;
+        }
+
+        .lightbox-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            border: none;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+
+        .lightbox-btn:hover {
+            background: var(--primary, #007bff);
+        }
+
         footer {
             background: var(--secondary);
             color: white;
@@ -422,6 +595,12 @@
         }
 
         /* Mobile Optimization Rules */
+        @media (max-width: 992px) {
+            .gallery-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         @media (max-width: 768px) {
             .nav-container {
                 flex-direction: column;
@@ -454,6 +633,15 @@
             }
             .section-title {
                 font-size: 1.5rem;
+            }
+            .edu-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .gallery-container {
+                grid-template-columns: repeat(1, 1fr);
             }
         }
     </style>
@@ -613,71 +801,7 @@
         </div>
     </section>
 
-<!-- Academic Qualifications -->
-
-    <style>
-        .edu-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem 1.5rem;
-            margin-top: 1rem;
-        }
-
-        .edu-grid-item {
-            position: relative;
-            padding-left: 1.5rem;
-        }
-
-        
-        .edu-grid-item::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0.35rem;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: var(--primary);
-        }
-
-        .edu-timeline-list {
-            list-style: none;
-            padding: 0;
-            margin-top: 0.5rem;
-        }
-
-        .edu-timeline-list li {
-            display: flex;
-            align-items: flex-start;
-            font-size: 0.95rem;
-            margin-bottom: 0.35rem;
-            color: var(--text-main);
-        }
-
-        .edu-timeline-list .edu-label {
-            width: 120px;
-            font-weight: 500;
-            flex-shrink: 0;
-        }
-
-        .edu-timeline-list .edu-colon {
-            margin-right: 0.75rem;
-            font-weight: 600;
-        }
-
-        .edu-timeline-list .edu-val {
-            flex-grow: 1;
-            word-break: break-word;
-        }
-
-        
-        @media (max-width: 768px) {
-            .edu-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
-
+    <!-- Academic Qualifications -->
     <section id="education">
         <h2 class="section-title" data-aos="fade-up">Academic Qualifications</h2>
         <div class="edu-grid">
@@ -761,7 +885,7 @@
         </div>
     </section>
     
-<!-- Professional Training -->
+    <!-- Professional Training -->
     <section id="training">
         <h2 class="section-title" data-aos="fade-up">Professional Training</h2>
         <div class="edu-grid">
@@ -853,140 +977,7 @@
         </div>
     </section>
 
-<!-- Image Gallery Section -->
-<style>
-        .scrollable-gallery-wrapper {
-            max-height: 480px;
-            overflow-y: auto;
-            padding-right: 8px;
-            outline: none;
-        }
-
-        .scrollable-gallery-wrapper::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        .scrollable-gallery-wrapper::-webkit-scrollbar-track {
-            background: rgba(0, 0, 0, 0.05);
-            border-radius: 10px;
-        }
-
-        .scrollable-gallery-wrapper::-webkit-scrollbar-thumb {
-            background: var(--primary, #007bff);
-            border-radius: 10px;
-        }
-
-        .gallery-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-        }
-
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            background-color: var(--surface, #ffffff);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            aspect-ratio: 4 / 3;
-            cursor: pointer;
-            border: 1px solid var(--border, #e5e7eb);
-        }
-
-        .gallery-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.08);
-        }
-
-        /* --- FIXED LIGHTBOX MODAL CSS --- */
-        .lightbox-modal {
-            display: none;
-            position: fixed;
-            z-index: 99999;
-            left: 0;
-            top: 0;
-            width: 100vw;
-            height: 100vh;
-            background-color: rgba(0, 0, 0, 0.9);
-            backdrop-filter: blur(5px);
-            justify-content: center;
-            align-items: center;
-        }
-
-        .lightbox-modal.active {
-            display: flex;
-        }
-
-        .lightbox-img-wrapper {
-            max-width: 85vw;
-            max-height: 85vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .lightbox-img-wrapper img {
-            max-width: 100%;
-            max-height: 85vh;
-            object-fit: contain;
-            transition: transform 0.15s ease-out;
-            user-select: none;
-        }
-
-        .lightbox-controls {
-            position: absolute;
-            top: 25px;
-            right: 30px;
-            display: flex;
-            gap: 12px;
-            z-index: 100000;
-        }
-
-        .lightbox-btn {
-            background: rgba(255, 255, 255, 0.2);
-            color: #ffffff;
-            border: none;
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            font-size: 1.2rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.3s;
-        }
-
-        .lightbox-btn:hover {
-            background: var(--primary, #007bff);
-        }
-
-        @media (max-width: 992px) {
-            .gallery-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 576px) {
-            .gallery-container {
-                grid-template-columns: repeat(1, 1fr);
-            }
-        }
-    </style>
-
+    <!-- Image Gallery Section -->
     <section id="gallery" data-aos="fade-up">
         <h2 class="section-title">My Gallery</h2>
         <div class="card">
@@ -1022,6 +1013,7 @@
         </div>
     </section>
 
+    <!-- Lightbox Modal Popup Container -->
     <div id="lightboxModal" class="lightbox-modal">
         <div class="lightbox-controls">
             <button class="lightbox-btn" onclick="zoomIn()"><i class="fa-solid fa-plus"></i></button>
@@ -1033,64 +1025,9 @@
             <img id="lightboxImg" src="" alt="Popup Preview">
         </div>
     </div>
-
-    <script>
-        let zoomLevel = 1;
-        const modal = document.getElementById('lightboxModal');
-        const lightboxImg = document.getElementById('lightboxImg');
-
-        function openLightbox(element) {
-            const imgSrc = element.querySelector('img').src;
-            lightboxImg.src = imgSrc;
-            modal.classList.add('active');
-            resetZoom();
-        }
-
-        function closeLightbox() {
-            modal.classList.remove('active');
-        }
-
-        function zoomIn() {
-            zoomLevel += 0.25;
-            lightboxImg.style.transform = `scale(${zoomLevel})`;
-        }
-
-        function zoomOut() {
-            if (zoomLevel > 0.5) {
-                zoomLevel -= 0.25;
-                lightboxImg.style.transform = `scale(${zoomLevel})`;
-            }
-        }
-
-        function resetZoom() {
-            zoomLevel = 1;
-            lightboxImg.style.transform = `scale(1)`;
-        }
-
-        // Mouse Roller Zoom Support
-        lightboxImg.addEventListener('wheel', function(e) {
-            e.preventDefault();
-            if (e.deltaY < 0) {
-                zoomIn();
-            } else {
-                zoomOut();
-            }
-        }, { passive: false });
-
-        modal.addEventListener('click', function(e) {
-            if (e.target === modal || e.target.classList.contains('lightbox-img-wrapper')) {
-                closeLightbox();
-            }
-        });
-
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeLightbox();
-            }
-        });
-    </script>
     
-<section id="contact" data-aos="fade-up">
+    <!-- Contact Section -->
+    <section id="contact" data-aos="fade-up">
         <h2 class="section-title">Contact & Social Channels</h2>
         <div class="card">
             <div class="contact-grid">
@@ -1161,8 +1098,8 @@
             backDelay: 2000,
             loop: true
         });
-    </script>
-    <script>
+
+        // Lightbox Popup & Zoom Control
         let zoomLevel = 1;
         const modal = document.getElementById('lightboxModal');
         const lightboxImg = document.getElementById('lightboxImg');
@@ -1195,7 +1132,16 @@
             lightboxImg.style.transform = `scale(1)`;
         }
 
-        
+        // Mouse Roller Zoom Support
+        lightboxImg.addEventListener('wheel', function(e) {
+            e.preventDefault();
+            if (e.deltaY < 0) {
+                zoomIn();
+            } else {
+                zoomOut();
+            }
+        }, { passive: false });
+
         modal.addEventListener('click', function(e) {
             if (e.target === modal || e.target.classList.contains('lightbox-img-wrapper')) {
                 closeLightbox();
