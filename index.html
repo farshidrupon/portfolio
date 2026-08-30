@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Farshid Rupon | Survey Programmer & Operations Specialist</title>
+    <title>Farshid Rupon | Legal Assistance & Survey Programmer</title>
     
     <!-- Meta SEO & OpenGraph Social Tags -->
-    <meta name="description" content="Portfolio of Farshid Rupon - Survey Programmer & Operations Specialist specializing in Decipher (Forsta), JavaScript, dynamic logic routing, and legal operations.">
-    <meta property="og:title" content="Farshid Rupon | Survey Programmer & Operations Specialist">
-    <meta property="og:description" content="Explore my professional experience, survey logic implementations, technical skills, and educational background.">
+    <meta name="description" content="Portfolio of Farshid Rupon - Experienced Survey Programmer & Legal Assistance Specialist.">
+    <meta property="og:title" content="Farshid Rupon | Legal Assistance & Survey Programmer">
+    <meta property="og:description" content="Explore my professional experience, survey logic implementations, technical skills, and legal assistance background.">
     <meta property="og:image" content="profile.jpg">
     <meta property="og:type" content="website">
 
@@ -205,6 +205,13 @@
         .hero h1 {
             font-size: 2.75rem;
             font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: var(--primary);
+            font-weight: 600;
             margin-bottom: 0.75rem;
         }
 
@@ -846,11 +853,14 @@
             <img src="profile.jpg" alt="Farshid Rupon" class="profile-pic" data-aos="fade-down" loading="lazy">
 
             <h1 data-aos="fade-down" data-aos-delay="100" data-i18n="hero_name">Farshid Rupon</h1>
+            <h2 class="hero-subtitle" data-aos="fade-down" data-aos-delay="150" data-i18n="hero_subtitle">Legal Assistance</h2>
+            
             <div class="typed-container" data-aos="fade-down" data-aos-delay="200">
                 <span id="typed"></span>
             </div>
+            
             <div class="hero-meta" data-aos="fade-up" data-aos-delay="300">
-                <span><i class="fa-solid fa-location-dot"></i> <span data-i18n="hero_loc">Thakurgaon, Bangladesh.</span></span>
+                <span><i class="fa-solid fa-location-dot"></i> <span data-i18n="hero_loc">Thakurgaon, Bangladesh</span></span>
                 <span><i class="fa-solid fa-envelope"></i> <a href="mailto:farshidrupon@gmail.com" style="color: inherit; text-decoration: none;">farshidrupon@gmail.com</a></span>
                 <span><i class="fa-solid fa-phone"></i> <a href="tel:+8801711305367" style="color: inherit; text-decoration: none;" data-i18n="val_phone">+880 1711-305367</a></span>
             </div>
@@ -944,13 +954,14 @@
 
                 <p style="margin-top: 1rem;"><strong data-i18n="lbl_competencies">Core Competencies:</strong></p>
                 <div class="skills-tag-container">
-                    <span class="skill-tag">Decipher (Forsta)</span>
-                    <span class="skill-tag">Qualtrics</span>
-                    <span class="skill-tag">HTML5 & CSS3</span>
-                    <span class="skill-tag">JavaScript</span>
-                    <span class="skill-tag">XML & Python Scripting</span>
-                    <span class="skill-tag">SPSS & CSV Data Processing</span>
-                    <span class="skill-tag" data-i18n="tag_ops">Project Operations</span>
+                    <span class="skill-tag" data-i18n="tag_c1">Decipher (Forsta)</span>
+                    <span class="skill-tag" data-i18n="tag_c2">Qualtrics</span>
+                    <span class="skill-tag" data-i18n="tag_c3">HTML5 & CSS3</span>
+                    <span class="skill-tag" data-i18n="tag_c4">JavaScript</span>
+                    <span class="skill-tag" data-i18n="tag_c5">XML & Python Scripting</span>
+                    <span class="skill-tag" data-i18n="tag_c6">SPSS & CSV Data Processing</span>
+                    <span class="skill-tag" data-i18n="tag_c7">Survey Logic & Programming</span>
+                    <span class="skill-tag" data-i18n="tag_c8">Project Operations</span>
                 </div>
             </div>
         </div>
@@ -963,7 +974,7 @@
         <div class="filter-container" data-aos="fade-up">
             <button class="filter-btn active" onclick="filterTimeline('all')" data-i18n="btn_filter_all">All Roles</button>
             <button class="filter-btn" onclick="filterTimeline('sp')" data-i18n="btn_filter_sp">Survey Programming</button>
-            <button class="filter-btn" onclick="filterTimeline('ops')" data-i18n="btn_filter_ops">Legal & Operations</button>
+            <button class="filter-btn" onclick="filterTimeline('ops')" data-i18n="btn_filter_ops">Legal Assistance & Operations</button>
         </div>
 
         <div class="timeline">
@@ -1016,17 +1027,22 @@
                         <li>
                             <span class="info-label" data-i18n="lbl_platforms">Survey Platforms</span>
                             <span class="info-colon">:</span>
-                            <span class="info-val">Decipher (Forsta), Qualtrics, Confirmit, Unomer, Alchemer</span>
+                            <span class="info-val" data-i18n="val_platforms">Decipher (Forsta), Qualtrics, Confirmit, Unomer, Alchemer</span>
                         </li>
                         <li>
-                            <span class="info-label" data-i18n="lbl_languages_tech">Programming & Web</span>
+                            <span class="info-label" data-i18n="lbl_languages_tech">Programming & Web Technologies</span>
                             <span class="info-colon">:</span>
-                            <span class="info-val">JavaScript, HTML5, CSS3, XML, Python, SQL</span>
+                            <span class="info-val" data-i18n="val_languages_tech">JavaScript, HTML5, CSS3, XML, Python, SQL</span>
                         </li>
                         <li>
                             <span class="info-label" data-i18n="lbl_formats">Data & Analytics</span>
                             <span class="info-colon">:</span>
-                            <span class="info-val">SPSS (.sav), CSV, JSON, Excel, Tableau-ready Data</span>
+                            <span class="info-val" data-i18n="val_formats">SPSS (.sav), CSV, JSON, Excel, Tableau-ready Data</span>
+                        </li>
+                        <li>
+                            <span class="info-label" data-i18n="lbl_sp_prog">Survey Programming</span>
+                            <span class="info-colon">:</span>
+                            <span class="info-val" data-i18n="val_sp_prog">Skip Logic, Quotas, Piping, Looping, Randomization, Masking, Custom UI/UX</span>
                         </li>
                     </ul>
                 </div>
@@ -1171,15 +1187,15 @@
                 <div class="gallery-container">
                     
                     <div class="gallery-item" onclick="openLightbox(this)">
-                        <img src="Img_01.jpg" alt="Farshid Rupon Workplace Photo 1" loading="lazy">
+                        <img src="Img_01.jpg" alt="Professional Workplace" loading="lazy">
                     </div>
 
                     <div class="gallery-item" onclick="openLightbox(this)">
-                        <img src="Img_02.jpg" alt="Farshid Rupon Professional Photo 2" loading="lazy">
+                        <img src="Img_02.jpg" alt="Professional Profile" loading="lazy">
                     </div>
 
                     <div class="gallery-item" onclick="openLightbox(this)">
-                        <img src="Img_03.jpg" alt="Farshid Rupon Training Event Photo 3" loading="lazy">
+                        <img src="Img_03.jpg" alt="Training & Professional Development" loading="lazy">
                     </div>
 
                 </div>
@@ -1277,6 +1293,7 @@
             en: {
                 logo_name: "FARSHID RUPON",
                 hero_name: "Farshid Rupon",
+                hero_subtitle: "Legal Assistance",
                 footer_name: "Farshid Rupon",
                 nav_summary: "Summary",
                 nav_about: "About",
@@ -1284,7 +1301,7 @@
                 nav_edu: "Education",
                 nav_gallery: "Gallery",
                 nav_contact: "Contact",
-                hero_loc: "Thakurgaon, Bangladesh.",
+                hero_loc: "Thakurgaon, Bangladesh",
                 val_phone: "+880 1711-305367",
                 val_linkedin: "LinkedIn",
                 val_msteams: "Microsoft Teams",
@@ -1318,11 +1335,18 @@
                 lbl_languages: "Languages",
                 val_languages: "Bengali (Native), English (Professional Working Proficiency)",
                 lbl_competencies: "Core Competencies:",
-                tag_ops: "Project Operations",
+                tag_c1: "Decipher (Forsta)",
+                tag_c2: "Qualtrics",
+                tag_c3: "HTML5 & CSS3",
+                tag_c4: "JavaScript",
+                tag_c5: "XML & Python Scripting",
+                tag_c6: "SPSS & CSV Data Processing",
+                tag_c7: "Survey Logic & Programming",
+                tag_c8: "Project Operations",
                 exp_title: "Work Experience",
                 btn_filter_all: "All Roles",
                 btn_filter_sp: "Survey Programming",
-                btn_filter_ops: "Legal & Operations",
+                btn_filter_ops: "Legal Assistance & Operations",
                 
                 exp1_role: "Programmer",
                 exp1_company: "Analyticify Research Limited, Thakurgaon",
@@ -1342,8 +1366,13 @@
 
                 matrix_title: "Technical Skill Matrix",
                 lbl_platforms: "Survey Platforms",
-                lbl_languages_tech: "Programming & Web",
+                val_platforms: "Decipher (Forsta), Qualtrics, Confirmit, Unomer, Alchemer",
+                lbl_languages_tech: "Programming & Web Technologies",
+                val_languages_tech: "JavaScript, HTML5, CSS3, XML, Python, SQL",
                 lbl_formats: "Data & Analytics",
+                val_formats: "SPSS (.sav), CSV, JSON, Excel, Tableau-ready Data",
+                lbl_sp_prog: "Survey Programming",
+                val_sp_prog: "Skip Logic, Quotas, Piping, Looping, Randomization, Masking, Custom UI/UX",
 
                 exp2_role: "Paralegal",
                 exp2_company: "RDRS Bangladesh, Thakurgaon",
@@ -1378,17 +1407,17 @@
                 edu2_title: "Bachelor of Social Science (BSS)",
                 edu2_inst: "Thakurgaon Govt. College, Thakurgaon",
                 edu2_sub: "Political Science",
-                edu2_res: "CGPA: 2.51 / 4.00",
+                edu2_res: "2.51 / 4.00",
 
                 edu3_title: "Higher Secondary Certificate (HSC)",
                 edu3_inst: "Thakurgaon Govt. Technical School & College, Thakurgaon",
                 edu3_sub: "Computer Science",
-                edu3_res: "GPA: 3.50 / 5.00",
+                edu3_res: "3.50 / 5.00",
 
                 edu4_title: "Secondary School Certificate (SSC)",
                 edu4_inst: "Thakurgaon Govt. Technical School & College, Thakurgaon",
                 edu4_sub: "Computer Science",
-                edu4_res: "GPA: 3.36 / 5.00",
+                edu4_res: "3.36 / 5.00",
 
                 lbl_subject: "Subject",
                 lbl_result: "Result",
@@ -1404,14 +1433,15 @@
                 btn_send: "Send Message",
                 footer_rights: "All rights reserved.",
                 typed: [
-                    'Survey Programmer & Operations Specialist',
-                    'Decipher (Forsta) & Data Automation Specialist',
-                    'Legal Assistance & Research Professional'
+                    'Survey Programmer at Analyticify Research Limited',
+                    'Legal Assistance & Project Operations Specialist',
+                    'Decipher (Forsta) & Custom Scripting Expert'
                 ]
             },
             bn: {
                 logo_name: "ফারশিদ রুপন",
                 hero_name: "ফারশিদ রুপন",
+                hero_subtitle: "আইনগত সহায়তা",
                 footer_name: "ফারশিদ রুপন",
                 nav_summary: "সারসংক্ষেপ",
                 nav_about: "পরিচিতি",
@@ -1422,10 +1452,10 @@
                 hero_loc: "ঠাকুরগাঁও, বাংলাদেশ",
                 val_phone: "+৮৮০ ১৭১১-৩০৫৩৬৭",
                 val_linkedin: "লিংকডইন",
-                val_msteams: "মাইক্রোসফট টিমস",
+                val_msteams: "মাইক্রোসফ্ট টিমস",
                 val_whatsapp: "হোয়াটসঅ্যাপ",
                 ph_name: "",
-                ph_msg: "হ্যালো ফারশিদ, আমি একটি প্রকল্প নিয়ে আলোচনা করতে চাই...",
+                ph_msg: "হ্যালো ফারশিদ, আমি একটি প্রজেক্ট নিয়ে আলোচনা করতে চাই...",
                 btn_contact: "যোগাযোগ করুন",
                 summary_title: "পেশাগত সারসংক্ষেপ",
                 summary_desc: "সার্ভে প্রোগ্রামিং, রিসার্চ টেকনোলজি, অপারেশনাল কমপ্লায়েন্স এবং প্রজেক্ট অপারেশনে ১০+ বছরের বহুমুখী পেশাগত অভিজ্ঞতাসম্পন্ন একজন দক্ষ ও ফলাফলভিত্তিক সার্ভে প্রোগ্রামার। জটিল মার্কেট রিসার্চ সার্ভে তৈরি, উন্নত লজিক ও রাউটিং বাস্তবায়ন, কোয়ালিটি অ্যাস্যুরেন্স, লাইভ ফিল্ডওয়ার্ক পরিচালনা এবং ডেটা প্রসেসিং ও অ্যানালিটিক্সে সহায়তা প্রদানে দক্ষ। শক্তিশালী বিশ্লেষণাত্মক সমস্যা সমাধানের দক্ষতা, সূক্ষ্ম বিষয়ে মনোযোগ এবং কার্যপ্রবাহ উন্নত করে গতিশীল কর্মপরিবেশে উচ্চমানের ফলাফল প্রদানের সক্ষমতা রয়েছে।",
@@ -1453,11 +1483,18 @@
                 lbl_languages: "ভাষা",
                 val_languages: "বাংলা (মাতৃভাষা), ইংরেজি (পেশাগত কাজে দক্ষ)",
                 lbl_competencies: "মূল দক্ষতাসমূহ:",
-                tag_ops: "প্রজেক্ট অপারেশনস",
+                tag_c1: "Decipher (Forsta)",
+                tag_c2: "Qualtrics",
+                tag_c3: "HTML5 ও CSS3",
+                tag_c4: "JavaScript",
+                tag_c5: "XML ও Python Scripting",
+                tag_c6: "SPSS ও CSV ডেটা প্রসেসিং",
+                tag_c7: "সার্ভে লজিক ও প্রোগ্রামিং",
+                tag_c8: "প্রজেক্ট অপারেশনস",
                 exp_title: "কর্মঅভিজ্ঞতা",
                 btn_filter_all: "সকল ভূমিকা",
                 btn_filter_sp: "সার্ভে প্রোগ্রামিং",
-                btn_filter_ops: "আইনি ও অপারেশনস",
+                btn_filter_ops: "আইনগত সহায়তা ও অপারেশনস",
                 
                 exp1_role: "প্রোগ্রামার",
                 exp1_company: "Analyticify Research Limited, ঠাকুরগাঁও",
@@ -1477,8 +1514,13 @@
 
                 matrix_title: "টেকনিক্যাল স্কিল ম্যাট্রিক্স",
                 lbl_platforms: "সার্ভে প্ল্যাটফর্ম",
+                val_platforms: "Decipher (Forsta), Qualtrics, Confirmit, Unomer, Alchemer",
                 lbl_languages_tech: "প্রোগ্রামিং ও ওয়েব টেকনোলজি",
+                val_languages_tech: "JavaScript, HTML5, CSS3, XML, Python, SQL",
                 lbl_formats: "ডেটা ও অ্যানালিটিক্স",
+                val_formats: "SPSS (.sav), CSV, JSON, Excel, Tableau-ready Data",
+                lbl_sp_prog: "সার্ভে প্রোগ্রামিং",
+                val_sp_prog: "Skip Logic, Quotas, Piping, Looping, Randomization, Masking, Custom UI/UX",
 
                 exp2_role: "প্যারালিগ্যাল",
                 exp2_company: "RDRS Bangladesh, ঠাকুরগাঁও",
@@ -1488,7 +1530,7 @@
                 exp2_r3: "সংঘাত-প্রভাবিত যুবকদের পরিবারের সদস্যদের খুঁজে বের করা এবং সংশ্লিষ্ট বিচারিক সংস্থার সঙ্গে Surety সমন্বয় করা।",
                 exp2_r4: "অপারেশনাল ডেটাবেস সংকলন এবং মাসিক, ত্রৈমাসিক ও বার্ষিক অগ্রগতি প্রতিবেদন প্রস্তুত করা।",
                 exp2_r5: "Case Coordination Meeting পরিচালনা এবং আইনশৃঙ্খলা রক্ষাকারী বাহিনী, বিচার বিভাগ ও স্বাস্থ্যসেবা প্রতিষ্ঠানের সঙ্গে সমন্বয় করে আইনগত সহায়তা প্রদান করা।",
-                exp2_r6: "Advance Processing, Voucher Adjustment এবং VAT/Tax Compliance-সহ প্রকল্পের আর্থিক কার্যক্রম পরিচালনা করা।",
+                exp2_r6: "Advance Processing, Voucher Adjustment এবং VAT/Tax Compliance-সহ প্রজেক্টের আর্থিক কার্যক্রম পরিচালনা করা।",
 
                 exp3_role: "সেলস এক্সিকিউটিভ",
                 exp3_company: "Grameenphone Authorized Distribution House, ঠাকুরগাঁও",
@@ -1513,17 +1555,17 @@
                 edu2_title: "Bachelor of Social Science (BSS)",
                 edu2_inst: "Thakurgaon Govt. College, Thakurgaon",
                 edu2_sub: "Political Science",
-                edu2_res: "সিজিপিএ: ২.৫১ / ৪.০০",
+                edu2_res: "২.৫১ / ৪.০০",
 
                 edu3_title: "Higher Secondary Certificate (HSC)",
                 edu3_inst: "Thakurgaon Govt. Technical School & College, Thakurgaon",
                 edu3_sub: "Computer Science",
-                edu3_res: "জিডিপিএ: ৩.৫০ / ৫.০০",
+                edu3_res: "৩.৫০ / ৫.০০",
 
                 edu4_title: "Secondary School Certificate (SSC)",
                 edu4_inst: "Thakurgaon Govt. Technical School & College, Thakurgaon",
                 edu4_sub: "Computer Science",
-                edu4_res: "জিডিপিএ: ৩.৩৬ / ৫.০০",
+                edu4_res: "৩.৩৬ / ৫.০০",
 
                 lbl_subject: "বিষয়",
                 lbl_result: "ফলাফল",
@@ -1539,9 +1581,9 @@
                 btn_send: "বার্তা পাঠান",
                 footer_rights: "সর্বস্বত্ব সংরক্ষিত।",
                 typed: [
-                    'আইনগত সহায়তা | সার্ভে প্রোগ্রামিং ও অপারেশনস',
-                    'Decipher (Forsta) ও ডেটা অটোমেশন স্পেশালিস্ট',
-                    'প্যারালিগ্যাল ও প্রজেক্ট অপারেশন প্রফেশনাল'
+                    'Analyticify Research Limited-এ সার্ভে প্রোগ্রামার',
+                    'আইনগত সহায়তা ও প্রজেক্ট অপারেশনস বিশেষজ্ঞ',
+                    'Decipher (Forsta) ও কাস্টম স্ক্রিপ্টিং স্পেশালিস্ট'
                 ]
             }
         };
@@ -1653,7 +1695,6 @@
 
         document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeLightbox(); });
 
-        // EmailJS Initialization & Form Submit Handler (Combined & Cleaned)
         (function() {
             emailjs.init("ycJcbgkXIHkZtVEA7");
         })();
