@@ -325,7 +325,7 @@
             box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.1);
         }
 
-        /* Aligned Colon List CSS */
+        /* Perfectly Aligned Lists System using Grid */
         .aligned-info-list {
             list-style: none;
             padding: 0;
@@ -333,26 +333,23 @@
         }
 
         .aligned-info-list li {
-            display: flex;
-            align-items: flex-start;
+            display: grid;
+            grid-template-columns: 240px 15px 1fr;
+            align-items: start;
             font-size: 0.95rem;
             margin-bottom: 0.4rem;
             color: var(--text-main);
         }
 
         .aligned-info-list .info-label {
-            width: 140px;
             font-weight: 600;
-            flex-shrink: 0;
         }
 
         .aligned-info-list .info-colon {
-            margin-right: 0.75rem;
             font-weight: 600;
         }
 
         .aligned-info-list .info-val {
-            flex-grow: 1;
             word-break: break-word;
         }
 
@@ -463,15 +460,43 @@
             display: inline-block;
         }
 
+        /* Responsibilities Bullets Aligned Grid */
         .responsibilities {
+            list-style: none;
+            padding: 0;
             margin-top: 0.75rem;
-            padding-left: 1.1rem;
         }
 
         .responsibilities li {
-            margin-bottom: 0.4rem;
-            color: var(--text-main);
+            display: grid;
+            grid-template-columns: 240px 15px 1fr;
+            align-items: start;
+            margin-bottom: 0.5rem;
             font-size: 0.95rem;
+            color: var(--text-main);
+            position: relative;
+            padding-left: 1.2rem;
+        }
+
+        .responsibilities li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--text-main);
+            font-weight: bold;
+        }
+
+        .bullet-title {
+            font-weight: 700;
+        }
+
+        .bullet-colon {
+            font-weight: 700;
+        }
+
+        .bullet-text {
+            word-break: break-word;
         }
 
         .tech-matrix {
@@ -485,13 +510,8 @@
         .tech-matrix h4 {
             font-size: 0.95rem;
             color: var(--secondary);
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.6rem;
             font-weight: 600;
-        }
-
-        .tech-matrix p {
-            font-size: 0.88rem;
-            margin-bottom: 0.3rem;
         }
 
         .edu-grid {
@@ -515,36 +535,6 @@
             height: 10px;
             border-radius: 50%;
             background: var(--primary);
-        }
-
-        .edu-timeline-list {
-            list-style: none;
-            padding: 0;
-            margin-top: 0.5rem;
-        }
-
-        .edu-timeline-list li {
-            display: flex;
-            align-items: flex-start;
-            font-size: 0.95rem;
-            margin-bottom: 0.35rem;
-            color: var(--text-main);
-        }
-
-        .edu-timeline-list .edu-label {
-            width: 120px;
-            font-weight: 500;
-            flex-shrink: 0;
-        }
-
-        .edu-timeline-list .edu-colon {
-            margin-right: 0.75rem;
-            font-weight: 600;
-        }
-
-        .edu-timeline-list .edu-val {
-            flex-grow: 1;
-            word-break: break-word;
         }
 
         .scrollable-gallery-wrapper {
@@ -762,6 +752,9 @@
             .contact-layout {
                 grid-template-columns: 1fr;
             }
+            .responsibilities li, .aligned-info-list li {
+                grid-template-columns: 180px 15px 1fr;
+            }
         }
 
         @media (max-width: 768px) {
@@ -778,7 +771,7 @@
                 font-size: 0.85rem;
             }
             .hero {
-                padding-top: 12rem;
+                padding-top: 10rem;
             }
             .hero h1 { 
                 font-size: 2.1rem; 
@@ -799,6 +792,23 @@
             }
             .edu-grid {
                 grid-template-columns: 1fr;
+            }
+            .responsibilities li, .aligned-info-list li {
+                display: block;
+                padding-left: 0;
+            }
+            .responsibilities li::before {
+                display: none;
+            }
+            .bullet-colon, .info-colon {
+                display: inline-block;
+                margin: 0 4px;
+            }
+            .bullet-title, .info-label {
+                display: inline-block;
+            }
+            .bullet-text, .info-val {
+                display: inline;
             }
         }
 
@@ -848,7 +858,7 @@
                 <span id="typed"></span>
             </div>
             <div class="hero-meta" data-aos="fade-up" data-aos-delay="300">
-                <span><i class="fa-solid fa-location-dot"></i> <span data-i18n="hero_loc">Thakurgaon, Bangladesh.</span></span>
+                <span><i class="fa-solid fa-location-dot"></i> <span data-i18n="hero_loc">Thakurgaon, Bangladesh</span></span>
                 <span><i class="fa-solid fa-envelope"></i> <a href="mailto:farshidrupon@gmail.com" style="color: inherit; text-decoration: none;">farshidrupon@gmail.com</a></span>
                 <span><i class="fa-solid fa-phone"></i> <a href="tel:+8801711305367" style="color: inherit; text-decoration: none;" data-i18n="val_phone">+880 1711-305367</a></span>
             </div>
@@ -973,20 +983,61 @@
                     </div>
                     <span class="date-badge" data-i18n="exp1_date">01 Dec 2022 – Present</span>
                 </div>
+                
+                <!-- Responsibilities Bullet List with Aligned Colons -->
                 <ul class="responsibilities">
-                    <li data-i18n="exp1_r1"><strong>Survey Coding & Development:</strong> Program complex questionnaires into market research platforms such as Decipher (Forsta), Qualtrics, and Confirmit using HTML, CSS, JavaScript, and platform XML/Python syntax.</li>
-                    <li data-i18n="exp1_r2"><strong>Logic & Routing Implementation:</strong> Engineer intricate logic patterns including dynamic skip structures, quotas, piping/looping, randomization, and masking to ensure accurate data capture.</li>
-                    <li data-i18n="exp1_r3"><strong>Quality Assurance & Testing:</strong> Perform end-to-end alpha/beta testing, debug custom scripts across devices and browsers, and validate logic before pushing field links live.</li>
-                    <li data-i18n="exp1_r4"><strong>Data Integration & Cleaning:</strong> Configure structured data export setups (SPSS .sav, CSV, JSON, Excel), map variables, and automate data cleaning scripts for seamless analytics handoffs.</li>
-                    <li data-i18n="exp1_r5"><strong>UI/UX Optimization:</strong> Build custom interactive elements (sliders, rank-order tools, media test players) for optimized respondent engagement and responsive mobile rendering.</li>
-                    <li data-i18n="exp1_r6"><strong>Field Maintenance:</strong> Monitor live survey operations, perform real-time hotfixes without risking collected data, and update quotas dynamically.</li>
+                    <li>
+                        <span class="bullet-title" data-i18n="exp1_t1">Survey Coding & Development</span>
+                        <span class="bullet-colon">:</span>
+                        <span class="bullet-text" data-i18n="exp1_r1">Program complex questionnaires into market research platforms such as Decipher (Forsta), Qualtrics, and Confirmit using HTML, CSS, JavaScript, and platform XML/Python syntax.</span>
+                    </li>
+                    <li>
+                        <span class="bullet-title" data-i18n="exp1_t2">Logic & Routing Implementation</span>
+                        <span class="bullet-colon">:</span>
+                        <span class="bullet-text" data-i18n="exp1_r2">Engineer intricate logic patterns including dynamic skip structures, quotas, piping/looping, randomization, and masking to ensure accurate data capture.</span>
+                    </li>
+                    <li>
+                        <span class="bullet-title" data-i18n="exp1_t3">Quality Assurance & Testing</span>
+                        <span class="bullet-colon">:</span>
+                        <span class="bullet-text" data-i18n="exp1_r3">Perform end-to-end alpha/beta testing, debug custom scripts across devices and browsers, and validate logic before pushing field links live.</span>
+                    </li>
+                    <li>
+                        <span class="bullet-title" data-i18n="exp1_t4">Data Integration & Cleaning</span>
+                        <span class="bullet-colon">:</span>
+                        <span class="bullet-text" data-i18n="exp1_r4">Configure structured data export setups (SPSS .sav, CSV, JSON, Excel), map variables, and automate data cleaning scripts for seamless analytics handoffs.</span>
+                    </li>
+                    <li>
+                        <span class="bullet-title" data-i18n="exp1_t5">UI/UX Optimization</span>
+                        <span class="bullet-colon">:</span>
+                        <span class="bullet-text" data-i18n="exp1_r5">Build custom interactive elements (sliders, rank-order tools, media test players) for optimized respondent engagement and responsive mobile rendering.</span>
+                    </li>
+                    <li>
+                        <span class="bullet-title" data-i18n="exp1_t6">Field Maintenance</span>
+                        <span class="bullet-colon">:</span>
+                        <span class="bullet-text" data-i18n="exp1_r6">Monitor live survey operations, perform real-time hotfixes without risking collected data, and update quotas dynamically.</span>
+                    </li>
                 </ul>
 
+                <!-- Technical Skill Matrix Aligned -->
                 <div class="tech-matrix">
                     <h4 data-i18n="matrix_title">Technical Skill Matrix</h4>
-                    <p><strong data-i18n="lbl_platforms">Survey Platforms:</strong> Decipher (Forsta), Qualtrics, Confirmit, Unomer, Alchemer</p>
-                    <p><strong data-i18n="lbl_languages_tech">Programming & Web:</strong> JavaScript, HTML5/CSS3, Python, SQL, XML</p>
-                    <p><strong data-i18n="lbl_formats">Data Formats:</strong> SPSS (.sav), CSV, JSON, Excel, Tableau-ready files</p>
+                    <ul class="aligned-info-list">
+                        <li>
+                            <span class="info-label" data-i18n="lbl_platforms">Survey Platforms</span>
+                            <span class="info-colon">:</span>
+                            <span class="info-val">Decipher (Forsta), Qualtrics, Confirmit, Unomer, Alchemer</span>
+                        </li>
+                        <li>
+                            <span class="info-label" data-i18n="lbl_languages_tech">Programming & Web</span>
+                            <span class="info-colon">:</span>
+                            <span class="info-val">JavaScript, HTML5/CSS3, Python, SQL, XML</span>
+                        </li>
+                        <li>
+                            <span class="info-label" data-i18n="lbl_formats">Data Formats</span>
+                            <span class="info-colon">:</span>
+                            <span class="info-val">SPSS (.sav), CSV, JSON, Excel, Tableau-ready files</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
 
@@ -998,13 +1049,13 @@
                     </div>
                     <span class="date-badge" data-i18n="exp2_date">18 Jan 2016 – 28 Feb 2022</span>
                 </div>
-                <ul class="responsibilities">
-                    <li data-i18n="exp2_r1">Conducted paralegal aid clinics in prisons and Juvenile Development Centres to educate detainees on basic criminal law and judicial procedures.</li>
-                    <li data-i18n="exp2_r2">Referred legal cases to District Legal Aid Committees, NGOs, and constitutional bodies.</li>
-                    <li data-i18n="exp2_r3">Traced families of conflict-affected youth and coordinated sureties for justice agencies.</li>
-                    <li data-i18n="exp2_r4">Compiled operational databases and produced monthly, quarterly, and annual progress reports.</li>
-                    <li data-i18n="exp2_r5">Facilitated Case Coordination Meetings and liaised with law enforcement, judiciary, and health services for legal assistance.</li>
-                    <li data-i18n="exp2_r6">Managed project financial operations including advance processing, voucher adjustments, and VAT/TAX compliance.</li>
+                <ul style="padding-left: 1.1rem; margin-top: 0.75rem;">
+                    <li style="margin-bottom: 0.4rem;" data-i18n="exp2_r1">Conducted paralegal aid clinics in prisons and Juvenile Development Centres to educate detainees on basic criminal law and judicial procedures.</li>
+                    <li style="margin-bottom: 0.4rem;" data-i18n="exp2_r2">Referred legal cases to District Legal Aid Committees, NGOs, and constitutional bodies.</li>
+                    <li style="margin-bottom: 0.4rem;" data-i18n="exp2_r3">Traced families of conflict-affected youth and coordinated sureties for justice agencies.</li>
+                    <li style="margin-bottom: 0.4rem;" data-i18n="exp2_r4">Compiled operational databases and produced monthly, quarterly, and annual progress reports.</li>
+                    <li style="margin-bottom: 0.4rem;" data-i18n="exp2_r5">Facilitated Case Coordination Meetings and liaised with law enforcement, judiciary, and health services for legal assistance.</li>
+                    <li style="margin-bottom: 0.4rem;" data-i18n="exp2_r6">Managed project financial operations including advance processing, voucher adjustments, and VAT/TAX compliance.</li>
                 </ul>
             </div>
 
@@ -1016,10 +1067,10 @@
                     </div>
                     <span class="date-badge" data-i18n="exp3_date">01 Oct 2014 – 30 Sep 2015</span>
                 </div>
-                <ul class="responsibilities">
-                    <li data-i18n="exp3_r1">Consistently achieved monthly sales targets for GP products and services.</li>
-                    <li data-i18n="exp3_r2">Managed daily financial settlements and accounts directly with compliance managers.</li>
-                    <li data-i18n="exp3_r3">Participated in strategic retail sales workshops.</li>
+                <ul style="padding-left: 1.1rem; margin-top: 0.75rem;">
+                    <li style="margin-bottom: 0.4rem;" data-i18n="exp3_r1">Consistently achieved monthly sales targets for GP products and services.</li>
+                    <li style="margin-bottom: 0.4rem;" data-i18n="exp3_r2">Managed daily financial settlements and accounts directly with compliance managers.</li>
+                    <li style="margin-bottom: 0.4rem;" data-i18n="exp3_r3">Participated in strategic retail sales workshops.</li>
                 </ul>
             </div>
 
@@ -1031,10 +1082,10 @@
                     </div>
                     <span class="date-badge" data-i18n="exp4_date">02 Dec 2013 – 31 Jul 2014</span>
                 </div>
-                <ul class="responsibilities">
-                    <li data-i18n="exp4_r1">Audited SIM registration data against national identity records for regulatory compliance.</li>
-                    <li data-i18n="exp4_r2">Managed SIM verification records inside Grameenphone's central system.</li>
-                    <li data-i18n="exp4_r3">Maintained daily operational inventory and sales logging databases.</li>
+                <ul style="padding-left: 1.1rem; margin-top: 0.75rem;">
+                    <li style="margin-bottom: 0.4rem;" data-i18n="exp4_r1">Audited SIM registration data against national identity records for regulatory compliance.</li>
+                    <li style="margin-bottom: 0.4rem;" data-i18n="exp4_r2">Managed SIM verification records inside Grameenphone's central system.</li>
+                    <li style="margin-bottom: 0.4rem;" data-i18n="exp4_r3">Maintained daily operational inventory and sales logging databases.</li>
                 </ul>
             </div>
 
@@ -1050,16 +1101,16 @@
                 <div class="role-title" data-i18n="edu1_title">Bachelor of Laws (LL.B Part 1 Professional Masters)</div>
                 <div class="company" style="margin-top: 0.25rem;" data-i18n="edu1_inst">Dinajpur Law College, Dinajpur</div>
                 
-                <ul class="edu-timeline-list">
+                <ul class="aligned-info-list">
                     <li>
-                        <span class="edu-label" data-i18n="lbl_subject">Subject</span>
-                        <span class="edu-colon">:</span>
-                        <span class="edu-val" data-i18n="edu1_sub">Bachelor of Laws</span>
+                        <span class="info-label" data-i18n="lbl_subject">Subject</span>
+                        <span class="info-colon">:</span>
+                        <span class="info-val" data-i18n="edu1_sub">Bachelor of Laws</span>
                     </li>
                     <li>
-                        <span class="edu-label" data-i18n="lbl_result">Result</span>
-                        <span class="edu-colon">:</span>
-                        <span class="edu-val" data-i18n="edu1_res">2nd Class</span>
+                        <span class="info-label" data-i18n="lbl_result">Result</span>
+                        <span class="info-colon">:</span>
+                        <span class="info-val" data-i18n="edu1_res">2nd Class</span>
                     </li>
                 </ul>
             </div>
@@ -1068,16 +1119,16 @@
                 <div class="role-title" data-i18n="edu2_title">Bachelor of Social Science (BSS)</div>
                 <div class="company" style="margin-top: 0.25rem;" data-i18n="edu2_inst">Thakurgaon Govt. College, Thakurgaon</div>
                 
-                <ul class="edu-timeline-list">
+                <ul class="aligned-info-list">
                     <li>
-                        <span class="edu-label" data-i18n="lbl_subject">Subject</span>
-                        <span class="edu-colon">:</span>
-                        <span class="edu-val" data-i18n="edu2_sub">Political Science</span>
+                        <span class="info-label" data-i18n="lbl_subject">Subject</span>
+                        <span class="info-colon">:</span>
+                        <span class="info-val" data-i18n="edu2_sub">Political Science</span>
                     </li>
                     <li>
-                        <span class="edu-label" data-i18n="lbl_result">Result</span>
-                        <span class="edu-colon">:</span>
-                        <span class="edu-val" data-i18n="edu2_res">CGPA: 2.51 (out of 4)</span>
+                        <span class="info-label" data-i18n="lbl_result">Result</span>
+                        <span class="info-colon">:</span>
+                        <span class="info-val" data-i18n="edu2_res">CGPA: 2.51 (out of 4)</span>
                     </li>
                 </ul>
             </div>
@@ -1086,16 +1137,16 @@
                 <div class="role-title" data-i18n="edu3_title">Higher Secondary Certificate (HSC)</div>
                 <div class="company" style="margin-top: 0.25rem;" data-i18n="edu3_inst">Thakurgaon Govt. Technical School & College, Thakurgaon</div>
                 
-                <ul class="edu-timeline-list">
+                <ul class="aligned-info-list">
                     <li>
-                        <span class="edu-label" data-i18n="lbl_subject">Subject</span>
-                        <span class="edu-colon">:</span>
-                        <span class="edu-val" data-i18n="edu3_sub">Computer Science</span>
+                        <span class="info-label" data-i18n="lbl_subject">Subject</span>
+                        <span class="info-colon">:</span>
+                        <span class="info-val" data-i18n="edu3_sub">Computer Science</span>
                     </li>
                     <li>
-                        <span class="edu-label" data-i18n="lbl_result">Result</span>
-                        <span class="edu-colon">:</span>
-                        <span class="edu-val" data-i18n="edu3_res">GPA: 3.50 (out of 5)</span>
+                        <span class="info-label" data-i18n="lbl_result">Result</span>
+                        <span class="info-colon">:</span>
+                        <span class="info-val" data-i18n="edu3_res">GPA: 3.50 (out of 5)</span>
                     </li>
                 </ul>
             </div>
@@ -1104,16 +1155,16 @@
                 <div class="role-title" data-i18n="edu4_title">Secondary School Certificate (SSC)</div>
                 <div class="company" style="margin-top: 0.25rem;" data-i18n="edu4_inst">Thakurgaon Govt. Technical School & College, Thakurgaon</div>
                 
-                <ul class="edu-timeline-list">
+                <ul class="aligned-info-list">
                     <li>
-                        <span class="edu-label" data-i18n="lbl_subject">Subject</span>
-                        <span class="edu-colon">:</span>
-                        <span class="edu-val" data-i18n="edu4_sub">Computer Science</span>
+                        <span class="info-label" data-i18n="lbl_subject">Subject</span>
+                        <span class="info-colon">:</span>
+                        <span class="info-val" data-i18n="edu4_sub">Computer Science</span>
                     </li>
                     <li>
-                        <span class="edu-label" data-i18n="lbl_result">Result</span>
-                        <span class="edu-colon">:</span>
-                        <span class="edu-val" data-i18n="edu4_res">GPA: 3.36 (out of 5)</span>
+                        <span class="info-label" data-i18n="lbl_result">Result</span>
+                        <span class="info-colon">:</span>
+                        <span class="info-val" data-i18n="edu4_res">GPA: 3.36 (out of 5)</span>
                     </li>
                 </ul>
             </div>
@@ -1168,7 +1219,7 @@
                         <i class="fa-solid fa-location-dot"></i>
                         <div>
                             <strong data-i18n="lbl_address">Address</strong>
-                            <p data-i18n="val_address">Muslim Nagar, Thakurgaon-5100, Thakurgaon.</p>
+                            <p data-i18n="val_address">Muslim Nagar, Thakurgaon Sadar, Thakurgaon-5100</p>
                         </div>
                     </div>
                     <div class="info-group">
@@ -1242,7 +1293,7 @@
                 nav_edu: "Education",
                 nav_gallery: "Gallery",
                 nav_contact: "Contact",
-                hero_loc: "Thakurgaon, Bangladesh.",
+                hero_loc: "Thakurgaon, Bangladesh",
                 val_phone: "+880 1711-305367",
                 val_linkedin: "LinkedIn",
                 val_msteams: "Microsoft Teams",
@@ -1285,17 +1336,23 @@
                 exp1_role: "Programmer",
                 exp1_company: 'Analyticsify Research Ltd <span class="dept-tag">(Market Research / SP Team)</span>',
                 exp1_date: "01 Dec 2022 – Present",
-                exp1_r1: '<strong>Survey Coding & Development:</strong> Program complex questionnaires into market research platforms such as Decipher (Forsta), Qualtrics, and Confirmit using HTML, CSS, JavaScript, and platform XML/Python syntax.',
-                exp1_r2: '<strong>Logic & Routing Implementation:</strong> Engineer intricate logic patterns including dynamic skip structures, quotas, piping/looping, randomization, and masking to ensure accurate data capture.',
-                exp1_r3: '<strong>Quality Assurance & Testing:</strong> Perform end-to-end alpha/beta testing, debug custom scripts across devices and browsers, and validate logic before pushing field links live.',
-                exp1_r4: '<strong>Data Integration & Cleaning:</strong> Configure structured data export setups (SPSS .sav, CSV, JSON, Excel), map variables, and automate data cleaning scripts for seamless analytics handoffs.',
-                exp1_r5: '<strong>UI/UX Optimization:</strong> Build custom interactive elements (sliders, rank-order tools, media test players) for optimized respondent engagement and responsive mobile rendering.',
-                exp1_r6: '<strong>Field Maintenance:</strong> Monitor live survey operations, perform real-time hotfixes without risking collected data, and update quotas dynamically.',
+                exp1_t1: "Survey Coding & Development",
+                exp1_r1: "Program complex questionnaires into market research platforms such as Decipher (Forsta), Qualtrics, and Confirmit using HTML, CSS, JavaScript, and platform XML/Python syntax.",
+                exp1_t2: "Logic & Routing Implementation",
+                exp1_r2: "Engineer intricate logic patterns including dynamic skip structures, quotas, piping/looping, randomization, and masking to ensure accurate data capture.",
+                exp1_t3: "Quality Assurance & Testing",
+                exp1_r3: "Perform end-to-end alpha/beta testing, debug custom scripts across devices and browsers, and validate logic before pushing field links live.",
+                exp1_t4: "Data Integration & Cleaning",
+                exp1_r4: "Configure structured data export setups (SPSS .sav, CSV, JSON, Excel), map variables, and automate data cleaning scripts for seamless analytics handoffs.",
+                exp1_t5: "UI/UX Optimization",
+                exp1_r5: "Build custom interactive elements (sliders, rank-order tools, media test players) for optimized respondent engagement and responsive mobile rendering.",
+                exp1_t6: "Field Maintenance",
+                exp1_r6: "Monitor live survey operations, perform real-time hotfixes without risking collected data, and update quotas dynamically.",
 
                 matrix_title: "Technical Skill Matrix",
-                lbl_platforms: "Survey Platforms:",
-                lbl_languages_tech: "Programming & Web:",
-                lbl_formats: "Data Formats:",
+                lbl_platforms: "Survey Platforms",
+                lbl_languages_tech: "Programming & Web",
+                lbl_formats: "Data Formats",
 
                 exp2_role: "Paralegal",
                 exp2_company: "RDRS Bangladesh (Thakurgaon)",
@@ -1371,7 +1428,7 @@
                 nav_edu: "শিক্ষা",
                 nav_gallery: "গ্যালারি",
                 nav_contact: "যোগাযোগ",
-                hero_loc: "ঠাকুরগাঁও, বাংলাদেশ।",
+                hero_loc: "ঠাকুরগাঁও, বাংলাদেশ",
                 val_phone: "+৮৮০ ১৭১১-৩০৫৩৬৭",
                 val_linkedin: "লিংকডইন",
                 val_msteams: "মাইক্রোসফ্ট টিমস",
@@ -1414,17 +1471,23 @@
                 exp1_role: "প্রোগ্রামার",
                 exp1_company: 'অ্যানালিটিক্সিফাই রিসার্চ লিমিটেড <span class="dept-tag">(মার্কেট রিসার্চ / এসপি টিম)</span>',
                 exp1_date: "০১ ডিসেম্বর ২০২২ – বর্তমান",
-                exp1_r1: '<strong>সার্ভে কোডিং ও ডেভেলপমেন্ট:</strong> HTML, CSS, JavaScript এবং XML/Python ব্যবহার করে Decipher (Forsta), Qualtrics এবং Confirmit-এর মত মার্কেট রিসার্চ প্ল্যাটফর্মে জটিল প্রশ্নাবলী প্রোগ্রামিং করা।',
-                exp1_r2: '<strong>লজিক ও রাউটিং বাস্তবায়ন:</strong> সঠিক ডাটা সংগ্রহের জন্য ডাইনামিক স্কিপ স্ট্রাকচার, কোটা, পাইপিং/লুপিং, র‍্যান্ডমাইজেশন এবং মাস্কিং লজিক প্রস্তুত করা।',
-                exp1_r3: '<strong>কোয়ালিটি অ্যাসুরেন্স ও টেস্টিং:</strong> ফিল্ড লিঙ্ক লাইভ করার আগে বিভিন্ন ডিভাইস ও ব্রাউজারে অ্যান্ড-টু-অ্যান্ড আলফা/বিটা টেস্টিং এবং স্ক্রিপ্ট ডিব্যাগ করা।',
-                exp1_r4: '<strong>ডাটা ইন্টিগ্রেশন ও ক্লিনিং:</strong> SPSS (.sav), CSV, JSON, Excel ডাটা ফরম্যাট কনফিগার করা এবং ডাটা ক্লিনিং স্ক্রিপ্ট স্বয়ংক্রিয় করা।',
-                exp1_r5: '<strong>UI/UX অপটিমাইজেশন:</strong> রেসপন্ডেন্টদের সহজ ব্যবহারের সুবিধার্থে কাস্টম ইন্টারঅ্যাক্টিভ এলিমেন্ট (স্লাইডার, র‍্যাঙ্ক-অর্ডার, মিডিয়া টেস্ট প্লেয়ার) তৈরি করা।',
-                exp1_r6: '<strong>ফিল্ড মেইনটেন্যান্স:</strong> লাইভ সার্ভে অপারেশন পর্যবেক্ষণ করা, সংগৃহীত ডাটা অক্ষুণ্ণ রেখে রিয়েল-টাইম সমাধান প্রদান ও কোটা আপডেট করা।',
+                exp1_t1: "সার্ভে কোডিং ও ডেভেলপমেন্ট",
+                exp1_r1: "HTML, CSS, JavaScript এবং XML/Python ব্যবহার করে Decipher (Forsta), Qualtrics এবং Confirmit-এর মত মার্কেট রিসার্চ প্ল্যাটফর্মে জটিল প্রশ্নাবলী প্রোগ্রামিং করা।",
+                exp1_t2: "লজিক ও রাউটিং বাস্তবায়ন",
+                exp1_r2: "সঠিক ডাটা সংগ্রহের জন্য ডাইনামিক স্কিপ স্ট্রাকচার, কোটা, পাইপিং/লুপিং, র‍্যান্ডমাইজেশন এবং মাস্কিং লজিক প্রস্তুত করা।",
+                exp1_t3: "কোয়ালিটি অ্যাসুরেন্স ও টেস্টিং",
+                exp1_r3: "ফিল্ড লিঙ্ক লাইভ করার আগে বিভিন্ন ডিভাইস ও ব্রাউজারে অ্যান্ড-টু-অ্যান্ড আলফা/বিটা টেস্টিং এবং স্ক্রিপ্ট ডিব্যাগ করা।",
+                exp1_t4: "ডাটা ইন্টিগ্রেশন ও ক্লিনিং",
+                exp1_r4: "SPSS (.sav), CSV, JSON, Excel ডাটা ফরম্যাট কনফিগার করা এবং ডাটা ক্লিনিং স্ক্রিপ্ট স্বয়ংক্রিয় করা।",
+                exp1_t5: "UI/UX অপটিমাইজেশন",
+                exp1_r5: "রেসপন্ডেন্টদের সহজ ব্যবহারের সুবিধার্থে কাস্টম ইন্টারঅ্যাক্টিভ এলিমেন্ট (স্লাইডার, র‍্যাঙ্ক-অর্ডার, মিডিয়া টেস্ট প্লেয়ার) তৈরি করা।",
+                exp1_t6: "ফিল্ড মেইনটেন্যান্স",
+                exp1_r6: "লাইভ সার্ভে অপারেশন পর্যবেক্ষণ করা, সংগৃহীত ডাটা অক্ষুণ্ণ রেখে রিয়েল-টাইম সমাধান প্রদান ও কোটা আপডেট করা।",
 
                 matrix_title: "টেকনিক্যাল স্কিল ম্যাট্রিক্স",
-                lbl_platforms: "সার্ভে প্ল্যাটফর্ম:",
-                lbl_languages_tech: "প্রোগ্রামিং ও ওয়েব:",
-                lbl_formats: "ডাটা ফরম্যাট:",
+                lbl_platforms: "সার্ভে প্ল্যাটফর্ম",
+                lbl_languages_tech: "প্রোগ্রামিং ও ওয়েব",
+                lbl_formats: "ডাটা ফরম্যাট",
 
                 exp2_role: "প্যারালেগ্যাল",
                 exp2_company: "আরডিআরএস বাংলাদেশ (ঠাকুরগাঁও)",
@@ -1476,7 +1539,7 @@
                 gallery_title: "গ্যালারি",
                 contact_title: "যোগাযোগ ও সোশ্যাল মিডিয়া",
                 lbl_address: "ঠিকানা",
-                val_address: "মুসলিম নগর, ঠাকুরগাঁও-৫১০০, ঠাকুরগাঁও।",
+                val_address: "মুসলিম নগর, ঠাকুরগাঁও সদর, ঠাকুরগাঁও-৫১০০",
                 lbl_email: "ইমেইল",
                 lbl_phone: "ফোন",
                 lbl_form_name: "আপনার নাম",
