@@ -325,6 +325,37 @@
             box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.1);
         }
 
+        /* Aligned Colon List CSS */
+        .aligned-info-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 0.75rem;
+        }
+
+        .aligned-info-list li {
+            display: flex;
+            align-items: flex-start;
+            font-size: 0.95rem;
+            margin-bottom: 0.4rem;
+            color: var(--text-main);
+        }
+
+        .aligned-info-list .info-label {
+            width: 140px;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .aligned-info-list .info-colon {
+            margin-right: 0.75rem;
+            font-weight: 600;
+        }
+
+        .aligned-info-list .info-val {
+            flex-grow: 1;
+            word-break: break-word;
+        }
+
         .skills-tag-container {
             display: flex;
             flex-wrap: wrap;
@@ -461,46 +492,6 @@
         .tech-matrix p {
             font-size: 0.88rem;
             margin-bottom: 0.3rem;
-        }
-
-        .showcase-tabs {
-            display: flex;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 0.5rem;
-        }
-
-        .tab-btn {
-            background: none;
-            border: none;
-            padding: 0.5rem 1rem;
-            color: var(--text-muted);
-            font-weight: 600;
-            cursor: pointer;
-            border-radius: 0.25rem;
-            transition: all 0.3s;
-        }
-
-        .tab-btn.active {
-            color: var(--primary);
-            background: rgba(37, 99, 235, 0.1);
-        }
-
-        .code-snippet {
-            display: none;
-            background: #0f172a;
-            color: #f8fafc;
-            padding: 1.25rem;
-            border-radius: 0.5rem;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.88rem;
-            overflow-x: auto;
-            border: 1px solid var(--border);
-        }
-
-        .code-snippet.active {
-            display: block;
         }
 
         .edu-grid {
@@ -826,13 +817,12 @@
 
     <nav>
         <div class="nav-container">
-            <a href="#" class="logo">FARSHID RUPON</a>
+            <a href="#" class="logo" data-i18n="logo_name">FARSHID RUPON</a>
             <div class="nav-right">
                 <ul class="nav-links">
                     <li><a href="#summary" data-i18n="nav_summary">Summary</a></li>
                     <li><a href="#about" data-i18n="nav_about">About</a></li>
                     <li><a href="#experience" data-i18n="nav_exp">Experience</a></li>
-                    <li><a href="#showcase" data-i18n="nav_code">Code Logic</a></li>
                     <li><a href="#education" data-i18n="nav_edu">Education</a></li>
                     <li><a href="#gallery" data-i18n="nav_gallery">Gallery</a></li>
                     <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
@@ -853,14 +843,14 @@
         <div class="hero-content">
             <img src="profile.jpg" alt="Farshid Rupon" class="profile-pic" data-aos="fade-down" loading="lazy">
 
-            <h1 data-aos="fade-down" data-aos-delay="100">Farshid Rupon</h1>
+            <h1 data-aos="fade-down" data-aos-delay="100" data-i18n="hero_name">Farshid Rupon</h1>
             <div class="typed-container" data-aos="fade-down" data-aos-delay="200">
                 <span id="typed"></span>
             </div>
             <div class="hero-meta" data-aos="fade-up" data-aos-delay="300">
                 <span><i class="fa-solid fa-location-dot"></i> <span data-i18n="hero_loc">Thakurgaon, Bangladesh</span></span>
                 <span><i class="fa-solid fa-envelope"></i> <a href="mailto:farshidrupon@gmail.com" style="color: inherit; text-decoration: none;">farshidrupon@gmail.com</a></span>
-                <span><i class="fa-solid fa-phone"></i> <a href="tel:+8801711305367" style="color: inherit; text-decoration: none;">+880 1711-305367</a></span>
+                <span><i class="fa-solid fa-phone"></i> <a href="tel:+8801711305367" style="color: inherit; text-decoration: none;" data-i18n="val_phone">+880 1711-305367</a></span>
             </div>
 
             <div class="social-links-hero" data-aos="fade-up" data-aos-delay="350">
@@ -889,22 +879,68 @@
         <div class="grid-2">
             <div class="card">
                 <h3><i class="fa-solid fa-user-check" style="color: var(--primary);"></i> <span data-i18n="about_details">Key Details</span></h3>
-                <br>
-                <p><strong data-i18n="lbl_father">Father's Name:</strong> <span data-i18n="val_father">Md. Mofidul Haque</span></p>
-                <p><strong data-i18n="lbl_mother">Mother's Name:</strong> <span data-i18n="val_mother">Mst. Fardusi Begum</span></p>
-                <p><strong data-i18n="lbl_dob">Date of Birth:</strong> <span data-i18n="val_dob">October 20, 1991</span></p>
-                <p><strong data-i18n="lbl_height">Height:</strong> <span data-i18n="val_height">5'7"</span></p>
-                <p><strong data-i18n="lbl_weight">Weight:</strong> <span data-i18n="val_weight">73 kg</span></p>
-                <p><strong data-i18n="lbl_nationality">Nationality:</strong> <span data-i18n="val_nationality">Bangladeshi</span></p>
-                <p><strong data-i18n="lbl_religion">Religion:</strong> <span data-i18n="val_religion">Islam</span></p>
-                <p><strong data-i18n="lbl_marital">Marital Status:</strong> <span data-i18n="val_marital">Married</span></p>
+                
+                <ul class="aligned-info-list">
+                    <li>
+                        <span class="info-label" data-i18n="lbl_father">Father's Name</span>
+                        <span class="info-colon">:</span>
+                        <span class="info-val" data-i18n="val_father">Md. Mofidul Haque</span>
+                    </li>
+                    <li>
+                        <span class="info-label" data-i18n="lbl_mother">Mother's Name</span>
+                        <span class="info-colon">:</span>
+                        <span class="info-val" data-i18n="val_mother">Mst. Fardusi Begum</span>
+                    </li>
+                    <li>
+                        <span class="info-label" data-i18n="lbl_dob">Date of Birth</span>
+                        <span class="info-colon">:</span>
+                        <span class="info-val" data-i18n="val_dob">October 20, 1991</span>
+                    </li>
+                    <li>
+                        <span class="info-label" data-i18n="lbl_height">Height</span>
+                        <span class="info-colon">:</span>
+                        <span class="info-val" data-i18n="val_height">5'7"</span>
+                    </li>
+                    <li>
+                        <span class="info-label" data-i18n="lbl_weight">Weight</span>
+                        <span class="info-colon">:</span>
+                        <span class="info-val" data-i18n="val_weight">73 kg</span>
+                    </li>
+                    <li>
+                        <span class="info-label" data-i18n="lbl_nationality">Nationality</span>
+                        <span class="info-colon">:</span>
+                        <span class="info-val" data-i18n="val_nationality">Bangladeshi</span>
+                    </li>
+                    <li>
+                        <span class="info-label" data-i18n="lbl_religion">Religion</span>
+                        <span class="info-colon">:</span>
+                        <span class="info-val" data-i18n="val_religion">Islam</span>
+                    </li>
+                    <li>
+                        <span class="info-label" data-i18n="lbl_marital">Marital Status</span>
+                        <span class="info-colon">:</span>
+                        <span class="info-val" data-i18n="val_marital">Married</span>
+                    </li>
+                </ul>
             </div>
+
             <div class="card">
                 <h3><i class="fa-solid fa-id-card" style="color: var(--primary);"></i> <span data-i18n="about_expertise">Expertise & Qualifications</span></h3>
-                <br>
-                <p><strong data-i18n="lbl_driving">Driving License:</strong> <span data-i18n="val_driving">Valid Motorcycle License</span></p>
-                <p><strong data-i18n="lbl_languages">Languages:</strong> <span data-i18n="val_languages">Bengali (Native), English (Proficient)</span></p>
-                <p style="margin-top: 0.5rem;"><strong data-i18n="lbl_competencies">Core Competencies:</strong></p>
+                
+                <ul class="aligned-info-list">
+                    <li>
+                        <span class="info-label" data-i18n="lbl_driving">Driving License</span>
+                        <span class="info-colon">:</span>
+                        <span class="info-val" data-i18n="val_driving">Valid Motorcycle License</span>
+                    </li>
+                    <li>
+                        <span class="info-label" data-i18n="lbl_languages">Languages</span>
+                        <span class="info-colon">:</span>
+                        <span class="info-val" data-i18n="val_languages">Bengali (Native), English (Proficient)</span>
+                    </li>
+                </ul>
+
+                <p style="margin-top: 1rem;"><strong data-i18n="lbl_competencies">Core Competencies:</strong></p>
                 <div class="skills-tag-container">
                     <span class="skill-tag">Decipher (Forsta)</span>
                     <span class="skill-tag">HTML5 & CSS3</span>
@@ -1002,46 +1038,6 @@
                 </ul>
             </div>
 
-        </div>
-    </section>
-
-    <!-- Code & Survey Logic Showcase -->
-    <section id="showcase" data-aos="fade-up">
-        <h2 class="section-title" data-i18n="showcase_title">Survey Logic Showcase</h2>
-        <div class="card">
-            <p style="margin-bottom: 1rem; font-size: 0.95rem;" data-i18n="showcase_desc">Interactive snippets illustrating complex survey programming, validation, and security techniques:</p>
-            
-            <div class="showcase-tabs">
-                <button class="tab-btn active" onclick="switchTab('decipher')" data-i18n="tab_decipher">Decipher XML Logic</button>
-                <button class="tab-btn" onclick="switchTab('js')" data-i18n="tab_js">JS Security & Validation</button>
-            </div>
-
-            <pre id="tab-decipher" class="code-snippet active"><code>&lt;!-- Decipher (Forsta) Dynamic Loop & Block Randomization --&gt;
-&lt;block label="Brand_Evaluation" random="1"&gt;
-  &lt;radio label="Q1" rows="Q1_rows"&gt;
-    &lt;title&gt;How satisfied are you with ${row.label}?&lt;/title&gt;
-    &lt;row label="r1"&gt;Brand A&lt;/row&gt;
-    &lt;row label="r2"&gt;Brand B&lt;/row&gt;
-    &lt;row label="r3"&gt;Brand C&lt;/row&gt;
-    &lt;col label="c1"&gt;Very Dissatisfied&lt;/col&gt;
-    &lt;col label="c2"&gt;Neutral&lt;/col&gt;
-    &lt;col label="c3"&gt;Very Satisfied&lt;/col&gt;
-  &lt;/radio&gt;
-&lt;/block&gt;</code></pre>
-
-            <pre id="tab-js" class="code-snippet"><code>// Client-Side Security & Dynamic Validation Hook
-$(document).ready(function() {
-    $('#Q_Comments').on('paste', function(e) {
-        console.warn("Paste activity flagged for fraud audit.");
-        $('#honeypot_flag').val('PASTE_DETECTED');
-    });
-
-    $('.exclusive-checkbox').change(function() {
-        if($(this).is(':checked')) {
-            $('.standard-checkbox').prop('checked', false);
-        }
-    });
-});</code></pre>
         </div>
     </section>
 
@@ -1186,25 +1182,25 @@ $(document).ready(function() {
                         <i class="fa-solid fa-phone"></i>
                         <div>
                             <strong data-i18n="lbl_phone">Phone</strong>
-                            <p><a href="tel:+8801711305367">+880 1711-305367</a></p>
+                            <p><a href="tel:+8801711305367" data-i18n="val_phone">+880 1711-305367</a></p>
                         </div>
                     </div>
                     <div class="info-group">
                         <i class="fa-brands fa-linkedin-in"></i>
                         <div>
-                            <strong><a href="https://www.linkedin.com/in/FarshidRupon" target="_blank">LinkedIn</a></strong>
+                            <strong><a href="https://www.linkedin.com/in/FarshidRupon" target="_blank" data-i18n="val_linkedin">LinkedIn</a></strong>
                         </div>
                     </div>
                     <div class="info-group">
                         <i class="fa-solid fa-users-rectangle"></i>
                         <div>
-                            <strong><a href="https://teams.microsoft.com/l/chat/0/0?users=farshidrupon@gmail.com" target="_blank">Microsoft Teams</a></strong>
+                            <strong><a href="https://teams.microsoft.com/l/chat/0/0?users=farshidrupon@gmail.com" target="_blank" data-i18n="val_msteams">Microsoft Teams</a></strong>
                         </div>
                     </div>
                     <div class="info-group">
                         <i class="fa-brands fa-whatsapp"></i>
                         <div>
-                            <strong><a href="https://wa.me/8801711305367" target="_blank">WhatsApp</a></strong>
+                            <strong><a href="https://wa.me/8801711305367" target="_blank" data-i18n="val_whatsapp">WhatsApp</a></strong>
                         </div>
                     </div>
                 </div>
@@ -1212,7 +1208,7 @@ $(document).ready(function() {
                 <form id="contactForm" class="contact-form">
                     <div class="form-group">
                         <label for="senderName" data-i18n="lbl_form_name">Your Name</label>
-                        <input type="text" id="senderName" required placeholder="John Doe">
+                        <input type="text" id="senderName" required data-i18n-ph="ph_name" placeholder="">
                     </div>
                     <div class="form-group">
                         <label for="senderEmail" data-i18n="lbl_form_email">Your Email</label>
@@ -1220,7 +1216,7 @@ $(document).ready(function() {
                     </div>
                     <div class="form-group">
                         <label for="message" data-i18n="lbl_form_msg">Message</label>
-                        <textarea id="message" rows="4" required placeholder="Hello Farshid, I would like to discuss a project..."></textarea>
+                        <textarea id="message" rows="4" required data-i18n-ph="ph_msg" placeholder=""></textarea>
                     </div>
                     <button type="submit" class="btn" data-i18n="btn_send">Send Message</button>
                     <div id="form-status"></div>
@@ -1230,47 +1226,54 @@ $(document).ready(function() {
     </section>
     
     <footer>
-        <p>© 2026 Farshid Rupon. <span data-i18n="footer_rights">All rights reserved.</span></p>
+        <p>© 2026 <span data-i18n="footer_name">Farshid Rupon</span>. <span data-i18n="footer_rights">All rights reserved.</span></p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Dictionary for Complete English & Bengali Translations
         const i18n = {
             en: {
+                logo_name: "FARSHID RUPON",
+                hero_name: "Farshid Rupon",
+                footer_name: "Farshid Rupon",
                 nav_summary: "Summary",
                 nav_about: "About",
                 nav_exp: "Experience",
-                nav_code: "Code Logic",
                 nav_edu: "Education",
                 nav_gallery: "Gallery",
                 nav_contact: "Contact",
                 hero_loc: "Thakurgaon, Bangladesh",
+                val_phone: "+880 1711-305367",
+                val_linkedin: "LinkedIn",
+                val_msteams: "Microsoft Teams",
+                val_whatsapp: "WhatsApp",
+                ph_name: "",
+                ph_msg: "Hello Farshid, I would like to discuss a project...",
                 btn_contact: "Get In Touch",
                 summary_title: "Professional Summary",
                 summary_desc: "Adaptable and results-driven professional with over a decade of cross-functional experience in technical development, operational compliance, and project management. Recognized for strong analytical problem-solving, meticulous attention to detail, and the ability to optimize processes for maximum efficiency. Adept at managing complex workflows, building cross-industry partnerships, and consistently delivering high-quality results across dynamic work environments.",
                 about_title: "Personal Overview",
                 about_details: "Key Details",
                 about_expertise: "Expertise & Qualifications",
-                lbl_father: "Father's Name:",
+                lbl_father: "Father's Name",
                 val_father: "Md. Mofidul Haque",
-                lbl_mother: "Mother's Name:",
+                lbl_mother: "Mother's Name",
                 val_mother: "Mst. Fardusi Begum",
-                lbl_dob: "Date of Birth:",
+                lbl_dob: "Date of Birth",
                 val_dob: "October 20, 1991",
-                lbl_height: "Height:",
+                lbl_height: "Height",
                 val_height: "5'7\"",
-                lbl_weight: "Weight:",
+                lbl_weight: "Weight",
                 val_weight: "73 kg",
-                lbl_nationality: "Nationality:",
+                lbl_nationality: "Nationality",
                 val_nationality: "Bangladeshi",
-                lbl_religion: "Religion:",
+                lbl_religion: "Religion",
                 val_religion: "Islam",
-                lbl_marital: "Marital Status:",
+                lbl_marital: "Marital Status",
                 val_marital: "Married",
-                lbl_driving: "Driving License:",
+                lbl_driving: "Driving License",
                 val_driving: "Valid Motorcycle License",
-                lbl_languages: "Languages:",
+                lbl_languages: "Languages",
                 val_languages: "Bengali (Native), English (Proficient)",
                 lbl_competencies: "Core Competencies:",
                 tag_ops: "Project Operations",
@@ -1318,11 +1321,6 @@ $(document).ready(function() {
                 exp4_r2: "Managed SIM verification records inside Grameenphone's central system.",
                 exp4_r3: "Maintained daily operational inventory and sales logging databases.",
 
-                showcase_title: "Survey Logic Showcase",
-                showcase_desc: "Interactive snippets illustrating complex survey programming, validation, and security techniques:",
-                tab_decipher: "Decipher XML Logic",
-                tab_js: "JS Security & Validation",
-
                 edu_title: "Academic Qualifications",
                 edu1_title: "Bachelor of Laws (LL.B Part 1 Professional Masters)",
                 edu1_inst: "Dinajpur Law College, Dinajpur",
@@ -1364,39 +1362,47 @@ $(document).ready(function() {
                 ]
             },
             bn: {
+                logo_name: "ফারশিদ রুপন",
+                hero_name: "ফারশিদ রুপন",
+                footer_name: "ফারশিদ রুপন",
                 nav_summary: "সারসংক্ষেপ",
                 nav_about: "আমার সম্পর্কে",
                 nav_exp: "অভিজ্ঞতা",
-                nav_code: "কোড লজিক",
                 nav_edu: "শিক্ষা",
                 nav_gallery: "গ্যালারি",
                 nav_contact: "যোগাযোগ",
                 hero_loc: "ঠাকুরগাঁও, বাংলাদেশ",
+                val_phone: "+৮৮০ ১৭১১-৩০৫৩৬৭",
+                val_linkedin: "লিংকডইন",
+                val_msteams: "মাইক্রোসফ্ট টিমস",
+                val_whatsapp: "হোয়াটসঅ্যাপ",
+                ph_name: "",
+                ph_msg: "হ্যালো ফারশিদ, আমি একটি প্রকল্প নিয়ে আলোচনা করতে চাই...",
                 btn_contact: "যোগাযোগ করুন",
                 summary_title: "পেশাগত সারসংক্ষেপ",
                 summary_desc: "কারিগরি উন্নয়ন, অপারেশনাল কমপ্লায়েন্স এবং প্রজেক্ট ম্যানেজমেন্টে এক দশকেরও বেশি সময় ধরে বিস্তৃত অভিজ্ঞতাসম্পন্ন এক অভিযোজনযোগ্য এবং ফলাফল-ভিত্তিক পেশাদার। বিশ্লেষণাত্মক সমস্যা সমাধান, সূক্ষ্ম মনোযোগ এবং সর্বোচ্চ দক্ষতার জন্য প্রক্রিয়া অপ্টিমাইজ করার ক্ষমতার জন্য স্বীকৃত। জটিল কাজের গতিশীল পরিবেশ বজায় রাখতে ও বিভিন্ন সংস্থার সাথে যৌথ অংশীদারিত্বে উচ্চমানের ফলাফল প্রদান করতে দক্ষ।",
                 about_title: "ব্যক্তিগত বিবরণ",
                 about_details: "ব্যক্তিগত তথ্য",
                 about_expertise: "দক্ষতা ও যোগ্যতা",
-                lbl_father: "পিতার নাম:",
+                lbl_father: "পিতার নাম",
                 val_father: "মোঃ মফিজুল হক",
-                lbl_mother: "মাতার নাম:",
+                lbl_mother: "মাতার নাম",
                 val_mother: "মোছাঃ ফেরদৌসী বেগম",
-                lbl_dob: "জন্ম তারিখ:",
+                lbl_dob: "জন্ম তারিখ",
                 val_dob: "২০ অক্টোবর, ১৯৯১",
-                lbl_height: "উচ্চতা:",
+                lbl_height: "উচ্চতা",
                 val_height: "৫ ফুট ৭ ইঞ্চি",
-                lbl_weight: "ওজন:",
+                lbl_weight: "ওজন",
                 val_weight: "৭৩ কেজি",
-                lbl_nationality: "জাতীয়তা:",
+                lbl_nationality: "জাতীয়তা",
                 val_nationality: "বাংলাদেশী",
-                lbl_religion: "ধর্ম:",
+                lbl_religion: "ধর্ম",
                 val_religion: "ইসলাম",
-                lbl_marital: "বৈবাহিক অবস্থা:",
+                lbl_marital: "বৈবাহিক অবস্থা",
                 val_marital: "বিবাহিত",
-                lbl_driving: "ড্রাইভিং লাইসেন্স:",
+                lbl_driving: "ড্রাইভিং লাইসেন্স",
                 val_driving: "বৈধ মোটরসাইকেল লাইসেন্স",
-                lbl_languages: "ভাষা:",
+                lbl_languages: "ভাষা",
                 val_languages: "বাংলা (মাতৃভাষা), ইংরেজি (দক্ষ)",
                 lbl_competencies: "মূল দক্ষতা:",
                 tag_ops: "প্রজেক্ট অপারেশনস",
@@ -1443,11 +1449,6 @@ $(document).ready(function() {
                 exp4_r1: "নিয়ন্ত্রক কমপ্লায়েন্সের জন্য জাতীয় পরিচয়পত্রের তথ্যের সাথে সিম রেজিস্ট্রেশন ডাটা নিরীক্ষা।",
                 exp4_r2: "গ্রামীণফোনের কেন্দ্রীয় সিস্টেমে সিম ভেরিফিকেশন রেকর্ড পরিচালনা।",
                 exp4_r3: "দৈনিক অপারেশনাল ইনভেন্টরি এবং বিক্রয় লগিং ডেটাবেস রক্ষণাবেক্ষণ।",
-
-                showcase_title: "সার্ভে লজিক প্রদর্শনী",
-                showcase_desc: "জটিল সার্ভে প্রোগ্রামিং, ভ্যালিডেশন এবং নিরাপত্তা কৌশলের উদাহরণ:",
-                tab_decipher: "ডিসাইফার XML লজিক",
-                tab_js: "JS সিকিউরিটি ও ভ্যালিডেশন",
 
                 edu_title: "শিক্ষাগত যোগ্যতা",
                 edu1_title: "ব্যাচেলর অব লজ (এলএল.বি পার্ট ১ প্রফেশনাল মাস্টার্স)",
@@ -1501,8 +1502,15 @@ $(document).ready(function() {
 
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
-                if (i18n[lang][key]) {
+                if (i18n[lang][key] !== undefined) {
                     el.innerHTML = i18n[lang][key];
+                }
+            });
+
+            document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+                const key = el.getAttribute('data-i18n-ph');
+                if (i18n[lang][key] !== undefined) {
+                    el.placeholder = i18n[lang][key];
                 }
             });
 
@@ -1563,14 +1571,6 @@ $(document).ready(function() {
                     item.classList.add('hide');
                 }
             });
-        }
-
-        function switchTab(tabName) {
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            document.querySelectorAll('.code-snippet').forEach(code => code.classList.remove('active'));
-
-            event.target.classList.add('active');
-            document.getElementById(`tab-${tabName}`).classList.add('active');
         }
 
         let zoomLevel = 1;
