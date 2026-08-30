@@ -1676,6 +1676,38 @@
                 document.getElementById('contactForm').reset();
             }, 1200);
         });
+        (function() {
+    emailjs.init("ycJcbgkXIHkZtVEA7"); // এখানে আপনার ইমেইলজিস এর পাবলিক কি দিন
+})();
+
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const status = document.getElementById('form-status');
+    status.style.color = 'var(--primary)';
+    status.innerText = currentLang === 'en' ? "Sending message..." : "বার্তা পাঠানো হচ্ছে...";
+
+    const templateParams = {
+        from_name: document.getElementById('senderName').value,
+        from_email: document.getElementById('senderEmail').value,
+        message: document.getElementById('message').value,
+        to_email: 'farshidrupon@gmail.com'
+    };
+
+    emailjs.send('service_jxl4kqo', 'template_pscfvya', templateParams) // এখানে আপনার সার্ভিস আইডি এবং টেমপ্লেট আইডি দিন
+        .then(function(response) {
+            status.style.color = 'green';
+            status.innerText = currentLang === 'en' 
+                ? "Thank you! Your message has been sent successfully." 
+                : "ধন্যবাদ! আপনার বার্তা সফলভাবে পাঠানো হয়েছে।";
+            document.getElementById('contactForm').reset();
+        }, function(error) {
+            status.style.color = 'red';
+            status.innerText = currentLang === 'en' 
+                ? "Failed to send message. Please try again later." 
+                : "বার্তা পাঠানো ব্যর্থ হয়েছে। অনুগ্রহ করে পরে আবার চেষ্টা করুন।";
+            console.error('FAILED...', error);
+        });
+});
     </script>
 </body>
 </html>
