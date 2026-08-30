@@ -325,7 +325,6 @@
             box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.1);
         }
 
-        /* Perfectly Aligned Lists System using Grid */
         .aligned-info-list {
             list-style: none;
             padding: 0;
@@ -444,12 +443,6 @@
             font-size: 0.95rem;
         }
 
-        .dept-tag {
-            font-size: 0.82rem;
-            color: var(--text-muted);
-            font-weight: normal;
-        }
-
         .date-badge {
             background: rgba(37, 99, 235, 0.1);
             color: var(--primary);
@@ -460,7 +453,6 @@
             display: inline-block;
         }
 
-        /* Responsibilities Bullets Aligned Grid */
         .responsibilities {
             list-style: none;
             padding: 0;
@@ -979,12 +971,11 @@
                 <div class="timeline-header">
                     <div>
                         <div class="role-title" data-i18n="exp1_role">Programmer</div>
-                        <div class="company" data-i18n="exp1_company">Analyticsify Research Ltd, Thakurgaon.></div>
+                        <div class="company" data-i18n="exp1_company">Analyticsify Research Ltd, Thakurgaon.</div>
                     </div>
                     <span class="date-badge" data-i18n="exp1_date">01 Dec 2022 – Present</span>
                 </div>
                 
-                <!-- Responsibilities Bullet List with Aligned Colons -->
                 <ul class="responsibilities">
                     <li>
                         <span class="bullet-title" data-i18n="exp1_t1">Survey Coding & Development</span>
@@ -1018,7 +1009,6 @@
                     </li>
                 </ul>
 
-                <!-- Technical Skill Matrix Aligned -->
                 <div class="tech-matrix">
                     <h4 data-i18n="matrix_title">Technical Skill Matrix</h4>
                     <ul class="aligned-info-list">
@@ -1334,7 +1324,7 @@
                 btn_filter_ops: "Legal & Operations",
                 
                 exp1_role: "Programmer",
-                exp1_company: 'Analyticsify Research Ltd, Thakurgaon.</span>',
+                exp1_company: "Analyticsify Research Ltd, Thakurgaon.",
                 exp1_date: "01 Dec 2022 – Present",
                 exp1_t1: "Survey Coding & Development",
                 exp1_r1: "Program complex questionnaires into market research platforms such as Decipher (Forsta), Qualtrics, and Confirmit using HTML, CSS, JavaScript, and platform XML/Python syntax.",
@@ -1469,7 +1459,7 @@
                 btn_filter_ops: "আইনি ও অপারেশনস",
                 
                 exp1_role: "প্রোগ্রামার",
-                exp1_company: 'অ্যানালিটিক্সিফাই রিসার্চ লিমিটেড, ঠাকুরগাঁও।</span>',
+                exp1_company: "অ্যানালিটিক্সিফাই রিসার্চ লিমিটেড, ঠাকুরগাঁও।",
                 exp1_date: "০১ ডিসেম্বর ২০২২ – বর্তমান",
                 exp1_t1: "সার্ভে কোডিং ও ডেভেলপমেন্ট",
                 exp1_r1: "HTML, CSS, JavaScript এবং XML/Python ব্যবহার করে Decipher (Forsta), Qualtrics এবং Confirmit-এর মত মার্কেট রিসার্চ প্ল্যাটফর্মে জটিল প্রশ্নাবলী প্রোগ্রামিং করা।",
@@ -1662,52 +1652,39 @@
 
         document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeLightbox(); });
 
+        // EmailJS Initialization & Form Submit Handler (Combined & Cleaned)
+        (function() {
+            emailjs.init("ycJcbgkXIHkZtVEA7");
+        })();
+
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const status = document.getElementById('form-status');
             status.style.color = 'var(--primary)';
             status.innerText = currentLang === 'en' ? "Sending message..." : "বার্তা পাঠানো হচ্ছে...";
 
-            setTimeout(() => {
-                status.style.color = 'green';
-                status.innerText = currentLang === 'en' 
-                    ? "Thank you! Your message has been sent successfully." 
-                    : "ধন্যবাদ! আপনার বার্তা সফলভাবে পাঠানো হয়েছে।";
-                document.getElementById('contactForm').reset();
-            }, 1200);
+            const templateParams = {
+                from_name: document.getElementById('senderName').value,
+                from_email: document.getElementById('senderEmail').value,
+                message: document.getElementById('message').value,
+                to_email: 'farshidrupon@gmail.com'
+            };
+
+            emailjs.send('service_jxl4kqo', 'template_pscfvya', templateParams)
+                .then(function(response) {
+                    status.style.color = 'green';
+                    status.innerText = currentLang === 'en' 
+                        ? "Thank you! Your message has been sent successfully." 
+                        : "ধন্যবাদ! আপনার বার্তা সফলভাবে পাঠানো হয়েছে।";
+                    document.getElementById('contactForm').reset();
+                }, function(error) {
+                    status.style.color = 'red';
+                    status.innerText = currentLang === 'en' 
+                        ? "Failed to send message. Please try again later." 
+                        : "বার্তা পাঠানো ব্যর্থ হয়েছে। অনুগ্রহ করে পরে আবার চেষ্টা করুন।";
+                    console.error('FAILED...', error);
+                });
         });
-        (function() {
-    emailjs.init("ycJcbgkXIHkZtVEA7"); // এখানে আপনার ইমেইলজিস এর পাবলিক কি দিন
-})();
-
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const status = document.getElementById('form-status');
-    status.style.color = 'var(--primary)';
-    status.innerText = currentLang === 'en' ? "Sending message..." : "বার্তা পাঠানো হচ্ছে...";
-
-    const templateParams = {
-        from_name: document.getElementById('senderName').value,
-        from_email: document.getElementById('senderEmail').value,
-        message: document.getElementById('message').value,
-        to_email: 'farshidrupon@gmail.com'
-    };
-
-    emailjs.send('service_jxl4kqo', 'template_pscfvya', templateParams) // এখানে আপনার সার্ভিস আইডি এবং টেমপ্লেট আইডি দিন
-        .then(function(response) {
-            status.style.color = 'green';
-            status.innerText = currentLang === 'en' 
-                ? "Thank you! Your message has been sent successfully." 
-                : "ধন্যবাদ! আপনার বার্তা সফলভাবে পাঠানো হয়েছে।";
-            document.getElementById('contactForm').reset();
-        }, function(error) {
-            status.style.color = 'red';
-            status.innerText = currentLang === 'en' 
-                ? "Failed to send message. Please try again later." 
-                : "বার্তা পাঠানো ব্যর্থ হয়েছে। অনুগ্রহ করে পরে আবার চেষ্টা করুন।";
-            console.error('FAILED...', error);
-        });
-});
     </script>
 </body>
 </html>
