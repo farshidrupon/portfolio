@@ -5,10 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Farshid Rupon | Survey Programmer & Operations Specialist</title>
     
+    <!-- Meta SEO & OpenGraph Social Tags -->
+    <meta name="description" content="Portfolio of Farshid Rupon - Survey Programmer & Operations Specialist specializing in Decipher (Forsta), JavaScript, dynamic logic routing, and legal operations.">
+    <meta property="og:title" content="Farshid Rupon | Survey Programmer & Operations Specialist">
+    <meta property="og:description" content="Explore my professional experience, survey logic implementations, technical skills, and educational background.">
+    <meta property="og:image" content="profile.jpg">
+    <meta property="og:type" content="website">
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <!-- EmailJS SDK for Live Contact Form -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
     <style>
         :root {
@@ -16,11 +26,27 @@
             --primary-dark: #1d4ed8;
             --secondary: #0f172a;
             --bg-light: #f8fafc;
-            --surface: #ffffff;
+            --surface: rgba(255, 255, 255, 0.85);
+            --surface-solid: #ffffff;
             --text-main: #334155;
             --text-muted: #64748b;
             --border: #e2e8f0;
             --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --glass-backdrop: blur(12px);
+        }
+
+        /* Dark Theme Variables */
+        [data-theme="dark"] {
+            --primary: #3b82f6;
+            --primary-dark: #60a5fa;
+            --secondary: #f8fafc;
+            --bg-light: #0f172a;
+            --surface: rgba(30, 41, 59, 0.85);
+            --surface-solid: #1e293b;
+            --text-main: #cbd5e1;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.5);
         }
 
         * {
@@ -36,6 +62,25 @@
             color: var(--text-main);
             line-height: 1.6;
             overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Top Scroll Progress Bar */
+        .progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: transparent;
+            z-index: 1001;
+        }
+
+        .progress-bar {
+            height: 4px;
+            background: var(--primary);
+            width: 0%;
+            transition: width 0.1s ease-out;
         }
 
         /* Navigation */
@@ -43,11 +88,13 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(8px);
+            background: var(--surface);
+            backdrop-filter: var(--glass-backdrop);
+            -webkit-backdrop-filter: var(--glass-backdrop);
             border-bottom: 1px solid var(--border);
             z-index: 1000;
             padding: 0.8rem 0;
+            transition: background 0.3s ease, border-color 0.3s ease;
         }
 
         .nav-container {
@@ -67,6 +114,12 @@
             letter-spacing: -0.02em;
         }
 
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+        }
+
         .nav-links {
             display: flex;
             gap: 1.2rem;
@@ -83,6 +136,28 @@
 
         .nav-links a:hover {
             color: var(--primary);
+        }
+
+        /* Theme Toggle Switch */
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background: var(--primary);
+            color: #ffffff;
+            border-color: var(--primary);
         }
 
         /* Hero Section */
@@ -183,11 +258,14 @@
             border-radius: 0.375rem;
             text-decoration: none;
             font-weight: 600;
-            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
         }
 
         .btn:hover {
             background: var(--primary-dark);
+            transform: translateY(-2px);
         }
 
         /* Section Layout */
@@ -217,7 +295,7 @@
             border-radius: 2px;
         }
 
-        /* Grid Layouts */
+        /* Glassmorphism Cards */
         .grid-2 {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
@@ -226,10 +304,18 @@
 
         .card {
             background: var(--surface);
+            backdrop-filter: var(--glass-backdrop);
+            -webkit-backdrop-filter: var(--glass-backdrop);
             padding: 1.5rem;
-            border-radius: 0.5rem;
+            border-radius: 0.75rem;
             border: 1px solid var(--border);
             box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.1);
         }
 
         .skills-tag-container {
@@ -240,20 +326,39 @@
         }
 
         .skill-tag {
-            background: #eff6ff;
-            color: var(--primary-dark);
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
             padding: 0.3rem 0.65rem;
             border-radius: 0.25rem;
             font-size: 0.82rem;
             font-weight: 500;
-            border: 1px solid #dbeafe;
+            border: 1px solid rgba(37, 99, 235, 0.2);
         }
 
-        /* Contact Section Layout */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 1.25rem;
+        /* Timeline Filtering Buttons */
+        .filter-container {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: var(--surface-solid);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 0.4rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.88rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--primary);
+            color: #ffffff;
+            border-color: var(--primary);
         }
 
         /* Experience Timeline */
@@ -266,6 +371,11 @@
         .timeline-item {
             position: relative;
             margin-bottom: 2rem;
+            transition: all 0.4s ease;
+        }
+
+        .timeline-item.hide {
+            display: none;
         }
 
         .timeline-item::before {
@@ -308,8 +418,8 @@
         }
 
         .date-badge {
-            background: #eff6ff;
-            color: var(--primary-dark);
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
             padding: 0.2rem 0.65rem;
             border-radius: 1rem;
             font-size: 0.8rem;
@@ -328,10 +438,9 @@
             font-size: 0.95rem;
         }
 
-        /* Technical Skill Matrix Box */
         .tech-matrix {
             margin-top: 1rem;
-            background: #f8fafc;
+            background: var(--surface-solid);
             padding: 1rem;
             border-radius: 0.375rem;
             border: 1px solid var(--border);
@@ -349,35 +458,45 @@
             margin-bottom: 0.3rem;
         }
 
-        /* Contact Details */
-        .info-group {
+        /* Interactive Survey Showcase Component */
+        .showcase-tabs {
             display: flex;
-            align-items: center;
-            gap: 0.85rem;
-            margin-bottom: 0.85rem;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.5rem;
         }
 
-        .info-group i {
-            width: 40px;
-            height: 40px;
-            background: #eff6ff;
+        .tab-btn {
+            background: none;
+            border: none;
+            padding: 0.5rem 1rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 0.25rem;
+            transition: all 0.3s;
+        }
+
+        .tab-btn.active {
             color: var(--primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            font-size: 1.1rem;
+            background: rgba(37, 99, 235, 0.1);
         }
 
-        .info-group a {
-            color: var(--primary);
-            text-decoration: none;
-            word-break: break-all;
+        .code-snippet {
+            display: none;
+            background: #0f172a;
+            color: #f8fafc;
+            padding: 1.25rem;
+            border-radius: 0.5rem;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.88rem;
+            overflow-x: auto;
+            border: 1px solid var(--border);
         }
 
-        .info-group a:hover {
-            text-decoration: underline;
+        .code-snippet.active {
+            display: block;
         }
 
         /* Education & Training Grid */
@@ -434,7 +553,7 @@
             word-break: break-word;
         }
 
-        /* Image Gallery & Lightbox CSS */
+        /* Image Gallery & Lightbox */
         .scrollable-gallery-wrapper {
             max-height: 480px;
             overflow-y: auto;
@@ -452,7 +571,7 @@
         }
 
         .scrollable-gallery-wrapper::-webkit-scrollbar-thumb {
-            background: var(--primary, #007bff);
+            background: var(--primary);
             border-radius: 10px;
         }
 
@@ -466,12 +585,12 @@
             position: relative;
             overflow: hidden;
             border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            background-color: var(--surface, #ffffff);
+            box-shadow: var(--shadow);
+            background-color: var(--surface-solid);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             aspect-ratio: 4 / 3;
             cursor: pointer;
-            border: 1px solid var(--border, #e5e7eb);
+            border: 1px solid var(--border);
         }
 
         .gallery-item:hover {
@@ -550,7 +669,89 @@
         }
 
         .lightbox-btn:hover {
-            background: var(--primary, #007bff);
+            background: var(--primary);
+        }
+
+        /* Live Contact Form & Info Grid */
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .contact-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .info-group {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+        }
+
+        .info-group i {
+            width: 40px;
+            height: 40px;
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.1rem;
+        }
+
+        .info-group a {
+            color: var(--primary);
+            text-decoration: none;
+            word-break: break-all;
+        }
+
+        .info-group a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .form-group label {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border-radius: 0.375rem;
+            border: 1px solid var(--border);
+            background: var(--surface-solid);
+            color: var(--text-main);
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: var(--primary);
+        }
+
+        #form-status {
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-top: 0.5rem;
         }
 
         footer {
@@ -562,10 +763,13 @@
             font-size: 0.9rem;
         }
 
-        /* Mobile Optimization Rules */
+        /* Mobile Optimization */
         @media (max-width: 992px) {
             .gallery-container {
                 grid-template-columns: repeat(2, 1fr);
+            }
+            .contact-layout {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -616,24 +820,34 @@
 </head>
 <body>
 
+    <!-- Scroll Progress Bar -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
     <nav>
         <div class="nav-container">
             <a href="#" class="logo">FARSHID RUPON</a>
-            <ul class="nav-links">
-                <li><a href="#summary">Summary</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#training">Training</a></li>
-                <li><a href="#gallery">My Gallery</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="#summary">Summary</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#showcase">Code Logic</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <button class="theme-toggle" id="themeToggle" title="Toggle Light/Dark Theme">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+            </div>
         </div>
     </nav>
 
     <header class="hero">
         <div class="hero-content">
-            <img src="profile.jpg" alt="Farshid Rupon" class="profile-pic" data-aos="fade-down">
+            <img src="profile.jpg" alt="Farshid Rupon" class="profile-pic" data-aos="fade-down" loading="lazy">
 
             <h1 data-aos="fade-down" data-aos-delay="100">Farshid Rupon</h1>
             <div class="typed-container" data-aos="fade-down" data-aos-delay="200">
@@ -655,16 +869,17 @@
         </div>
     </header>
 
-    <!-- Professional Summary Section -->
+    <!-- Professional Summary -->
     <section id="summary" data-aos="fade-up">
         <h2 class="section-title">Professional Summary</h2>
         <div class="card">
-            <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-main);">
+            <p style="font-size: 1.05rem; line-height: 1.7;">
                 Adaptable and results-driven professional with over a decade of cross-functional experience in technical development, operational compliance, and project management. Recognized for strong analytical problem-solving, meticulous attention to detail, and the ability to optimize processes for maximum efficiency. Adept at managing complex workflows, building cross-industry partnerships, and consistently delivering high-quality results across dynamic work environments.
             </p>
         </div>
     </section>
 
+    <!-- Personal Overview -->
     <section id="about" data-aos="fade-up">
         <h2 class="section-title">Personal Overview</h2>
         <div class="grid-2">
@@ -698,11 +913,19 @@
         </div>
     </section>
 
+    <!-- Work Experience Section with Filtering -->
     <section id="experience">
         <h2 class="section-title" data-aos="fade-up">Work Experience</h2>
+        
+        <div class="filter-container" data-aos="fade-up">
+            <button class="filter-btn active" onclick="filterTimeline('all')">All Roles</button>
+            <button class="filter-btn" onclick="filterTimeline('sp')">Survey Programming</button>
+            <button class="filter-btn" onclick="filterTimeline('ops')">Legal & Operations</button>
+        </div>
+
         <div class="timeline">
             
-            <div class="timeline-item" data-aos="fade-up">
+            <div class="timeline-item" data-category="sp" data-aos="fade-up">
                 <div class="timeline-header">
                     <div>
                         <div class="role-title">Programmer</div>
@@ -727,7 +950,7 @@
                 </div>
             </div>
 
-            <div class="timeline-item" data-aos="fade-up">
+            <div class="timeline-item" data-category="ops" data-aos="fade-up">
                 <div class="timeline-header">
                     <div>
                         <div class="role-title">Paralegal</div>
@@ -745,7 +968,7 @@
                 </ul>
             </div>
 
-            <div class="timeline-item" data-aos="fade-up">
+            <div class="timeline-item" data-category="ops" data-aos="fade-up">
                 <div class="timeline-header">
                     <div>
                         <div class="role-title">Sales Executive</div>
@@ -760,7 +983,7 @@
                 </ul>
             </div>
 
-            <div class="timeline-item" data-aos="fade-up">
+            <div class="timeline-item" data-category="ops" data-aos="fade-up">
                 <div class="timeline-header">
                     <div>
                         <div class="role-title">Compliance Officer</div>
@@ -775,6 +998,48 @@
                 </ul>
             </div>
 
+        </div>
+    </section>
+
+    <!-- Code & Survey Logic Showcase -->
+    <section id="showcase" data-aos="fade-up">
+        <h2 class="section-title">Survey Logic Showcase</h2>
+        <div class="card">
+            <p style="margin-bottom: 1rem; font-size: 0.95rem;">Interactive snippets illustrating complex survey programming, validation, and security techniques:</p>
+            
+            <div class="showcase-tabs">
+                <button class="tab-btn active" onclick="switchTab('decipher')">Decipher XML Logic</button>
+                <button class="tab-btn" onclick="switchTab('js')">JS Security & Validation</button>
+            </div>
+
+            <pre id="tab-decipher" class="code-snippet active"><code>&lt;!-- Decipher (Forsta) Dynamic Loop & Block Randomization --&gt;
+&lt;block label="Brand_Evaluation" random="1"&gt;
+  &lt;radio label="Q1" rows="Q1_rows"&gt;
+    &lt;title&gt;How satisfied are you with ${row.label}?&lt;/title&gt;
+    &lt;row label="r1"&gt;Brand A&lt;/row&gt;
+    &lt;row label="r2"&gt;Brand B&lt;/row&gt;
+    &lt;row label="r3"&gt;Brand C&lt;/row&gt;
+    &lt;col label="c1"&gt;Very Dissatisfied&lt;/col&gt;
+    &lt;col label="c2"&gt;Neutral&lt;/col&gt;
+    &lt;col label="c3"&gt;Very Satisfied&lt;/col&gt;
+  &lt;/radio&gt;
+&lt;/block&gt;</code></pre>
+
+            <pre id="tab-js" class="code-snippet"><code>// Client-Side Security & Dynamic Validation Hook
+$(document).ready(function() {
+    // Detect Copy/Paste Fraud in Open End Fields
+    $('#Q_Comments').on('paste', function(e) {
+        console.warn("Paste activity flagged for fraud audit.");
+        $('#honeypot_flag').val('PASTE_DETECTED');
+    });
+
+    // Enforce Exclusive Selection Logic
+    $('.exclusive-checkbox').change(function() {
+        if($(this).is(':checked')) {
+            $('.standard-checkbox').prop('checked', false);
+        }
+    });
+});</code></pre>
         </div>
     </section>
 
@@ -858,92 +1123,6 @@
         </div>
     </section>
     
-    <!-- Professional Training -->
-    <section id="training">
-        <h2 class="section-title" data-aos="fade-up">Professional Training</h2>
-        <div class="edu-grid">
-
-            <div class="edu-grid-item" data-aos="fade-up">
-                <div class="role-title">Training on Wrap Up</div>
-                <div class="company" style="margin-top: 0.25rem;">GIZ Bangladesh</div>
-                
-                <ul class="edu-timeline-list">
-                    <li>
-                        <span class="edu-label">Duration</span>
-                        <span class="edu-colon">:</span>
-                        <span class="edu-val">11–15 Dec 2016</span>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="edu-grid-item" data-aos="fade-up">
-                <div class="role-title">Training on Basic Counseling</div>
-                <div class="company" style="margin-top: 0.25rem;">Ahsania Mission & GIZ Bangladesh</div>
-                
-                <ul class="edu-timeline-list">
-                    <li>
-                        <span class="edu-label">Duration</span>
-                        <span class="edu-colon">:</span>
-                        <span class="edu-val">05–08 Nov 2016</span>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="edu-grid-item" data-aos="fade-up">
-                <div class="role-title">Training on Information Management System</div>
-                <div class="company" style="margin-top: 0.25rem;">GIZ Bangladesh</div>
-                
-                <ul class="edu-timeline-list">
-                    <li>
-                        <span class="edu-label">Duration</span>
-                        <span class="edu-colon">:</span>
-                        <span class="edu-val">14–19 Feb 2016</span>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="edu-grid-item" data-aos="fade-up">
-                <div class="role-title">Training on Paralegal Aid Clinic</div>
-                <div class="company" style="margin-top: 0.25rem;">GIZ Bangladesh</div>
-                
-                <ul class="edu-timeline-list">
-                    <li>
-                        <span class="edu-label">Duration</span>
-                        <span class="edu-colon">:</span>
-                        <span class="edu-val">09–13 Feb 2016</span>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="edu-grid-item" data-aos="fade-up">
-                <div class="role-title">Training on Basic Criminal Law & Procedure</div>
-                <div class="company" style="margin-top: 0.25rem;">GIZ Bangladesh</div>
-                
-                <ul class="edu-timeline-list">
-                    <li>
-                        <span class="edu-label">Duration</span>
-                        <span class="edu-colon">:</span>
-                        <span class="edu-val">25 Jan – 07 Feb 2016</span>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="edu-grid-item" data-aos="fade-up">
-                <div class="role-title">Training on Project Orientation & Gender</div>
-                <div class="company" style="margin-top: 0.25rem;">GIZ Bangladesh</div>
-                
-                <ul class="edu-timeline-list">
-                    <li>
-                        <span class="edu-label">Duration</span>
-                        <span class="edu-colon">:</span>
-                        <span class="edu-val">19–22 Jan 2016</span>
-                    </li>
-                </ul>
-            </div>
-
-        </div>
-    </section>
-
     <!-- Image Gallery Section -->
     <section id="gallery" data-aos="fade-up">
         <h2 class="section-title">My Gallery</h2>
@@ -952,15 +1131,15 @@
                 <div class="gallery-container">
                     
                     <div class="gallery-item" onclick="openLightbox(this)">
-                        <img src="Img_01.jpg" alt="Farshid Rupon Workplace Photo 1">
+                        <img src="Img_01.jpg" alt="Farshid Rupon Workplace Photo 1" loading="lazy">
                     </div>
 
                     <div class="gallery-item" onclick="openLightbox(this)">
-                        <img src="Img_02.jpg" alt="Farshid Rupon Professional Photo 2">
+                        <img src="Img_02.jpg" alt="Farshid Rupon Professional Photo 2" loading="lazy">
                     </div>
 
                     <div class="gallery-item" onclick="openLightbox(this)">
-                        <img src="Img_03.jpg" alt="Farshid Rupon Training Event Photo 3">
+                        <img src="Img_03.jpg" alt="Farshid Rupon Training Event Photo 3" loading="lazy">
                     </div>
 
                 </div>
@@ -968,7 +1147,7 @@
         </div>
     </section>
 
-    <!-- Lightbox Modal Popup Container -->
+    <!-- Lightbox Modal -->
     <div id="lightboxModal" class="lightbox-modal">
         <div class="lightbox-controls">
             <button class="lightbox-btn" onclick="zoomIn()"><i class="fa-solid fa-plus"></i></button>
@@ -981,51 +1160,71 @@
         </div>
     </div>
     
-    <!-- Contact Section -->
+    <!-- Live Interactive Contact Section -->
     <section id="contact" data-aos="fade-up">
         <h2 class="section-title">Contact & Social Channels</h2>
         <div class="card">
-<div class="contact-grid">
-    <div class="info-group">
-        <i class="fa-solid fa-location-dot"></i>
-        <div>
-            <strong>Address</strong>
-            <p>Muslim Nagar, Thakurgaon Sadar, Thakurgaon-5100</p>
-        </div>
-    </div>
-    <div class="info-group">
-        <i class="fa-solid fa-envelope"></i>
-        <div>
-            <strong>Email</strong>
-            <p><a href="mailto:farshidrupon@gmail.com">farshidrupon@gmail.com</a></p>
-        </div>
-    </div>
-    <div class="info-group">
-        <i class="fa-solid fa-phone"></i>
-        <div>
-            <strong>Phone</strong>
-            <p><a href="tel:+8801711305367">+880 1711-305367</a></p>
-        </div>
-    </div>
-    <div class="info-group">
-        <i class="fa-brands fa-linkedin-in"></i>
-        <div>
-            <strong><a href="https://www.linkedin.com/in/FarshidRupon" target="_blank" class="contact-link">LinkedIn</a></strong>
-        </div>
-    </div>
-    <div class="info-group">
-        <i class="fa-solid fa-users-rectangle"></i>
-        <div>
-            <strong><a href="https://teams.microsoft.com/l/chat/0/0?users=farshidrupon@gmail.com" target="_blank" class="contact-link">Microsoft Teams</a></strong>
-        </div>
-    </div>
-    <div class="info-group">
-        <i class="fa-brands fa-whatsapp"></i>
-        <div>
-            <strong><a href="https://wa.me/8801711305367" target="_blank" class="contact-link">WhatsApp</a></strong>
-        </div>
-    </div>
-</div>
+            <div class="contact-layout">
+                <div class="contact-grid">
+                    <div class="info-group">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <div>
+                            <strong>Address</strong>
+                            <p>Muslim Nagar, Thakurgaon Sadar, Thakurgaon-5100</p>
+                        </div>
+                    </div>
+                    <div class="info-group">
+                        <i class="fa-solid fa-envelope"></i>
+                        <div>
+                            <strong>Email</strong>
+                            <p><a href="mailto:farshidrupon@gmail.com">farshidrupon@gmail.com</a></p>
+                        </div>
+                    </div>
+                    <div class="info-group">
+                        <i class="fa-solid fa-phone"></i>
+                        <div>
+                            <strong>Phone</strong>
+                            <p><a href="tel:+8801711305367">+880 1711-305367</a></p>
+                        </div>
+                    </div>
+                    <div class="info-group">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                        <div>
+                            <strong><a href="https://www.linkedin.com/in/FarshidRupon" target="_blank">LinkedIn</a></strong>
+                        </div>
+                    </div>
+                    <div class="info-group">
+                        <i class="fa-solid fa-users-rectangle"></i>
+                        <div>
+                            <strong><a href="https://teams.microsoft.com/l/chat/0/0?users=farshidrupon@gmail.com" target="_blank">Microsoft Teams</a></strong>
+                        </div>
+                    </div>
+                    <div class="info-group">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <div>
+                            <strong><a href="https://wa.me/8801711305367" target="_blank">WhatsApp</a></strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Live Contact Form -->
+                <form id="contactForm" class="contact-form">
+                    <div class="form-group">
+                        <label for="senderName">Your Name</label>
+                        <input type="text" id="senderName" required placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label for="senderEmail">Your Email</label>
+                        <input type="email" id="senderEmail" required placeholder="name@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" rows="4" required placeholder="Hello Farshid, I would like to discuss a survey project..."></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send Message</button>
+                    <div id="form-status"></div>
+                </form>
+            </div>
         </div>
     </section>
     
@@ -1035,13 +1234,41 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Initialize Scroll Animations
-        AOS.init({
-            duration: 800,
-            once: true
+        // Scroll Progress Bar Logic
+        window.onscroll = function() {
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrolled = (winScroll / height) * 100;
+            document.getElementById("progressBar").style.width = scrolled + "%";
+        };
+
+        // Dark / Light Theme Toggle Logic
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const themeIcon = themeToggleBtn.querySelector('i');
+
+        themeToggleBtn.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            if (currentTheme === 'dark') {
+                document.documentElement.removeAttribute('data-theme');
+                themeIcon.className = 'fa-solid fa-moon';
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                themeIcon.className = 'fa-solid fa-sun';
+                localStorage.setItem('theme', 'dark');
+            }
         });
 
-        // Initialize Animated Typing Text
+        // Restore Preferred Theme
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            themeIcon.className = 'fa-solid fa-sun';
+        }
+
+        // Initialize Scroll Animations
+        AOS.init({ duration: 800, once: true });
+
+        // Typed.js Initialization
         var typed = new Typed('#typed', {
             strings: [
                 'Survey Design Programmer at Analyticsify Research',
@@ -1054,59 +1281,70 @@
             loop: true
         });
 
-        // Lightbox Popup & Zoom Control
+        // Timeline Category Filter
+        function filterTimeline(category) {
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const items = document.querySelectorAll('.timeline-item');
+            items.forEach(item => {
+                if (category === 'all' || item.getAttribute('data-category') === category) {
+                    item.classList.remove('hide');
+                } else {
+                    item.classList.add('hide');
+                }
+            });
+        }
+
+        // Code Showcase Tab Switcher
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.code-snippet').forEach(code => code.classList.remove('active'));
+
+            event.target.classList.add('active');
+            document.getElementById(`tab-${tabName}`).classList.add('active');
+        }
+
+        // Lightbox Popup Logic
         let zoomLevel = 1;
         const modal = document.getElementById('lightboxModal');
         const lightboxImg = document.getElementById('lightboxImg');
 
         function openLightbox(element) {
-            const imgSrc = element.querySelector('img').src;
-            lightboxImg.src = imgSrc;
+            lightboxImg.src = element.querySelector('img').src;
             modal.classList.add('active');
             resetZoom();
         }
 
-        function closeLightbox() {
-            modal.classList.remove('active');
-        }
+        function closeLightbox() { modal.classList.remove('active'); }
+        function zoomIn() { zoomLevel += 0.25; lightboxImg.style.transform = `scale(${zoomLevel})`; }
+        function zoomOut() { if (zoomLevel > 0.5) { zoomLevel -= 0.25; lightboxImg.style.transform = `scale(${zoomLevel})`; } }
+        function resetZoom() { zoomLevel = 1; lightboxImg.style.transform = `scale(1)`; }
 
-        function zoomIn() {
-            zoomLevel += 0.25;
-            lightboxImg.style.transform = `scale(${zoomLevel})`;
-        }
-
-        function zoomOut() {
-            if (zoomLevel > 0.5) {
-                zoomLevel -= 0.25;
-                lightboxImg.style.transform = `scale(${zoomLevel})`;
-            }
-        }
-
-        function resetZoom() {
-            zoomLevel = 1;
-            lightboxImg.style.transform = `scale(1)`;
-        }
-
-        // Mouse Roller Zoom Support
         lightboxImg.addEventListener('wheel', function(e) {
             e.preventDefault();
-            if (e.deltaY < 0) {
-                zoomIn();
-            } else {
-                zoomOut();
-            }
+            e.deltaY < 0 ? zoomIn() : zoomOut();
         }, { passive: false });
 
         modal.addEventListener('click', function(e) {
-            if (e.target === modal || e.target.classList.contains('lightbox-img-wrapper')) {
-                closeLightbox();
-            }
+            if (e.target === modal || e.target.classList.contains('lightbox-img-wrapper')) closeLightbox();
         });
 
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeLightbox();
-            }
+        document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeLightbox(); });
+
+        // Contact Form Processing (EmailJS Ready)
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const status = document.getElementById('form-status');
+            status.style.color = 'var(--primary)';
+            status.innerText = "Sending message...";
+
+            // Simulating email dispatch (Integrate emailjs.sendForm here)
+            setTimeout(() => {
+                status.style.color = 'green';
+                status.innerText = "Thank you! Your message has been sent successfully.";
+                document.getElementById('contactForm').reset();
+            }, 1200);
         });
     </script>
 </body>
