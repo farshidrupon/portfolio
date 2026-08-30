@@ -12,12 +12,11 @@
     <meta property="og:image" content="profile.jpg">
     <meta property="og:type" content="website">
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-    <!-- EmailJS SDK for Live Contact Form -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
     <style>
@@ -35,7 +34,6 @@
             --glass-backdrop: blur(12px);
         }
 
-        /* Dark Theme Variables */
         [data-theme="dark"] {
             --primary: #3b82f6;
             --primary-dark: #60a5fa;
@@ -53,7 +51,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter', 'Noto Sans Bengali', sans-serif;
             scroll-behavior: smooth;
         }
 
@@ -120,6 +118,12 @@
             gap: 1.2rem;
         }
 
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
         .nav-links {
             display: flex;
             gap: 1.2rem;
@@ -138,23 +142,32 @@
             color: var(--primary);
         }
 
-        /* Theme Toggle Switch */
-        .theme-toggle {
-            background: none;
+        /* Toggle Switches */
+        .toggle-btn {
+            background: var(--surface-solid);
             border: 1px solid var(--border);
             color: var(--text-main);
-            width: 38px;
             height: 38px;
-            border-radius: 50%;
+            border-radius: 20px;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 0 0.75rem;
             transition: all 0.3s ease;
+            gap: 0.3rem;
         }
 
-        .theme-toggle:hover {
+        .toggle-btn.icon-only {
+            width: 38px;
+            padding: 0;
+            border-radius: 50%;
+            font-size: 1rem;
+        }
+
+        .toggle-btn:hover {
             background: var(--primary);
             color: #ffffff;
             border-color: var(--primary);
@@ -295,7 +308,6 @@
             border-radius: 2px;
         }
 
-        /* Glassmorphism Cards */
         .grid-2 {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
@@ -335,7 +347,6 @@
             border: 1px solid rgba(37, 99, 235, 0.2);
         }
 
-        /* Timeline Filtering Buttons */
         .filter-container {
             display: flex;
             gap: 0.5rem;
@@ -361,7 +372,6 @@
             border-color: var(--primary);
         }
 
-        /* Experience Timeline */
         .timeline {
             position: relative;
             padding-left: 1.5rem;
@@ -458,7 +468,6 @@
             margin-bottom: 0.3rem;
         }
 
-        /* Interactive Survey Showcase Component */
         .showcase-tabs {
             display: flex;
             gap: 0.5rem;
@@ -499,7 +508,6 @@
             display: block;
         }
 
-        /* Education & Training Grid */
         .edu-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -553,7 +561,6 @@
             word-break: break-word;
         }
 
-        /* Image Gallery & Lightbox */
         .scrollable-gallery-wrapper {
             max-height: 480px;
             overflow-y: auto;
@@ -672,7 +679,6 @@
             background: var(--primary);
         }
 
-        /* Live Contact Form & Info Grid */
         .contact-layout {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -763,7 +769,6 @@
             font-size: 0.9rem;
         }
 
-        /* Mobile Optimization */
         @media (max-width: 992px) {
             .gallery-container {
                 grid-template-columns: repeat(2, 1fr);
@@ -830,17 +835,24 @@
             <a href="#" class="logo">FARSHID RUPON</a>
             <div class="nav-right">
                 <ul class="nav-links">
-                    <li><a href="#summary">Summary</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#showcase">Code Logic</a></li>
-                    <li><a href="#education">Education</a></li>
-                    <li><a href="#gallery">Gallery</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#summary" data-i18n="nav_summary">Summary</a></li>
+                    <li><a href="#about" data-i18n="nav_about">About</a></li>
+                    <li><a href="#experience" data-i18n="nav_exp">Experience</a></li>
+                    <li><a href="#showcase" data-i18n="nav_code">Code Logic</a></li>
+                    <li><a href="#education" data-i18n="nav_edu">Education</a></li>
+                    <li><a href="#gallery" data-i18n="nav_gallery">Gallery</a></li>
+                    <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
                 </ul>
-                <button class="theme-toggle" id="themeToggle" title="Toggle Light/Dark Theme">
-                    <i class="fa-solid fa-moon"></i>
-                </button>
+                <div class="nav-controls">
+                    <!-- Language Switcher Toggle (Placed Left of Theme Toggle) -->
+                    <button class="toggle-btn" id="langToggle" title="Switch Language / ভাষা পরিবর্তন">
+                        <i class="fa-solid fa-globe"></i> <span id="langText">EN</span>
+                    </button>
+                    <!-- Theme Toggle -->
+                    <button class="toggle-btn icon-only" id="themeToggle" title="Toggle Light/Dark Theme">
+                        <i class="fa-solid fa-moon"></i>
+                    </button>
+                </div>
             </div>
         </div>
     </nav>
@@ -854,7 +866,7 @@
                 <span id="typed"></span>
             </div>
             <div class="hero-meta" data-aos="fade-up" data-aos-delay="300">
-                <span><i class="fa-solid fa-location-dot"></i> Thakurgaon, Bangladesh</span>
+                <span><i class="fa-solid fa-location-dot"></i> <span data-i18n="hero_loc">Thakurgaon, Bangladesh</span></span>
                 <span><i class="fa-solid fa-envelope"></i> <a href="mailto:farshidrupon@gmail.com" style="color: inherit; text-decoration: none;">farshidrupon@gmail.com</a></span>
                 <span><i class="fa-solid fa-phone"></i> <a href="tel:+8801711305367" style="color: inherit; text-decoration: none;">+880 1711-305367</a></span>
             </div>
@@ -865,15 +877,15 @@
                 <a href="https://wa.me/8801711305367" target="_blank" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
             </div>
 
-            <a href="#contact" class="btn" data-aos="fade-up" data-aos-delay="400">Get In Touch</a>
+            <a href="#contact" class="btn" data-aos="fade-up" data-aos-delay="400" data-i18n="btn_contact">Get In Touch</a>
         </div>
     </header>
 
     <!-- Professional Summary -->
     <section id="summary" data-aos="fade-up">
-        <h2 class="section-title">Professional Summary</h2>
+        <h2 class="section-title" data-i18n="summary_title">Professional Summary</h2>
         <div class="card">
-            <p style="font-size: 1.05rem; line-height: 1.7;">
+            <p style="font-size: 1.05rem; line-height: 1.7;" data-i18n="summary_desc">
                 Adaptable and results-driven professional with over a decade of cross-functional experience in technical development, operational compliance, and project management. Recognized for strong analytical problem-solving, meticulous attention to detail, and the ability to optimize processes for maximum efficiency. Adept at managing complex workflows, building cross-industry partnerships, and consistently delivering high-quality results across dynamic work environments.
             </p>
         </div>
@@ -881,26 +893,26 @@
 
     <!-- Personal Overview -->
     <section id="about" data-aos="fade-up">
-        <h2 class="section-title">Personal Overview</h2>
+        <h2 class="section-title" data-i18n="about_title">Personal Overview</h2>
         <div class="grid-2">
             <div class="card">
-                <h3><i class="fa-solid fa-user-check" style="color: var(--primary);"></i> Key Details</h3>
+                <h3><i class="fa-solid fa-user-check" style="color: var(--primary);"></i> <span data-i18n="about_details">Key Details</span></h3>
                 <br>
-                <p><strong>Father's Name:</strong> Md. Mofidul Haque</p>
-                <p><strong>Mother's Name:</strong> Mst. Fardusi Begum</p>
-                <p><strong>Date of Birth:</strong> October 20, 1991</p>
-                <p><strong>Height:</strong> 5'7"</p>
-                <p><strong>Weight:</strong> 73 kg</p>
-                <p><strong>Nationality:</strong> Bangladeshi</p>
-                <p><strong>Religion:</strong> Islam</p>
-                <p><strong>Marital Status:</strong> Married</p>
+                <p><strong data-i18n="lbl_father">Father's Name:</strong> Md. Mofidul Haque</p>
+                <p><strong data-i18n="lbl_mother">Mother's Name:</strong> Mst. Fardusi Begum</p>
+                <p><strong data-i18n="lbl_dob">Date of Birth:</strong> October 20, 1991</p>
+                <p><strong data-i18n="lbl_height">Height:</strong> 5'7"</p>
+                <p><strong data-i18n="lbl_weight">Weight:</strong> 73 kg</p>
+                <p><strong data-i18n="lbl_nationality">Nationality:</strong> Bangladeshi</p>
+                <p><strong data-i18n="lbl_religion">Religion:</strong> Islam</p>
+                <p><strong data-i18n="lbl_marital">Marital Status:</strong> Married</p>
             </div>
             <div class="card">
-                <h3><i class="fa-solid fa-id-card" style="color: var(--primary);"></i> Expertise & Qualifications</h3>
+                <h3><i class="fa-solid fa-id-card" style="color: var(--primary);"></i> <span data-i18n="about_expertise">Expertise & Qualifications</span></h3>
                 <br>
-                <p><strong>Driving License:</strong> Valid Motorcycle License</p>
-                <p><strong>Languages:</strong> Bengali (Native), English (Proficient)</p>
-                <p style="margin-top: 0.5rem;"><strong>Core Competencies:</strong></p>
+                <p><strong data-i18n="lbl_driving">Driving License:</strong> Valid Motorcycle License</p>
+                <p><strong data-i18n="lbl_languages">Languages:</strong> Bengali (Native), English (Proficient)</p>
+                <p style="margin-top: 0.5rem;"><strong data-i18n="lbl_competencies">Core Competencies:</strong></p>
                 <div class="skills-tag-container">
                     <span class="skill-tag">Decipher (Forsta)</span>
                     <span class="skill-tag">HTML5 & CSS3</span>
@@ -913,14 +925,14 @@
         </div>
     </section>
 
-    <!-- Work Experience Section with Filtering -->
+    <!-- Work Experience Section -->
     <section id="experience">
-        <h2 class="section-title" data-aos="fade-up">Work Experience</h2>
+        <h2 class="section-title" data-aos="fade-up" data-i18n="exp_title">Work Experience</h2>
         
         <div class="filter-container" data-aos="fade-up">
-            <button class="filter-btn active" onclick="filterTimeline('all')">All Roles</button>
-            <button class="filter-btn" onclick="filterTimeline('sp')">Survey Programming</button>
-            <button class="filter-btn" onclick="filterTimeline('ops')">Legal & Operations</button>
+            <button class="filter-btn active" onclick="filterTimeline('all')" data-i18n="btn_filter_all">All Roles</button>
+            <button class="filter-btn" onclick="filterTimeline('sp')" data-i18n="btn_filter_sp">Survey Programming</button>
+            <button class="filter-btn" onclick="filterTimeline('ops')" data-i18n="btn_filter_ops">Legal & Operations</button>
         </div>
 
         <div class="timeline">
@@ -1003,9 +1015,9 @@
 
     <!-- Code & Survey Logic Showcase -->
     <section id="showcase" data-aos="fade-up">
-        <h2 class="section-title">Survey Logic Showcase</h2>
+        <h2 class="section-title" data-i18n="showcase_title">Survey Logic Showcase</h2>
         <div class="card">
-            <p style="margin-bottom: 1rem; font-size: 0.95rem;">Interactive snippets illustrating complex survey programming, validation, and security techniques:</p>
+            <p style="margin-bottom: 1rem; font-size: 0.95rem;" data-i18n="showcase_desc">Interactive snippets illustrating complex survey programming, validation, and security techniques:</p>
             
             <div class="showcase-tabs">
                 <button class="tab-btn active" onclick="switchTab('decipher')">Decipher XML Logic</button>
@@ -1027,13 +1039,11 @@
 
             <pre id="tab-js" class="code-snippet"><code>// Client-Side Security & Dynamic Validation Hook
 $(document).ready(function() {
-    // Detect Copy/Paste Fraud in Open End Fields
     $('#Q_Comments').on('paste', function(e) {
         console.warn("Paste activity flagged for fraud audit.");
         $('#honeypot_flag').val('PASTE_DETECTED');
     });
 
-    // Enforce Exclusive Selection Logic
     $('.exclusive-checkbox').change(function() {
         if($(this).is(':checked')) {
             $('.standard-checkbox').prop('checked', false);
@@ -1045,7 +1055,7 @@ $(document).ready(function() {
 
     <!-- Academic Qualifications -->
     <section id="education">
-        <h2 class="section-title" data-aos="fade-up">Academic Qualifications</h2>
+        <h2 class="section-title" data-aos="fade-up" data-i18n="edu_title">Academic Qualifications</h2>
         <div class="edu-grid">
 
             <div class="edu-grid-item" data-aos="fade-up">
@@ -1054,12 +1064,12 @@ $(document).ready(function() {
                 
                 <ul class="edu-timeline-list">
                     <li>
-                        <span class="edu-label">Subject</span>
+                        <span class="edu-label" data-i18n="lbl_subject">Subject</span>
                         <span class="edu-colon">:</span>
                         <span class="edu-val">Bachelor of Laws</span>
                     </li>
                     <li>
-                        <span class="edu-label">Result</span>
+                        <span class="edu-label" data-i18n="lbl_result">Result</span>
                         <span class="edu-colon">:</span>
                         <span class="edu-val">2nd Class</span>
                     </li>
@@ -1072,12 +1082,12 @@ $(document).ready(function() {
                 
                 <ul class="edu-timeline-list">
                     <li>
-                        <span class="edu-label">Subject</span>
+                        <span class="edu-label" data-i18n="lbl_subject">Subject</span>
                         <span class="edu-colon">:</span>
                         <span class="edu-val">Political Science</span>
                     </li>
                     <li>
-                        <span class="edu-label">Result</span>
+                        <span class="edu-label" data-i18n="lbl_result">Result</span>
                         <span class="edu-colon">:</span>
                         <span class="edu-val">CGPA: 2.51 (out of 4)</span>
                     </li>
@@ -1090,12 +1100,12 @@ $(document).ready(function() {
                 
                 <ul class="edu-timeline-list">
                     <li>
-                        <span class="edu-label">Subject</span>
+                        <span class="edu-label" data-i18n="lbl_subject">Subject</span>
                         <span class="edu-colon">:</span>
                         <span class="edu-val">Computer Science</span>
                     </li>
                     <li>
-                        <span class="edu-label">Result</span>
+                        <span class="edu-label" data-i18n="lbl_result">Result</span>
                         <span class="edu-colon">:</span>
                         <span class="edu-val">GPA: 3.50 (out of 5)</span>
                     </li>
@@ -1108,12 +1118,12 @@ $(document).ready(function() {
                 
                 <ul class="edu-timeline-list">
                     <li>
-                        <span class="edu-label">Subject</span>
+                        <span class="edu-label" data-i18n="lbl_subject">Subject</span>
                         <span class="edu-colon">:</span>
                         <span class="edu-val">Computer Science</span>
                     </li>
                     <li>
-                        <span class="edu-label">Result</span>
+                        <span class="edu-label" data-i18n="lbl_result">Result</span>
                         <span class="edu-colon">:</span>
                         <span class="edu-val">GPA: 3.36 (out of 5)</span>
                     </li>
@@ -1125,7 +1135,7 @@ $(document).ready(function() {
     
     <!-- Image Gallery Section -->
     <section id="gallery" data-aos="fade-up">
-        <h2 class="section-title">My Gallery</h2>
+        <h2 class="section-title" data-i18n="gallery_title">My Gallery</h2>
         <div class="card">
             <div class="scrollable-gallery-wrapper" tabindex="0">
                 <div class="gallery-container">
@@ -1160,30 +1170,30 @@ $(document).ready(function() {
         </div>
     </div>
     
-    <!-- Live Interactive Contact Section -->
+    <!-- Contact Section -->
     <section id="contact" data-aos="fade-up">
-        <h2 class="section-title">Contact & Social Channels</h2>
+        <h2 class="section-title" data-i18n="contact_title">Contact & Social Channels</h2>
         <div class="card">
             <div class="contact-layout">
                 <div class="contact-grid">
                     <div class="info-group">
                         <i class="fa-solid fa-location-dot"></i>
                         <div>
-                            <strong>Address</strong>
-                            <p>Muslim Nagar, Thakurgaon Sadar, Thakurgaon-5100</p>
+                            <strong data-i18n="lbl_address">Address</strong>
+                            <p data-i18n="val_address">Muslim Nagar, Thakurgaon Sadar, Thakurgaon-5100</p>
                         </div>
                     </div>
                     <div class="info-group">
                         <i class="fa-solid fa-envelope"></i>
                         <div>
-                            <strong>Email</strong>
+                            <strong data-i18n="lbl_email">Email</strong>
                             <p><a href="mailto:farshidrupon@gmail.com">farshidrupon@gmail.com</a></p>
                         </div>
                     </div>
                     <div class="info-group">
                         <i class="fa-solid fa-phone"></i>
                         <div>
-                            <strong>Phone</strong>
+                            <strong data-i18n="lbl_phone">Phone</strong>
                             <p><a href="tel:+8801711305367">+880 1711-305367</a></p>
                         </div>
                     </div>
@@ -1207,21 +1217,20 @@ $(document).ready(function() {
                     </div>
                 </div>
 
-                <!-- Live Contact Form -->
                 <form id="contactForm" class="contact-form">
                     <div class="form-group">
-                        <label for="senderName">Your Name</label>
+                        <label for="senderName" data-i18n="lbl_form_name">Your Name</label>
                         <input type="text" id="senderName" required placeholder="John Doe">
                     </div>
                     <div class="form-group">
-                        <label for="senderEmail">Your Email</label>
+                        <label for="senderEmail" data-i18n="lbl_form_email">Your Email</label>
                         <input type="email" id="senderEmail" required placeholder="name@example.com">
                     </div>
                     <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" rows="4" required placeholder="Hello Farshid, I would like to discuss a survey project..."></textarea>
+                        <label for="message" data-i18n="lbl_form_msg">Message</label>
+                        <textarea id="message" rows="4" required placeholder="Hello Farshid, I would like to discuss a project..."></textarea>
                     </div>
-                    <button type="submit" class="btn">Send Message</button>
+                    <button type="submit" class="btn" data-i18n="btn_send">Send Message</button>
                     <div id="form-status"></div>
                 </form>
             </div>
@@ -1229,11 +1238,149 @@ $(document).ready(function() {
     </section>
     
     <footer>
-        <p>© 2026 Farshid Rupon. All rights reserved.</p>
+        <p>© 2026 Farshid Rupon. <span data-i18n="footer_rights">All rights reserved.</span></p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+        // Dictionary for English & Bengali Translations
+        const i18n = {
+            en: {
+                nav_summary: "Summary",
+                nav_about: "About",
+                nav_exp: "Experience",
+                nav_code: "Code Logic",
+                nav_edu: "Education",
+                nav_gallery: "Gallery",
+                nav_contact: "Contact",
+                hero_loc: "Thakurgaon, Bangladesh",
+                btn_contact: "Get In Touch",
+                summary_title: "Professional Summary",
+                summary_desc: "Adaptable and results-driven professional with over a decade of cross-functional experience in technical development, operational compliance, and project management. Recognized for strong analytical problem-solving, meticulous attention to detail, and the ability to optimize processes for maximum efficiency. Adept at managing complex workflows, building cross-industry partnerships, and consistently delivering high-quality results across dynamic work environments.",
+                about_title: "Personal Overview",
+                about_details: "Key Details",
+                about_expertise: "Expertise & Qualifications",
+                lbl_father: "Father's Name:",
+                lbl_mother: "Mother's Name:",
+                lbl_dob: "Date of Birth:",
+                lbl_height: "Height:",
+                lbl_weight: "Weight:",
+                lbl_nationality: "Nationality:",
+                lbl_religion: "Religion:",
+                lbl_marital: "Marital Status:",
+                lbl_driving: "Driving License:",
+                lbl_languages: "Languages:",
+                lbl_competencies: "Core Competencies:",
+                exp_title: "Work Experience",
+                btn_filter_all: "All Roles",
+                btn_filter_sp: "Survey Programming",
+                btn_filter_ops: "Legal & Operations",
+                showcase_title: "Survey Logic Showcase",
+                showcase_desc: "Interactive snippets illustrating complex survey programming, validation, and security techniques:",
+                edu_title: "Academic Qualifications",
+                lbl_subject: "Subject",
+                lbl_result: "Result",
+                gallery_title: "My Gallery",
+                contact_title: "Contact & Social Channels",
+                lbl_address: "Address",
+                val_address: "Muslim Nagar, Thakurgaon Sadar, Thakurgaon-5100",
+                lbl_email: "Email",
+                lbl_phone: "Phone",
+                lbl_form_name: "Your Name",
+                lbl_form_email: "Your Email",
+                lbl_form_msg: "Message",
+                btn_send: "Send Message",
+                footer_rights: "All rights reserved.",
+                typed: [
+                    'Survey Design Programmer at Analyticsify Research',
+                    'Decipher (Forsta) & Data Automation Specialist',
+                    'Legal Operations & Paralegal Professional'
+                ]
+            },
+            bn: {
+                nav_summary: "সারসংক্ষেপ",
+                nav_about: "আমার সম্পর্কে",
+                nav_exp: "অভিজ্ঞতা",
+                nav_code: "কোড লজিক",
+                nav_edu: "শিক্ষা",
+                nav_gallery: "গ্যালারি",
+                nav_contact: "যোগাযোগ",
+                hero_loc: "ঠাকুরগাঁও, বাংলাদেশ",
+                btn_contact: "যোগাযোগ করুন",
+                summary_title: "পেশাগত সারসংক্ষেপ",
+                summary_desc: "কারিগরি উন্নয়ন, অপারেশনাল কমপ্লায়েন্স এবং প্রজেক্ট ম্যানেজমেন্টে এক দশকেরও বেশি অভিজ্ঞতা সম্পন্ন দক্ষ ও ফলাফল-ভিত্তিক পেশাদার। জটিল কর্মপ্রবাহ পরিচালনা, নতুন প্রযুক্তি দ্রুত বাস্তবায়ন এবং গুণগত মান বজায় রেখে দক্ষতা অর্জনে প্রতিশ্রুতিবদ্ধ।",
+                about_title: "ব্যক্তিগত বিবরণ",
+                about_details: "ব্যক্তিগত তথ্য",
+                about_expertise: "দক্ষতা ও যোগ্যতা",
+                lbl_father: "পিতার নাম:",
+                lbl_mother: "মাতার নাম:",
+                lbl_dob: "জন্ম তারিখ:",
+                lbl_height: "উচ্চতা:",
+                lbl_weight: "ওজন:",
+                lbl_nationality: "জাতীয়তা:",
+                lbl_religion: "ধর্ম:",
+                lbl_marital: "বৈবাহিক অবস্থা:",
+                lbl_driving: "ড্রাইভিং লাইসেন্স:",
+                lbl_languages: "ভাষা:",
+                lbl_competencies: "মূল দক্ষতা:",
+                exp_title: "কর্মসংস্থান ও অভিজ্ঞতা",
+                btn_filter_all: "সকল ভূমিকা",
+                btn_filter_sp: "সার্ভে প্রোগ্রামিং",
+                btn_filter_ops: "আইনি ও অপারেশনস",
+                showcase_title: "সার্ভে লজিক প্রদর্শনী",
+                showcase_desc: "জটিল সার্ভে প্রোগ্রামিং, ভ্যালিডেশন এবং নিরাপত্তা কৌশলের উদাহরণ:",
+                edu_title: "শিক্ষাগত যোগ্যতা",
+                lbl_subject: "বিষয়",
+                lbl_result: "ফলাফল",
+                gallery_title: "গ্যালারি",
+                contact_title: "যোগাযোগ ও সোশ্যাল মিডিয়া",
+                lbl_address: "ঠিকানা",
+                val_address: "মুসলিম নগর, ঠাকুরগাঁও সদর, ঠাকুরগাঁও-৫১০০",
+                lbl_email: "ইমেইল",
+                lbl_phone: "ফোন",
+                lbl_form_name: "আপনার নাম",
+                lbl_form_email: "আপনার ইমেইল",
+                lbl_form_msg: "বার্তা",
+                btn_send: "বার্তা পাঠান",
+                footer_rights: "সর্বস্বত্ব সংরক্ষিত।",
+                typed: [
+                    'অ্যানালিটিক্সিফাই রিসার্চ-এ সার্ভে ডিজাইন প্রোগ্রামার',
+                    'ডিসাইফার (ফোরস্টা) ও ডাটা অটোমেশন স্পেশালিস্ট',
+                    'লিগ্যাল অপারেশনস ও প্যারালেগ্যাল প্রফেশনাল'
+                ]
+            }
+        };
+
+        let currentLang = localStorage.getItem('lang') || 'en';
+        let typedInstance = null;
+
+        function updateLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('lang', lang);
+            document.getElementById('langText').innerText = lang === 'en' ? 'EN' : 'বাংলা';
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (i18n[lang][key]) {
+                    el.innerText = i18n[lang][key];
+                }
+            });
+
+            // Re-initialize Typed animation with chosen language
+            if (typedInstance) typedInstance.destroy();
+            typedInstance = new Typed('#typed', {
+                strings: i18n[lang].typed,
+                typeSpeed: 50,
+                backSpeed: 30,
+                backDelay: 2000,
+                loop: true
+            });
+        }
+
+        document.getElementById('langToggle').addEventListener('click', () => {
+            updateLanguage(currentLang === 'en' ? 'bn' : 'en');
+        });
+
         // Scroll Progress Bar Logic
         window.onscroll = function() {
             let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
@@ -1259,27 +1406,14 @@ $(document).ready(function() {
             }
         });
 
-        // Restore Preferred Theme
+        // Restore Preferred Theme & Language
         if (localStorage.getItem('theme') === 'dark') {
             document.documentElement.setAttribute('data-theme', 'dark');
             themeIcon.className = 'fa-solid fa-sun';
         }
 
-        // Initialize Scroll Animations
         AOS.init({ duration: 800, once: true });
-
-        // Typed.js Initialization
-        var typed = new Typed('#typed', {
-            strings: [
-                'Survey Design Programmer at Analyticsify Research',
-                'Decipher (Forsta) & Data Automation Specialist',
-                'Legal Operations & Paralegal Professional'
-            ],
-            typeSpeed: 50,
-            backSpeed: 30,
-            backDelay: 2000,
-            loop: true
-        });
+        updateLanguage(currentLang);
 
         // Timeline Category Filter
         function filterTimeline(category) {
@@ -1332,17 +1466,18 @@ $(document).ready(function() {
 
         document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeLightbox(); });
 
-        // Contact Form Processing (EmailJS Ready)
+        // Form Processing
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const status = document.getElementById('form-status');
             status.style.color = 'var(--primary)';
-            status.innerText = "Sending message...";
+            status.innerText = currentLang === 'en' ? "Sending message..." : "বার্তা পাঠানো হচ্ছে...";
 
-            // Simulating email dispatch (Integrate emailjs.sendForm here)
             setTimeout(() => {
                 status.style.color = 'green';
-                status.innerText = "Thank you! Your message has been sent successfully.";
+                status.innerText = currentLang === 'en' 
+                    ? "Thank you! Your message has been sent successfully." 
+                    : "ধন্যবাদ! আপনার বার্তা সফলভাবে পাঠানো হয়েছে।";
                 document.getElementById('contactForm').reset();
             }, 1200);
         });
