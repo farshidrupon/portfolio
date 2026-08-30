@@ -63,7 +63,6 @@
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        /* Top Scroll Progress Bar */
         .progress-container {
             position: fixed;
             top: 0;
@@ -81,7 +80,6 @@
             transition: width 0.1s ease-out;
         }
 
-        /* Navigation */
         nav {
             position: fixed;
             top: 0;
@@ -142,7 +140,6 @@
             color: var(--primary);
         }
 
-        /* Toggle Switches */
         .toggle-btn {
             background: var(--surface-solid);
             border: 1px solid var(--border);
@@ -173,7 +170,6 @@
             border-color: var(--primary);
         }
 
-        /* Hero Section */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -281,7 +277,6 @@
             transform: translateY(-2px);
         }
 
-        /* Section Layout */
         section {
             padding: 4rem 1rem;
             max-width: 1100px;
@@ -825,7 +820,6 @@
 </head>
 <body>
 
-    <!-- Scroll Progress Bar -->
     <div class="progress-container">
         <div class="progress-bar" id="progressBar"></div>
     </div>
@@ -844,11 +838,9 @@
                     <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
                 </ul>
                 <div class="nav-controls">
-                    <!-- Language Switcher Toggle (Placed Left of Theme Toggle) -->
                     <button class="toggle-btn" id="langToggle" title="Switch Language / ভাষা পরিবর্তন">
                         <i class="fa-solid fa-globe"></i> <span id="langText">EN</span>
                     </button>
-                    <!-- Theme Toggle -->
                     <button class="toggle-btn icon-only" id="themeToggle" title="Toggle Light/Dark Theme">
                         <i class="fa-solid fa-moon"></i>
                     </button>
@@ -898,20 +890,20 @@
             <div class="card">
                 <h3><i class="fa-solid fa-user-check" style="color: var(--primary);"></i> <span data-i18n="about_details">Key Details</span></h3>
                 <br>
-                <p><strong data-i18n="lbl_father">Father's Name:</strong> Md. Mofidul Haque</p>
-                <p><strong data-i18n="lbl_mother">Mother's Name:</strong> Mst. Fardusi Begum</p>
-                <p><strong data-i18n="lbl_dob">Date of Birth:</strong> October 20, 1991</p>
-                <p><strong data-i18n="lbl_height">Height:</strong> 5'7"</p>
-                <p><strong data-i18n="lbl_weight">Weight:</strong> 73 kg</p>
-                <p><strong data-i18n="lbl_nationality">Nationality:</strong> Bangladeshi</p>
-                <p><strong data-i18n="lbl_religion">Religion:</strong> Islam</p>
-                <p><strong data-i18n="lbl_marital">Marital Status:</strong> Married</p>
+                <p><strong data-i18n="lbl_father">Father's Name:</strong> <span data-i18n="val_father">Md. Mofidul Haque</span></p>
+                <p><strong data-i18n="lbl_mother">Mother's Name:</strong> <span data-i18n="val_mother">Mst. Fardusi Begum</span></p>
+                <p><strong data-i18n="lbl_dob">Date of Birth:</strong> <span data-i18n="val_dob">October 20, 1991</span></p>
+                <p><strong data-i18n="lbl_height">Height:</strong> <span data-i18n="val_height">5'7"</span></p>
+                <p><strong data-i18n="lbl_weight">Weight:</strong> <span data-i18n="val_weight">73 kg</span></p>
+                <p><strong data-i18n="lbl_nationality">Nationality:</strong> <span data-i18n="val_nationality">Bangladeshi</span></p>
+                <p><strong data-i18n="lbl_religion">Religion:</strong> <span data-i18n="val_religion">Islam</span></p>
+                <p><strong data-i18n="lbl_marital">Marital Status:</strong> <span data-i18n="val_marital">Married</span></p>
             </div>
             <div class="card">
                 <h3><i class="fa-solid fa-id-card" style="color: var(--primary);"></i> <span data-i18n="about_expertise">Expertise & Qualifications</span></h3>
                 <br>
-                <p><strong data-i18n="lbl_driving">Driving License:</strong> Valid Motorcycle License</p>
-                <p><strong data-i18n="lbl_languages">Languages:</strong> Bengali (Native), English (Proficient)</p>
+                <p><strong data-i18n="lbl_driving">Driving License:</strong> <span data-i18n="val_driving">Valid Motorcycle License</span></p>
+                <p><strong data-i18n="lbl_languages">Languages:</strong> <span data-i18n="val_languages">Bengali (Native), English (Proficient)</span></p>
                 <p style="margin-top: 0.5rem;"><strong data-i18n="lbl_competencies">Core Competencies:</strong></p>
                 <div class="skills-tag-container">
                     <span class="skill-tag">Decipher (Forsta)</span>
@@ -919,7 +911,7 @@
                     <span class="skill-tag">JavaScript</span>
                     <span class="skill-tag">XML & Python Syntax</span>
                     <span class="skill-tag">SPSS & CSV Processing</span>
-                    <span class="skill-tag">Project Operations</span>
+                    <span class="skill-tag" data-i18n="tag_ops">Project Operations</span>
                 </div>
             </div>
         </div>
@@ -940,73 +932,73 @@
             <div class="timeline-item" data-category="sp" data-aos="fade-up">
                 <div class="timeline-header">
                     <div>
-                        <div class="role-title">Programmer</div>
-                        <div class="company">Analyticsify Research Ltd <span class="dept-tag">(Market Research / SP Team)</span></div>
+                        <div class="role-title" data-i18n="exp1_role">Programmer</div>
+                        <div class="company" data-i18n="exp1_company">Analyticsify Research Ltd <span class="dept-tag">(Market Research / SP Team)</span></div>
                     </div>
-                    <span class="date-badge">01 Dec 2022 – Present</span>
+                    <span class="date-badge" data-i18n="exp1_date">01 Dec 2022 – Present</span>
                 </div>
                 <ul class="responsibilities">
-                    <li><strong>Survey Coding & Development:</strong> Program complex questionnaires into market research platforms such as Decipher (Forsta), Qualtrics, and Confirmit using HTML, CSS, JavaScript, and platform XML/Python syntax.</li>
-                    <li><strong>Logic & Routing Implementation:</strong> Engineer intricate logic patterns including dynamic skip structures, quotas, piping/looping, randomization, and masking to ensure accurate data capture.</li>
-                    <li><strong>Quality Assurance & Testing:</strong> Perform end-to-end alpha/beta testing, debug custom scripts across devices and browsers, and validate logic before pushing field links live.</li>
-                    <li><strong>Data Integration & Cleaning:</strong> Configure structured data export setups (SPSS .sav, CSV, JSON, Excel), map variables, and automate data cleaning scripts for seamless analytics handoffs.</li>
-                    <li><strong>UI/UX Optimization:</strong> Build custom interactive elements (sliders, rank-order tools, media test players) for optimized respondent engagement and responsive mobile rendering.</li>
-                    <li><strong>Field Maintenance:</strong> Monitor live survey operations, perform real-time hotfixes without risking collected data, and update quotas dynamically.</li>
+                    <li data-i18n="exp1_r1"><strong>Survey Coding & Development:</strong> Program complex questionnaires into market research platforms such as Decipher (Forsta), Qualtrics, and Confirmit using HTML, CSS, JavaScript, and platform XML/Python syntax.</li>
+                    <li data-i18n="exp1_r2"><strong>Logic & Routing Implementation:</strong> Engineer intricate logic patterns including dynamic skip structures, quotas, piping/looping, randomization, and masking to ensure accurate data capture.</li>
+                    <li data-i18n="exp1_r3"><strong>Quality Assurance & Testing:</strong> Perform end-to-end alpha/beta testing, debug custom scripts across devices and browsers, and validate logic before pushing field links live.</li>
+                    <li data-i18n="exp1_r4"><strong>Data Integration & Cleaning:</strong> Configure structured data export setups (SPSS .sav, CSV, JSON, Excel), map variables, and automate data cleaning scripts for seamless analytics handoffs.</li>
+                    <li data-i18n="exp1_r5"><strong>UI/UX Optimization:</strong> Build custom interactive elements (sliders, rank-order tools, media test players) for optimized respondent engagement and responsive mobile rendering.</li>
+                    <li data-i18n="exp1_r6"><strong>Field Maintenance:</strong> Monitor live survey operations, perform real-time hotfixes without risking collected data, and update quotas dynamically.</li>
                 </ul>
 
                 <div class="tech-matrix">
-                    <h4>Technical Skill Matrix</h4>
-                    <p><strong>Survey Platforms:</strong> Decipher (Forsta), Qualtrics, Confirmit, Unomer, Alchemer</p>
-                    <p><strong>Programming & Web:</strong> JavaScript, HTML5/CSS3, Python, SQL, XML</p>
-                    <p><strong>Data Formats:</strong> SPSS (.sav), CSV, JSON, Excel, Tableau-ready files</p>
+                    <h4 data-i18n="matrix_title">Technical Skill Matrix</h4>
+                    <p><strong data-i18n="lbl_platforms">Survey Platforms:</strong> Decipher (Forsta), Qualtrics, Confirmit, Unomer, Alchemer</p>
+                    <p><strong data-i18n="lbl_languages_tech">Programming & Web:</strong> JavaScript, HTML5/CSS3, Python, SQL, XML</p>
+                    <p><strong data-i18n="lbl_formats">Data Formats:</strong> SPSS (.sav), CSV, JSON, Excel, Tableau-ready files</p>
                 </div>
             </div>
 
             <div class="timeline-item" data-category="ops" data-aos="fade-up">
                 <div class="timeline-header">
                     <div>
-                        <div class="role-title">Paralegal</div>
-                        <div class="company">RDRS Bangladesh (Thakurgaon)</div>
+                        <div class="role-title" data-i18n="exp2_role">Paralegal</div>
+                        <div class="company" data-i18n="exp2_company">RDRS Bangladesh (Thakurgaon)</div>
                     </div>
-                    <span class="date-badge">18 Jan 2016 – 28 Feb 2022</span>
+                    <span class="date-badge" data-i18n="exp2_date">18 Jan 2016 – 28 Feb 2022</span>
                 </div>
                 <ul class="responsibilities">
-                    <li>Conducted paralegal aid clinics in prisons and Juvenile Development Centres to educate detainees on basic criminal law and judicial procedures.</li>
-                    <li>Referred legal cases to District Legal Aid Committees, NGOs, and constitutional bodies.</li>
-                    <li>Traced families of conflict-affected youth and coordinated sureties for justice agencies.</li>
-                    <li>Compiled operational databases and produced monthly, quarterly, and annual progress reports.</li>
-                    <li>Facilitated Case Coordination Meetings and liaised with law enforcement, judiciary, and health services for legal assistance.</li>
-                    <li>Managed project financial operations including advance processing, voucher adjustments, and VAT/TAX compliance.</li>
+                    <li data-i18n="exp2_r1">Conducted paralegal aid clinics in prisons and Juvenile Development Centres to educate detainees on basic criminal law and judicial procedures.</li>
+                    <li data-i18n="exp2_r2">Referred legal cases to District Legal Aid Committees, NGOs, and constitutional bodies.</li>
+                    <li data-i18n="exp2_r3">Traced families of conflict-affected youth and coordinated sureties for justice agencies.</li>
+                    <li data-i18n="exp2_r4">Compiled operational databases and produced monthly, quarterly, and annual progress reports.</li>
+                    <li data-i18n="exp2_r5">Facilitated Case Coordination Meetings and liaised with law enforcement, judiciary, and health services for legal assistance.</li>
+                    <li data-i18n="exp2_r6">Managed project financial operations including advance processing, voucher adjustments, and VAT/TAX compliance.</li>
                 </ul>
             </div>
 
             <div class="timeline-item" data-category="ops" data-aos="fade-up">
                 <div class="timeline-header">
                     <div>
-                        <div class="role-title">Sales Executive</div>
-                        <div class="company">Grameenphone Authorized Distribution House (Thakurgaon)</div>
+                        <div class="role-title" data-i18n="exp3_role">Sales Executive</div>
+                        <div class="company" data-i18n="exp3_company">Grameenphone Authorized Distribution House (Thakurgaon)</div>
                     </div>
-                    <span class="date-badge">01 Oct 2014 – 30 Sep 2015</span>
+                    <span class="date-badge" data-i18n="exp3_date">01 Oct 2014 – 30 Sep 2015</span>
                 </div>
                 <ul class="responsibilities">
-                    <li>Consistently achieved monthly sales targets for GP products and services.</li>
-                    <li>Managed daily financial settlements and accounts directly with compliance managers.</li>
-                    <li>Participated in strategic retail sales workshops.</li>
+                    <li data-i18n="exp3_r1">Consistently achieved monthly sales targets for GP products and services.</li>
+                    <li data-i18n="exp3_r2">Managed daily financial settlements and accounts directly with compliance managers.</li>
+                    <li data-i18n="exp3_r3">Participated in strategic retail sales workshops.</li>
                 </ul>
             </div>
 
             <div class="timeline-item" data-category="ops" data-aos="fade-up">
                 <div class="timeline-header">
                     <div>
-                        <div class="role-title">Compliance Officer</div>
-                        <div class="company">Grameenphone Authorized Distribution House (Thakurgaon)</div>
+                        <div class="role-title" data-i18n="exp4_role">Compliance Officer</div>
+                        <div class="company" data-i18n="exp4_company">Grameenphone Authorized Distribution House (Thakurgaon)</div>
                     </div>
-                    <span class="date-badge">02 Dec 2013 – 31 Jul 2014</span>
+                    <span class="date-badge" data-i18n="exp4_date">02 Dec 2013 – 31 Jul 2014</span>
                 </div>
                 <ul class="responsibilities">
-                    <li>Audited SIM registration data against national identity records for regulatory compliance.</li>
-                    <li>Managed SIM verification records inside Grameenphone's central system.</li>
-                    <li>Maintained daily operational inventory and sales logging databases.</li>
+                    <li data-i18n="exp4_r1">Audited SIM registration data against national identity records for regulatory compliance.</li>
+                    <li data-i18n="exp4_r2">Managed SIM verification records inside Grameenphone's central system.</li>
+                    <li data-i18n="exp4_r3">Maintained daily operational inventory and sales logging databases.</li>
                 </ul>
             </div>
 
@@ -1020,8 +1012,8 @@
             <p style="margin-bottom: 1rem; font-size: 0.95rem;" data-i18n="showcase_desc">Interactive snippets illustrating complex survey programming, validation, and security techniques:</p>
             
             <div class="showcase-tabs">
-                <button class="tab-btn active" onclick="switchTab('decipher')">Decipher XML Logic</button>
-                <button class="tab-btn" onclick="switchTab('js')">JS Security & Validation</button>
+                <button class="tab-btn active" onclick="switchTab('decipher')" data-i18n="tab_decipher">Decipher XML Logic</button>
+                <button class="tab-btn" onclick="switchTab('js')" data-i18n="tab_js">JS Security & Validation</button>
             </div>
 
             <pre id="tab-decipher" class="code-snippet active"><code>&lt;!-- Decipher (Forsta) Dynamic Loop & Block Randomization --&gt;
@@ -1059,73 +1051,73 @@ $(document).ready(function() {
         <div class="edu-grid">
 
             <div class="edu-grid-item" data-aos="fade-up">
-                <div class="role-title">Bachelor of Laws (LL.B Part 1 Professional Masters)</div>
-                <div class="company" style="margin-top: 0.25rem;">Dinajpur Law College, Dinajpur</div>
+                <div class="role-title" data-i18n="edu1_title">Bachelor of Laws (LL.B Part 1 Professional Masters)</div>
+                <div class="company" style="margin-top: 0.25rem;" data-i18n="edu1_inst">Dinajpur Law College, Dinajpur</div>
                 
                 <ul class="edu-timeline-list">
                     <li>
                         <span class="edu-label" data-i18n="lbl_subject">Subject</span>
                         <span class="edu-colon">:</span>
-                        <span class="edu-val">Bachelor of Laws</span>
+                        <span class="edu-val" data-i18n="edu1_sub">Bachelor of Laws</span>
                     </li>
                     <li>
                         <span class="edu-label" data-i18n="lbl_result">Result</span>
                         <span class="edu-colon">:</span>
-                        <span class="edu-val">2nd Class</span>
+                        <span class="edu-val" data-i18n="edu1_res">2nd Class</span>
                     </li>
                 </ul>
             </div>
 
             <div class="edu-grid-item" data-aos="fade-up">
-                <div class="role-title">Bachelor of Social Science (BSS)</div>
-                <div class="company" style="margin-top: 0.25rem;">Thakurgaon Govt. College, Thakurgaon</div>
+                <div class="role-title" data-i18n="edu2_title">Bachelor of Social Science (BSS)</div>
+                <div class="company" style="margin-top: 0.25rem;" data-i18n="edu2_inst">Thakurgaon Govt. College, Thakurgaon</div>
                 
                 <ul class="edu-timeline-list">
                     <li>
                         <span class="edu-label" data-i18n="lbl_subject">Subject</span>
                         <span class="edu-colon">:</span>
-                        <span class="edu-val">Political Science</span>
+                        <span class="edu-val" data-i18n="edu2_sub">Political Science</span>
                     </li>
                     <li>
                         <span class="edu-label" data-i18n="lbl_result">Result</span>
                         <span class="edu-colon">:</span>
-                        <span class="edu-val">CGPA: 2.51 (out of 4)</span>
+                        <span class="edu-val" data-i18n="edu2_res">CGPA: 2.51 (out of 4)</span>
                     </li>
                 </ul>
             </div>
 
             <div class="edu-grid-item" data-aos="fade-up">
-                <div class="role-title">Higher Secondary Certificate (HSC)</div>
-                <div class="company" style="margin-top: 0.25rem;">Thakurgaon Govt. Technical School & College, Thakurgaon</div>
+                <div class="role-title" data-i18n="edu3_title">Higher Secondary Certificate (HSC)</div>
+                <div class="company" style="margin-top: 0.25rem;" data-i18n="edu3_inst">Thakurgaon Govt. Technical School & College, Thakurgaon</div>
                 
                 <ul class="edu-timeline-list">
                     <li>
                         <span class="edu-label" data-i18n="lbl_subject">Subject</span>
                         <span class="edu-colon">:</span>
-                        <span class="edu-val">Computer Science</span>
+                        <span class="edu-val" data-i18n="edu3_sub">Computer Science</span>
                     </li>
                     <li>
                         <span class="edu-label" data-i18n="lbl_result">Result</span>
                         <span class="edu-colon">:</span>
-                        <span class="edu-val">GPA: 3.50 (out of 5)</span>
+                        <span class="edu-val" data-i18n="edu3_res">GPA: 3.50 (out of 5)</span>
                     </li>
                 </ul>
             </div>
 
             <div class="edu-grid-item" data-aos="fade-up">
-                <div class="role-title">Secondary School Certificate (SSC)</div>
-                <div class="company" style="margin-top: 0.25rem;">Thakurgaon Govt. Technical School & College, Thakurgaon</div>
+                <div class="role-title" data-i18n="edu4_title">Secondary School Certificate (SSC)</div>
+                <div class="company" style="margin-top: 0.25rem;" data-i18n="edu4_inst">Thakurgaon Govt. Technical School & College, Thakurgaon</div>
                 
                 <ul class="edu-timeline-list">
                     <li>
                         <span class="edu-label" data-i18n="lbl_subject">Subject</span>
                         <span class="edu-colon">:</span>
-                        <span class="edu-val">Computer Science</span>
+                        <span class="edu-val" data-i18n="edu4_sub">Computer Science</span>
                     </li>
                     <li>
                         <span class="edu-label" data-i18n="lbl_result">Result</span>
                         <span class="edu-colon">:</span>
-                        <span class="edu-val">GPA: 3.36 (out of 5)</span>
+                        <span class="edu-val" data-i18n="edu4_res">GPA: 3.36 (out of 5)</span>
                     </li>
                 </ul>
             </div>
@@ -1243,7 +1235,7 @@ $(document).ready(function() {
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Dictionary for English & Bengali Translations
+        // Dictionary for Complete English & Bengali Translations
         const i18n = {
             en: {
                 nav_summary: "Summary",
@@ -1261,23 +1253,97 @@ $(document).ready(function() {
                 about_details: "Key Details",
                 about_expertise: "Expertise & Qualifications",
                 lbl_father: "Father's Name:",
+                val_father: "Md. Mofidul Haque",
                 lbl_mother: "Mother's Name:",
+                val_mother: "Mst. Fardusi Begum",
                 lbl_dob: "Date of Birth:",
+                val_dob: "October 20, 1991",
                 lbl_height: "Height:",
+                val_height: "5'7\"",
                 lbl_weight: "Weight:",
+                val_weight: "73 kg",
                 lbl_nationality: "Nationality:",
+                val_nationality: "Bangladeshi",
                 lbl_religion: "Religion:",
+                val_religion: "Islam",
                 lbl_marital: "Marital Status:",
+                val_marital: "Married",
                 lbl_driving: "Driving License:",
+                val_driving: "Valid Motorcycle License",
                 lbl_languages: "Languages:",
+                val_languages: "Bengali (Native), English (Proficient)",
                 lbl_competencies: "Core Competencies:",
+                tag_ops: "Project Operations",
                 exp_title: "Work Experience",
                 btn_filter_all: "All Roles",
                 btn_filter_sp: "Survey Programming",
                 btn_filter_ops: "Legal & Operations",
+                
+                exp1_role: "Programmer",
+                exp1_company: 'Analyticsify Research Ltd <span class="dept-tag">(Market Research / SP Team)</span>',
+                exp1_date: "01 Dec 2022 – Present",
+                exp1_r1: '<strong>Survey Coding & Development:</strong> Program complex questionnaires into market research platforms such as Decipher (Forsta), Qualtrics, and Confirmit using HTML, CSS, JavaScript, and platform XML/Python syntax.',
+                exp1_r2: '<strong>Logic & Routing Implementation:</strong> Engineer intricate logic patterns including dynamic skip structures, quotas, piping/looping, randomization, and masking to ensure accurate data capture.',
+                exp1_r3: '<strong>Quality Assurance & Testing:</strong> Perform end-to-end alpha/beta testing, debug custom scripts across devices and browsers, and validate logic before pushing field links live.',
+                exp1_r4: '<strong>Data Integration & Cleaning:</strong> Configure structured data export setups (SPSS .sav, CSV, JSON, Excel), map variables, and automate data cleaning scripts for seamless analytics handoffs.',
+                exp1_r5: '<strong>UI/UX Optimization:</strong> Build custom interactive elements (sliders, rank-order tools, media test players) for optimized respondent engagement and responsive mobile rendering.',
+                exp1_r6: '<strong>Field Maintenance:</strong> Monitor live survey operations, perform real-time hotfixes without risking collected data, and update quotas dynamically.',
+
+                matrix_title: "Technical Skill Matrix",
+                lbl_platforms: "Survey Platforms:",
+                lbl_languages_tech: "Programming & Web:",
+                lbl_formats: "Data Formats:",
+
+                exp2_role: "Paralegal",
+                exp2_company: "RDRS Bangladesh (Thakurgaon)",
+                exp2_date: "18 Jan 2016 – 28 Feb 2022",
+                exp2_r1: "Conducted paralegal aid clinics in prisons and Juvenile Development Centres to educate detainees on basic criminal law and judicial procedures.",
+                exp2_r2: "Referred legal cases to District Legal Aid Committees, NGOs, and constitutional bodies.",
+                exp2_r3: "Traced families of conflict-affected youth and coordinated sureties for justice agencies.",
+                exp2_r4: "Compiled operational databases and produced monthly, quarterly, and annual progress reports.",
+                exp2_r5: "Facilitated Case Coordination Meetings and liaised with law enforcement, judiciary, and health services for legal assistance.",
+                exp2_r6: "Managed project financial operations including advance processing, voucher adjustments, and VAT/TAX compliance.",
+
+                exp3_role: "Sales Executive",
+                exp3_company: "Grameenphone Authorized Distribution House (Thakurgaon)",
+                exp3_date: "01 Oct 2014 – 30 Sep 2015",
+                exp3_r1: "Consistently achieved monthly sales targets for GP products and services.",
+                exp3_r2: "Managed daily financial settlements and accounts directly with compliance managers.",
+                exp3_r3: "Participated in strategic retail sales workshops.",
+
+                exp4_role: "Compliance Officer",
+                exp4_company: "Grameenphone Authorized Distribution House (Thakurgaon)",
+                exp4_date: "02 Dec 2013 – 31 Jul 2014",
+                exp4_r1: "Audited SIM registration data against national identity records for regulatory compliance.",
+                exp4_r2: "Managed SIM verification records inside Grameenphone's central system.",
+                exp4_r3: "Maintained daily operational inventory and sales logging databases.",
+
                 showcase_title: "Survey Logic Showcase",
                 showcase_desc: "Interactive snippets illustrating complex survey programming, validation, and security techniques:",
+                tab_decipher: "Decipher XML Logic",
+                tab_js: "JS Security & Validation",
+
                 edu_title: "Academic Qualifications",
+                edu1_title: "Bachelor of Laws (LL.B Part 1 Professional Masters)",
+                edu1_inst: "Dinajpur Law College, Dinajpur",
+                edu1_sub: "Bachelor of Laws",
+                edu1_res: "2nd Class",
+
+                edu2_title: "Bachelor of Social Science (BSS)",
+                edu2_inst: "Thakurgaon Govt. College, Thakurgaon",
+                edu2_sub: "Political Science",
+                edu2_res: "CGPA: 2.51 (out of 4)",
+
+                edu3_title: "Higher Secondary Certificate (HSC)",
+                edu3_inst: "Thakurgaon Govt. Technical School & College, Thakurgaon",
+                edu3_sub: "Computer Science",
+                edu3_res: "GPA: 3.50 (out of 5)",
+
+                edu4_title: "Secondary School Certificate (SSC)",
+                edu4_inst: "Thakurgaon Govt. Technical School & College, Thakurgaon",
+                edu4_sub: "Computer Science",
+                edu4_res: "GPA: 3.36 (out of 5)",
+
                 lbl_subject: "Subject",
                 lbl_result: "Result",
                 gallery_title: "My Gallery",
@@ -1308,32 +1374,106 @@ $(document).ready(function() {
                 hero_loc: "ঠাকুরগাঁও, বাংলাদেশ",
                 btn_contact: "যোগাযোগ করুন",
                 summary_title: "পেশাগত সারসংক্ষেপ",
-                summary_desc: "কারিগরি উন্নয়ন, অপারেশনাল কমপ্লায়েন্স এবং প্রজেক্ট ম্যানেজমেন্টে এক দশকেরও বেশি অভিজ্ঞতা সম্পন্ন দক্ষ ও ফলাফল-ভিত্তিক পেশাদার। জটিল কর্মপ্রবাহ পরিচালনা, নতুন প্রযুক্তি দ্রুত বাস্তবায়ন এবং গুণগত মান বজায় রেখে দক্ষতা অর্জনে প্রতিশ্রুতিবদ্ধ।",
+                summary_desc: "কারিগরি উন্নয়ন, অপারেশনাল কমপ্লায়েন্স এবং প্রজেক্ট ম্যানেজমেন্টে এক দশকেরও বেশি সময় ধরে বিস্তৃত অভিজ্ঞতাসম্পন্ন এক অভিযোজনযোগ্য এবং ফলাফল-ভিত্তিক পেশাদার। বিশ্লেষণাত্মক সমস্যা সমাধান, সূক্ষ্ম মনোযোগ এবং সর্বোচ্চ দক্ষতার জন্য প্রক্রিয়া অপ্টিমাইজ করার ক্ষমতার জন্য স্বীকৃত। জটিল কাজের গতিশীল পরিবেশ বজায় রাখতে ও বিভিন্ন সংস্থার সাথে যৌথ অংশীদারিত্বে উচ্চমানের ফলাফল প্রদান করতে দক্ষ।",
                 about_title: "ব্যক্তিগত বিবরণ",
                 about_details: "ব্যক্তিগত তথ্য",
                 about_expertise: "দক্ষতা ও যোগ্যতা",
                 lbl_father: "পিতার নাম:",
+                val_father: "মোঃ মফিজুল হক",
                 lbl_mother: "মাতার নাম:",
+                val_mother: "মোছাঃ ফেরদৌসী বেগম",
                 lbl_dob: "জন্ম তারিখ:",
+                val_dob: "২০ অক্টোবর, ১৯৯১",
                 lbl_height: "উচ্চতা:",
+                val_height: "৫ ফুট ৭ ইঞ্চি",
                 lbl_weight: "ওজন:",
+                val_weight: "৭৩ কেজি",
                 lbl_nationality: "জাতীয়তা:",
+                val_nationality: "বাংলাদেশী",
                 lbl_religion: "ধর্ম:",
+                val_religion: "ইসলাম",
                 lbl_marital: "বৈবাহিক অবস্থা:",
+                val_marital: "বিবাহিত",
                 lbl_driving: "ড্রাইভিং লাইসেন্স:",
+                val_driving: "বৈধ মোটরসাইকেল লাইসেন্স",
                 lbl_languages: "ভাষা:",
+                val_languages: "বাংলা (মাতৃভাষা), ইংরেজি (দক্ষ)",
                 lbl_competencies: "মূল দক্ষতা:",
+                tag_ops: "প্রজেক্ট অপারেশনস",
                 exp_title: "কর্মসংস্থান ও অভিজ্ঞতা",
                 btn_filter_all: "সকল ভূমিকা",
                 btn_filter_sp: "সার্ভে প্রোগ্রামিং",
                 btn_filter_ops: "আইনি ও অপারেশনস",
+                
+                exp1_role: "প্রোগ্রামার",
+                exp1_company: 'অ্যানালিটিক্সিফাই রিসার্চ লিমিটেড <span class="dept-tag">(মার্কেট রিসার্চ / এসপি টিম)</span>',
+                exp1_date: "০১ ডিসেম্বর ২০২২ – বর্তমান",
+                exp1_r1: '<strong>সার্ভে কোডিং ও ডেভেলপমেন্ট:</strong> HTML, CSS, JavaScript এবং XML/Python ব্যবহার করে Decipher (Forsta), Qualtrics এবং Confirmit-এর মত মার্কেট রিসার্চ প্ল্যাটফর্মে জটিল প্রশ্নাবলী প্রোগ্রামিং করা।',
+                exp1_r2: '<strong>লজিক ও রাউটিং বাস্তবায়ন:</strong> সঠিক ডাটা সংগ্রহের জন্য ডাইনামিক স্কিপ স্ট্রাকচার, কোটা, পাইপিং/লুপিং, র‍্যান্ডমাইজেশন এবং মাস্কিং লজিক প্রস্তুত করা।',
+                exp1_r3: '<strong>কোয়ালিটি অ্যাসুরেন্স ও টেস্টিং:</strong> ফিল্ড লিঙ্ক লাইভ করার আগে বিভিন্ন ডিভাইস ও ব্রাউজারে অ্যান্ড-টু-অ্যান্ড আলফা/বিটা টেস্টিং এবং স্ক্রিপ্ট ডিব্যাগ করা।',
+                exp1_r4: '<strong>ডাটা ইন্টিগ্রেশন ও ক্লিনিং:</strong> SPSS (.sav), CSV, JSON, Excel ডাটা ফরম্যাট কনফিগার করা এবং ডাটা ক্লিনিং স্ক্রিপ্ট স্বয়ংক্রিয় করা।',
+                exp1_r5: '<strong>UI/UX অপটিমাইজেশন:</strong> রেসপন্ডেন্টদের সহজ ব্যবহারের সুবিধার্থে কাস্টম ইন্টারঅ্যাক্টিভ এলিমেন্ট (স্লাইডার, র‍্যাঙ্ক-অর্ডার, মিডিয়া টেস্ট প্লেয়ার) তৈরি করা।',
+                exp1_r6: '<strong>ফিল্ড মেইনটেন্যান্স:</strong> লাইভ সার্ভে অপারেশন পর্যবেক্ষণ করা, সংগৃহীত ডাটা অক্ষুণ্ণ রেখে রিয়েল-টাইম সমাধান প্রদান ও কোটা আপডেট করা।',
+
+                matrix_title: "টেকনিক্যাল স্কিল ম্যাট্রিক্স",
+                lbl_platforms: "সার্ভে প্ল্যাটফর্ম:",
+                lbl_languages_tech: "প্রোগ্রামিং ও ওয়েব:",
+                lbl_formats: "ডাটা ফরম্যাট:",
+
+                exp2_role: "প্যারালেগ্যাল",
+                exp2_company: "আরডিআরএস বাংলাদেশ (ঠাকুরগাঁও)",
+                exp2_date: "১৮ জানুয়ারি ২০১৬ – ২৮ ফেব্রুয়ারি ২০২২",
+                exp2_r1: "কারাগার এবং কিশোর উন্নয়ন কেন্দ্রে আটক ব্যক্তিদের মৌলিক ফৌজদারি আইন এবং বিচারিক প্রক্রিয়া সম্পর্কে অবহিত করতে প্যারালেগ্যাল এইড ক্লিনিক পরিচালনা।",
+                exp2_r2: "জেলা লিগ্যাল এইড কমিটি, এনজিও এবং সাংবিধানিক সংস্থায় আইনি মামলা রেফার করা।",
+                exp2_r3: "সহিংসতায় ক্ষতিগ্রস্ত যুবকদের পরিবার খুঁজে বের করা এবং জামিনদারদের সমন্বয় সাধন করা।",
+                exp2_r4: "অপারেশনাল ডেটাবেস তৈরি এবং মাসিক, ত্রৈমাসিক এবং বার্ষিক অগ্রগতি প্রতিবেদন প্রস্তুত করা।",
+                exp2_r5: "মামলা সমন্বয় সভা পরিচালনা এবং আইনি সহায়তার জন্য আইনশৃঙ্খলা রক্ষাকারী বাহিনী, বিচার বিভাগ এবং স্বাস্থ্য সেবার সাথে যোগাযোগ রক্ষা করা।",
+                exp2_r6: "অগ্রিম অর্থপ্রক্রিয়া, ভাউচার সমন্বয় এবং ভ্যাট/ট্যাক্স কমপ্লায়েন্স সহ প্রকল্পের আর্থিক কার্যক্রম পরিচালনা।",
+
+                exp3_role: "সেলস এক্সিকিউটিভ",
+                exp3_company: "গ্রামীণফোন অনুমোদিত ডিস্ট্রিবিউশন হাউস (ঠাকুরগাঁও)",
+                exp3_date: "০১ অক্টোবর ২০১৪ – ৩০ সেপ্টেম্বর ২০১৫",
+                exp3_r1: "গ্রামীণফোনের পণ্য ও সেবার জন্য মাসিক বিক্রয়ের লক্ষ্যমাত্রা ধারাবাহিকভাবে অর্জিত।",
+                exp3_r2: "কমপ্লায়েন্স ম্যানেজারদের সাথে দৈনিক আর্থিক লেনদেন এবং হিসাব পরিচালনা।",
+                exp3_r3: "কৌশলগত খুচরা বিক্রয় কর্মশালায় অংশগ্রহণ।",
+
+                exp4_role: "কমপ্লায়েন্স অফিসার",
+                exp4_company: "গ্রামীণফোন অনুমোদিত ডিস্ট্রিবিউশন হাউস (ঠাকুরগাঁও)",
+                exp4_date: "০২ ডিসেম্বর ২০১৩ – ৩১ জুলাই ২০১৪",
+                exp4_r1: "নিয়ন্ত্রক কমপ্লায়েন্সের জন্য জাতীয় পরিচয়পত্রের তথ্যের সাথে সিম রেজিস্ট্রেশন ডাটা নিরীক্ষা।",
+                exp4_r2: "গ্রামীণফোনের কেন্দ্রীয় সিস্টেমে সিম ভেরিফিকেশন রেকর্ড পরিচালনা।",
+                exp4_r3: "দৈনিক অপারেশনাল ইনভেন্টরি এবং বিক্রয় লগিং ডেটাবেস রক্ষণাবেক্ষণ।",
+
                 showcase_title: "সার্ভে লজিক প্রদর্শনী",
                 showcase_desc: "জটিল সার্ভে প্রোগ্রামিং, ভ্যালিডেশন এবং নিরাপত্তা কৌশলের উদাহরণ:",
+                tab_decipher: "ডিসাইফার XML লজিক",
+                tab_js: "JS সিকিউরিটি ও ভ্যালিডেশন",
+
                 edu_title: "শিক্ষাগত যোগ্যতা",
-                lbl_subject: "বিষয়",
+                edu1_title: "ব্যাচেলর অব লজ (এলএল.বি পার্ট ১ প্রফেশনাল মাস্টার্স)",
+                edu1_inst: "দিনাজপুর ল কলেজ, দিনাজপুর",
+                edu1_sub: "আইন (ব্যাচেলর অব লজ)",
+                edu1_res: "২য় শ্রেণি",
+
+                edu2_title: "ব্যাচেলর অব সোশ্যাল সাইন্স (বিএসএস)",
+                edu2_inst: "ঠাকুরগাঁও সরকারি কলেজ, ঠাকুরগাঁও",
+                edu2_sub: "রাষ্ট্রবিজ্ঞান",
+                edu2_res: "সিজিপিএ: ২.৫১ (৪ এর মধ্যে)",
+
+                edu3_title: "উচ্চ মাধ্যমিক সার্টিফিকেট (এইচএসসি)",
+                edu3_inst: "ঠাকুরগাঁও সরকারি টেকনিক্যাল স্কুল ও কলেজ, ঠাকুরগাঁও",
+                edu3_sub: "কম্পিউটার সাইন্স",
+                edu3_res: "জিএইচপিএ: ৩.৫০ (৫ এর মধ্যে)",
+
+                edu4_title: "মাধ্যমিক স্কুল সার্টিফিকেট (এসএসসি)",
+                edu4_inst: "ঠাকুরগাঁও সরকারি টেকনিক্যাল স্কুল ও কলেজ, ঠাকুরগাঁও",
+                edu4_sub: "কম্পিউটার সাইন্স",
+                edu4_res: "জিএইচপিএ: ৩.৩৬ (৫ এর মধ্যে)",
+
+                lbl_subject: "বিষয়",
                 lbl_result: "ফলাফল",
                 gallery_title: "গ্যালারি",
-                contact_title: "যোগাযোগ ও সোশ্যাল মিডিয়া",
+                contact_title: "যোগাযোগ ও সোশ্যাল মিডিয়া",
                 lbl_address: "ঠিকানা",
                 val_address: "মুসলিম নগর, ঠাকুরগাঁও সদর, ঠাকুরগাঁও-৫১০০",
                 lbl_email: "ইমেইল",
@@ -1362,11 +1502,10 @@ $(document).ready(function() {
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
                 if (i18n[lang][key]) {
-                    el.innerText = i18n[lang][key];
+                    el.innerHTML = i18n[lang][key];
                 }
             });
 
-            // Re-initialize Typed animation with chosen language
             if (typedInstance) typedInstance.destroy();
             typedInstance = new Typed('#typed', {
                 strings: i18n[lang].typed,
@@ -1381,7 +1520,6 @@ $(document).ready(function() {
             updateLanguage(currentLang === 'en' ? 'bn' : 'en');
         });
 
-        // Scroll Progress Bar Logic
         window.onscroll = function() {
             let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
             let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -1389,7 +1527,6 @@ $(document).ready(function() {
             document.getElementById("progressBar").style.width = scrolled + "%";
         };
 
-        // Dark / Light Theme Toggle Logic
         const themeToggleBtn = document.getElementById('themeToggle');
         const themeIcon = themeToggleBtn.querySelector('i');
 
@@ -1406,7 +1543,6 @@ $(document).ready(function() {
             }
         });
 
-        // Restore Preferred Theme & Language
         if (localStorage.getItem('theme') === 'dark') {
             document.documentElement.setAttribute('data-theme', 'dark');
             themeIcon.className = 'fa-solid fa-sun';
@@ -1415,7 +1551,6 @@ $(document).ready(function() {
         AOS.init({ duration: 800, once: true });
         updateLanguage(currentLang);
 
-        // Timeline Category Filter
         function filterTimeline(category) {
             document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
@@ -1430,7 +1565,6 @@ $(document).ready(function() {
             });
         }
 
-        // Code Showcase Tab Switcher
         function switchTab(tabName) {
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             document.querySelectorAll('.code-snippet').forEach(code => code.classList.remove('active'));
@@ -1439,7 +1573,6 @@ $(document).ready(function() {
             document.getElementById(`tab-${tabName}`).classList.add('active');
         }
 
-        // Lightbox Popup Logic
         let zoomLevel = 1;
         const modal = document.getElementById('lightboxModal');
         const lightboxImg = document.getElementById('lightboxImg');
@@ -1466,7 +1599,6 @@ $(document).ready(function() {
 
         document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeLightbox(); });
 
-        // Form Processing
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const status = document.getElementById('form-status');
