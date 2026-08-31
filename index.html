@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Farshid Rupon | Survey Programmer</title>
-    
+
     <!-- Meta SEO & OpenGraph Social Tags -->
     <meta name="description" content="Professional portfolio of Farshid Rupon, an experienced Survey Programmer specializing in Decipher (Forsta), Qualtrics, survey logic, custom scripting, QA, data processing, and research technology.">
     <meta property="og:title" content="Farshid Rupon | Survey Programmer">
     <meta property="og:description" content="Explore Farshid Rupon's survey programming expertise, technical skills, professional experience, and research technology background.">
-    <meta property="og:image" content="profile.jpg">
+    <meta property="og:image" content="https://farshidrupon.is-local.org/profile.jpg">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://farshidrupon.is-local.org/">
     <meta property="og:site_name" content="Farshid Rupon | Survey Programmer">
@@ -17,10 +17,12 @@
     <meta name="theme-color" content="#0f172a">
     <link rel="canonical" href="https://farshidrupon.is-local.org/">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
+
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
@@ -37,9 +39,10 @@
             --border: #e2e8f0;
             --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
             --glass-backdrop: blur(12px);
+            --nav-height: 76px;
         }
 
-        /* Full Black Dark Theme Updates */
+        /* Full Black Dark Theme */
         [data-theme="dark"] {
             --primary: #3b82f6;
             --primary-dark: #60a5fa;
@@ -61,12 +64,34 @@
             scroll-behavior: smooth;
         }
 
+        html {
+            scroll-padding-top: calc(var(--nav-height) + 12px);
+        }
+
         body {
             background-color: var(--bg-light);
             color: var(--text-main);
             line-height: 1.6;
             overflow-x: hidden;
             transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        button,
+        input,
+        textarea {
+            font: inherit;
+        }
+
+        button:focus-visible,
+        a:focus-visible,
+        input:focus-visible,
+        textarea:focus-visible {
+            outline: 3px solid rgba(96, 165, 250, 0.65);
+            outline-offset: 3px;
         }
 
         .progress-container {
@@ -76,7 +101,8 @@
             width: 100%;
             height: 4px;
             background: transparent;
-            z-index: 1001;
+            z-index: 1002;
+            pointer-events: none;
         }
 
         .progress-bar {
@@ -88,7 +114,8 @@
 
         nav {
             position: fixed;
-            top: 0;
+            top: 4px;
+            left: 0;
             width: 100%;
             background: var(--surface);
             backdrop-filter: var(--glass-backdrop);
@@ -105,6 +132,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 1rem;
             padding: 0 1rem;
         }
 
@@ -114,27 +142,35 @@
             color: var(--secondary);
             text-decoration: none;
             letter-spacing: -0.02em;
+            white-space: nowrap;
+            flex-shrink: 0;
         }
 
         .nav-right {
             display: flex;
             align-items: center;
-            gap: 1.2rem;
+            justify-content: flex-end;
+            gap: 1rem;
+            min-width: 0;
+            flex: 1;
         }
 
         .nav-controls {
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            flex-shrink: 0;
         }
 
         .nav-links {
             display: flex;
-            gap: 1.2rem;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 0.4rem;
             list-style: none;
+            min-width: 0;
         }
 
-        /* Rounded navigation highlight style matching the All Roles button */
         .nav-links a {
             display: inline-flex;
             align-items: center;
@@ -143,12 +179,12 @@
             color: var(--text-main);
             font-weight: 500;
             font-size: 0.95rem;
-            padding: 0.45rem 0.85rem;
+            padding: 0.45rem 0.75rem;
             border: 1px solid transparent;
             border-radius: 2rem;
             line-height: 1;
             white-space: nowrap;
-            transition: all 0.3s ease;
+            transition: all 0.25s ease;
         }
 
         .nav-links a:hover,
@@ -165,14 +201,15 @@
             height: 38px;
             border-radius: 20px;
             cursor: pointer;
-            display: flex;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
             font-size: 0.85rem;
             font-weight: 600;
             padding: 0 0.75rem;
-            transition: all 0.3s ease;
+            transition: all 0.25s ease;
             gap: 0.3rem;
+            flex-shrink: 0;
         }
 
         .toggle-btn.icon-only {
@@ -189,13 +226,13 @@
         }
 
         .hero {
-            min-height: 100vh;
+            min-height: 100svh;
             display: flex;
             align-items: center;
             justify-content: center;
             background: linear-gradient(135deg, #000000 0%, #0a0a0a 100%);
             color: white;
-            padding: 9rem 1rem 3rem 1rem;
+            padding: calc(var(--nav-height) + 3rem) 1rem 3rem;
             text-align: center;
         }
 
@@ -210,7 +247,7 @@
             border-radius: 50%;
             object-fit: cover;
             border: 5px solid var(--primary);
-            margin: 0 auto 1.5rem auto;
+            margin: 0 auto 1.5rem;
             display: block;
             box-shadow: 0 12px 25px rgba(0, 0, 0, 0.8);
             transition: transform 0.3s ease;
@@ -285,16 +322,18 @@
         }
 
         .btn {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             background: var(--primary);
             color: white;
             padding: 0.8rem 2rem;
-            border-radius: 0.375rem;
+            border-radius: 0.5rem;
             text-decoration: none;
             font-weight: 600;
             border: none;
             cursor: pointer;
-            transition: background 0.3s, transform 0.2s;
+            transition: background 0.25s ease, transform 0.2s ease;
         }
 
         .btn:hover {
@@ -302,10 +341,17 @@
             transform: translateY(-2px);
         }
 
+        .btn:disabled {
+            opacity: 0.65;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
         section {
-            padding: 4rem 1rem;
-            max-width: 1100px;
+            width: min(1100px, calc(100% - 2rem));
+            padding: 4rem 0;
             margin: 0 auto;
+            scroll-margin-top: calc(var(--nav-height) + 12px);
         }
 
         .section-title {
@@ -330,7 +376,7 @@
 
         .grid-2 {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 1.25rem;
         }
 
@@ -351,6 +397,13 @@
             box-shadow: 0 8px 18px -8px rgba(0, 0, 0, 0.28);
         }
 
+        .card h3 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--secondary);
+        }
+
         .aligned-info-list {
             list-style: none;
             padding: 0;
@@ -359,23 +412,21 @@
 
         .aligned-info-list li {
             display: grid;
-            grid-template-columns: 240px 15px 1fr;
+            grid-template-columns: minmax(165px, 240px) 15px minmax(0, 1fr);
             align-items: start;
             font-size: 0.95rem;
             margin-bottom: 0.4rem;
             color: var(--text-main);
         }
 
-        .aligned-info-list .info-label {
-            font-weight: 600;
-        }
-
+        .aligned-info-list .info-label,
         .aligned-info-list .info-colon {
             font-weight: 600;
         }
 
         .aligned-info-list .info-val {
             word-break: break-word;
+            overflow-wrap: anywhere;
         }
 
         .skills-tag-container {
@@ -411,10 +462,11 @@
             font-size: 0.88rem;
             font-weight: 500;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.25s ease;
         }
 
-        .filter-btn.active, .filter-btn:hover {
+        .filter-btn.active,
+        .filter-btn:hover {
             background: var(--primary);
             color: #ffffff;
             border-color: var(--primary);
@@ -422,13 +474,13 @@
 
         .timeline {
             position: relative;
-            padding-left: 1.5rem;
+            padding: 0.15rem 0 0.15rem 1.5rem;
             border-left: 2px solid var(--border);
         }
 
         .timeline-item {
             position: relative;
-            margin: 0 0 1.25rem 0;
+            margin: 0 0 1.25rem;
             padding: 1.25rem 1.25rem 1.25rem 1.5rem;
             background: var(--surface-solid);
             border: 1px solid var(--border);
@@ -444,14 +496,14 @@
         }
 
         .timeline-item.hide {
-            display: none;
+            display: none !important;
         }
 
         .timeline-item::before {
             content: '';
             position: absolute;
             left: -1.9rem;
-            top: 0.2rem;
+            top: 1rem;
             width: 12px;
             height: 12px;
             border-radius: 50%;
@@ -498,7 +550,7 @@
 
         .responsibilities li {
             display: grid;
-            grid-template-columns: 240px 15px 1fr;
+            grid-template-columns: minmax(175px, 240px) 15px minmax(0, 1fr);
             align-items: start;
             margin-bottom: 0.5rem;
             font-size: 0.95rem;
@@ -508,7 +560,7 @@
         }
 
         .responsibilities li::before {
-            content: "•";
+            content: '•';
             position: absolute;
             left: 0;
             top: 0;
@@ -516,16 +568,14 @@
             font-weight: bold;
         }
 
-        .bullet-title {
-            font-weight: 700;
-        }
-
+        .bullet-title,
         .bullet-colon {
             font-weight: 700;
         }
 
         .bullet-text {
             word-break: break-word;
+            overflow-wrap: anywhere;
         }
 
         .tech-matrix {
@@ -545,8 +595,8 @@
 
         .edu-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem 1.5rem;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1.5rem;
             margin-top: 1rem;
         }
 
@@ -579,11 +629,12 @@
 
         .training-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 1.25rem;
         }
 
         .training-card {
+            min-width: 0;
             background: var(--surface-solid);
             border: 1px solid var(--border);
             padding: 1.25rem;
@@ -601,8 +652,10 @@
         .scrollable-gallery-wrapper {
             max-height: 480px;
             overflow-y: auto;
+            overflow-x: hidden;
             padding-right: 8px;
             outline: none;
+            scrollbar-gutter: stable;
         }
 
         .scrollable-gallery-wrapper::-webkit-scrollbar {
@@ -621,13 +674,14 @@
 
         .gallery-container {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1.25rem;
         }
 
         .gallery-item {
             position: relative;
             overflow: hidden;
+            min-width: 0;
             border-radius: 0.75rem;
             box-shadow: var(--shadow);
             background-color: var(--surface-solid);
@@ -658,14 +712,15 @@
             display: none;
             position: fixed;
             z-index: 99999;
-            left: 0;
-            top: 0;
+            inset: 0;
             width: 100vw;
-            height: 100vh;
+            height: 100dvh;
             background-color: rgba(0, 0, 0, 0.95);
             backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
             justify-content: center;
             align-items: center;
+            padding: 1rem;
         }
 
         .lightbox-modal.active {
@@ -673,28 +728,36 @@
         }
 
         .lightbox-img-wrapper {
-            max-width: 85vw;
-            max-height: 85vh;
+            width: min(90vw, 1200px);
+            max-width: 90vw;
+            max-height: 82dvh;
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
+            overflow: auto;
+            overscroll-behavior: contain;
+            touch-action: pinch-zoom;
         }
 
         .lightbox-img-wrapper img {
+            display: block;
             max-width: 100%;
-            max-height: 85vh;
+            max-height: 82dvh;
+            width: auto;
+            height: auto;
             object-fit: contain;
             transition: transform 0.15s ease-out;
             user-select: none;
+            -webkit-user-drag: none;
+            transform-origin: center center;
         }
 
         .lightbox-controls {
             position: absolute;
-            top: 25px;
-            right: 30px;
+            top: max(18px, env(safe-area-inset-top));
+            right: max(18px, env(safe-area-inset-right));
             display: flex;
-            gap: 12px;
+            gap: 10px;
             z-index: 100000;
         }
 
@@ -705,12 +768,12 @@
             width: 42px;
             height: 42px;
             border-radius: 50%;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: background 0.3s;
+            transition: background 0.25s ease;
         }
 
         .lightbox-btn:hover {
@@ -719,7 +782,7 @@
 
         .contact-layout {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
             gap: 2rem;
         }
 
@@ -733,6 +796,7 @@
             display: flex;
             align-items: center;
             gap: 0.85rem;
+            min-width: 0;
         }
 
         .info-group i {
@@ -748,10 +812,15 @@
             font-size: 1.1rem;
         }
 
+        .info-group > div {
+            min-width: 0;
+        }
+
         .info-group a {
             color: var(--primary);
             text-decoration: none;
-            word-break: break-all;
+            word-break: break-word;
+            overflow-wrap: anywhere;
         }
 
         .info-group a:hover {
@@ -776,7 +845,8 @@
             color: var(--secondary);
         }
 
-        .form-group input, .form-group textarea {
+        .form-group input,
+        .form-group textarea {
             width: 100%;
             padding: 0.75rem;
             border-radius: 0.375rem;
@@ -785,17 +855,25 @@
             color: var(--text-main);
             font-size: 0.95rem;
             outline: none;
-            transition: border-color 0.3s;
+            transition: border-color 0.25s ease, box-shadow 0.25s ease;
         }
 
-        .form-group input:focus, .form-group textarea:focus {
+        .form-group input:focus,
+        .form-group textarea:focus {
             border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+        }
+
+        .form-group textarea {
+            min-height: 130px;
+            resize: vertical;
         }
 
         #form-status {
             font-size: 0.9rem;
             font-weight: 500;
             margin-top: 0.5rem;
+            min-height: 1.4em;
         }
 
         footer {
@@ -808,54 +886,6 @@
             font-size: 0.9rem;
         }
 
-
-
-        /* Consistent rounded interactive borders across all portfolio sections */
-        .edu-grid-item,
-        .timeline-item,
-        .training-card,
-        .gallery-item,
-        .card {
-            border-width: 1px;
-            border-style: solid;
-        }
-
-        /* Keep the timeline connector visible behind the rounded role cards */
-        .timeline {
-            padding-top: 0.15rem;
-            padding-bottom: 0.15rem;
-        }
-
-        @media (max-width: 768px) {
-            .edu-grid-item {
-                padding: 1.1rem 1rem 1.1rem 2.4rem;
-            }
-
-            .edu-grid-item::before {
-                left: 0.9rem;
-                top: 1.3rem;
-            }
-
-            .timeline-item {
-                padding: 1.1rem;
-            }
-        }
-
-        .skill-group {
-            margin-top: 1rem;
-        }
-
-        .skill-group:first-of-type {
-            margin-top: 0.75rem;
-        }
-
-        .skill-group h4 {
-            color: var(--secondary);
-            font-size: 0.9rem;
-            margin-bottom: 0.45rem;
-            font-weight: 600;
-        }
-
         .honeypot {
             position: absolute !important;
             left: -10000px !important;
@@ -864,42 +894,44 @@
             overflow: hidden !important;
         }
 
-        .btn:disabled {
-            opacity: 0.65;
-            cursor: not-allowed;
-            transform: none !important;
-        }
+        /* Tablet */
+        @media (max-width: 1100px) {
+            .nav-container {
+                gap: 0.75rem;
+            }
 
-        .btn:focus-visible,
-        .toggle-btn:focus-visible,
-        .filter-btn:focus-visible,
-        .lightbox-btn:focus-visible,
-        .nav-links a:focus-visible,
-        .social-links-hero a:focus-visible {
-            outline: 3px solid rgba(96, 165, 250, 0.65);
-            outline-offset: 3px;
-        }
+            .nav-right {
+                gap: 0.65rem;
+            }
 
-        @media (prefers-reduced-motion: reduce) {
-            *,
-            *::before,
-            *::after {
-                scroll-behavior: auto !important;
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
+            .nav-links {
+                gap: 0.2rem;
+            }
+
+            .nav-links a {
+                font-size: 0.88rem;
+                padding-inline: 0.6rem;
             }
         }
 
         @media (max-width: 992px) {
-            .gallery-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
+            .grid-2,
             .contact-layout {
                 grid-template-columns: 1fr;
             }
-            .responsibilities li, .aligned-info-list li {
-                grid-template-columns: 180px 15px 1fr;
+
+            .training-grid,
+            .edu-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .gallery-container {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .responsibilities li,
+            .aligned-info-list li {
+                grid-template-columns: minmax(145px, 180px) 15px minmax(0, 1fr);
             }
         }
 
@@ -910,76 +942,261 @@
 
             .nav-container {
                 flex-direction: column;
+                align-items: stretch;
                 gap: 0.45rem;
+                padding-inline: 0.75rem;
+            }
+
+            .logo {
+                align-self: center;
+                font-size: 1rem;
             }
 
             .nav-right {
                 width: 100%;
-                flex-direction: column;
-                gap: 0.45rem;
+                display: grid;
+                grid-template-columns: minmax(0, 1fr) auto;
+                align-items: center;
+                gap: 0.5rem;
             }
 
             .nav-links {
                 width: 100%;
-                gap: 0.55rem 0.8rem;
+                justify-content: flex-start;
+                overflow-x: auto;
+                overflow-y: hidden;
+                flex-wrap: nowrap;
+                gap: 0.4rem;
+                padding-bottom: 3px;
+                scrollbar-width: none;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .nav-links::-webkit-scrollbar {
+                display: none;
+            }
+
+            .nav-links li {
+                flex: 0 0 auto;
+            }
+
+            .nav-links a {
+                font-size: 0.82rem;
+                padding: 0.42rem 0.65rem;
             }
 
             .nav-controls {
-                justify-content: center;
+                justify-content: flex-end;
             }
-            .nav-links {
-                gap: 0.75rem;
-                flex-wrap: wrap;
-                justify-content: center;
+
+            .toggle-btn {
+                height: 36px;
             }
-            .nav-links a {
-                font-size: 0.85rem;
+
+            .toggle-btn.icon-only {
+                width: 36px;
             }
+
             .hero {
-                padding-top: 12rem;
+                padding-top: calc(var(--nav-height) + 2.25rem);
+                padding-bottom: 2.5rem;
             }
-            .hero h1 { 
-                font-size: 2.1rem; 
+
+            .hero h1 {
+                font-size: 2.1rem;
             }
-            .typed-container {
+
+            .hero-subtitle {
                 font-size: 1.1rem;
             }
+
+            .typed-container {
+                font-size: 1.05rem;
+                min-height: 4.5rem;
+            }
+
+            .hero-meta {
+                gap: 0.7rem 1rem;
+                font-size: 0.88rem;
+            }
+
             .profile-pic {
                 width: 200px;
                 height: 200px;
             }
+
+            section {
+                width: min(100%, calc(100% - 1.25rem));
+                padding: 3rem 0;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .card {
+                padding: 1.15rem;
+            }
+
+            .timeline {
+                padding-left: 1.15rem;
+            }
+
+            .timeline-item {
+                padding: 1.1rem;
+            }
+
+            .timeline-item::before {
+                left: -1.55rem;
+                top: 0.9rem;
+            }
+
             .timeline-header {
                 flex-direction: column;
                 align-items: flex-start;
             }
-            .section-title {
-                font-size: 1.5rem;
-            }
-            .edu-grid {
-                grid-template-columns: 1fr;
-            }
-            .responsibilities li, .aligned-info-list li {
+
+            .responsibilities li,
+            .aligned-info-list li {
                 display: block;
                 padding-left: 0;
             }
+
             .responsibilities li::before {
                 display: none;
             }
-            .bullet-colon, .info-colon {
-                display: inline-block;
+
+            .bullet-title,
+            .bullet-colon,
+            .info-label,
+            .info-colon {
+                display: inline;
+            }
+
+            .bullet-colon,
+            .info-colon {
                 margin: 0 4px;
             }
-            .bullet-title, .info-label {
-                display: inline-block;
-            }
-            .bullet-text, .info-val {
+
+            .bullet-text,
+            .info-val {
                 display: inline;
+            }
+
+            .edu-grid,
+            .training-grid,
+            .gallery-container {
+                grid-template-columns: 1fr;
+            }
+
+            .edu-grid-item {
+                padding: 1.1rem 1rem 1.1rem 2.4rem;
+            }
+
+            .edu-grid-item::before {
+                left: 0.9rem;
+                top: 1.3rem;
+            }
+
+            .scrollable-gallery-wrapper {
+                max-height: none;
+                overflow: visible;
+                padding-right: 0;
+            }
+
+            .gallery-container {
+                gap: 1rem;
+            }
+
+            .contact-layout {
+                gap: 1.5rem;
+            }
+
+            .lightbox-controls {
+                top: max(12px, env(safe-area-inset-top));
+                right: max(12px, env(safe-area-inset-right));
+                gap: 8px;
+            }
+
+            .lightbox-btn {
+                width: 40px;
+                height: 40px;
+            }
+
+            .lightbox-img-wrapper {
+                width: 94vw;
+                max-width: 94vw;
+                max-height: 78dvh;
+            }
+
+            .lightbox-img-wrapper img {
+                max-height: 78dvh;
             }
         }
 
-        @media (max-width: 576px) {
-            .gallery-container {
-                grid-template-columns: repeat(1, 1fr);
+        @media (max-width: 420px) {
+            .nav-container {
+                padding-inline: 0.55rem;
+            }
+
+            .nav-right {
+                grid-template-columns: minmax(0, 1fr) auto;
+                gap: 0.35rem;
+            }
+
+            .nav-links a {
+                font-size: 0.77rem;
+                padding: 0.4rem 0.58rem;
+            }
+
+            .toggle-btn {
+                height: 34px;
+            }
+
+            .toggle-btn.icon-only {
+                width: 34px;
+            }
+
+            .toggle-btn:not(.icon-only) {
+                padding-inline: 0.55rem;
+            }
+
+            .hero {
+                padding-inline: 0.75rem;
+            }
+
+            .hero h1 {
+                font-size: 1.85rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .typed-container {
+                font-size: 0.98rem;
+            }
+
+            .profile-pic {
+                width: 175px;
+                height: 175px;
+                border-width: 4px;
+            }
+
+            .social-links-hero {
+                gap: 0.7rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
             }
         }
     </style>
@@ -1018,15 +1235,14 @@
         ]
     }
     </script>
-
 </head>
 <body>
 
-    <div class="progress-container">
+    <div class="progress-container" aria-hidden="true">
         <div class="progress-bar" id="progressBar"></div>
     </div>
 
-    <nav>
+    <nav id="mainNav" aria-label="Primary navigation">
         <div class="nav-container">
             <a href="#" class="logo" data-i18n="logo_name">FARSHID RUPON</a>
             <div class="nav-right">
@@ -1040,11 +1256,12 @@
                     <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
                 </ul>
                 <div class="nav-controls">
-                    <button class="toggle-btn" id="langToggle" title="Switch Language / ভাষা পরিবর্তন">
-                        <i class="fa-solid fa-globe"></i> <span id="langText">EN</span>
+                    <button class="toggle-btn" id="langToggle" type="button" title="Switch Language / ভাষা পরিবর্তন" aria-label="Switch language">
+                        <i class="fa-solid fa-globe" aria-hidden="true"></i>
+                        <span id="langText">EN</span>
                     </button>
-                    <button class="toggle-btn icon-only" id="themeToggle" title="Toggle Light/Dark Theme">
-                        <i class="fa-solid fa-moon"></i>
+                    <button class="toggle-btn icon-only" id="themeToggle" type="button" title="Toggle Light/Dark Theme" aria-label="Toggle dark mode">
+                        <i class="fa-solid fa-moon" aria-hidden="true"></i>
                     </button>
                 </div>
             </div>
@@ -1057,21 +1274,21 @@
 
             <h1 data-aos="fade-down" data-aos-delay="100" data-i18n="hero_name">Farshid Rupon</h1>
             <div class="hero-subtitle" data-aos="fade-down" data-aos-delay="150" data-i18n="hero_role">Survey Programmer | Survey Technology Specialist</div>
-            
+
             <div class="typed-container" data-aos="fade-down" data-aos-delay="200">
                 <span id="typed"></span>
             </div>
-            
+
             <div class="hero-meta" data-aos="fade-up" data-aos-delay="300">
-                <span><i class="fa-solid fa-location-dot"></i> <span data-i18n="hero_loc">Thakurgaon, Bangladesh</span></span>
-                <span><i class="fa-solid fa-envelope"></i> <a href="mailto:farshidrupon@gmail.com" style="color: inherit; text-decoration: none;">farshidrupon@gmail.com</a></span>
-                <span><i class="fa-solid fa-phone"></i> <a href="tel:+8801711305367" style="color: inherit; text-decoration: none;" data-i18n="val_phone">+880 1711-305367</a></span>
+                <span><i class="fa-solid fa-location-dot" aria-hidden="true"></i> <span data-i18n="hero_loc">Thakurgaon, Bangladesh</span></span>
+                <span><i class="fa-solid fa-envelope" aria-hidden="true"></i> <a href="mailto:farshidrupon@gmail.com" style="color: inherit; text-decoration: none;">farshidrupon@gmail.com</a></span>
+                <span><i class="fa-solid fa-phone" aria-hidden="true"></i> <a href="tel:+8801711305367" style="color: inherit; text-decoration: none;" data-i18n="val_phone">+880 1711-305367</a></span>
             </div>
 
             <div class="social-links-hero" data-aos="fade-up" data-aos-delay="350">
-                <a href="https://www.linkedin.com/in/FarshidRupon" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-                <a href="https://m.me/FarshidRupon" target="_blank" rel="noopener noreferrer" title="Messenger" aria-label="Messenger"><i class="fa-brands fa-facebook-messenger"></i></a>
-                <a href="https://wa.me/8801711305367" target="_blank" rel="noopener noreferrer" title="WhatsApp" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="https://www.linkedin.com/in/FarshidRupon" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+                <a href="https://m.me/FarshidRupon" target="_blank" rel="noopener noreferrer" title="Messenger" aria-label="Messenger"><i class="fa-brands fa-facebook-messenger" aria-hidden="true"></i></a>
+                <a href="https://wa.me/8801711305367" target="_blank" rel="noopener noreferrer" title="WhatsApp" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a>
             </div>
 
             <a href="#contact" class="btn" data-aos="fade-up" data-aos-delay="400" data-i18n="btn_contact">Get In Touch</a>
@@ -1093,58 +1310,22 @@
         <h2 class="section-title" data-i18n="about_title">Professional Profile</h2>
         <div class="grid-2">
             <div class="card">
-                <h3><i class="fa-solid fa-user-check" style="color: var(--primary);"></i> <span data-i18n="about_details">Professional Details</span></h3>
+                <h3><i class="fa-solid fa-user-check" style="color: var(--primary);" aria-hidden="true"></i> <span data-i18n="about_details">Professional Details</span></h3>
                 <ul class="aligned-info-list">
-                    <li>
-                        <span class="info-label" data-i18n="lbl_nationality">Nationality</span>
-                        <span class="info-colon">:</span>
-                        <span class="info-val" data-i18n="val_nationality">Bangladeshi</span>
-                    </li>
-                    <li>
-                        <span class="info-label" data-i18n="lbl_current_position">Current Position</span>
-                        <span class="info-colon">:</span>
-                        <span class="info-val" data-i18n="val_current_position">Survey Programmer</span>
-                    </li>
-                    <li>
-                        <span class="info-label" data-i18n="lbl_prof_exp">Professional Experience</span>
-                        <span class="info-colon">:</span>
-                        <span class="info-val" data-i18n="val_prof_exp">10+ Years</span>
-                    </li>
-                    <li>
-                        <span class="info-label" data-i18n="lbl_emp_status">Employment Status</span>
-                        <span class="info-colon">:</span>
-                        <span class="info-val" data-i18n="val_emp_status">Currently Employed</span>
-                    </li>
-                    <li>
-                        <span class="info-label" data-i18n="lbl_languages">Languages</span>
-                        <span class="info-colon">:</span>
-                        <span class="info-val" data-i18n="val_languages">Bengali (Native), English (Professional Working Proficiency)</span>
-                    </li>
-                    <li>
-                        <span class="info-label" data-i18n="lbl_work_env">Work Environment</span>
-                        <span class="info-colon">:</span>
-                        <span class="info-val" data-i18n="val_work_env">Remote, On-site & Hybrid</span>
-                    </li>
-                    <li>
-                        <span class="info-label" data-i18n="lbl_career_bg">Career Background</span>
-                        <span class="info-colon">:</span>
-                        <span class="info-val" data-i18n="val_career_bg">Research, Operations, Legal & Sales</span>
-                    </li>
-                    <li>
-                        <span class="info-label" data-i18n="lbl_prof_strengths">Professional Strengths</span>
-                        <span class="info-colon">:</span>
-                        <span class="info-val" data-i18n="val_prof_strengths">Problem Solving, Quality Assurance & Attention to Detail</span>
-                    </li>
-                    <li>
-                        <span class="info-label" data-i18n="lbl_driving">Driving License</span>
-                        <span class="info-colon">:</span>
-                        <span class="info-val" data-i18n="val_driving">Valid Motorcycle Driving License</span>
-                    </li>
+                    <li><span class="info-label" data-i18n="lbl_nationality">Nationality</span><span class="info-colon">:</span><span class="info-val" data-i18n="val_nationality">Bangladeshi</span></li>
+                    <li><span class="info-label" data-i18n="lbl_current_position">Current Position</span><span class="info-colon">:</span><span class="info-val" data-i18n="val_current_position">Survey Programmer</span></li>
+                    <li><span class="info-label" data-i18n="lbl_prof_exp">Professional Experience</span><span class="info-colon">:</span><span class="info-val" data-i18n="val_prof_exp">10+ Years</span></li>
+                    <li><span class="info-label" data-i18n="lbl_emp_status">Employment Status</span><span class="info-colon">:</span><span class="info-val" data-i18n="val_emp_status">Currently Employed</span></li>
+                    <li><span class="info-label" data-i18n="lbl_languages">Languages</span><span class="info-colon">:</span><span class="info-val" data-i18n="val_languages">Bengali (Native), English (Professional Working Proficiency)</span></li>
+                    <li><span class="info-label" data-i18n="lbl_work_env">Work Environment</span><span class="info-colon">:</span><span class="info-val" data-i18n="val_work_env">Remote, On-site &amp; Hybrid</span></li>
+                    <li><span class="info-label" data-i18n="lbl_career_bg">Career Background</span><span class="info-colon">:</span><span class="info-val" data-i18n="val_career_bg">Research, Operations, Legal &amp; Sales</span></li>
+                    <li><span class="info-label" data-i18n="lbl_prof_strengths">Professional Strengths</span><span class="info-colon">:</span><span class="info-val" data-i18n="val_prof_strengths">Problem Solving, Quality Assurance &amp; Attention to Detail</span></li>
+                    <li><span class="info-label" data-i18n="lbl_driving">Driving License</span><span class="info-colon">:</span><span class="info-val" data-i18n="val_driving">Valid Motorcycle Driving License</span></li>
                 </ul>
             </div>
 
             <div class="card">
-                <h3><i class="fa-solid fa-layer-group" style="color: var(--primary);"></i> <span data-i18n="about_expertise">Technical Expertise</span></h3>
+                <h3><i class="fa-solid fa-layer-group" style="color: var(--primary);" aria-hidden="true"></i> <span data-i18n="about_expertise">Technical Expertise</span></h3>
 
                 <div class="skill-group">
                     <h4 data-i18n="skill_platforms_title">Survey Platforms</h4>
@@ -1158,7 +1339,7 @@
                 </div>
 
                 <div class="skill-group">
-                    <h4 data-i18n="skill_programming_title">Programming & Web</h4>
+                    <h4 data-i18n="skill_programming_title">Programming &amp; Web</h4>
                     <div class="skills-tag-container">
                         <span class="skill-tag">JavaScript</span>
                         <span class="skill-tag">HTML5</span>
@@ -1170,7 +1351,7 @@
                 </div>
 
                 <div class="skill-group">
-                    <h4 data-i18n="skill_data_title">Data & Analytics</h4>
+                    <h4 data-i18n="skill_data_title">Data &amp; Analytics</h4>
                     <div class="skills-tag-container">
                         <span class="skill-tag">SPSS (.sav)</span>
                         <span class="skill-tag">CSV</span>
@@ -1199,15 +1380,14 @@
     <!-- Work Experience Section -->
     <section id="experience">
         <h2 class="section-title" data-aos="fade-up" data-i18n="exp_title">Work Experience</h2>
-        
+
         <div class="filter-container" data-aos="fade-up">
-            <button class="filter-btn active" onclick="filterTimeline('all', this)" data-i18n="btn_filter_all">All Roles</button>
-            <button class="filter-btn" onclick="filterTimeline('sp', this)" data-i18n="btn_filter_sp">Survey Programming</button>
-            <button class="filter-btn" onclick="filterTimeline('ops', this)" data-i18n="btn_filter_ops">Operations & Legal Assistance</button>
+            <button class="filter-btn active" type="button" onclick="filterTimeline('all', this)" data-i18n="btn_filter_all">All Roles</button>
+            <button class="filter-btn" type="button" onclick="filterTimeline('sp', this)" data-i18n="btn_filter_sp">Survey Programming</button>
+            <button class="filter-btn" type="button" onclick="filterTimeline('ops', this)" data-i18n="btn_filter_ops">Operations &amp; Legal Assistance</button>
         </div>
 
         <div class="timeline">
-            
             <div class="timeline-item" data-category="sp" data-aos="fade-up">
                 <div class="timeline-header">
                     <div>
@@ -1216,63 +1396,23 @@
                     </div>
                     <span class="date-badge" data-i18n="exp1_date">01 Dec 2022 – Present</span>
                 </div>
-                
+
                 <ul class="responsibilities">
-                    <li>
-                        <span class="bullet-title" data-i18n="exp1_t1">Survey Coding & Development</span>
-                        <span class="bullet-colon">:</span>
-                        <span class="bullet-text" data-i18n="exp1_r1">Develop and program complex market research surveys using platforms such as Decipher (Forsta), Qualtrics, and Confirmit, with HTML5, CSS3, JavaScript, XML, and platform-specific scripting.</span>
-                    </li>
-                    <li>
-                        <span class="bullet-title" data-i18n="exp1_t2">Logic & Routing Implementation</span>
-                        <span class="bullet-colon">:</span>
-                        <span class="bullet-text" data-i18n="exp1_r2">Implement complex survey logic, including dynamic skip patterns, quotas, piping, looping, randomization, and masking to ensure accurate and reliable data collection.</span>
-                    </li>
-                    <li>
-                        <span class="bullet-title" data-i18n="exp1_t3">Quality Assurance & Testing</span>
-                        <span class="bullet-colon">:</span>
-                        <span class="bullet-text" data-i18n="exp1_r3">Perform end-to-end testing, debug custom scripts across multiple devices and browsers, and validate survey logic and functionality before launching surveys to fieldwork.</span>
-                    </li>
-                    <li>
-                        <span class="bullet-title" data-i18n="exp1_t4">Data Integration & Cleaning</span>
-                        <span class="bullet-colon">:</span>
-                        <span class="bullet-text" data-i18n="exp1_r4">Configure structured data exports in SPSS (.sav), CSV, JSON, and Excel formats; map variables and develop data-cleaning workflows to support seamless downstream analysis.</span>
-                    </li>
-                    <li>
-                        <span class="bullet-title" data-i18n="exp1_t5">UI/UX Optimization</span>
-                        <span class="bullet-colon">:</span>
-                        <span class="bullet-text" data-i18n="exp1_r5">Develop custom interactive survey components, including sliders, rank-order tools, and media test players, with a focus on respondent usability and responsive cross-device performance.</span>
-                    </li>
-                    <li>
-                        <span class="bullet-title" data-i18n="exp1_t6">Field Maintenance</span>
-                        <span class="bullet-colon">:</span>
-                        <span class="bullet-text" data-i18n="exp1_r6">Monitor live survey operations, implement real-time fixes while protecting collected data integrity, and manage quota updates throughout fieldwork.</span>
-                    </li>
+                    <li><span class="bullet-title" data-i18n="exp1_t1">Survey Coding &amp; Development</span><span class="bullet-colon">:</span><span class="bullet-text" data-i18n="exp1_r1">Develop and program complex market research surveys using platforms such as Decipher (Forsta), Qualtrics, and Confirmit, with HTML5, CSS3, JavaScript, XML, and platform-specific scripting.</span></li>
+                    <li><span class="bullet-title" data-i18n="exp1_t2">Logic &amp; Routing Implementation</span><span class="bullet-colon">:</span><span class="bullet-text" data-i18n="exp1_r2">Implement complex survey logic, including dynamic skip patterns, quotas, piping, looping, randomization, and masking to ensure accurate and reliable data collection.</span></li>
+                    <li><span class="bullet-title" data-i18n="exp1_t3">Quality Assurance &amp; Testing</span><span class="bullet-colon">:</span><span class="bullet-text" data-i18n="exp1_r3">Perform end-to-end testing, debug custom scripts across multiple devices and browsers, and validate survey logic and functionality before launching surveys to fieldwork.</span></li>
+                    <li><span class="bullet-title" data-i18n="exp1_t4">Data Integration &amp; Cleaning</span><span class="bullet-colon">:</span><span class="bullet-text" data-i18n="exp1_r4">Configure structured data exports in SPSS (.sav), CSV, JSON, and Excel formats; map variables and develop data-cleaning workflows to support seamless downstream analysis.</span></li>
+                    <li><span class="bullet-title" data-i18n="exp1_t5">UI/UX Optimization</span><span class="bullet-colon">:</span><span class="bullet-text" data-i18n="exp1_r5">Develop custom interactive survey components, including sliders, rank-order tools, and media test players, with a focus on respondent usability and responsive cross-device performance.</span></li>
+                    <li><span class="bullet-title" data-i18n="exp1_t6">Field Maintenance</span><span class="bullet-colon">:</span><span class="bullet-text" data-i18n="exp1_r6">Monitor live survey operations, implement real-time fixes while protecting collected data integrity, and manage quota updates throughout fieldwork.</span></li>
                 </ul>
 
                 <div class="tech-matrix">
                     <h4 data-i18n="matrix_title">Technical Skill Matrix</h4>
                     <ul class="aligned-info-list">
-                        <li>
-                            <span class="info-label" data-i18n="lbl_platforms">Survey Platforms</span>
-                            <span class="info-colon">:</span>
-                            <span class="info-val" data-i18n="val_platforms">Decipher (Forsta), Qualtrics, Confirmit, Unomer, Alchemer</span>
-                        </li>
-                        <li>
-                            <span class="info-label" data-i18n="lbl_languages_tech">Programming & Web Technologies</span>
-                            <span class="info-colon">:</span>
-                            <span class="info-val" data-i18n="val_languages_tech">JavaScript, HTML5, CSS3, XML, Python, SQL</span>
-                        </li>
-                        <li>
-                            <span class="info-label" data-i18n="lbl_formats">Data & Analytics</span>
-                            <span class="info-colon">:</span>
-                            <span class="info-val" data-i18n="val_formats">SPSS (.sav), CSV, JSON, Excel, Tableau-ready Data</span>
-                        </li>
-                        <li>
-                            <span class="info-label" data-i18n="lbl_sp_prog">Survey Programming</span>
-                            <span class="info-colon">:</span>
-                            <span class="info-val" data-i18n="val_sp_prog">Skip Logic, Quotas, Piping, Looping, Randomization, Masking, Custom UI/UX</span>
-                        </li>
+                        <li><span class="info-label" data-i18n="lbl_platforms">Survey Platforms</span><span class="info-colon">:</span><span class="info-val" data-i18n="val_platforms">Decipher (Forsta), Qualtrics, Confirmit, Unomer, Alchemer</span></li>
+                        <li><span class="info-label" data-i18n="lbl_languages_tech">Programming &amp; Web Technologies</span><span class="info-colon">:</span><span class="info-val" data-i18n="val_languages_tech">JavaScript, HTML5, CSS3, XML, Python, SQL</span></li>
+                        <li><span class="info-label" data-i18n="lbl_formats">Data &amp; Analytics</span><span class="info-colon">:</span><span class="info-val" data-i18n="val_formats">SPSS (.sav), CSV, JSON, Excel, Tableau-ready Data</span></li>
+                        <li><span class="info-label" data-i18n="lbl_sp_prog">Survey Programming</span><span class="info-colon">:</span><span class="info-val" data-i18n="val_sp_prog">Skip Logic, Quotas, Piping, Looping, Randomization, Masking, Custom UI/UX</span></li>
                     </ul>
                 </div>
             </div>
@@ -1281,8 +1421,8 @@
             <div class="timeline-item" data-category="ops" data-aos="fade-up">
                 <div class="timeline-header">
                     <div>
-                        <div class="role-title" data-i18n="exp_agro_role">Senior Operations Manager</div>
-                        <div class="company" data-i18n="exp_agro_company">Dinajpur Agro Farms, Phulbari, Dinajpur</div>
+                        <div class="role-title" data-i18n="exp_agro_role">Senior Manager, Operations</div>
+                        <div class="company" data-i18n="exp_agro_company">Dinajpur Agro Farms, Dinajpur</div>
                     </div>
                     <span class="date-badge" data-i18n="exp_agro_date">01 Mar 2022 – 30 Nov 2022</span>
                 </div>
@@ -1355,7 +1495,6 @@
                     <li style="margin-bottom: 0.4rem;" data-i18n="exp4_r3">Maintained daily operational inventory and sales records in internal databases.</li>
                 </ul>
             </div>
-
         </div>
     </section>
 
@@ -1363,231 +1502,123 @@
     <section id="education">
         <h2 class="section-title" data-aos="fade-up" data-i18n="edu_title">Academic Qualifications</h2>
         <div class="edu-grid">
-
             <div class="edu-grid-item" data-aos="fade-up">
                 <div class="role-title" data-i18n="edu1_title">Bachelor of Laws - LL.B Part 1 (Professional Masters)</div>
                 <div class="company" style="margin-top: 0.25rem;" data-i18n="edu1_inst">Dinajpur Law College, Dinajpur</div>
-                
                 <ul class="aligned-info-list">
-                    <li>
-                        <span class="info-label" data-i18n="lbl_subject">Subject</span>
-                        <span class="info-colon">:</span>
-                        <span class="info-val" data-i18n="edu1_sub">Bachelor of Laws</span>
-                    </li>
-                    <li>
-                        <span class="info-label" data-i18n="lbl_result">Result</span>
-                        <span class="info-colon">:</span>
-                        <span class="info-val" data-i18n="edu1_res">2nd Class</span>
-                    </li>
+                    <li><span class="info-label" data-i18n="lbl_subject">Subject</span><span class="info-colon">:</span><span class="info-val" data-i18n="edu1_sub">Bachelor of Laws</span></li>
+                    <li><span class="info-label" data-i18n="lbl_result">Result</span><span class="info-colon">:</span><span class="info-val" data-i18n="edu1_res">2nd Class</span></li>
                 </ul>
             </div>
 
             <div class="edu-grid-item" data-aos="fade-up">
                 <div class="role-title" data-i18n="edu2_title">Bachelor of Social Science (BSS)</div>
                 <div class="company" style="margin-top: 0.25rem;" data-i18n="edu2_inst">Thakurgaon Govt. College, Thakurgaon</div>
-                
                 <ul class="aligned-info-list">
-                    <li>
-                        <span class="info-label" data-i18n="lbl_subject">Subject</span>
-                        <span class="info-colon">:</span>
-                        <span class="info-val" data-i18n="edu2_sub">Political Science</span>
-                    </li>
-                    <li>
-                        <span class="info-label" data-i18n="lbl_result">Result</span>
-                        <span class="info-colon">:</span>
-                        <span class="info-val" data-i18n="edu2_res">CGPA: 2.51 / 4.00</span>
-                    </li>
+                    <li><span class="info-label" data-i18n="lbl_subject">Subject</span><span class="info-colon">:</span><span class="info-val" data-i18n="edu2_sub">Political Science</span></li>
+                    <li><span class="info-label" data-i18n="lbl_result">Result</span><span class="info-colon">:</span><span class="info-val" data-i18n="edu2_res">CGPA: 2.51 / 4.00</span></li>
                 </ul>
             </div>
 
             <div class="edu-grid-item" data-aos="fade-up">
                 <div class="role-title" data-i18n="edu3_title">Higher Secondary Certificate (HSC)</div>
-                <div class="company" style="margin-top: 0.25rem;" data-i18n="edu3_inst">Thakurgaon Govt. Technical School & College, Thakurgaon</div>
-                
+                <div class="company" style="margin-top: 0.25rem;" data-i18n="edu3_inst">Thakurgaon Govt. Technical School &amp; College, Thakurgaon</div>
                 <ul class="aligned-info-list">
-                    <li>
-                        <span class="info-label" data-i18n="lbl_subject">Subject</span>
-                        <span class="info-colon">:</span>
-                        <span class="info-val" data-i18n="edu3_sub">Computer Science</span>
-                    </li>
-                    <li>
-                        <span class="info-label" data-i18n="lbl_result">Result</span>
-                        <span class="info-colon">:</span>
-                        <span class="info-val" data-i18n="edu3_res">GPA: 3.50 / 5.00</span>
-                    </li>
+                    <li><span class="info-label" data-i18n="lbl_subject">Subject</span><span class="info-colon">:</span><span class="info-val" data-i18n="edu3_sub">Computer Science</span></li>
+                    <li><span class="info-label" data-i18n="lbl_result">Result</span><span class="info-colon">:</span><span class="info-val" data-i18n="edu3_res">GPA: 3.50 / 5.00</span></li>
                 </ul>
             </div>
 
             <div class="edu-grid-item" data-aos="fade-up">
                 <div class="role-title" data-i18n="edu4_title">Secondary School Certificate (SSC)</div>
-                <div class="company" style="margin-top: 0.25rem;" data-i18n="edu4_inst">Thakurgaon Govt. Technical School & College, Thakurgaon</div>
-                
+                <div class="company" style="margin-top: 0.25rem;" data-i18n="edu4_inst">Thakurgaon Govt. Technical School &amp; College, Thakurgaon</div>
                 <ul class="aligned-info-list">
-                    <li>
-                        <span class="info-label" data-i18n="lbl_subject">Subject</span>
-                        <span class="info-colon">:</span>
-                        <span class="info-val" data-i18n="edu4_sub">Computer Science</span>
-                    </li>
-                    <li>
-                        <span class="info-label" data-i18n="lbl_result">Result</span>
-                        <span class="info-colon">:</span>
-                        <span class="info-val" data-i18n="edu4_res">GPA: 3.36 / 5.00</span>
-                    </li>
+                    <li><span class="info-label" data-i18n="lbl_subject">Subject</span><span class="info-colon">:</span><span class="info-val" data-i18n="edu4_sub">Computer Science</span></li>
+                    <li><span class="info-label" data-i18n="lbl_result">Result</span><span class="info-colon">:</span><span class="info-val" data-i18n="edu4_res">GPA: 3.36 / 5.00</span></li>
                 </ul>
             </div>
-
         </div>
     </section>
 
     <!-- Training & Certifications Section -->
     <section id="training" data-aos="fade-up">
-        <h2 class="section-title" data-i18n="training_title">Training & Certifications</h2>
+        <h2 class="section-title" data-i18n="training_title">Training &amp; Certifications</h2>
         <div class="training-grid">
-            
-            <div class="training-card">
-                <div class="role-title" data-i18n="tr1_title">Basic Counseling</div>
-                <div class="company" style="margin-top: 0.25rem;" data-i18n="tr1_inst">Dhaka Ahsania Mission</div>
-                <p style="margin-top: 0.5rem; font-size: 0.9rem;"><strong data-i18n="lbl_duration">Duration</strong>: <span data-i18n="tr1_dur">5 Days</span></p>
-            </div>
-
-            <div class="training-card">
-                <div class="role-title" data-i18n="tr2_title">Impact Hub IMS</div>
-                <div class="company" style="margin-top: 0.25rem;" data-i18n="tr2_inst">GIZ Bangladesh</div>
-                <p style="margin-top: 0.5rem; font-size: 0.9rem;"><strong data-i18n="lbl_duration">Duration</strong>: <span data-i18n="tr2_dur">1 Days</span></p>
-            </div>
-
-            <div class="training-card">
-                <div class="role-title" data-i18n="tr3_title">Orientation on Foundation and Gender Policy</div>
-                <div class="company" style="margin-top: 0.25rem;" data-i18n="tr3_inst">RDRS Bangladesh</div>
-                <p style="margin-top: 0.5rem; font-size: 0.9rem;"><strong data-i18n="lbl_duration">Duration</strong>: <span data-i18n="tr3_dur">3 Days</span></p>
-            </div>
-
-            <div class="training-card">
-                <div class="role-title" data-i18n="tr4_title">Basic Criminal Law</div>
-                <div class="company" style="margin-top: 0.25rem;" data-i18n="tr4_inst">RDRS Bangladesh</div>
-                <p style="margin-top: 0.5rem; font-size: 0.9rem;"><strong data-i18n="lbl_duration">Duration</strong>: <span data-i18n="tr4_dur">15 Days</span></p>
-            </div>
-
-            <div class="training-card">
-                <div class="role-title" data-i18n="tr5_title">Wrap up IRSOP</div>
-                <div class="company" style="margin-top: 0.25rem;" data-i18n="tr5_inst">GIZ Bangladesh</div>
-                <p style="margin-top: 0.5rem; font-size: 0.9rem;"><strong data-i18n="lbl_duration">Duration</strong>: <span data-i18n="tr5_dur">5 Days</span></p>
-            </div>
-
-            <div class="training-card">
-                <div class="role-title" data-i18n="tr6_title">IMS (Information Management System)</div>
-                <div class="company" style="margin-top: 0.25rem;" data-i18n="tr6_inst">GIZ Bangladesh</div>
-                <p style="margin-top: 0.5rem; font-size: 0.9rem;"><strong data-i18n="lbl_duration">Duration</strong>: <span data-i18n="tr6_dur">5 Days</span></p>
-            </div>
-
-            <div class="training-card">
-                <div class="role-title" data-i18n="tr7_title">PLC (Paralegal Aid Clinic)</div>
-                <div class="company" style="margin-top: 0.25rem;" data-i18n="tr7_inst">GIZ Bangladesh</div>
-                <p style="margin-top: 0.5rem; font-size: 0.9rem;"><strong data-i18n="lbl_duration">Duration</strong>: <span data-i18n="tr7_dur">5 Days</span></p>
-            </div>
-
-            <div class="training-card">
-                <div class="role-title" data-i18n="tr8_title">Automobile and Driving</div>
-                <div class="company" style="margin-top: 0.25rem;" data-i18n="tr8_inst">Minal Computer Training Academy (MCTA), Thakurgaon</div>
-                <p style="margin-top: 0.5rem; font-size: 0.9rem;"><strong data-i18n="lbl_duration">Duration</strong>: <span data-i18n="tr8_dur">6 Months</span></p>
-            </div>
-
-            <div class="training-card">
-                <div class="role-title" data-i18n="tr9_title">Electrical Installation and Maintenance</div>
-                <div class="company" style="margin-top: 0.25rem;" data-i18n="tr9_inst">Technical Training Center (TTC), Thakurgaon</div>
-                <p style="margin-top: 0.5rem; font-size: 0.9rem;"><strong data-i18n="lbl_duration">Duration</strong>: <span data-i18n="tr9_dur">6 Months</span></p>
-            </div>
-
-            <div class="training-card">
-                <div class="role-title" data-i18n="tr10_title">Outsourcing & Freelancing</div>
-                <div class="company" style="margin-top: 0.25rem;" data-i18n="tr10_inst">TMSS/Upazila Office, Thakurgaon</div>
-                <p style="margin-top: 0.5rem; font-size: 0.9rem;"><strong data-i18n="lbl_duration">Duration</strong>: <span data-i18n="tr10_dur">5 Days</span></p>
-            </div>
-
+            <div class="training-card"><div class="role-title" data-i18n="tr1_title">Basic Counseling</div><div class="company" style="margin-top: 0.25rem;" data-i18n="tr1_inst">Dhaka Ahsania Mission</div><p style="margin-top: 0.5rem; font-size: 0.9rem;"><strong data-i18n="lbl_duration">Duration</strong>: <span data-i18n="tr1_dur">5 Days</span></p></div>
+            <div class="training-card"><div class="role-title" data-i18n="tr2_title">Impact Hub IMS</div><div class="company" style="margin-top: 0.25rem;" data-i18n="tr2_inst">GIZ Bangladesh</div><p style="margin-top: 0.5rem; font-size: 0.9rem;"><strong data-i18n="lbl_duration">Duration</strong>: <span data-i18n="tr2_dur">1 Days</span></p></div>
+            <div class="training-card"><div class="role-title" data-i18n="tr3_title">Orientation on Foundation and Gender Policy</div><div class="company" style="margin-top: 0.25rem;" data-i18n="tr3_inst">RDRS Bangladesh</div><p style="margin-top: 0.5rem; font-size: 0.9rem;"><strong data-i18n="lbl_duration">Duration</strong>: <span data-i18n="tr3_dur">3 Days</span></p></div>
+            <div class="training-card"><div class="role-title" data-i18n="tr4_title">Basic Criminal Law</div><div class="company" style="margin-top: 0.25rem;" data-i18n="tr4_inst">RDRS Bangladesh</div><p style="margin-top: 0.5rem; font-size: 0.9rem;"><strong data-i18n="lbl_duration">Duration</strong>: <span data-i18n="tr4_dur">15 Days</span></p></div>
+            <div class="training-card"><div class="role-title" data-i18n="tr5_title">Wrap up IRSOP</div><div class="company" style="margin-top: 0.25rem;" data-i18n="tr5_inst">GIZ Bangladesh</div><p style="margin-top: 0.5rem; font-size: 0.9rem;"><strong data-i18n="lbl_duration">Duration</strong>: <span data-i18n="tr5_dur">5 Days</span></p></div>
+            <div class="training-card"><div class="role-title" data-i18n="tr6_title">IMS (Information Management System)</div><div class="company" style="margin-top: 0.25rem;" data-i18n="tr6_inst">GIZ Bangladesh</div><p style="margin-top: 0.5rem; font-size: 0.9rem;"><strong data-i18n="lbl_duration">Duration</strong>: <span data-i18n="tr6_dur">5 Days</span></p></div>
+            <div class="training-card"><div class="role-title" data-i18n="tr7_title">PLC (Paralegal Aid Clinic)</div><div class="company" style="margin-top: 0.25rem;" data-i18n="tr7_inst">GIZ Bangladesh</div><p style="margin-top: 0.5rem; font-size: 0.9rem;"><strong data-i18n="lbl_duration">Duration</strong>: <span data-i18n="tr7_dur">5 Days</span></p></div>
+            <div class="training-card"><div class="role-title" data-i18n="tr8_title">Automobile and Driving</div><div class="company" style="margin-top: 0.25rem;" data-i18n="tr8_inst">Minal Computer Training Academy (MCTA), Thakurgaon</div><p style="margin-top: 0.5rem; font-size: 0.9rem;"><strong data-i18n="lbl_duration">Duration</strong>: <span data-i18n="tr8_dur">6 Months</span></p></div>
+            <div class="training-card"><div class="role-title" data-i18n="tr9_title">Electrical Installation and Maintenance</div><div class="company" style="margin-top: 0.25rem;" data-i18n="tr9_inst">Technical Training Center (TTC), Thakurgaon</div><p style="margin-top: 0.5rem; font-size: 0.9rem;"><strong data-i18n="lbl_duration">Duration</strong>: <span data-i18n="tr9_dur">6 Months</span></p></div>
+            <div class="training-card"><div class="role-title" data-i18n="tr10_title">Outsourcing &amp; Freelancing</div><div class="company" style="margin-top: 0.25rem;" data-i18n="tr10_inst">TMSS/Upazila Office, Thakurgaon</div><p style="margin-top: 0.5rem; font-size: 0.9rem;"><strong data-i18n="lbl_duration">Duration</strong>: <span data-i18n="tr10_dur">5 Days</span></p></div>
         </div>
     </section>
-    
+
     <!-- Image Gallery Section -->
     <section id="gallery" data-aos="fade-up">
         <h2 class="section-title" data-i18n="gallery_title">My Gallery</h2>
         <div class="card">
-            <div class="scrollable-gallery-wrapper" tabindex="0">
+            <div class="scrollable-gallery-wrapper" tabindex="0" aria-label="Image gallery">
                 <div class="gallery-container">
-                    
-                    <div class="gallery-item" onclick="openLightbox(this)">
+                    <div class="gallery-item" role="button" tabindex="0" onclick="openLightbox(this)" onkeydown="handleGalleryKey(event, this)">
                         <img src="Img_01.jpg" alt="Professional Workplace" loading="lazy" decoding="async">
                     </div>
-
-                    <div class="gallery-item" onclick="openLightbox(this)">
+                    <div class="gallery-item" role="button" tabindex="0" onclick="openLightbox(this)" onkeydown="handleGalleryKey(event, this)">
                         <img src="Img_02.jpg" alt="Professional Profile" loading="lazy" decoding="async">
                     </div>
-
-                    <div class="gallery-item" onclick="openLightbox(this)">
+                    <div class="gallery-item" role="button" tabindex="0" onclick="openLightbox(this)" onkeydown="handleGalleryKey(event, this)">
                         <img src="Img_03.jpg" alt="Training & Professional Development" loading="lazy" decoding="async">
                     </div>
-
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Lightbox Modal -->
-    <div id="lightboxModal" class="lightbox-modal">
+    <div id="lightboxModal" class="lightbox-modal" role="dialog" aria-modal="true" aria-label="Image preview" aria-hidden="true">
         <div class="lightbox-controls">
-            <button class="lightbox-btn" onclick="zoomIn()"><i class="fa-solid fa-plus"></i></button>
-            <button class="lightbox-btn" onclick="zoomOut()"><i class="fa-solid fa-minus"></i></button>
-            <button class="lightbox-btn" onclick="resetZoom()"><i class="fa-solid fa-rotate-left"></i></button>
-            <button class="lightbox-btn" onclick="closeLightbox()"><i class="fa-solid fa-xmark"></i></button>
+            <button class="lightbox-btn" type="button" onclick="zoomIn()" aria-label="Zoom in"><i class="fa-solid fa-plus" aria-hidden="true"></i></button>
+            <button class="lightbox-btn" type="button" onclick="zoomOut()" aria-label="Zoom out"><i class="fa-solid fa-minus" aria-hidden="true"></i></button>
+            <button class="lightbox-btn" type="button" onclick="resetZoom()" aria-label="Reset zoom"><i class="fa-solid fa-rotate-left" aria-hidden="true"></i></button>
+            <button class="lightbox-btn" type="button" onclick="closeLightbox()" aria-label="Close image preview"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
         </div>
-        <div class="lightbox-img-wrapper">
-            <img id="lightboxImg" src="" alt="Popup Preview">
+        <div class="lightbox-img-wrapper" id="lightboxWrapper">
+            <img id="lightboxImg" src="" alt="Popup Preview" draggable="false">
         </div>
     </div>
-    
+
     <!-- Contact Section -->
     <section id="contact" data-aos="fade-up">
-        <h2 class="section-title" data-i18n="contact_title">Contact & Social Channels</h2>
+        <h2 class="section-title" data-i18n="contact_title">Contact &amp; Social Channels</h2>
         <div class="card">
             <div class="contact-layout">
                 <div class="contact-grid">
                     <div class="info-group">
-                        <i class="fa-solid fa-location-dot"></i>
-                        <div>
-                            <strong data-i18n="lbl_address">Address</strong>
-                            <p data-i18n="val_address">Thakurgaon, Bangladesh</p>
-                        </div>
+                        <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                        <div><strong data-i18n="lbl_address">Location</strong><p data-i18n="val_address">Thakurgaon, Bangladesh</p></div>
                     </div>
                     <div class="info-group">
-                        <i class="fa-solid fa-envelope"></i>
-                        <div>
-                            <strong data-i18n="lbl_email">Email</strong>
-                            <p><a href="mailto:farshidrupon@gmail.com">farshidrupon@gmail.com</a></p>
-                        </div>
+                        <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                        <div><strong data-i18n="lbl_email">Email</strong><p><a href="mailto:farshidrupon@gmail.com">farshidrupon@gmail.com</a></p></div>
                     </div>
                     <div class="info-group">
-                        <i class="fa-solid fa-phone"></i>
-                        <div>
-                            <strong data-i18n="lbl_phone">Phone</strong>
-                            <p><a href="tel:+8801711305367" data-i18n="val_phone">+880 1711-305367</a></p>
-                        </div>
+                        <i class="fa-solid fa-phone" aria-hidden="true"></i>
+                        <div><strong data-i18n="lbl_phone">Phone</strong><p><a href="tel:+8801711305367" data-i18n="val_phone">+880 1711-305367</a></p></div>
                     </div>
                     <div class="info-group">
-                        <i class="fa-brands fa-linkedin-in"></i>
-                        <div>
-                            <strong><a href="https://www.linkedin.com/in/FarshidRupon" target="_blank" rel="noopener noreferrer" data-i18n="val_linkedin">LinkedIn</a></strong>
-                        </div>
+                        <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+                        <div><strong><a href="https://www.linkedin.com/in/FarshidRupon" target="_blank" rel="noopener noreferrer" data-i18n="val_linkedin">LinkedIn</a></strong></div>
                     </div>
                     <div class="info-group">
-                        <i class="fa-solid fa-users-rectangle"></i>
-                        <div>
-                            <strong><a href="https://teams.microsoft.com/l/chat/0/0?users=farshidrupon@gmail.com" target="_blank" rel="noopener noreferrer" data-i18n="val_msteams">Microsoft Teams</a></strong>
-                        </div>
+                        <i class="fa-solid fa-users-rectangle" aria-hidden="true"></i>
+                        <div><strong><a href="https://teams.microsoft.com/l/chat/0/0?users=farshidrupon@gmail.com" target="_blank" rel="noopener noreferrer" data-i18n="val_msteams">Microsoft Teams</a></strong></div>
                     </div>
                     <div class="info-group">
-                        <i class="fa-brands fa-whatsapp"></i>
-                        <div>
-                            <strong><a href="https://wa.me/8801711305367" target="_blank" rel="noopener noreferrer" data-i18n="val_whatsapp">WhatsApp</a></strong>
-                        </div>
+                        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+                        <div><strong><a href="https://wa.me/8801711305367" target="_blank" rel="noopener noreferrer" data-i18n="val_whatsapp">WhatsApp</a></strong></div>
                     </div>
                 </div>
 
@@ -1614,7 +1645,7 @@
             </div>
         </div>
     </section>
-    
+
     <footer>
         <p>© 2026 <span data-i18n="footer_name">Farshid Rupon</span>. <span data-i18n="footer_rights">All rights reserved.</span></p>
     </footer>
@@ -1677,7 +1708,6 @@
                 btn_filter_all: "All Roles",
                 btn_filter_sp: "Survey Programming",
                 btn_filter_ops: "Operations & Legal Assistance",
-                
                 exp1_role: "Survey Programmer",
                 exp1_company: "Analyticify Research Limited, Thakurgaon",
                 exp1_date: "01 Dec 2022 – Present",
@@ -1693,7 +1723,6 @@
                 exp1_r5: "Develop custom interactive survey components, including sliders, rank-order tools, and media test players, with a focus on respondent usability and responsive cross-device performance.",
                 exp1_t6: "Field Maintenance",
                 exp1_r6: "Monitor live survey operations, implement real-time fixes while protecting collected data integrity, and manage quota updates throughout fieldwork.",
-
                 matrix_title: "Technical Skill Matrix",
                 lbl_platforms: "Survey Platforms",
                 val_platforms: "Decipher (Forsta), Qualtrics, Confirmit, Unomer, Alchemer",
@@ -1703,7 +1732,6 @@
                 val_formats: "SPSS (.sav), CSV, JSON, Excel, Tableau-ready Data",
                 lbl_sp_prog: "Survey Programming",
                 val_sp_prog: "Skip Logic, Quotas, Piping, Looping, Randomization, Masking, Custom UI/UX",
-
                 exp_agro_role: "Senior Manager, Operations",
                 exp_agro_company: "Dinajpur Agro Farms, Dinajpur",
                 exp_agro_date: "01 Mar 2022 – 30 Nov 2022",
@@ -1725,7 +1753,6 @@
                 exp_agro_r16: "Recorded livestock body weight and temperature and maintained relevant data for monitoring and management purposes.",
                 exp_agro_r17: "Collected and maintained information on fish condition, weight, and related factors before fishing and during relevant operational activities.",
                 exp_agro_r18: "Provided operational support to management to ensure efficient and smooth farm operations.",
-
                 exp2_role: "Paralegal",
                 exp2_company: "RDRS Bangladesh, Thakurgaon",
                 exp2_date: "18 Jan 2016 – 28 Feb 2022",
@@ -1735,84 +1762,67 @@
                 exp2_r4: "Compiled operational databases and produced monthly, quarterly, and annual progress reports.",
                 exp2_r5: "Facilitated Case Coordination Meetings and liaised with law enforcement, the judiciary, and health services to support legal assistance.",
                 exp2_r6: "Managed project financial operations, including advance processing, voucher adjustments, and VAT/tax compliance.",
-
                 exp3_role: "Sales Executive",
                 exp3_company: "Grameenphone Authorized Distribution House, Thakurgaon",
                 exp3_date: "01 Oct 2014 – 30 Sep 2015",
                 exp3_r1: "Consistently achieved monthly sales targets for Grameenphone products and services.",
                 exp3_r2: "Managed daily financial settlements and accounts directly with compliance managers.",
                 exp3_r3: "Participated in strategic retail sales workshops.",
-
                 exp4_role: "Compliance Officer",
                 exp4_company: "Grameenphone Authorized Distribution House, Thakurgaon",
                 exp4_date: "02 Dec 2013 – 31 Jul 2014",
                 exp4_r1: "Audited SIM registration data against national identity records to ensure regulatory compliance.",
                 exp4_r2: "Managed SIM verification records within Grameenphone's central system.",
                 exp4_r3: "Maintained daily operational inventory and sales records in internal databases.",
-
                 edu_title: "Academic Qualifications",
                 edu1_title: "Bachelor of Laws - LL.B Part 1 (Professional Masters)",
                 edu1_inst: "Dinajpur Law College, Dinajpur",
                 edu1_sub: "Bachelor of Laws",
                 edu1_res: "2nd Class",
-
                 edu2_title: "Bachelor of Social Science (BSS)",
                 edu2_inst: "Thakurgaon Govt. College, Thakurgaon",
                 edu2_sub: "Political Science",
                 edu2_res: "CGPA: 2.51 / 4.00",
-
                 edu3_title: "Higher Secondary Certificate (HSC)",
                 edu3_inst: "Thakurgaon Govt. Technical School & College, Thakurgaon",
                 edu3_sub: "Computer Science",
                 edu3_res: "GPA: 3.50 / 5.00",
-
                 edu4_title: "Secondary School Certificate (SSC)",
                 edu4_inst: "Thakurgaon Govt. Technical School & College, Thakurgaon",
                 edu4_sub: "Computer Science",
                 edu4_res: "GPA: 3.36 / 5.00",
-
                 training_title: "Training & Certifications",
                 lbl_duration: "Duration",
                 tr1_title: "Basic Counseling",
                 tr1_inst: "Dhaka Ahsania Mission",
                 tr1_dur: "5 Days",
-
                 tr2_title: "Impact Hub IMS",
                 tr2_inst: "GIZ Bangladesh",
                 tr2_dur: "1 Days",
-
                 tr3_title: "Orientation on Foundation and Gender Policy",
                 tr3_inst: "RDRS Bangladesh",
                 tr3_dur: "3 Days",
-
                 tr4_title: "Basic Criminal Law",
                 tr4_inst: "RDRS Bangladesh",
                 tr4_dur: "15 Days",
-
                 tr5_title: "Wrap up IRSOP",
                 tr5_inst: "GIZ Bangladesh",
                 tr5_dur: "5 Days",
-
                 tr6_title: "IMS (Information Management System)",
                 tr6_inst: "GIZ Bangladesh",
                 tr6_dur: "5 Days",
-
                 tr7_title: "PLC (Paralegal Aid Clinic)",
                 tr7_inst: "GIZ Bangladesh",
                 tr7_dur: "5 Days",
-
                 tr8_title: "Automobile and Driving",
                 tr8_inst: "Minal Computer Training Academy (MCTA), Thakurgaon",
                 tr8_dur: "6 Months",
-
                 tr9_title: "Electrical Installation and Maintenance",
                 tr9_inst: "Technical Training Center (TTC), Thakurgaon",
                 tr9_dur: "6 Months",
-
                 tr10_title: "Outsourcing & Freelancing",
                 tr10_inst: "TMSS/Upazila Office, Thakurgaon",
                 tr10_dur: "5 Days",
-
                 lbl_subject: "Subject",
                 lbl_result: "Result",
                 gallery_title: "My Gallery",
@@ -1868,6 +1878,10 @@
                 val_current_position: "সার্ভে প্রোগ্রামার",
                 lbl_prof_exp: "পেশাগত অভিজ্ঞতা",
                 val_prof_exp: "১০+ বছর",
+                lbl_ind_exp: "ইন্ডাস্ট্রি অভিজ্ঞতা",
+                val_ind_exp: "মার্কেট রিসার্চ ও রিসার্চ অপারেশনস",
+                lbl_prof_focus: "পেশাগত ফোকাস",
+                val_prof_focus: "সার্ভে প্রোগ্রামিং ও রিসার্চ টেকনোলজি",
                 lbl_emp_status: "কর্মসংস্থানের অবস্থা",
                 val_emp_status: "বর্তমানে কর্মরত",
                 lbl_languages: "ভাষাগত দক্ষতা",
@@ -1887,8 +1901,7 @@
                 exp_title: "কর্মঅভিজ্ঞতা",
                 btn_filter_all: "সকল ভূমিকা",
                 btn_filter_sp: "সার্ভে প্রোগ্রামিং",
-                btn_filter_ops: " অপারেশনস ও আইনগত সহায়তা",
-                
+                btn_filter_ops: "অপারেশনস ও আইনগত সহায়তা",
                 exp1_role: "সার্ভে প্রোগ্রামার",
                 exp1_company: "Analyticify Research Limited, ঠাকুরগাঁও",
                 exp1_date: "০১ ডিসেম্বর ২০২২ – বর্তমান",
@@ -1904,7 +1917,6 @@
                 exp1_r5: "Respondent Usability এবং বিভিন্ন ডিভাইসে Responsive Performance নিশ্চিত করতে Slider, Rank-Order Tool এবং Media Test Player-সহ Custom Interactive Survey Components তৈরি করা।",
                 exp1_t6: "ফিল্ড মেইনটেন্যান্স",
                 exp1_r6: "Live Survey Operations পর্যবেক্ষণ করা, সংগৃহীত ডেটার Integrity বজায় রেখে Real-Time Fixes বাস্তবায়ন করা এবং Fieldwork চলাকালীন Quota Updates পরিচালনা করা।",
-
                 matrix_title: "টেকনিক্যাল স্কিল ম্যাট্রিক্স",
                 lbl_platforms: "সার্ভে প্ল্যাটফর্ম",
                 val_platforms: "Decipher (Forsta), Qualtrics, Confirmit, Unomer, Alchemer",
@@ -1914,7 +1926,6 @@
                 val_formats: "SPSS (.sav), CSV, JSON, Excel, Tableau-ready Data",
                 lbl_sp_prog: "সার্ভে প্রোগ্রামিং",
                 val_sp_prog: "Skip Logic, Quotas, Piping, Looping, Randomization, Masking, Custom UI/UX",
-
                 exp_agro_role: "সিনিয়র ম্যানেজার, অপারেশনস",
                 exp_agro_company: "Dinajpur Agro Farms, ফুলবাড়ী, দিনাজপুর",
                 exp_agro_date: "০১ মার্চ ২০২২ – ৩০ নভেম্বর ২০২২",
@@ -1936,7 +1947,6 @@
                 exp_agro_r16: "গবাদিপশুর ওজন ও তাপমাত্রা রেকর্ড করা এবং Monitoring ও Management-এর জন্য সংশ্লিষ্ট Data সংরক্ষণ করা।",
                 exp_agro_r17: "মাছ ধরার পূর্বে এবং সংশ্লিষ্ট Operational Activities-এর সময় মাছের অবস্থা, ওজন ও অন্যান্য প্রয়োজনীয় তথ্য সংগ্রহ ও সংরক্ষণ করা।",
                 exp_agro_r18: "খামারের কার্যক্রম দক্ষ ও সুষ্ঠুভাবে পরিচালনার জন্য Management-কে প্রয়োজনীয় Operational Support প্রদান করা।",
-
                 exp2_role: "প্যারালিগ্যাল",
                 exp2_company: "RDRS Bangladesh, ঠাকুরগাঁও",
                 exp2_date: "১৮ জানুয়ারি ২০১৬ – ২৮ ফেব্রুয়ারি ২০২২",
@@ -1946,84 +1956,67 @@
                 exp2_r4: "অপারেশনাল ডেটাবেস সংকলন এবং মাসিক, ত্রৈমাসিক ও বার্ষিক অগ্রগতি প্রতিবেদন প্রস্তুত করা।",
                 exp2_r5: "Case Coordination Meeting পরিচালনা এবং আইনশৃঙ্খলা রক্ষাকারী বাহিনী, বিচার বিভাগ ও স্বাস্থ্যসেবা প্রতিষ্ঠানের সঙ্গে সমন্বয় করে আইনগত সহায়তা প্রদান করা।",
                 exp2_r6: "Advance Processing, Voucher Adjustment এবং VAT/Tax Compliance-সহ প্রজেক্টের আর্থিক কার্যক্রম পরিচালনা করা।",
-
                 exp3_role: "সেলস এক্সিকিউটিভ",
                 exp3_company: "Grameenphone Authorized Distribution House, ঠাকুরগাঁও",
                 exp3_date: "০১ অক্টোবর ২০১৪ – ৩০ সেপ্টেম্বর ২০১৫",
                 exp3_r1: "Grameenphone-এর পণ্য ও সেবার মাসিক বিক্রয় লক্ষ্যমাত্রা ধারাবাহিকভাবে অর্জন করা।",
                 exp3_r2: "Compliance Manager-দের সঙ্গে সরাসরি দৈনিক আর্থিক নিষ্পত্তি ও হিসাব পরিচালনা করা।",
                 exp3_r3: "Strategic Retail Sales Workshop-এ অংশগ্রহণ করা।",
-
                 exp4_role: "কমপ্লায়েন্স অফিসার",
                 exp4_company: "Grameenphone Authorized Distribution House, ঠাকুরগাঁও",
                 exp4_date: "০২ ডিসেম্বর ২০১৩ – ৩১ জুলাই ২০১৪",
                 exp4_r1: "Regulatory Compliance নিশ্চিত করতে জাতীয় পরিচয়পত্রের তথ্যের সঙ্গে SIM Registration Data যাচাই করা।",
                 exp4_r2: "Grameenphone-এর Central System-এ SIM Verification Records পরিচালনা করা।",
                 exp4_r3: "Internal Database-এ দৈনিক Operational Inventory ও Sales Records সংরক্ষণ করা।",
-
                 edu_title: "শিক্ষাগত যোগ্যতা",
                 edu1_title: "Bachelor of Laws (LL.B Part 1 Professional Masters)",
                 edu1_inst: "Dinajpur Law College, Dinajpur",
                 edu1_sub: "Bachelor of Laws",
                 edu1_res: "২য় শ্রেণি",
-
                 edu2_title: "Bachelor of Social Science (BSS)",
                 edu2_inst: "Thakurgaon Govt. College, Thakurgaon",
                 edu2_sub: "Political Science",
                 edu2_res: "CGPA: ২.৫১ / ৪.০০",
-
                 edu3_title: "Higher Secondary Certificate (HSC)",
                 edu3_inst: "Thakurgaon Govt. Technical School & College, Thakurgaon",
                 edu3_sub: "Computer Science",
                 edu3_res: "GPA: ৩.৫০ / ৫.০০",
-
                 edu4_title: "Secondary School Certificate (SSC)",
                 edu4_inst: "Thakurgaon Govt. Technical School & College, Thakurgaon",
                 edu4_sub: "Computer Science",
                 edu4_res: "GPA: ৩.৩৬ / ৫.০০",
-
                 training_title: "প্রশিক্ষণ ও সনদসমূহ",
                 lbl_duration: "সময়কাল",
                 tr1_title: "বেসিক কাউন্সেলিং",
                 tr1_inst: "ঢাকা আহসানিয়া মিশন",
                 tr1_dur: "৫ দিন",
-
                 tr2_title: "ইমপ্যাক্ট হাব IMS",
                 tr2_inst: "GIZ Bangladesh",
                 tr2_dur: "১ দিন",
-
                 tr3_title: "ফাউন্ডেশন ও জেন্ডার পলিসি বিষয়ক ওরিয়েন্টেশন",
                 tr3_inst: "RDRS Bangladesh",
                 tr3_dur: "৩ দিন",
-
                 tr4_title: "মৌলিক ফৌজদারি আইন",
                 tr4_inst: "RDRS Bangladesh",
                 tr4_dur: "১৫ দিন",
-
                 tr5_title: "র‍্যাপ আপ IRSOP",
                 tr5_inst: "GIZ Bangladesh",
                 tr5_dur: "৫ দিন",
-
                 tr6_title: "IMS (তথ্য ব্যবস্থাপনা ব্যবস্থা)",
                 tr6_inst: "GIZ Bangladesh",
                 tr6_dur: "৫ দিন",
-
                 tr7_title: "PLC (প্যারালিগ্যাল এইড ক্লিনিক)",
                 tr7_inst: "GIZ Bangladesh",
                 tr7_dur: "৫ দিন",
-
                 tr8_title: "অটোমোবাইল ও ড্রাইভিং",
                 tr8_inst: "মিনাল কম্পিউটার ট্রেনিং একাডেমি (MCTA), ঠাকুরগাঁও",
                 tr8_dur: "৬ মাস",
-
                 tr9_title: "ইলেকট্রিক্যাল ইনস্টলেশন ও মেইনটেন্যান্স",
                 tr9_inst: "টেকনিক্যাল ট্রেনিং সেন্টার (TTC), ঠাকুরগাঁও",
                 tr9_dur: "৬ মাস",
-
                 tr10_title: "আউটসোর্সিং ও ফ্রিল্যান্সিং",
                 tr10_inst: "TMSS/উপজেলা অফিস, ঠাকুরগাঁও",
                 tr10_dur: "৫ দিন",
-
                 lbl_subject: "বিষয়",
                 lbl_result: "ফলাফল",
                 gallery_title: "আমার গ্যালারি",
@@ -2052,59 +2045,83 @@
 
         let currentLang = localStorage.getItem('lang') || 'en';
         let typedInstance = null;
+        let previousFocusElement = null;
+        let zoomLevel = 1;
+
+        const nav = document.getElementById('mainNav');
+        const progressBar = document.getElementById('progressBar');
+        const modal = document.getElementById('lightboxModal');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxWrapper = document.getElementById('lightboxWrapper');
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const themeIcon = themeToggleBtn.querySelector('i');
+
+        function syncNavHeight() {
+            const navHeight = nav ? nav.offsetHeight + 4 : 80;
+            document.documentElement.style.setProperty('--nav-height', `${navHeight}px`);
+        }
+
+        function updateProgress() {
+            const scrollTop = window.scrollY || document.documentElement.scrollTop;
+            const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+            const percentage = scrollable > 0 ? Math.min(100, Math.max(0, (scrollTop / scrollable) * 100)) : 0;
+            progressBar.style.width = `${percentage}%`;
+        }
 
         function updateLanguage(lang) {
+            if (!i18n[lang]) lang = 'en';
             currentLang = lang;
             localStorage.setItem('lang', lang);
+            document.documentElement.lang = lang === 'bn' ? 'bn' : 'en';
             document.getElementById('langText').innerText = lang === 'en' ? 'EN' : 'বাংলা';
 
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
-                if (i18n[lang][key] !== undefined) {
+                if (Object.prototype.hasOwnProperty.call(i18n[lang], key)) {
                     el.innerHTML = i18n[lang][key];
                 }
             });
 
             document.querySelectorAll('[data-i18n-ph]').forEach(el => {
                 const key = el.getAttribute('data-i18n-ph');
-                if (i18n[lang][key] !== undefined) {
+                if (Object.prototype.hasOwnProperty.call(i18n[lang], key)) {
                     el.placeholder = i18n[lang][key];
                 }
             });
 
-            if (typedInstance) typedInstance.destroy();
+            if (typedInstance) {
+                typedInstance.destroy();
+            }
+
             typedInstance = new Typed('#typed', {
                 strings: i18n[lang].typed,
                 typeSpeed: 50,
                 backSpeed: 30,
                 backDelay: 2000,
-                loop: true
+                loop: true,
+                showCursor: true,
+                cursorChar: '|'
             });
+
+            syncNavHeight();
+            updateActiveNav();
         }
 
         document.getElementById('langToggle').addEventListener('click', () => {
             updateLanguage(currentLang === 'en' ? 'bn' : 'en');
         });
 
-        window.onscroll = function() {
-            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            let scrolled = (winScroll / height) * 100;
-            document.getElementById("progressBar").style.width = scrolled + "%";
-        };
-
-        const themeToggleBtn = document.getElementById('themeToggle');
-        const themeIcon = themeToggleBtn.querySelector('i');
-
         themeToggleBtn.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            if (currentTheme === 'dark') {
+            const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+            if (dark) {
                 document.documentElement.removeAttribute('data-theme');
                 themeIcon.className = 'fa-solid fa-moon';
+                themeToggleBtn.setAttribute('aria-label', 'Toggle dark mode');
                 localStorage.setItem('theme', 'light');
             } else {
                 document.documentElement.setAttribute('data-theme', 'dark');
                 themeIcon.className = 'fa-solid fa-sun';
+                themeToggleBtn.setAttribute('aria-label', 'Toggle light mode');
                 localStorage.setItem('theme', 'dark');
             }
         });
@@ -2112,57 +2129,107 @@
         if (localStorage.getItem('theme') === 'dark') {
             document.documentElement.setAttribute('data-theme', 'dark');
             themeIcon.className = 'fa-solid fa-sun';
+            themeToggleBtn.setAttribute('aria-label', 'Toggle light mode');
         }
-
-        AOS.init({ duration: 800, once: true });
-        updateLanguage(currentLang);
 
         function filterTimeline(category, clickedButton) {
             document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
             clickedButton.classList.add('active');
 
-            const items = document.querySelectorAll('.timeline-item');
-            items.forEach(item => {
-                if (category === 'all' || item.getAttribute('data-category') === category) {
-                    item.classList.remove('hide');
-                } else {
-                    item.classList.add('hide');
-                }
+            document.querySelectorAll('.timeline-item').forEach(item => {
+                const show = category === 'all' || item.getAttribute('data-category') === category;
+                item.classList.toggle('hide', !show);
+            });
+
+            requestAnimationFrame(() => {
+                syncNavHeight();
+                updateProgress();
+                updateActiveNav();
             });
         }
 
-        let zoomLevel = 1;
-        const modal = document.getElementById('lightboxModal');
-        const lightboxImg = document.getElementById('lightboxImg');
-
         function openLightbox(element) {
-            lightboxImg.src = element.querySelector('img').src;
+            const image = element?.querySelector('img');
+            if (!image) return;
+
+            previousFocusElement = document.activeElement;
+            lightboxImg.src = image.currentSrc || image.src;
+            lightboxImg.alt = image.alt || 'Popup Preview';
             modal.classList.add('active');
+            modal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
             resetZoom();
+
+            const closeButton = modal.querySelector('.lightbox-btn:last-child');
+            closeButton?.focus();
         }
 
-        function closeLightbox() { modal.classList.remove('active'); }
-        function zoomIn() { zoomLevel += 0.25; lightboxImg.style.transform = `scale(${zoomLevel})`; }
-        function zoomOut() { if (zoomLevel > 0.5) { zoomLevel -= 0.25; lightboxImg.style.transform = `scale(${zoomLevel})`; } }
-        function resetZoom() { zoomLevel = 1; lightboxImg.style.transform = `scale(1)`; }
+        function closeLightbox() {
+            modal.classList.remove('active');
+            modal.setAttribute('aria-hidden', 'true');
+            lightboxImg.src = '';
+            lightboxImg.style.transform = 'scale(1)';
+            zoomLevel = 1;
+            document.body.style.overflow = '';
+            previousFocusElement?.focus?.();
+        }
 
-        lightboxImg.addEventListener('wheel', function(e) {
-            e.preventDefault();
-            e.deltaY < 0 ? zoomIn() : zoomOut();
+        function applyZoom() {
+            lightboxImg.style.transform = `scale(${zoomLevel})`;
+        }
+
+        function zoomIn() {
+            zoomLevel = Math.min(3, +(zoomLevel + 0.25).toFixed(2));
+            applyZoom();
+        }
+
+        function zoomOut() {
+            zoomLevel = Math.max(0.5, +(zoomLevel - 0.25).toFixed(2));
+            applyZoom();
+        }
+
+        function resetZoom() {
+            zoomLevel = 1;
+            applyZoom();
+            if (lightboxWrapper) {
+                lightboxWrapper.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+            }
+        }
+
+        function handleGalleryKey(event, element) {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                openLightbox(element);
+            }
+        }
+
+        lightboxImg.addEventListener('wheel', function (event) {
+            if (!modal.classList.contains('active')) return;
+            event.preventDefault();
+            if (event.deltaY < 0) zoomIn();
+            else zoomOut();
         }, { passive: false });
 
-        modal.addEventListener('click', function(e) {
-            if (e.target === modal || e.target.classList.contains('lightbox-img-wrapper')) closeLightbox();
+        modal.addEventListener('click', function (event) {
+            if (event.target === modal || event.target === lightboxWrapper) {
+                closeLightbox();
+            }
         });
 
-        document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeLightbox(); });
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape' && modal.classList.contains('active')) {
+                closeLightbox();
+            }
+        });
 
-        (function() {
-            emailjs.init("ycJcbgkXIHkZtVEA7");
+        (function initEmailJS() {
+            if (window.emailjs) {
+                emailjs.init('ycJcbgkXIHkZtVEA7');
+            }
         })();
 
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+        document.getElementById('contactForm').addEventListener('submit', function (event) {
+            event.preventDefault();
 
             const form = this;
             const status = document.getElementById('form-status');
@@ -2183,15 +2250,23 @@
             if (!name || !email || !message) {
                 status.style.color = '#dc2626';
                 status.innerText = currentLang === 'en'
-                    ? "Please complete all required fields."
-                    : "অনুগ্রহ করে সব আবশ্যিক ঘর পূরণ করুন।";
+                    ? 'Please complete all required fields.'
+                    : 'অনুগ্রহ করে সব আবশ্যিক ঘর পূরণ করুন।';
+                return;
+            }
+
+            if (!window.emailjs) {
+                status.style.color = '#dc2626';
+                status.innerText = currentLang === 'en'
+                    ? 'Email service is currently unavailable. Please try again later.'
+                    : 'ইমেইল সার্ভিস বর্তমানে অনুপলব্ধ। অনুগ্রহ করে পরে আবার চেষ্টা করুন।';
                 return;
             }
 
             status.style.color = 'var(--primary)';
             status.innerText = currentLang === 'en'
-                ? "Sending message..."
-                : "বার্তা পাঠানো হচ্ছে...";
+                ? 'Sending message...'
+                : 'বার্তা পাঠানো হচ্ছে...';
 
             submitButton.disabled = true;
             submitButton.setAttribute('aria-busy', 'true');
@@ -2204,68 +2279,85 @@
             };
 
             emailjs.send('service_jxl4kqo', 'template_pscfvya', templateParams)
-                .then(function() {
+                .then(function () {
                     status.style.color = '#16a34a';
                     status.innerText = currentLang === 'en'
-                        ? "Thank you! Your message has been sent successfully."
-                        : "ধন্যবাদ! আপনার বার্তা সফলভাবে পাঠানো হয়েছে।";
+                        ? 'Thank you! Your message has been sent successfully.'
+                        : 'ধন্যবাদ! আপনার বার্তা সফলভাবে পাঠানো হয়েছে।';
                     form.reset();
+                    updateLanguage(currentLang);
                 })
-                .catch(function(error) {
+                .catch(function (error) {
                     status.style.color = '#dc2626';
                     status.innerText = currentLang === 'en'
-                        ? "Failed to send message. Please try again later."
-                        : "বার্তা পাঠানো ব্যর্থ হয়েছে। অনুগ্রহ করে পরে আবার চেষ্টা করুন।";
+                        ? 'Failed to send message. Please try again later.'
+                        : 'বার্তা পাঠানো ব্যর্থ হয়েছে। অনুগ্রহ করে পরে আবার চেষ্টা করুন।';
                     console.error('EmailJS error:', error);
                 })
-                .finally(function() {
+                .finally(function () {
                     submitButton.disabled = false;
                     submitButton.removeAttribute('aria-busy');
                 });
         });
-    </script>
 
+        const sectionIds = ['summary', 'about', 'experience', 'education', 'training', 'gallery', 'contact'];
+        const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
+        const navLinks = Array.from(document.querySelectorAll('.nav-links a'));
 
-    <script>
-        // Active navigation highlight based on the visible page section
-        document.addEventListener('DOMContentLoaded', function () {
-            const navLinks = Array.from(document.querySelectorAll('.nav-links a'));
-            const sectionIds = ['summary', 'about', 'experience', 'education', 'training', 'gallery', 'contact'];
-            const sections = sectionIds
-                .map(id => document.getElementById(id))
-                .filter(Boolean);
-
-            function updateActiveNav() {
-                const navHeight = document.querySelector('nav')?.offsetHeight || 0;
-                const scrollPosition = window.scrollY + navHeight + 40;
-                let activeSection = sections[0]?.id || '';
-
-                sections.forEach(section => {
-                    if (section.offsetTop <= scrollPosition) {
-                        activeSection = section.id;
-                    }
-                });
-
-                navLinks.forEach(link => {
-                    link.classList.toggle(
-                        'active',
-                        link.getAttribute('href') === '#' + activeSection
-                    );
-                });
-            }
-
+        function setActiveNav(id) {
             navLinks.forEach(link => {
-                link.addEventListener('click', function () {
-                    navLinks.forEach(item => item.classList.remove('active'));
-                    this.classList.add('active');
-                });
+                const active = link.getAttribute('href') === `#${id}`;
+                link.classList.toggle('active', active);
+                if (active && window.innerWidth <= 768) {
+                    link.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                }
+            });
+        }
+
+        function updateActiveNav() {
+            if (!sections.length) return;
+
+            const scrollPosition = window.scrollY + (nav?.offsetHeight || 0) + 40;
+            let activeSection = sections[0].id;
+
+            sections.forEach(section => {
+                if (section.offsetTop <= scrollPosition) {
+                    activeSection = section.id;
+                }
             });
 
-            window.addEventListener('scroll', updateActiveNav, { passive: true });
-            window.addEventListener('resize', updateActiveNav);
+            setActiveNav(activeSection);
+        }
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', function () {
+                const targetId = this.getAttribute('href')?.slice(1);
+                if (targetId) setActiveNav(targetId);
+            });
+        });
+
+        window.addEventListener('scroll', updateProgress, { passive: true });
+        window.addEventListener('scroll', updateActiveNav, { passive: true });
+        window.addEventListener('resize', () => {
+            syncNavHeight();
+            updateProgress();
+            updateActiveNav();
+        }, { passive: true });
+
+        window.addEventListener('load', () => {
+            syncNavHeight();
+            updateProgress();
             updateActiveNav();
         });
-    </script>
 
+        if (window.AOS) {
+            AOS.init({ duration: 800, once: true, offset: 80 });
+        }
+
+        syncNavHeight();
+        updateLanguage(currentLang);
+        updateProgress();
+        updateActiveNav();
+    </script>
 </body>
 </html>
