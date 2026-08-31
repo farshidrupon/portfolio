@@ -34,17 +34,18 @@
             --glass-backdrop: blur(12px);
         }
 
+        /* Full Black Dark Theme Updates */
         [data-theme="dark"] {
             --primary: #3b82f6;
             --primary-dark: #60a5fa;
             --secondary: #ffffff;
             --bg-light: #000000;
-            --surface: rgba(10, 10, 10, 0.85);
-            --surface-solid: #0a0a0a;
+            --surface: rgba(12, 12, 12, 0.9);
+            --surface-solid: #121212;
             --text-main: #e2e8f0;
             --text-muted: #94a3b8;
             --border: #262626;
-            --shadow: 0 4px 12px -1px rgba(0, 0, 0, 0.9);
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.8);
         }
 
         * {
@@ -175,7 +176,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, #000000 0%, #111111 100%);
+            background: linear-gradient(135deg, #000000 0%, #0a0a0a 100%);
             color: white;
             padding: 9rem 1rem 3rem 1rem;
             text-align: center;
@@ -536,6 +537,25 @@
             background: var(--primary);
         }
 
+        .training-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .training-card {
+            background: var(--surface-solid);
+            border: 1px solid var(--border);
+            padding: 1.25rem;
+            border-radius: 0.5rem;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .training-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--primary);
+        }
+
         .scrollable-gallery-wrapper {
             max-height: 480px;
             overflow-y: auto;
@@ -577,7 +597,7 @@
 
         .gallery-item:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
         }
 
         .gallery-item img {
@@ -600,7 +620,7 @@
             width: 100vw;
             height: 100vh;
             background-color: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(5px);
             justify-content: center;
             align-items: center;
         }
@@ -834,6 +854,7 @@
                     <li><a href="#about" data-i18n="nav_about">About</a></li>
                     <li><a href="#experience" data-i18n="nav_exp">Experience</a></li>
                     <li><a href="#education" data-i18n="nav_edu">Education</a></li>
+                    <li><a href="#training" data-i18n="nav_training">Training</a></li>
                     <li><a href="#gallery" data-i18n="nav_gallery">Gallery</a></li>
                     <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
                 </ul>
@@ -854,6 +875,7 @@
             <img src="profile.jpg" alt="Farshid Rupon" class="profile-pic" data-aos="fade-down" loading="lazy">
 
             <h1 data-aos="fade-down" data-aos-delay="100" data-i18n="hero_name">Farshid Rupon</h1>
+            <div class="hero-subtitle" data-aos="fade-down" data-aos-delay="150" data-i18n="hero_role">Legal Assistance</div>
             
             <div class="typed-container" data-aos="fade-down" data-aos-delay="200">
                 <span id="typed"></span>
@@ -1209,6 +1231,74 @@
 
         </div>
     </section>
+
+    <!-- Training & Certifications Section -->
+    <section id="training" data-aos="fade-up">
+        <h2 class="section-title" data-i18n="training_title">Training & Certifications</h2>
+        <div class="training-grid">
+            
+            <div class="training-card">
+                <div class="role-title" data-i18n="tr1_title">Basic Counseling</div>
+                <div class="company" style="margin-top: 0.25rem;" data-i18n="tr1_inst">Dhaka Ahsania Mission</div>
+                <p style="margin-top: 0.5rem; font-size: 0.9rem;"><strong data-i18n="lbl_duration">Duration</strong>: <span data-i18n="tr1_dur">5 Days</span></p>
+            </div>
+
+            <div class="training-card">
+                <div class="role-title" data-i18n="tr2_title">Impact Hub IMS</div>
+                <div class="company" style="margin-top: 0.25rem;" data-i18n="tr2_inst">GIZ Bangladesh</div>
+                <p style="margin-top: 0.5rem; font-size: 0.9rem;"><strong data-i18n="lbl_duration">Duration</strong>: <span data-i18n="tr2_dur">1 Days</span></p>
+            </div>
+
+            <div class="training-card">
+                <div class="role-title" data-i18n="tr3_title">Orientation on Foundation and Gender Policy</div>
+                <div class="company" style="margin-top: 0.25rem;" data-i18n="tr3_inst">RDRS Bangladesh</div>
+                <p style="margin-top: 0.5rem; font-size: 0.9rem;"><strong data-i18n="lbl_duration">Duration</strong>: <span data-i18n="tr3_dur">3 Days</span></p>
+            </div>
+
+            <div class="training-card">
+                <div class="role-title" data-i18n="tr4_title">Basic Criminal Law</div>
+                <div class="company" style="margin-top: 0.25rem;" data-i18n="tr4_inst">RDRS Bangladesh</div>
+                <p style="margin-top: 0.5rem; font-size: 0.9rem;"><strong data-i18n="lbl_duration">Duration</strong>: <span data-i18n="tr4_dur">15 Days</span></p>
+            </div>
+
+            <div class="training-card">
+                <div class="role-title" data-i18n="tr5_title">Wrap up IRSOP</div>
+                <div class="company" style="margin-top: 0.25rem;" data-i18n="tr5_inst">GIZ Bangladesh</div>
+                <p style="margin-top: 0.5rem; font-size: 0.9rem;"><strong data-i18n="lbl_duration">Duration</strong>: <span data-i18n="tr5_dur">5 Days</span></p>
+            </div>
+
+            <div class="training-card">
+                <div class="role-title" data-i18n="tr6_title">IMS (Information Management System)</div>
+                <div class="company" style="margin-top: 0.25rem;" data-i18n="tr6_inst">GIZ Bangladesh</div>
+                <p style="margin-top: 0.5rem; font-size: 0.9rem;"><strong data-i18n="lbl_duration">Duration</strong>: <span data-i18n="tr6_dur">5 Days</span></p>
+            </div>
+
+            <div class="training-card">
+                <div class="role-title" data-i18n="tr7_title">PLC (Paralegal Aid Clinic)</div>
+                <div class="company" style="margin-top: 0.25rem;" data-i18n="tr7_inst">GIZ Bangladesh</div>
+                <p style="margin-top: 0.5rem; font-size: 0.9rem;"><strong data-i18n="lbl_duration">Duration</strong>: <span data-i18n="tr7_dur">5 Days</span></p>
+            </div>
+
+            <div class="training-card">
+                <div class="role-title" data-i18n="tr8_title">Automobile and Driving</div>
+                <div class="company" style="margin-top: 0.25rem;" data-i18n="tr8_inst">Minal Computer Training Academy (MCTA), Thakurgaon</div>
+                <p style="margin-top: 0.5rem; font-size: 0.9rem;"><strong data-i18n="lbl_duration">Duration</strong>: <span data-i18n="tr8_dur">6 Months</span></p>
+            </div>
+
+            <div class="training-card">
+                <div class="role-title" data-i18n="tr9_title">Electrical Installation and Maintenance</div>
+                <div class="company" style="margin-top: 0.25rem;" data-i18n="tr9_inst">Technical Training Center (TTC), Thakurgaon</div>
+                <p style="margin-top: 0.5rem; font-size: 0.9rem;"><strong data-i18n="lbl_duration">Duration</strong>: <span data-i18n="tr9_dur">6 Months</span></p>
+            </div>
+
+            <div class="training-card">
+                <div class="role-title" data-i18n="tr10_title">Outsourcing & Freelancing</div>
+                <div class="company" style="margin-top: 0.25rem;" data-i18n="tr10_inst">TMSS/Upazila Office, Thakurgaon</div>
+                <p style="margin-top: 0.5rem; font-size: 0.9rem;"><strong data-i18n="lbl_duration">Duration</strong>: <span data-i18n="tr10_dur">5 Days</span></p>
+            </div>
+
+        </div>
+    </section>
     
     <!-- Image Gallery Section -->
     <section id="gallery" data-aos="fade-up">
@@ -1324,11 +1414,13 @@
             en: {
                 logo_name: "FARSHID RUPON",
                 hero_name: "Farshid Rupon",
+                hero_role: "Legal Assistance",
                 footer_name: "Farshid Rupon",
                 nav_summary: "Summary",
                 nav_about: "About",
                 nav_exp: "Experience",
                 nav_edu: "Education",
+                nav_training: "Training",
                 nav_gallery: "Gallery",
                 nav_contact: "Contact",
                 hero_loc: "Thakurgaon, Bangladesh",
@@ -1404,8 +1496,8 @@
                 lbl_sp_prog: "Survey Programming",
                 val_sp_prog: "Skip Logic, Quotas, Piping, Looping, Randomization, Masking, Custom UI/UX",
 
-                exp_agro_role: "Senior Operations Manager",
-                exp_agro_company: "Dinajpur Agro Farms, Phulbari, Dinajpur",
+                exp_agro_role: "Senior Manager, Operations",
+                exp_agro_company: "Dinajpur Agro Farms, Dinajpur",
                 exp_agro_date: "01 Mar 2022 – 30 Nov 2022",
                 exp_agro_r1: "Managed day-to-day farm operations and coordinated activities involving livestock, poultry, and fish farming.",
                 exp_agro_r2: "Conducted daily market research and collected current Layer Chicken prices from reliable market suppliers.",
@@ -1459,17 +1551,59 @@
                 edu2_title: "Bachelor of Social Science (BSS)",
                 edu2_inst: "Thakurgaon Govt. College, Thakurgaon",
                 edu2_sub: "Political Science",
-                edu2_res: "2.51 / 4.00",
+                edu2_res: "CGPA: 2.51 / 4.00",
 
                 edu3_title: "Higher Secondary Certificate (HSC)",
                 edu3_inst: "Thakurgaon Govt. Technical School & College, Thakurgaon",
                 edu3_sub: "Computer Science",
-                edu3_res: "3.50 / 5.00",
+                edu3_res: "GPA: 3.50 / 5.00",
 
                 edu4_title: "Secondary School Certificate (SSC)",
                 edu4_inst: "Thakurgaon Govt. Technical School & College, Thakurgaon",
                 edu4_sub: "Computer Science",
-                edu4_res: "3.36 / 5.00",
+                edu4_res: "GPA: 3.36 / 5.00",
+
+                training_title: "Training & Certifications",
+                lbl_duration: "Duration",
+                tr1_title: "Basic Counseling",
+                tr1_inst: "Dhaka Ahsania Mission",
+                tr1_dur: "5 Days",
+
+                tr2_title: "Impact Hub IMS",
+                tr2_inst: "GIZ Bangladesh",
+                tr2_dur: "1 Days",
+
+                tr3_title: "Orientation on Foundation and Gender Policy",
+                tr3_inst: "RDRS Bangladesh",
+                tr3_dur: "3 Days",
+
+                tr4_title: "Basic Criminal Law",
+                tr4_inst: "RDRS Bangladesh",
+                tr4_dur: "15 Days",
+
+                tr5_title: "Wrap up IRSOP",
+                tr5_inst: "GIZ Bangladesh",
+                tr5_dur: "5 Days",
+
+                tr6_title: "IMS (Information Management System)",
+                tr6_inst: "GIZ Bangladesh",
+                tr6_dur: "5 Days",
+
+                tr7_title: "PLC (Paralegal Aid Clinic)",
+                tr7_inst: "GIZ Bangladesh",
+                tr7_dur: "5 Days",
+
+                tr8_title: "Automobile and Driving",
+                tr8_inst: "Minal Computer Training Academy (MCTA), Thakurgaon",
+                tr8_dur: "6 Months",
+
+                tr9_title: "Electrical Installation and Maintenance",
+                tr9_inst: "Technical Training Center (TTC), Thakurgaon",
+                tr9_dur: "6 Months",
+
+                tr10_title: "Outsourcing & Freelancing",
+                tr10_inst: "TMSS/Upazila Office, Thakurgaon",
+                tr10_dur: "5 Days",
 
                 lbl_subject: "Subject",
                 lbl_result: "Result",
@@ -1486,10 +1620,10 @@
                 footer_rights: "All rights reserved.",
                 typed: [
                     'Present:',
-                    'Survey Programmer | Analytisify Research Limited',
+                    'Survey Programmer | Analyticify Research Limited',
                     'Decipher (Forsta), Qualtrics, Alchemer, Custom Scripting Expert, and Data Analyst',
                     'Previous Experience:',
-                    'Senior Operations Manager | Dinajpur Agro Farms',
+                    'Senior Manager, Operations | Dinajpur Agro Farms',
                     'Paralegal | RDRS Bangladesh',
                     'Sales Executive | Grameenphone Authorized Distribution House',
                     'Compliance Officer | Grameenphone Authorized Distribution House'
@@ -1498,11 +1632,13 @@
             bn: {
                 logo_name: "ফারশিদ রুপন",
                 hero_name: "ফারশিদ রুপন",
+                hero_role: "আইনগত সহায়তা",
                 footer_name: "ফারশিদ রুপন",
                 nav_summary: "সারসংক্ষেপ",
                 nav_about: "পরিচিতি",
                 nav_exp: "কর্মঅভিজ্ঞতা",
                 nav_edu: "শিক্ষাগত যোগ্যতা",
+                nav_training: "প্রশিক্ষণ",
                 nav_gallery: "গ্যালারি",
                 nav_contact: "যোগাযোগ",
                 hero_loc: "ঠাকুরগাঁও, বাংলাদেশ",
@@ -1578,7 +1714,7 @@
                 lbl_sp_prog: "সার্ভে প্রোগ্রামিং",
                 val_sp_prog: "Skip Logic, Quotas, Piping, Looping, Randomization, Masking, Custom UI/UX",
 
-                exp_agro_role: "সিনিয়র অপারেশনস ম্যানেজার",
+                exp_agro_role: "সিনিয়র ম্যানেজার, অপারেশনস",
                 exp_agro_company: "Dinajpur Agro Farms, ফুলবাড়ী, দিনাজপুর",
                 exp_agro_date: "০১ মার্চ ২০২২ – ৩০ নভেম্বর ২০২২",
                 exp_agro_r1: "গবাদিপশু, পোল্ট্রি ও মাছ চাষসহ দৈনন্দিন খামার পরিচালনা কার্যক্রম পরিচালনা ও সমন্বয় করা।",
@@ -1633,17 +1769,59 @@
                 edu2_title: "Bachelor of Social Science (BSS)",
                 edu2_inst: "Thakurgaon Govt. College, Thakurgaon",
                 edu2_sub: "Political Science",
-                edu2_res: "২.৫১ / ৪.০০",
+                edu2_res: "CGPA: ২.৫১ / ৪.০০",
 
                 edu3_title: "Higher Secondary Certificate (HSC)",
                 edu3_inst: "Thakurgaon Govt. Technical School & College, Thakurgaon",
                 edu3_sub: "Computer Science",
-                edu3_res: "৩.৫০ / ৫.০০",
+                edu3_res: "GPA: ৩.৫০ / ৫.০০",
 
                 edu4_title: "Secondary School Certificate (SSC)",
                 edu4_inst: "Thakurgaon Govt. Technical School & College, Thakurgaon",
                 edu4_sub: "Computer Science",
-                edu4_res: "৩.৩৬ / ৫.০০",
+                edu4_res: "GPA: ৩.৩৬ / ৫.০০",
+
+                training_title: "প্রশিক্ষণ ও সনদসমূহ",
+                lbl_duration: "সময়কাল",
+                tr1_title: "বেসিক কাউন্সেলিং",
+                tr1_inst: "ঢাকা আহসানিয়া মিশন",
+                tr1_dur: "৫ দিন",
+
+                tr2_title: "ইমপ্যাক্ট হাব IMS",
+                tr2_inst: "GIZ Bangladesh",
+                tr2_dur: "১ দিন",
+
+                tr3_title: "ফাউন্ডেশন ও জেন্ডার পলিসি বিষয়ক ওরিয়েন্টেশন",
+                tr3_inst: "RDRS Bangladesh",
+                tr3_dur: "৩ দিন",
+
+                tr4_title: "মৌলিক ফৌজদারি আইন",
+                tr4_inst: "RDRS Bangladesh",
+                tr4_dur: "১৫ দিন",
+
+                tr5_title: "র‍্যাপ আপ IRSOP",
+                tr5_inst: "GIZ Bangladesh",
+                tr5_dur: "৫ দিন",
+
+                tr6_title: "IMS (তথ্য ব্যবস্থাপনা ব্যবস্থা)",
+                tr6_inst: "GIZ Bangladesh",
+                tr6_dur: "৫ দিন",
+
+                tr7_title: "PLC (প্যারালিগ্যাল এইড ক্লিনিক)",
+                tr7_inst: "GIZ Bangladesh",
+                tr7_dur: "৫ দিন",
+
+                tr8_title: "অটোমোবাইল ও ড্রাইভিং",
+                tr8_inst: "মিনাল কম্পিউটার ট্রেনিং একাডেমি (MCTA), ঠাকুরগাঁও",
+                tr8_dur: "৬ মাস",
+
+                tr9_title: "ইলেকট্রিক্যাল ইনস্টলেশন ও মেইনটেন্যান্স",
+                tr9_inst: "টেকনিক্যাল ট্রেনিং সেন্টার (TTC), ঠাকুরগাঁও",
+                tr9_dur: "৬ মাস",
+
+                tr10_title: "আউটসোর্সিং ও ফ্রিল্যান্সিং",
+                tr10_inst: "TMSS/উপজেলা অফিস, ঠাকুরগাঁও",
+                tr10_dur: "৫ দিন",
 
                 lbl_subject: "বিষয়",
                 lbl_result: "ফলাফল",
@@ -1659,10 +1837,11 @@
                 btn_send: "বার্তা পাঠান",
                 footer_rights: "সর্বস্বত্ব সংরক্ষিত।",
                 typed: [
+                    'বর্তমান:',
                     'সার্ভে প্রোগ্রামার | অ্যানালিটিসিফাই রিসার্চ লিমিটেড',
                     'ডিসাইফার (Forsta), কোয়ালট্রিক্স, আলচেমার, কাস্টম স্ক্রিপ্টিং ও ডেটা অ্যানালাইসিসে বিশেষ দক্ষতা।',
                     'পূর্ববর্তী কর্ম-অভিজ্ঞতা:',
-                    'সিনিয়র অপারেশনস ম্যানেজার | দিনাজপুর এগ্রো ফার্মস',
+                    'সিনিয়র ম্যানেজার, অপারেশনস | দিনাজপুর এগ্রো ফার্মস',
                     'প্যারালিগ্যাল | আরডিআরএস বাংলাদেশ',
                     'সেলস এক্সিকিউটিভ | গ্রামীণফোন অনুমোদিত ডিস্ট্রিবিউশন হাউস',
                     'কমপ্লায়েন্স অফিসার | গ্রামীণফোন অনুমোদিত ডিস্ট্রিবিউশন হাউস'
