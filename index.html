@@ -134,16 +134,28 @@
             list-style: none;
         }
 
+        /* Rounded navigation highlight style matching the All Roles button */
         .nav-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             text-decoration: none;
             color: var(--text-main);
             font-weight: 500;
             font-size: 0.95rem;
-            transition: color 0.3s;
+            padding: 0.45rem 0.85rem;
+            border: 1px solid transparent;
+            border-radius: 2rem;
+            line-height: 1;
+            white-space: nowrap;
+            transition: all 0.3s ease;
         }
 
-        .nav-links a:hover {
-            color: var(--primary);
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: var(--primary);
+            color: #ffffff;
+            border-color: var(--primary);
         }
 
         .toggle-btn {
@@ -2154,5 +2166,48 @@
                 });
         });
     </script>
+
+
+    <script>
+        // Active navigation highlight based on the visible page section
+        document.addEventListener('DOMContentLoaded', function () {
+            const navLinks = Array.from(document.querySelectorAll('.nav-links a'));
+            const sectionIds = ['summary', 'about', 'experience', 'education', 'training', 'gallery', 'contact'];
+            const sections = sectionIds
+                .map(id => document.getElementById(id))
+                .filter(Boolean);
+
+            function updateActiveNav() {
+                const navHeight = document.querySelector('nav')?.offsetHeight || 0;
+                const scrollPosition = window.scrollY + navHeight + 40;
+                let activeSection = sections[0]?.id || '';
+
+                sections.forEach(section => {
+                    if (section.offsetTop <= scrollPosition) {
+                        activeSection = section.id;
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.toggle(
+                        'active',
+                        link.getAttribute('href') === '#' + activeSection
+                    );
+                });
+            }
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function () {
+                    navLinks.forEach(item => item.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+
+            window.addEventListener('scroll', updateActiveNav, { passive: true });
+            window.addEventListener('resize', updateActiveNav);
+            updateActiveNav();
+        });
+    </script>
+
 </body>
 </html>
