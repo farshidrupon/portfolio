@@ -6,11 +6,16 @@
     <title>Farshid Rupon | Survey Programmer</title>
     
     <!-- Meta SEO & OpenGraph Social Tags -->
-    <meta name="description" content="Portfolio of Farshid Rupon - Experienced Survey Programmer & Legal Assistance Specialist.">
+    <meta name="description" content="Professional portfolio of Farshid Rupon, an experienced Survey Programmer specializing in Decipher (Forsta), Qualtrics, survey logic, custom scripting, QA, data processing, and research technology.">
     <meta property="og:title" content="Farshid Rupon | Survey Programmer">
-    <meta property="og:description" content="Explore my professional experience, survey logic implementations, technical skills, and legal assistance background.">
+    <meta property="og:description" content="Explore Farshid Rupon's survey programming expertise, technical skills, professional experience, and research technology background.">
     <meta property="og:image" content="profile.jpg">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://farshidrupon.is-local.org/">
+    <meta property="og:site_name" content="Farshid Rupon | Survey Programmer">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://farshidrupon.is-local.org/">
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -765,6 +770,57 @@
             font-size: 0.9rem;
         }
 
+
+        .skill-group {
+            margin-top: 1rem;
+        }
+
+        .skill-group:first-of-type {
+            margin-top: 0.75rem;
+        }
+
+        .skill-group h4 {
+            color: var(--secondary);
+            font-size: 0.9rem;
+            margin-bottom: 0.45rem;
+            font-weight: 600;
+        }
+
+        .honeypot {
+            position: absolute !important;
+            left: -10000px !important;
+            width: 1px !important;
+            height: 1px !important;
+            overflow: hidden !important;
+        }
+
+        .btn:disabled {
+            opacity: 0.65;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        .btn:focus-visible,
+        .toggle-btn:focus-visible,
+        .filter-btn:focus-visible,
+        .lightbox-btn:focus-visible,
+        .nav-links a:focus-visible,
+        .social-links-hero a:focus-visible {
+            outline: 3px solid rgba(96, 165, 250, 0.65);
+            outline-offset: 3px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
         @media (max-width: 992px) {
             .gallery-container {
                 grid-template-columns: repeat(2, 1fr);
@@ -778,9 +834,28 @@
         }
 
         @media (max-width: 768px) {
+            nav {
+                padding: 0.55rem 0;
+            }
+
             .nav-container {
                 flex-direction: column;
-                gap: 0.5rem;
+                gap: 0.45rem;
+            }
+
+            .nav-right {
+                width: 100%;
+                flex-direction: column;
+                gap: 0.45rem;
+            }
+
+            .nav-links {
+                width: 100%;
+                gap: 0.55rem 0.8rem;
+            }
+
+            .nav-controls {
+                justify-content: center;
             }
             .nav-links {
                 gap: 0.75rem;
@@ -838,6 +913,42 @@
             }
         }
     </style>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Farshid Rupon",
+        "url": "https://farshidrupon.is-local.org/",
+        "jobTitle": "Survey Programmer",
+        "email": "mailto:farshidrupon@gmail.com",
+        "telephone": "+8801711305367",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Thakurgaon",
+            "addressCountry": "BD"
+        },
+        "sameAs": [
+            "https://www.linkedin.com/in/FarshidRupon"
+        ],
+        "knowsAbout": [
+            "Survey Programming",
+            "Decipher",
+            "Forsta",
+            "Qualtrics",
+            "Confirmit",
+            "JavaScript",
+            "Python",
+            "HTML5",
+            "CSS3",
+            "XML",
+            "SQL",
+            "SPSS",
+            "Data Processing"
+        ]
+    }
+    </script>
+
 </head>
 <body>
 
@@ -872,10 +983,10 @@
 
     <header class="hero">
         <div class="hero-content">
-            <img src="profile.jpg" alt="Farshid Rupon" class="profile-pic" data-aos="fade-down" loading="lazy">
+            <img src="profile.jpg" alt="Farshid Rupon" class="profile-pic" data-aos="fade-down" fetchpriority="high" decoding="async">
 
             <h1 data-aos="fade-down" data-aos-delay="100" data-i18n="hero_name">Farshid Rupon</h1>
-            <div class="hero-subtitle" data-aos="fade-down" data-aos-delay="150" data-i18n="hero_role">Professional Background</div>
+            <div class="hero-subtitle" data-aos="fade-down" data-aos-delay="150" data-i18n="hero_role">Survey Programmer | Survey Technology Specialist</div>
             
             <div class="typed-container" data-aos="fade-down" data-aos-delay="200">
                 <span id="typed"></span>
@@ -888,9 +999,9 @@
             </div>
 
             <div class="social-links-hero" data-aos="fade-up" data-aos-delay="350">
-                <a href="https://www.linkedin.com/in/FarshidRupon" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-                <a href="https://m.me/FarshidRupon" target="_blank" title="Messenger"><i class="fa-brands fa-facebook-messenger"></i></a>
-                <a href="https://wa.me/8801711305367" target="_blank" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="https://www.linkedin.com/in/FarshidRupon" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://m.me/FarshidRupon" target="_blank" rel="noopener noreferrer" title="Messenger" aria-label="Messenger"><i class="fa-brands fa-facebook-messenger"></i></a>
+                <a href="https://wa.me/8801711305367" target="_blank" rel="noopener noreferrer" title="WhatsApp" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
             </div>
 
             <a href="#contact" class="btn" data-aos="fade-up" data-aos-delay="400" data-i18n="btn_contact">Get In Touch</a>
@@ -902,88 +1013,84 @@
         <h2 class="section-title" data-i18n="summary_title">Professional Summary</h2>
         <div class="card">
             <p style="font-size: 1.05rem; line-height: 1.7;" data-i18n="summary_desc">
-                Experienced and results-driven Survey Programmer with 10+ years of cross-functional professional experience spanning survey programming, research technology, operational compliance, and project operations. Skilled in developing complex market research surveys, implementing advanced logic and routing, performing quality assurance, managing live fieldwork, and supporting data processing and analytics. Strong analytical problem-solving skills, attention to detail, and a proven ability to optimize workflows and deliver high-quality results in dynamic environments.
+                Experienced and results-driven Survey Programmer with 10+ years of overall professional experience, including extensive experience in survey programming, research technology, operational compliance, and project operations. Skilled in developing complex market research surveys, implementing advanced logic and routing, performing quality assurance, managing live fieldwork, and supporting data processing and analytics. Strong analytical problem-solving skills, attention to detail, and a proven ability to optimize workflows and deliver high-quality results in dynamic environments.
             </p>
         </div>
     </section>
 
     <!-- Personal Overview -->
     <section id="about" data-aos="fade-up">
-        <h2 class="section-title" data-i18n="about_title">Personal Overview</h2>
+        <h2 class="section-title" data-i18n="about_title">Professional Profile</h2>
         <div class="grid-2">
             <div class="card">
-                <h3><i class="fa-solid fa-user-check" style="color: var(--primary);"></i> <span data-i18n="about_details">Key Details</span></h3>
-                
+                <h3><i class="fa-solid fa-user-check" style="color: var(--primary);"></i> <span data-i18n="about_details">Professional Details</span></h3>
                 <ul class="aligned-info-list">
-                    <li>
-                        <span class="info-label" data-i18n="lbl_father">Father's Name</span>
-                        <span class="info-colon">:</span>
-                        <span class="info-val" data-i18n="val_father">Md. Mofidul Haque</span>
-                    </li>
-                    <li>
-                        <span class="info-label" data-i18n="lbl_mother">Mother's Name</span>
-                        <span class="info-colon">:</span>
-                        <span class="info-val" data-i18n="val_mother">Mst. Fardusi Begum</span>
-                    </li>
-                    <li>
-                        <span class="info-label" data-i18n="lbl_dob">Date of Birth</span>
-                        <span class="info-colon">:</span>
-                        <span class="info-val" data-i18n="val_dob">October 20, 1991</span>
-                    </li>
-                    <li>
-                        <span class="info-label" data-i18n="lbl_height">Height</span>
-                        <span class="info-colon">:</span>
-                        <span class="info-val" data-i18n="val_height">5'7"</span>
-                    </li>
-                    <li>
-                        <span class="info-label" data-i18n="lbl_weight">Weight</span>
-                        <span class="info-colon">:</span>
-                        <span class="info-val" data-i18n="val_weight">73 kg</span>
-                    </li>
                     <li>
                         <span class="info-label" data-i18n="lbl_nationality">Nationality</span>
                         <span class="info-colon">:</span>
                         <span class="info-val" data-i18n="val_nationality">Bangladeshi</span>
                     </li>
                     <li>
-                        <span class="info-label" data-i18n="lbl_religion">Religion</span>
+                        <span class="info-label" data-i18n="lbl_languages">Languages</span>
                         <span class="info-colon">:</span>
-                        <span class="info-val" data-i18n="val_religion">Islam</span>
+                        <span class="info-val" data-i18n="val_languages">Bengali (Native), English (Professional Working Proficiency)</span>
                     </li>
-                    <li>
-                        <span class="info-label" data-i18n="lbl_marital">Marital Status</span>
-                        <span class="info-colon">:</span>
-                        <span class="info-val" data-i18n="val_marital">Married</span>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="card">
-                <h3><i class="fa-solid fa-id-card" style="color: var(--primary);"></i> <span data-i18n="about_expertise">Expertise & Qualifications</span></h3>
-                
-                <ul class="aligned-info-list">
                     <li>
                         <span class="info-label" data-i18n="lbl_driving">Driving License</span>
                         <span class="info-colon">:</span>
                         <span class="info-val" data-i18n="val_driving">Valid Motorcycle Driving License</span>
                     </li>
-                    <li>
-                        <span class="info-label" data-i18n="lbl_languages">Languages</span>
-                        <span class="info-colon">:</span>
-                        <span class="info-val" data-i18n="val_languages">Bengali (Native), English (Professional Working Proficiency)</span>
-                    </li>
                 </ul>
+            </div>
 
-                <p style="margin-top: 1rem;"><strong data-i18n="lbl_competencies">Core Competencies:</strong></p>
-                <div class="skills-tag-container">
-                    <span class="skill-tag" data-i18n="tag_c1">Decipher (Forsta)</span>
-                    <span class="skill-tag" data-i18n="tag_c2">Qualtrics</span>
-                    <span class="skill-tag" data-i18n="tag_c3">HTML5 & CSS3</span>
-                    <span class="skill-tag" data-i18n="tag_c4">JavaScript</span>
-                    <span class="skill-tag" data-i18n="tag_c5">XML & Python Scripting</span>
-                    <span class="skill-tag" data-i18n="tag_c6">SPSS & CSV Data Processing</span>
-                    <span class="skill-tag" data-i18n="tag_c7">Survey Logic & Programming</span>
-                    <span class="skill-tag" data-i18n="tag_c8">Project Operations</span>
+            <div class="card">
+                <h3><i class="fa-solid fa-layer-group" style="color: var(--primary);"></i> <span data-i18n="about_expertise">Technical Expertise</span></h3>
+
+                <div class="skill-group">
+                    <h4 data-i18n="skill_platforms_title">Survey Platforms</h4>
+                    <div class="skills-tag-container">
+                        <span class="skill-tag">Decipher (Forsta)</span>
+                        <span class="skill-tag">Qualtrics</span>
+                        <span class="skill-tag">Confirmit</span>
+                        <span class="skill-tag">Unomer</span>
+                        <span class="skill-tag">Alchemer</span>
+                    </div>
+                </div>
+
+                <div class="skill-group">
+                    <h4 data-i18n="skill_programming_title">Programming & Web</h4>
+                    <div class="skills-tag-container">
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">HTML5</span>
+                        <span class="skill-tag">CSS3</span>
+                        <span class="skill-tag">XML</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">SQL</span>
+                    </div>
+                </div>
+
+                <div class="skill-group">
+                    <h4 data-i18n="skill_data_title">Data & Analytics</h4>
+                    <div class="skills-tag-container">
+                        <span class="skill-tag">SPSS (.sav)</span>
+                        <span class="skill-tag">CSV</span>
+                        <span class="skill-tag">JSON</span>
+                        <span class="skill-tag">Excel</span>
+                        <span class="skill-tag">Tableau-ready Data</span>
+                    </div>
+                </div>
+
+                <div class="skill-group">
+                    <h4 data-i18n="skill_logic_title">Survey Programming</h4>
+                    <div class="skills-tag-container">
+                        <span class="skill-tag">Skip Logic</span>
+                        <span class="skill-tag">Quotas</span>
+                        <span class="skill-tag">Piping</span>
+                        <span class="skill-tag">Looping</span>
+                        <span class="skill-tag">Randomization</span>
+                        <span class="skill-tag">Masking</span>
+                        <span class="skill-tag">Custom UI/UX</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -994,9 +1101,9 @@
         <h2 class="section-title" data-aos="fade-up" data-i18n="exp_title">Work Experience</h2>
         
         <div class="filter-container" data-aos="fade-up">
-            <button class="filter-btn active" onclick="filterTimeline('all')" data-i18n="btn_filter_all">All Roles</button>
-            <button class="filter-btn" onclick="filterTimeline('sp')" data-i18n="btn_filter_sp">Survey Programming</button>
-            <button class="filter-btn" onclick="filterTimeline('ops')" data-i18n="btn_filter_ops">Operations & Legal Assistance</button>
+            <button class="filter-btn active" onclick="filterTimeline('all', this)" data-i18n="btn_filter_all">All Roles</button>
+            <button class="filter-btn" onclick="filterTimeline('sp', this)" data-i18n="btn_filter_sp">Survey Programming</button>
+            <button class="filter-btn" onclick="filterTimeline('ops', this)" data-i18n="btn_filter_ops">Operations & Legal Assistance</button>
         </div>
 
         <div class="timeline">
@@ -1004,7 +1111,7 @@
             <div class="timeline-item" data-category="sp" data-aos="fade-up">
                 <div class="timeline-header">
                     <div>
-                        <div class="role-title" data-i18n="exp1_role">Programmer</div>
+                        <div class="role-title" data-i18n="exp1_role">Survey Programmer</div>
                         <div class="company" data-i18n="exp1_company">Analyticify Research Limited, Thakurgaon</div>
                     </div>
                     <span class="date-badge" data-i18n="exp1_date">01 Dec 2022 – Present</span>
@@ -1308,15 +1415,15 @@
                 <div class="gallery-container">
                     
                     <div class="gallery-item" onclick="openLightbox(this)">
-                        <img src="Img_01.jpg" alt="Professional Workplace" loading="lazy">
+                        <img src="Img_01.jpg" alt="Professional Workplace" loading="lazy" decoding="async">
                     </div>
 
                     <div class="gallery-item" onclick="openLightbox(this)">
-                        <img src="Img_02.jpg" alt="Professional Profile" loading="lazy">
+                        <img src="Img_02.jpg" alt="Professional Profile" loading="lazy" decoding="async">
                     </div>
 
                     <div class="gallery-item" onclick="openLightbox(this)">
-                        <img src="Img_03.jpg" alt="Training & Professional Development" loading="lazy">
+                        <img src="Img_03.jpg" alt="Training & Professional Development" loading="lazy" decoding="async">
                     </div>
 
                 </div>
@@ -1347,7 +1454,7 @@
                         <i class="fa-solid fa-location-dot"></i>
                         <div>
                             <strong data-i18n="lbl_address">Address</strong>
-                            <p data-i18n="val_address">Muslim Nagar, Thakurgaon-5100, Bangladesh</p>
+                            <p data-i18n="val_address">Thakurgaon, Bangladesh</p>
                         </div>
                     </div>
                     <div class="info-group">
@@ -1367,38 +1474,42 @@
                     <div class="info-group">
                         <i class="fa-brands fa-linkedin-in"></i>
                         <div>
-                            <strong><a href="https://www.linkedin.com/in/FarshidRupon" target="_blank" data-i18n="val_linkedin">LinkedIn</a></strong>
+                            <strong><a href="https://www.linkedin.com/in/FarshidRupon" target="_blank" rel="noopener noreferrer" data-i18n="val_linkedin">LinkedIn</a></strong>
                         </div>
                     </div>
                     <div class="info-group">
                         <i class="fa-solid fa-users-rectangle"></i>
                         <div>
-                            <strong><a href="https://teams.microsoft.com/l/chat/0/0?users=farshidrupon@gmail.com" target="_blank" data-i18n="val_msteams">Microsoft Teams</a></strong>
+                            <strong><a href="https://teams.microsoft.com/l/chat/0/0?users=farshidrupon@gmail.com" target="_blank" rel="noopener noreferrer" data-i18n="val_msteams">Microsoft Teams</a></strong>
                         </div>
                     </div>
                     <div class="info-group">
                         <i class="fa-brands fa-whatsapp"></i>
                         <div>
-                            <strong><a href="https://wa.me/8801711305367" target="_blank" data-i18n="val_whatsapp">WhatsApp</a></strong>
+                            <strong><a href="https://wa.me/8801711305367" target="_blank" rel="noopener noreferrer" data-i18n="val_whatsapp">WhatsApp</a></strong>
                         </div>
                     </div>
                 </div>
 
-                <form id="contactForm" class="contact-form">
+                <form id="contactForm" class="contact-form" novalidate>
+                    <div class="honeypot" aria-hidden="true">
+                        <label for="website">Leave this field empty</label>
+                        <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+                    </div>
                     <div class="form-group">
                         <label for="senderName" data-i18n="lbl_form_name">Your Name</label>
-                        <input type="text" id="senderName" required data-i18n-ph="ph_name" placeholder="">
+                        <input type="text" id="senderName" name="senderName" required autocomplete="name" maxlength="100" data-i18n-ph="ph_name" placeholder="">
                     </div>
                     <div class="form-group">
                         <label for="senderEmail" data-i18n="lbl_form_email">Your Email</label>
-                        <input type="email" id="senderEmail" required placeholder="name@example.com">
+                        <input type="email" id="senderEmail" name="senderEmail" required autocomplete="email" maxlength="160" placeholder="name@example.com">
                     </div>
                     <div class="form-group">
                         <label for="message" data-i18n="lbl_form_msg">Message</label>
-                        <textarea id="message" rows="4" required data-i18n-ph="ph_msg" placeholder=""></textarea>
+                        <textarea id="message" name="message" rows="5" required maxlength="3000" data-i18n-ph="ph_msg" placeholder=""></textarea>
                     </div>
                     <button type="submit" class="btn" data-i18n="btn_send">Send Message</button>
-                    <div id="form-status"></div>
+                    <div id="form-status" role="status" aria-live="polite"></div>
                 </form>
             </div>
         </div>
@@ -1414,7 +1525,7 @@
             en: {
                 logo_name: "FARSHID RUPON",
                 hero_name: "Farshid Rupon",
-                hero_role: "Professional Background",
+                hero_role: "Survey Programmer | Survey Technology Specialist",
                 footer_name: "Farshid Rupon",
                 nav_summary: "Summary",
                 nav_about: "About",
@@ -1432,45 +1543,26 @@
                 ph_msg: "Hello Farshid, I would like to discuss a project...",
                 btn_contact: "Get In Touch",
                 summary_title: "Professional Summary",
-                summary_desc: "Experienced and results-driven Survey Programmer with 10+ years of cross-functional professional experience spanning survey programming, research technology, operational compliance, and project operations. Skilled in developing complex market research surveys, implementing advanced logic and routing, performing quality assurance, managing live fieldwork, and supporting data processing and analytics. Strong analytical problem-solving skills, attention to detail, and a proven ability to optimize workflows and deliver high-quality results in dynamic environments.",
-                about_title: "Personal Overview",
-                about_details: "Key Details",
-                about_expertise: "Expertise & Qualifications",
-                lbl_father: "Father's Name",
-                val_father: "Md. Mofidul Haque",
-                lbl_mother: "Mother's Name",
-                val_mother: "Mst. Fardusi Begum",
-                lbl_dob: "Date of Birth",
-                val_dob: "October 20, 1991",
-                lbl_height: "Height",
-                val_height: "5'7\"",
-                lbl_weight: "Weight",
-                val_weight: "73 kg",
+                summary_desc: "Experienced and results-driven Survey Programmer with 10+ years of overall professional experience, including extensive experience in survey programming, research technology, operational compliance, and project operations. Skilled in developing complex market research surveys, implementing advanced logic and routing, performing quality assurance, managing live fieldwork, and supporting data processing and analytics. Strong analytical problem-solving skills, attention to detail, and a proven ability to optimize workflows and deliver high-quality results in dynamic environments.",
+                about_title: "Professional Profile",
+                about_details: "Professional Details",
+                about_expertise: "Technical Expertise",
                 lbl_nationality: "Nationality",
                 val_nationality: "Bangladeshi",
-                lbl_religion: "Religion",
-                val_religion: "Islam",
-                lbl_marital: "Marital Status",
-                val_marital: "Married",
                 lbl_driving: "Driving License",
                 val_driving: "Valid Motorcycle Driving License",
                 lbl_languages: "Languages",
                 val_languages: "Bengali (Native), English (Professional Working Proficiency)",
-                lbl_competencies: "Core Competencies:",
-                tag_c1: "Decipher (Forsta)",
-                tag_c2: "Qualtrics",
-                tag_c3: "HTML5 & CSS3",
-                tag_c4: "JavaScript",
-                tag_c5: "XML & Python Scripting",
-                tag_c6: "SPSS & CSV Data Processing",
-                tag_c7: "Survey Logic & Programming",
-                tag_c8: "Project Operations",
+                skill_platforms_title: "Survey Platforms",
+                skill_programming_title: "Programming & Web",
+                skill_data_title: "Data & Analytics",
+                skill_logic_title: "Survey Programming",
                 exp_title: "Work Experience",
                 btn_filter_all: "All Roles",
                 btn_filter_sp: "Survey Programming",
                 btn_filter_ops: "Operations & Legal Assistance",
                 
-                exp1_role: "Programmer",
+                exp1_role: "Survey Programmer",
                 exp1_company: "Analyticify Research Limited, Thakurgaon",
                 exp1_date: "01 Dec 2022 – Present",
                 exp1_t1: "Survey Coding & Development",
@@ -1609,8 +1701,8 @@
                 lbl_result: "Result",
                 gallery_title: "My Gallery",
                 contact_title: "Contact & Social Channels",
-                lbl_address: "Address",
-                val_address: "Muslim Nagar, Thakurgaon-5100, Bangladesh",
+                lbl_address: "Location",
+                val_address: "Thakurgaon, Bangladesh",
                 lbl_email: "Email",
                 lbl_phone: "Phone",
                 lbl_form_name: "Your Name",
@@ -1632,7 +1724,7 @@
             bn: {
                 logo_name: "ফারশিদ রুপন",
                 hero_name: "ফারশিদ রুপন",
-                hero_role: "পেশাগত অভিজ্ঞতার ক্ষেত্র",
+                hero_role: "সার্ভে প্রোগ্রামার | সার্ভে টেকনোলজি বিশেষজ্ঞ",
                 footer_name: "ফারশিদ রুপন",
                 nav_summary: "সারসংক্ষেপ",
                 nav_about: "পরিচিতি",
@@ -1650,45 +1742,26 @@
                 ph_msg: "হ্যালো ফারশিদ, আমি একটি প্রজেক্ট নিয়ে আলোচনা করতে চাই...",
                 btn_contact: "যোগাযোগ করুন",
                 summary_title: "পেশাগত সারসংক্ষেপ",
-                summary_desc: "সার্ভে প্রোগ্রামিং, রিসার্চ টেকনোলজি, অপারেশনাল কমপ্লায়েন্স এবং প্রজেক্ট অপারেশনে ১০+ বছরের বহুমুখী পেশাগত অভিজ্ঞতাসম্পন্ন একজন দক্ষ ও ফলাফলভিত্তিক সার্ভে প্রোগ্রামার। জটিল মার্কেট রিসার্চ সার্ভে তৈরি, উন্নত লজিক ও রাউটিং বাস্তবায়ন, কোয়ালিটি অ্যাস্যুরেন্স, লাইভ ফিল্ডওয়ার্ক পরিচালনা এবং ডেটা প্রসেসিং ও অ্যানালিটিক্সে সহায়তা প্রদানে দক্ষ। শক্তিশালী বিশ্লেষণাত্মক সমস্যা সমাধানের দক্ষতা, সূক্ষ্ম বিষয়ে মনোযোগ এবং কার্যপ্রবাহ উন্নত করে গতিশীল কর্মপরিবেশে উচ্চমানের ফলাফল প্রদানের সক্ষমতা রয়েছে।",
-                about_title: "ব্যক্তিগত পরিচিতি",
-                about_details: "গুরুত্বপূর্ণ তথ্য",
-                about_expertise: "দক্ষতা ও যোগ্যতা",
-                lbl_father: "পিতার নাম",
-                val_father: "মোঃ মফিদুল হক",
-                lbl_mother: "মাতার নাম",
-                val_mother: "মোছাঃ ফারদুসী বেগম",
-                lbl_dob: "জন্মতারিখ",
-                val_dob: "২০ অক্টোবর ১৯৯১",
-                lbl_height: "উচ্চতা",
-                val_height: "৫'৭\"",
-                lbl_weight: "ওজন",
-                val_weight: "৭৩ কেজি",
+                summary_desc: "সার্বিকভাবে ১০+ বছরের পেশাগত অভিজ্ঞতাসম্পন্ন একজন দক্ষ ও ফলাফলভিত্তিক সার্ভে প্রোগ্রামার, যার মধ্যে সার্ভে প্রোগ্রামিং, রিসার্চ টেকনোলজি, অপারেশনাল কমপ্লায়েন্স এবং প্রজেক্ট অপারেশনে ব্যাপক অভিজ্ঞতা রয়েছে। জটিল মার্কেট রিসার্চ সার্ভে তৈরি, উন্নত লজিক ও রাউটিং বাস্তবায়ন, কোয়ালিটি অ্যাস্যুরেন্স, লাইভ ফিল্ডওয়ার্ক পরিচালনা এবং ডেটা প্রসেসিং ও অ্যানালিটিক্সে সহায়তা প্রদানে দক্ষ। শক্তিশালী বিশ্লেষণাত্মক সমস্যা সমাধানের দক্ষতা, সূক্ষ্ম বিষয়ে মনোযোগ এবং কার্যপ্রবাহ উন্নত করে গতিশীল কর্মপরিবেশে উচ্চমানের ফলাফল প্রদানের সক্ষমতা রয়েছে।",
+                about_title: "পেশাগত পরিচিতি",
+                about_details: "পেশাগত তথ্য",
+                about_expertise: "টেকনিক্যাল দক্ষতা",
                 lbl_nationality: "জাতীয়তা",
                 val_nationality: "বাংলাদেশি",
-                lbl_religion: "ধর্ম",
-                val_religion: "ইসলাম",
-                lbl_marital: "বৈবাহিক অবস্থা",
-                val_marital: "বিবাহিত",
                 lbl_driving: "ড্রাইভিং লাইসেন্স",
                 val_driving: "বৈধ মোটরসাইকেল ড্রাইভিং লাইসেন্স",
                 lbl_languages: "ভাষা",
                 val_languages: "বাংলা (মাতৃভাষা), ইংরেজি (পেশাগত কাজে দক্ষ)",
-                lbl_competencies: "মূল দক্ষতাসমূহ:",
-                tag_c1: "Decipher (Forsta)",
-                tag_c2: "Qualtrics",
-                tag_c3: "HTML5 ও CSS3",
-                tag_c4: "JavaScript",
-                tag_c5: "XML ও Python Scripting",
-                tag_c6: "SPSS ও CSV ডেটা প্রসেসিং",
-                tag_c7: "সার্ভে লজিক ও প্রোগ্রামিং",
-                tag_c8: "প্রজেক্ট অপারেশনস",
+                skill_platforms_title: "সার্ভে প্ল্যাটফর্ম",
+                skill_programming_title: "প্রোগ্রামিং ও ওয়েব",
+                skill_data_title: "ডেটা ও অ্যানালিটিক্স",
+                skill_logic_title: "সার্ভে প্রোগ্রামিং",
                 exp_title: "কর্মঅভিজ্ঞতা",
                 btn_filter_all: "সকল ভূমিকা",
                 btn_filter_sp: "সার্ভে প্রোগ্রামিং",
                 btn_filter_ops: " অপারেশনস ও আইনগত সহায়তা",
                 
-                exp1_role: "প্রোগ্রামার",
+                exp1_role: "সার্ভে প্রোগ্রামার",
                 exp1_company: "Analyticify Research Limited, ঠাকুরগাঁও",
                 exp1_date: "০১ ডিসেম্বর ২০২২ – বর্তমান",
                 exp1_t1: "সার্ভে কোডিং ও ডেভেলপমেন্ট",
@@ -1827,8 +1900,8 @@
                 lbl_result: "ফলাফল",
                 gallery_title: "আমার গ্যালারি",
                 contact_title: "যোগাযোগ ও সামাজিক যোগাযোগ মাধ্যম",
-                lbl_address: "ঠিকানা",
-                val_address: "মুসলিম নগর, ঠাকুরগাঁও-৫১০০, বাংলাদেশ",
+                lbl_address: "অবস্থান",
+                val_address: "ঠাকুরগাঁও, বাংলাদেশ",
                 lbl_email: "ইমেইল",
                 lbl_phone: "ফোন",
                 lbl_form_name: "আপনার নাম",
@@ -1916,9 +1989,9 @@
         AOS.init({ duration: 800, once: true });
         updateLanguage(currentLang);
 
-        function filterTimeline(category) {
+        function filterTimeline(category, clickedButton) {
             document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
+            clickedButton.classList.add('active');
 
             const items = document.querySelectorAll('.timeline-item');
             items.forEach(item => {
@@ -1962,30 +2035,64 @@
 
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
+
+            const form = this;
             const status = document.getElementById('form-status');
+            const submitButton = form.querySelector('button[type="submit"]');
+            const honeypot = document.getElementById('website');
+
+            if (honeypot.value.trim() !== '') return;
+
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
+            const name = document.getElementById('senderName').value.trim();
+            const email = document.getElementById('senderEmail').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            if (!name || !email || !message) {
+                status.style.color = '#dc2626';
+                status.innerText = currentLang === 'en'
+                    ? "Please complete all required fields."
+                    : "অনুগ্রহ করে সব আবশ্যিক ঘর পূরণ করুন।";
+                return;
+            }
+
             status.style.color = 'var(--primary)';
-            status.innerText = currentLang === 'en' ? "Sending message..." : "বার্তা পাঠানো হচ্ছে...";
+            status.innerText = currentLang === 'en'
+                ? "Sending message..."
+                : "বার্তা পাঠানো হচ্ছে...";
+
+            submitButton.disabled = true;
+            submitButton.setAttribute('aria-busy', 'true');
 
             const templateParams = {
-                from_name: document.getElementById('senderName').value,
-                from_email: document.getElementById('senderEmail').value,
-                message: document.getElementById('message').value,
+                from_name: name,
+                from_email: email,
+                message: message,
                 to_email: 'farshidrupon@gmail.com'
             };
 
             emailjs.send('service_jxl4kqo', 'template_pscfvya', templateParams)
-                .then(function(response) {
-                    status.style.color = 'green';
-                    status.innerText = currentLang === 'en' 
-                        ? "Thank you! Your message has been sent successfully." 
+                .then(function() {
+                    status.style.color = '#16a34a';
+                    status.innerText = currentLang === 'en'
+                        ? "Thank you! Your message has been sent successfully."
                         : "ধন্যবাদ! আপনার বার্তা সফলভাবে পাঠানো হয়েছে।";
-                    document.getElementById('contactForm').reset();
-                }, function(error) {
-                    status.style.color = 'red';
-                    status.innerText = currentLang === 'en' 
-                        ? "Failed to send message. Please try again later." 
+                    form.reset();
+                })
+                .catch(function(error) {
+                    status.style.color = '#dc2626';
+                    status.innerText = currentLang === 'en'
+                        ? "Failed to send message. Please try again later."
                         : "বার্তা পাঠানো ব্যর্থ হয়েছে। অনুগ্রহ করে পরে আবার চেষ্টা করুন।";
-                    console.error('FAILED...', error);
+                    console.error('EmailJS error:', error);
+                })
+                .finally(function() {
+                    submitButton.disabled = false;
+                    submitButton.removeAttribute('aria-busy');
                 });
         });
     </script>
