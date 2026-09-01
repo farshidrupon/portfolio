@@ -6,7 +6,7 @@
     <title>Farshid Rupon | Survey Programmer</title>
 
     <!-- Meta SEO & OpenGraph Social Tags -->
-    <meta name="description" content="Professional portfolio of Farshid Rupon, an experienced Survey Programmer specializing in Decipher (Forsta), Qualtrics, survey logic, custom scripting, QA, data processing, and research technology.">
+    <meta name="description" content="Professional portfolio of Farshid Rupon, an experienced Survey Programmer specializing in Decipher (Forsta), Qualtrics, survey logic, custom scripting, quality assurance, data processing, and research technology.">
     <meta property="og:title" content="Farshid Rupon | Survey Programmer">
     <meta property="og:description" content="Explore Farshid Rupon's survey programming expertise, technical skills, professional experience, and research technology background.">
     <meta property="og:image" content="https://farshidrupon.is-local.org/profile.jpg">
@@ -22,7 +22,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
 
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
@@ -43,7 +43,6 @@
             --nav-height: 76px;
         }
 
-        /* Full Black Dark Theme */
         [data-theme="dark"] {
             --primary: #3b82f6;
             --primary-dark: #60a5fa;
@@ -403,6 +402,16 @@
             align-items: center;
             gap: 0.5rem;
             color: var(--secondary);
+        }
+
+        .skill-group {
+            margin-top: 1rem;
+        }
+
+        .skill-group h4 {
+            color: var(--secondary);
+            font-size: 0.95rem;
+            font-weight: 600;
         }
 
         .aligned-info-list {
@@ -1245,26 +1254,74 @@
 
     <nav id="mainNav" aria-label="Primary navigation">
         <div class="nav-container">
-            <a href="#" class="logo" data-i18n="logo_name">FARSHID RUPON</a>
+            <a href="#" class="logo" data-i18n="logo_name">
+                FARSHID RUPON
+            </a>
 
             <div class="nav-right">
                 <ul class="nav-links">
-                    <li><a href="#summary" data-i18n="nav_summary">Summary</a></li>
-                    <li><a href="#about" data-i18n="nav_about">About</a></li>
-                    <li><a href="#experience" data-i18n="nav_exp">Experience</a></li>
-                    <li><a href="#education" data-i18n="nav_edu">Education</a></li>
-                    <li><a href="#training" data-i18n="nav_training">Training</a></li>
-                    <li><a href="#gallery" data-i18n="nav_gallery">Gallery</a></li>
-                    <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
+                    <li>
+                        <a href="#summary" data-i18n="nav_summary">
+                            Summary
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#about" data-i18n="nav_about">
+                            About
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#experience" data-i18n="nav_exp">
+                            Experience
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#education" data-i18n="nav_edu">
+                            Education
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#training" data-i18n="nav_training">
+                            Training
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#gallery" data-i18n="nav_gallery">
+                            Gallery
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#contact" data-i18n="nav_contact">
+                            Contact
+                        </a>
+                    </li>
                 </ul>
 
                 <div class="nav-controls">
-                    <button class="toggle-btn" id="langToggle" type="button" title="Switch Language / ভাষা পরিবর্তন" aria-label="Switch language">
+                    <button
+                        class="toggle-btn"
+                        id="langToggle"
+                        type="button"
+                        title="Switch Language / ভাষা পরিবর্তন"
+                        aria-label="Switch language"
+                    >
                         <i class="fa-solid fa-globe" aria-hidden="true"></i>
                         <span id="langText">EN</span>
                     </button>
 
-                    <button class="toggle-btn icon-only" id="themeToggle" type="button" title="Toggle Light/Dark Theme" aria-label="Toggle dark mode">
+                    <button
+                        class="toggle-btn icon-only"
+                        id="themeToggle"
+                        type="button"
+                        title="Toggle Light/Dark Theme"
+                        aria-label="Toggle dark mode"
+                    >
                         <i class="fa-solid fa-moon" aria-hidden="true"></i>
                     </button>
                 </div>
@@ -1274,6 +1331,7 @@
 
     <header class="hero">
         <div class="hero-content">
+
             <img
                 src="profile.jpg"
                 alt="Farshid Rupon"
@@ -1283,40 +1341,70 @@
                 decoding="async"
             >
 
-            <h1 data-aos="fade-down" data-aos-delay="100" data-i18n="hero_name">
+            <h1
+                data-aos="fade-down"
+                data-aos-delay="100"
+                data-i18n="hero_name"
+            >
                 Farshid Rupon
             </h1>
 
-            <div class="hero-subtitle" data-aos="fade-down" data-aos-delay="150" data-i18n="hero_role">
+            <div
+                class="hero-subtitle"
+                data-aos="fade-down"
+                data-aos-delay="150"
+                data-i18n="hero_role"
+            >
                 Survey Programmer | Survey Technology Specialist
             </div>
 
-            <div class="typed-container" data-aos="fade-down" data-aos-delay="200">
+            <div
+                class="typed-container"
+                data-aos="fade-down"
+                data-aos-delay="200"
+            >
                 <span id="typed"></span>
             </div>
 
-            <div class="hero-meta" data-aos="fade-up" data-aos-delay="300">
+            <div
+                class="hero-meta"
+                data-aos="fade-up"
+                data-aos-delay="300"
+            >
                 <span>
                     <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
-                    <span data-i18n="hero_loc">Thakurgaon, Bangladesh</span>
+                    <span data-i18n="hero_loc">
+                        Thakurgaon, Bangladesh
+                    </span>
                 </span>
 
                 <span>
                     <i class="fa-solid fa-envelope" aria-hidden="true"></i>
-                    <a href="mailto:farshidrupon@gmail.com" style="color: inherit; text-decoration: none;">
+                    <a
+                        href="mailto:farshidrupon@gmail.com"
+                        style="color: inherit; text-decoration: none;"
+                    >
                         farshidrupon@gmail.com
                     </a>
                 </span>
 
                 <span>
                     <i class="fa-solid fa-phone" aria-hidden="true"></i>
-                    <a href="tel:+8801711305367" style="color: inherit; text-decoration: none;" data-i18n="val_phone">
+                    <a
+                        href="tel:+8801711305367"
+                        style="color: inherit; text-decoration: none;"
+                        data-i18n="val_phone"
+                    >
                         +880 1711-305367
                     </a>
                 </span>
             </div>
 
-            <div class="social-links-hero" data-aos="fade-up" data-aos-delay="350">
+            <div
+                class="social-links-hero"
+                data-aos="fade-up"
+                data-aos-delay="350"
+            >
                 <a
                     href="https://www.linkedin.com/in/FarshidRupon"
                     target="_blank"
@@ -1348,9 +1436,16 @@
                 </a>
             </div>
 
-            <a href="#contact" class="btn" data-aos="fade-up" data-aos-delay="400" data-i18n="btn_contact">
+            <a
+                href="#contact"
+                class="btn"
+                data-aos="fade-up"
+                data-aos-delay="400"
+                data-i18n="btn_contact"
+            >
                 Get In Touch
             </a>
+
         </div>
     </header>
 
@@ -1361,8 +1456,11 @@
         </h2>
 
         <div class="card">
-            <p style="font-size: 1.05rem; line-height: 1.7;" data-i18n="summary_desc">
-                Experienced and results-driven Survey Programmer with 10+ years of overall professional experience, including extensive experience in survey programming, research technology, operational compliance, and project operations. Skilled in developing complex market research surveys, implementing advanced logic and routing, performing quality assurance, managing live fieldwork, and supporting data processing and analytics. Strong analytical problem-solving skills, attention to detail, and a proven ability to optimize workflows and deliver high-quality results in dynamic environments.
+            <p
+                style="font-size: 1.05rem; line-height: 1.7;"
+                data-i18n="summary_desc"
+            >
+                Experienced and results-driven Survey Programmer with 10+ years of overall professional experience, including extensive experience in survey programming, research technology, operational compliance, and project operations. Skilled in developing complex market research surveys, implementing advanced logic and routing, performing quality assurance, managing live fieldwork, and supporting data processing and analytics. Strong analytical and problem-solving skills, attention to detail, and a proven ability to optimize workflows and deliver high-quality results in dynamic environments.
             </p>
         </div>
     </section>
@@ -1378,71 +1476,122 @@
             <!-- Professional Details -->
             <div class="card">
                 <h3>
-                    <i class="fa-solid fa-user-check" style="color: var(--primary);" aria-hidden="true"></i>
-                    <span data-i18n="about_details">Professional Details</span>
+                    <i
+                        class="fa-solid fa-user-check"
+                        style="color: var(--primary);"
+                        aria-hidden="true"
+                    ></i>
+
+                    <span data-i18n="about_details">
+                        Professional Details
+                    </span>
                 </h3>
 
                 <ul class="aligned-info-list">
 
                     <li>
-                        <span class="info-label" data-i18n="lbl_nationality">Nationality</span>
+                        <span class="info-label" data-i18n="lbl_nationality">
+                            Nationality
+                        </span>
+
                         <span class="info-colon">:</span>
-                        <span class="info-val" data-i18n="val_nationality">Bangladeshi</span>
+
+                        <span class="info-val" data-i18n="val_nationality">
+                            Bangladeshi
+                        </span>
                     </li>
 
                     <li>
-                        <span class="info-label" data-i18n="lbl_current_position">Current Position</span>
+                        <span class="info-label" data-i18n="lbl_current_position">
+                            Current Position
+                        </span>
+
                         <span class="info-colon">:</span>
-                        <span class="info-val" data-i18n="val_current_position">Survey Programmer</span>
+
+                        <span class="info-val" data-i18n="val_current_position">
+                            Survey Programmer
+                        </span>
                     </li>
 
                     <li>
-                        <span class="info-label" data-i18n="lbl_prof_exp">Professional Experience</span>
+                        <span class="info-label" data-i18n="lbl_prof_exp">
+                            Professional Experience
+                        </span>
+
                         <span class="info-colon">:</span>
-                        <span class="info-val" data-i18n="val_prof_exp">10+ Years</span>
+
+                        <span class="info-val" data-i18n="val_prof_exp">
+                            10+ Years
+                        </span>
                     </li>
 
                     <li>
-                        <span class="info-label" data-i18n="lbl_emp_status">Employment Status</span>
+                        <span class="info-label" data-i18n="lbl_emp_status">
+                            Employment Status
+                        </span>
+
                         <span class="info-colon">:</span>
-                        <span class="info-val" data-i18n="val_emp_status">Currently Employed</span>
+
+                        <span class="info-val" data-i18n="val_emp_status">
+                            Currently Employed
+                        </span>
                     </li>
 
                     <li>
-                        <span class="info-label" data-i18n="lbl_languages">Languages</span>
+                        <span class="info-label" data-i18n="lbl_languages">
+                            Languages
+                        </span>
+
                         <span class="info-colon">:</span>
+
                         <span class="info-val" data-i18n="val_languages">
                             Bengali (Native), English (Professional Working Proficiency)
                         </span>
                     </li>
 
                     <li>
-                        <span class="info-label" data-i18n="lbl_work_env">Work Environment</span>
+                        <span class="info-label" data-i18n="lbl_work_env">
+                            Work Environment
+                        </span>
+
                         <span class="info-colon">:</span>
+
                         <span class="info-val" data-i18n="val_work_env">
                             Remote, On-site &amp; Hybrid
                         </span>
                     </li>
 
                     <li>
-                        <span class="info-label" data-i18n="lbl_career_bg">Career Background</span>
+                        <span class="info-label" data-i18n="lbl_career_bg">
+                            Career Background
+                        </span>
+
                         <span class="info-colon">:</span>
+
                         <span class="info-val" data-i18n="val_career_bg">
                             Research, Operations, Legal &amp; Sales
                         </span>
                     </li>
 
                     <li>
-                        <span class="info-label" data-i18n="lbl_prof_strengths">Professional Strengths</span>
+                        <span class="info-label" data-i18n="lbl_prof_strengths">
+                            Professional Strengths
+                        </span>
+
                         <span class="info-colon">:</span>
+
                         <span class="info-val" data-i18n="val_prof_strengths">
                             Problem Solving, Quality Assurance &amp; Attention to Detail
                         </span>
                     </li>
 
                     <li>
-                        <span class="info-label" data-i18n="lbl_driving">Driving License</span>
+                        <span class="info-label" data-i18n="lbl_driving">
+                            Driving License
+                        </span>
+
                         <span class="info-colon">:</span>
+
                         <span class="info-val" data-i18n="val_driving">
                             Valid Motorcycle Driving License
                         </span>
@@ -1453,13 +1602,23 @@
 
             <!-- Technical Expertise -->
             <div class="card">
+
                 <h3>
-                    <i class="fa-solid fa-layer-group" style="color: var(--primary);" aria-hidden="true"></i>
-                    <span data-i18n="about_expertise">Technical Expertise</span>
+                    <i
+                        class="fa-solid fa-layer-group"
+                        style="color: var(--primary);"
+                        aria-hidden="true"
+                    ></i>
+
+                    <span data-i18n="about_expertise">
+                        Technical Expertise
+                    </span>
                 </h3>
 
                 <div class="skill-group">
-                    <h4 data-i18n="skill_platforms_title">Survey Platforms</h4>
+                    <h4 data-i18n="skill_platforms_title">
+                        Survey Platforms
+                    </h4>
 
                     <div class="skills-tag-container">
                         <span class="skill-tag">Decipher (Forsta)</span>
@@ -1471,7 +1630,9 @@
                 </div>
 
                 <div class="skill-group">
-                    <h4 data-i18n="skill_programming_title">Programming &amp; Web</h4>
+                    <h4 data-i18n="skill_programming_title">
+                        Programming &amp; Web
+                    </h4>
 
                     <div class="skills-tag-container">
                         <span class="skill-tag">JavaScript</span>
@@ -1484,7 +1645,9 @@
                 </div>
 
                 <div class="skill-group">
-                    <h4 data-i18n="skill_data_title">Data &amp; Analytics</h4>
+                    <h4 data-i18n="skill_data_title">
+                        Data &amp; Analytics
+                    </h4>
 
                     <div class="skills-tag-container">
                         <span class="skill-tag">SPSS (.sav)</span>
@@ -1496,7 +1659,9 @@
                 </div>
 
                 <div class="skill-group">
-                    <h4 data-i18n="skill_logic_title">Survey Programming</h4>
+                    <h4 data-i18n="skill_logic_title">
+                        Survey Programming
+                    </h4>
 
                     <div class="skills-tag-container">
                         <span class="skill-tag">Skip Logic</span>
@@ -1508,6 +1673,7 @@
                         <span class="skill-tag">Custom UI/UX</span>
                     </div>
                 </div>
+
             </div>
 
         </div>
@@ -1515,11 +1681,17 @@
 
     <!-- Work Experience -->
     <section id="experience">
-        <h2 class="section-title" data-aos="fade-up" data-i18n="exp_title">
+
+        <h2
+            class="section-title"
+            data-aos="fade-up"
+            data-i18n="exp_title"
+        >
             Work Experience
         </h2>
 
         <div class="filter-container" data-aos="fade-up">
+
             <button
                 class="filter-btn active"
                 type="button"
@@ -1546,86 +1718,150 @@
             >
                 Operations &amp; Legal Assistance
             </button>
+
         </div>
 
         <div class="timeline">
 
             <!-- Analyticsify Research Limited -->
-            <div class="timeline-item" data-category="sp" data-aos="fade-up">
+            <div
+                class="timeline-item"
+                data-category="sp"
+                data-aos="fade-up"
+            >
                 <div class="timeline-header">
+
                     <div>
-                        <div class="role-title" data-i18n="exp1_role">
+                        <div
+                            class="role-title"
+                            data-i18n="exp1_role"
+                        >
                             Survey Programmer
                         </div>
 
-                        <div class="company" data-i18n="exp1_company">
+                        <div
+                            class="company"
+                            data-i18n="exp1_company"
+                        >
                             Analyticsify Research Limited, Thakurgaon
                         </div>
                     </div>
 
-                    <span class="date-badge" data-i18n="exp1_date">
+                    <span
+                        class="date-badge"
+                        data-i18n="exp1_date"
+                    >
                         01 Dec 2022 – Present
                     </span>
+
                 </div>
 
                 <ul class="responsibilities">
 
                     <li>
-                        <span class="bullet-title" data-i18n="exp1_t1">
+                        <span
+                            class="bullet-title"
+                            data-i18n="exp1_t1"
+                        >
                             Survey Coding &amp; Development
                         </span>
+
                         <span class="bullet-colon">:</span>
-                        <span class="bullet-text" data-i18n="exp1_r1">
+
+                        <span
+                            class="bullet-text"
+                            data-i18n="exp1_r1"
+                        >
                             Develop and program complex market research surveys using platforms such as Decipher (Forsta), Qualtrics, and Confirmit, with HTML5, CSS3, JavaScript, XML, and platform-specific scripting.
                         </span>
                     </li>
 
                     <li>
-                        <span class="bullet-title" data-i18n="exp1_t2">
+                        <span
+                            class="bullet-title"
+                            data-i18n="exp1_t2"
+                        >
                             Logic &amp; Routing Implementation
                         </span>
+
                         <span class="bullet-colon">:</span>
-                        <span class="bullet-text" data-i18n="exp1_r2">
+
+                        <span
+                            class="bullet-text"
+                            data-i18n="exp1_r2"
+                        >
                             Implement complex survey logic, including dynamic skip patterns, quotas, piping, looping, randomization, and masking to ensure accurate and reliable data collection.
                         </span>
                     </li>
 
                     <li>
-                        <span class="bullet-title" data-i18n="exp1_t3">
+                        <span
+                            class="bullet-title"
+                            data-i18n="exp1_t3"
+                        >
                             Quality Assurance &amp; Testing
                         </span>
+
                         <span class="bullet-colon">:</span>
-                        <span class="bullet-text" data-i18n="exp1_r3">
-                            Perform end-to-end testing, debug custom scripts across multiple devices and browsers, and validate survey logic and functionality before launching surveys to fieldwork.
+
+                        <span
+                            class="bullet-text"
+                            data-i18n="exp1_r3"
+                        >
+                            Perform end-to-end testing, debug custom scripts across multiple devices and browsers, and validate survey logic and functionality before launching surveys into fieldwork.
                         </span>
                     </li>
 
                     <li>
-                        <span class="bullet-title" data-i18n="exp1_t4">
+                        <span
+                            class="bullet-title"
+                            data-i18n="exp1_t4"
+                        >
                             Data Integration &amp; Cleaning
                         </span>
+
                         <span class="bullet-colon">:</span>
-                        <span class="bullet-text" data-i18n="exp1_r4">
+
+                        <span
+                            class="bullet-text"
+                            data-i18n="exp1_r4"
+                        >
                             Configure structured data exports in SPSS (.sav), CSV, JSON, and Excel formats; map variables and develop data-cleaning workflows to support seamless downstream analysis.
                         </span>
                     </li>
 
                     <li>
-                        <span class="bullet-title" data-i18n="exp1_t5">
+                        <span
+                            class="bullet-title"
+                            data-i18n="exp1_t5"
+                        >
                             UI/UX Optimization
                         </span>
+
                         <span class="bullet-colon">:</span>
-                        <span class="bullet-text" data-i18n="exp1_r5">
+
+                        <span
+                            class="bullet-text"
+                            data-i18n="exp1_r5"
+                        >
                             Develop custom interactive survey components, including sliders, rank-order tools, and media test players, with a focus on respondent usability and responsive cross-device performance.
                         </span>
                     </li>
 
                     <li>
-                        <span class="bullet-title" data-i18n="exp1_t6">
+                        <span
+                            class="bullet-title"
+                            data-i18n="exp1_t6"
+                        >
                             Field Maintenance
                         </span>
+
                         <span class="bullet-colon">:</span>
-                        <span class="bullet-text" data-i18n="exp1_r6">
+
+                        <span
+                            class="bullet-text"
+                            data-i18n="exp1_r6"
+                        >
                             Monitor live survey operations, implement real-time fixes while protecting collected data integrity, and manage quota updates throughout fieldwork.
                         </span>
                     </li>
@@ -1633,6 +1869,7 @@
                 </ul>
 
                 <div class="tech-matrix">
+
                     <h4 data-i18n="matrix_title">
                         Technical Skill Matrix
                     </h4>
@@ -1640,41 +1877,73 @@
                     <ul class="aligned-info-list">
 
                         <li>
-                            <span class="info-label" data-i18n="lbl_platforms">
+                            <span
+                                class="info-label"
+                                data-i18n="lbl_platforms"
+                            >
                                 Survey Platforms
                             </span>
+
                             <span class="info-colon">:</span>
-                            <span class="info-val" data-i18n="val_platforms">
+
+                            <span
+                                class="info-val"
+                                data-i18n="val_platforms"
+                            >
                                 Decipher (Forsta), Qualtrics, Confirmit, Unomer, Alchemer
                             </span>
                         </li>
 
                         <li>
-                            <span class="info-label" data-i18n="lbl_languages_tech">
+                            <span
+                                class="info-label"
+                                data-i18n="lbl_languages_tech"
+                            >
                                 Programming &amp; Web Technologies
                             </span>
+
                             <span class="info-colon">:</span>
-                            <span class="info-val" data-i18n="val_languages_tech">
+
+                            <span
+                                class="info-val"
+                                data-i18n="val_languages_tech"
+                            >
                                 JavaScript, HTML5, CSS3, XML, Python, SQL
                             </span>
                         </li>
 
                         <li>
-                            <span class="info-label" data-i18n="lbl_formats">
+                            <span
+                                class="info-label"
+                                data-i18n="lbl_formats"
+                            >
                                 Data &amp; Analytics
                             </span>
+
                             <span class="info-colon">:</span>
-                            <span class="info-val" data-i18n="val_formats">
+
+                            <span
+                                class="info-val"
+                                data-i18n="val_formats"
+                            >
                                 SPSS (.sav), CSV, JSON, Excel, Tableau-ready Data
                             </span>
                         </li>
 
                         <li>
-                            <span class="info-label" data-i18n="lbl_sp_prog">
+                            <span
+                                class="info-label"
+                                data-i18n="lbl_sp_prog"
+                            >
                                 Survey Programming
                             </span>
+
                             <span class="info-colon">:</span>
-                            <span class="info-val" data-i18n="val_sp_prog">
+
+                            <span
+                                class="info-val"
+                                data-i18n="val_sp_prog"
+                            >
                                 Skip Logic, Quotas, Piping, Looping, Randomization, Masking, Custom UI/UX
                             </span>
                         </li>
@@ -1684,94 +1953,163 @@
             </div>
 
             <!-- Dinajpur Agro Farms -->
-            <div class="timeline-item" data-category="ops" data-aos="fade-up">
+            <div
+                class="timeline-item"
+                data-category="ops"
+                data-aos="fade-up"
+            >
                 <div class="timeline-header">
+
                     <div>
-                        <div class="role-title" data-i18n="exp_agro_role">
+                        <div
+                            class="role-title"
+                            data-i18n="exp_agro_role"
+                        >
                             Senior Manager, Operations
                         </div>
 
-                        <div class="company" data-i18n="exp_agro_company">
+                        <div
+                            class="company"
+                            data-i18n="exp_agro_company"
+                        >
                             Dinajpur Agro Farms, Dinajpur
                         </div>
                     </div>
 
-                    <span class="date-badge" data-i18n="exp_agro_date">
+                    <span
+                        class="date-badge"
+                        data-i18n="exp_agro_date"
+                    >
                         01 Mar 2022 – 30 Nov 2022
                     </span>
+
                 </div>
 
                 <ul style="padding-left: 1.1rem; margin-top: 0.75rem;">
 
-                    <li style="margin-bottom: 0.4rem;" data-i18n="exp_agro_r1">
+                    <li
+                        style="margin-bottom: 0.4rem;"
+                        data-i18n="exp_agro_r1"
+                    >
                         Managed day-to-day farm operations and coordinated activities involving livestock, poultry, and fish farming.
                     </li>
 
-                    <li style="margin-bottom: 0.4rem;" data-i18n="exp_agro_r2">
+                    <li
+                        style="margin-bottom: 0.4rem;"
+                        data-i18n="exp_agro_r2"
+                    >
                         Conducted daily market research and collected current layer chicken prices from reliable market suppliers.
                     </li>
 
-                    <li style="margin-bottom: 0.4rem;" data-i18n="exp_agro_r3">
+                    <li
+                        style="margin-bottom: 0.4rem;"
+                        data-i18n="exp_agro_r3"
+                    >
                         Collected and regularly updated daily market price information in designated online reporting files.
                     </li>
 
-                    <li style="margin-bottom: 0.4rem;" data-i18n="exp_agro_r4">
+                    <li
+                        style="margin-bottom: 0.4rem;"
+                        data-i18n="exp_agro_r4"
+                    >
                         Ensured timely feeding and proper care of cows, fish, and poultry.
                     </li>
 
-                    <li style="margin-bottom: 0.4rem;" data-i18n="exp_agro_r5">
+                    <li
+                        style="margin-bottom: 0.4rem;"
+                        data-i18n="exp_agro_r5"
+                    >
                         Received goods from suppliers, maintained receiving records, and coordinated proper storage and distribution.
                     </li>
 
-                    <li style="margin-bottom: 0.4rem;" data-i18n="exp_agro_r6">
+                    <li
+                        style="margin-bottom: 0.4rem;"
+                        data-i18n="exp_agro_r6"
+                    >
                         Maintained updated stock and operational information and regularly reported key updates to the General Manager and Accounts team.
                     </li>
 
-                    <li style="margin-bottom: 0.4rem;" data-i18n="exp_agro_r7">
+                    <li
+                        style="margin-bottom: 0.4rem;"
+                        data-i18n="exp_agro_r7"
+                    >
                         Supervised the farm premises, surrounding areas, facilities, and day-to-day operational activities to ensure proper maintenance.
                     </li>
 
-                    <li style="margin-bottom: 0.4rem;" data-i18n="exp_agro_r8">
+                    <li
+                        style="margin-bottom: 0.4rem;"
+                        data-i18n="exp_agro_r8"
+                    >
                         Regularly monitored and recorded livestock weight and other relevant information at predetermined intervals.
                     </li>
 
-                    <li style="margin-bottom: 0.4rem;" data-i18n="exp_agro_r9">
+                    <li
+                        style="margin-bottom: 0.4rem;"
+                        data-i18n="exp_agro_r9"
+                    >
                         Collected operational and income-related information from Operations Managers using predefined reporting formats and submitted reports to the General Manager or management authority.
                     </li>
 
-                    <li style="margin-bottom: 0.4rem;" data-i18n="exp_agro_r10">
+                    <li
+                        style="margin-bottom: 0.4rem;"
+                        data-i18n="exp_agro_r10"
+                    >
                         Participated in operational research, market research, and field-level activities and documented relevant findings.
                     </li>
 
-                    <li style="margin-bottom: 0.4rem;" data-i18n="exp_agro_r11">
+                    <li
+                        style="margin-bottom: 0.4rem;"
+                        data-i18n="exp_agro_r11"
+                    >
                         Conducted regular physical market surveys to monitor prevailing prices of fish, chicken, goats, and other livestock-related products.
                     </li>
 
-                    <li style="margin-bottom: 0.4rem;" data-i18n="exp_agro_r12">
+                    <li
+                        style="margin-bottom: 0.4rem;"
+                        data-i18n="exp_agro_r12"
+                    >
                         Maintained and updated operational, market, and stock information through designated online forms.
                     </li>
 
-                    <li style="margin-bottom: 0.4rem;" data-i18n="exp_agro_r13">
+                    <li
+                        style="margin-bottom: 0.4rem;"
+                        data-i18n="exp_agro_r13"
+                    >
                         Prepared the following month's work plan and activity schedule in coordination with supervisors.
                     </li>
 
-                    <li style="margin-bottom: 0.4rem;" data-i18n="exp_agro_r14">
+                    <li
+                        style="margin-bottom: 0.4rem;"
+                        data-i18n="exp_agro_r14"
+                    >
                         Coordinated with supervisors and managers to ensure timely completion of planned operational activities.
                     </li>
 
-                    <li style="margin-bottom: 0.4rem;" data-i18n="exp_agro_r15">
+                    <li
+                        style="margin-bottom: 0.4rem;"
+                        data-i18n="exp_agro_r15"
+                    >
                         Supported livestock management activities, including the movement and transfer of cows, chickens, and fish between designated areas.
                     </li>
 
-                    <li style="margin-bottom: 0.4rem;" data-i18n="exp_agro_r16">
+                    <li
+                        style="margin-bottom: 0.4rem;"
+                        data-i18n="exp_agro_r16"
+                    >
                         Recorded livestock body weight and temperature and maintained relevant data for monitoring and management purposes.
                     </li>
 
-                    <li style="margin-bottom: 0.4rem;" data-i18n="exp_agro_r17">
+                    <li
+                        style="margin-bottom: 0.4rem;"
+                        data-i18n="exp_agro_r17"
+                    >
                         Collected and maintained information on fish condition, weight, and related factors before fishing and during relevant operational activities.
                     </li>
 
-                    <li style="margin-bottom: 0.4rem;" data-i18n="exp_agro_r18">
+                    <li
+                        style="margin-bottom: 0.4rem;"
+                        data-i18n="exp_agro_r18"
+                    >
                         Provided operational support to management to ensure efficient and smooth farm operations.
                     </li>
 
@@ -1779,46 +2117,79 @@
             </div>
 
             <!-- RDRS Bangladesh -->
-            <div class="timeline-item" data-category="ops" data-aos="fade-up">
+            <div
+                class="timeline-item"
+                data-category="ops"
+                data-aos="fade-up"
+            >
                 <div class="timeline-header">
+
                     <div>
-                        <div class="role-title" data-i18n="exp2_role">
+                        <div
+                            class="role-title"
+                            data-i18n="exp2_role"
+                        >
                             Paralegal
                         </div>
 
-                        <div class="company" data-i18n="exp2_company">
+                        <div
+                            class="company"
+                            data-i18n="exp2_company"
+                        >
                             RDRS Bangladesh, Thakurgaon
                         </div>
                     </div>
 
-                    <span class="date-badge" data-i18n="exp2_date">
+                    <span
+                        class="date-badge"
+                        data-i18n="exp2_date"
+                    >
                         18 Jan 2016 – 28 Feb 2022
                     </span>
+
                 </div>
 
                 <ul style="padding-left: 1.1rem; margin-top: 0.75rem;">
 
-                    <li style="margin-bottom: 0.4rem;" data-i18n="exp2_r1">
+                    <li
+                        style="margin-bottom: 0.4rem;"
+                        data-i18n="exp2_r1"
+                    >
                         Conducted paralegal aid clinics in prisons and Juvenile Development Centres to educate detainees on basic criminal law and judicial procedures.
                     </li>
 
-                    <li style="margin-bottom: 0.4rem;" data-i18n="exp2_r2">
+                    <li
+                        style="margin-bottom: 0.4rem;"
+                        data-i18n="exp2_r2"
+                    >
                         Referred legal cases to District Legal Aid Committees, NGOs, and constitutional bodies.
                     </li>
 
-                    <li style="margin-bottom: 0.4rem;" data-i18n="exp2_r3">
+                    <li
+                        style="margin-bottom: 0.4rem;"
+                        data-i18n="exp2_r3"
+                    >
                         Traced families of conflict-affected youth and coordinated sureties with relevant justice agencies.
                     </li>
 
-                    <li style="margin-bottom: 0.4rem;" data-i18n="exp2_r4">
+                    <li
+                        style="margin-bottom: 0.4rem;"
+                        data-i18n="exp2_r4"
+                    >
                         Compiled operational databases and produced monthly, quarterly, and annual progress reports.
                     </li>
 
-                    <li style="margin-bottom: 0.4rem;" data-i18n="exp2_r5">
+                    <li
+                        style="margin-bottom: 0.4rem;"
+                        data-i18n="exp2_r5"
+                    >
                         Facilitated Case Coordination Meetings and liaised with law enforcement, the judiciary, and health services to support legal assistance.
                     </li>
 
-                    <li style="margin-bottom: 0.4rem;" data-i18n="exp2_r6">
+                    <li
+                        style="margin-bottom: 0.4rem;"
+                        data-i18n="exp2_r6"
+                    >
                         Managed project financial operations, including advance processing, voucher adjustments, and VAT/tax compliance.
                     </li>
 
@@ -1826,34 +2197,58 @@
             </div>
 
             <!-- Grameenphone Sales Executive -->
-            <div class="timeline-item" data-category="ops" data-aos="fade-up">
+            <div
+                class="timeline-item"
+                data-category="ops"
+                data-aos="fade-up"
+            >
                 <div class="timeline-header">
+
                     <div>
-                        <div class="role-title" data-i18n="exp3_role">
+                        <div
+                            class="role-title"
+                            data-i18n="exp3_role"
+                        >
                             Sales Executive
                         </div>
 
-                        <div class="company" data-i18n="exp3_company">
+                        <div
+                            class="company"
+                            data-i18n="exp3_company"
+                        >
                             Grameenphone Authorized Distribution House, Thakurgaon
                         </div>
                     </div>
 
-                    <span class="date-badge" data-i18n="exp3_date">
+                    <span
+                        class="date-badge"
+                        data-i18n="exp3_date"
+                    >
                         01 Oct 2014 – 30 Sep 2015
                     </span>
+
                 </div>
 
                 <ul style="padding-left: 1.1rem; margin-top: 0.75rem;">
 
-                    <li style="margin-bottom: 0.4rem;" data-i18n="exp3_r1">
+                    <li
+                        style="margin-bottom: 0.4rem;"
+                        data-i18n="exp3_r1"
+                    >
                         Consistently achieved monthly sales targets for Grameenphone products and services.
                     </li>
 
-                    <li style="margin-bottom: 0.4rem;" data-i18n="exp3_r2">
+                    <li
+                        style="margin-bottom: 0.4rem;"
+                        data-i18n="exp3_r2"
+                    >
                         Managed daily financial settlements and account reconciliation in coordination with compliance managers.
                     </li>
 
-                    <li style="margin-bottom: 0.4rem;" data-i18n="exp3_r3">
+                    <li
+                        style="margin-bottom: 0.4rem;"
+                        data-i18n="exp3_r3"
+                    >
                         Participated in strategic retail sales workshops.
                     </li>
 
@@ -1861,34 +2256,58 @@
             </div>
 
             <!-- Grameenphone Compliance Officer -->
-            <div class="timeline-item" data-category="ops" data-aos="fade-up">
+            <div
+                class="timeline-item"
+                data-category="ops"
+                data-aos="fade-up"
+            >
                 <div class="timeline-header">
+
                     <div>
-                        <div class="role-title" data-i18n="exp4_role">
+                        <div
+                            class="role-title"
+                            data-i18n="exp4_role"
+                        >
                             Compliance Officer
                         </div>
 
-                        <div class="company" data-i18n="exp4_company">
+                        <div
+                            class="company"
+                            data-i18n="exp4_company"
+                        >
                             Grameenphone Authorized Distribution House, Thakurgaon
                         </div>
                     </div>
 
-                    <span class="date-badge" data-i18n="exp4_date">
+                    <span
+                        class="date-badge"
+                        data-i18n="exp4_date"
+                    >
                         02 Dec 2013 – 31 Jul 2014
                     </span>
+
                 </div>
 
                 <ul style="padding-left: 1.1rem; margin-top: 0.75rem;">
 
-                    <li style="margin-bottom: 0.4rem;" data-i18n="exp4_r1">
+                    <li
+                        style="margin-bottom: 0.4rem;"
+                        data-i18n="exp4_r1"
+                    >
                         Audited SIM registration data against national identity records to ensure regulatory compliance.
                     </li>
 
-                    <li style="margin-bottom: 0.4rem;" data-i18n="exp4_r2">
+                    <li
+                        style="margin-bottom: 0.4rem;"
+                        data-i18n="exp4_r2"
+                    >
                         Managed SIM verification records within Grameenphone's central system.
                     </li>
 
-                    <li style="margin-bottom: 0.4rem;" data-i18n="exp4_r3">
+                    <li
+                        style="margin-bottom: 0.4rem;"
+                        data-i18n="exp4_r3"
+                    >
                         Maintained daily operational inventory and sales records in internal databases.
                     </li>
 
@@ -1900,121 +2319,246 @@
 
     <!-- Academic Qualifications -->
     <section id="education">
-        <h2 class="section-title" data-aos="fade-up" data-i18n="edu_title">
+
+        <h2
+            class="section-title"
+            data-aos="fade-up"
+            data-i18n="edu_title"
+        >
             Academic Qualifications
         </h2>
 
         <div class="edu-grid">
 
             <div class="edu-grid-item" data-aos="fade-up">
-                <div class="role-title" data-i18n="edu1_title">
+
+                <div
+                    class="role-title"
+                    data-i18n="edu1_title"
+                >
                     Bachelor of Laws - LL.B. Part 1 (Professional)
                 </div>
 
-                <div class="company" style="margin-top: 0.25rem;" data-i18n="edu1_inst">
+                <div
+                    class="company"
+                    style="margin-top: 0.25rem;"
+                    data-i18n="edu1_inst"
+                >
                     Dinajpur Law College, Dinajpur
                 </div>
 
                 <ul class="aligned-info-list">
+
                     <li>
-                        <span class="info-label" data-i18n="lbl_subject">Subject</span>
+                        <span
+                            class="info-label"
+                            data-i18n="lbl_subject"
+                        >
+                            Subject
+                        </span>
+
                         <span class="info-colon">:</span>
-                        <span class="info-val" data-i18n="edu1_sub">
+
+                        <span
+                            class="info-val"
+                            data-i18n="edu1_sub"
+                        >
                             Bachelor of Laws
                         </span>
                     </li>
 
                     <li>
-                        <span class="info-label" data-i18n="lbl_result">Result</span>
+                        <span
+                            class="info-label"
+                            data-i18n="lbl_result"
+                        >
+                            Result
+                        </span>
+
                         <span class="info-colon">:</span>
-                        <span class="info-val" data-i18n="edu1_res">
+
+                        <span
+                            class="info-val"
+                            data-i18n="edu1_res"
+                        >
                             2nd Class
                         </span>
                     </li>
+
                 </ul>
             </div>
 
             <div class="edu-grid-item" data-aos="fade-up">
-                <div class="role-title" data-i18n="edu2_title">
+
+                <div
+                    class="role-title"
+                    data-i18n="edu2_title"
+                >
                     Bachelor of Social Science (BSS)
                 </div>
 
-                <div class="company" style="margin-top: 0.25rem;" data-i18n="edu2_inst">
+                <div
+                    class="company"
+                    style="margin-top: 0.25rem;"
+                    data-i18n="edu2_inst"
+                >
                     Thakurgaon Govt. College, Thakurgaon
                 </div>
 
                 <ul class="aligned-info-list">
+
                     <li>
-                        <span class="info-label" data-i18n="lbl_subject">Subject</span>
+                        <span
+                            class="info-label"
+                            data-i18n="lbl_subject"
+                        >
+                            Subject
+                        </span>
+
                         <span class="info-colon">:</span>
-                        <span class="info-val" data-i18n="edu2_sub">
+
+                        <span
+                            class="info-val"
+                            data-i18n="edu2_sub"
+                        >
                             Political Science
                         </span>
                     </li>
 
                     <li>
-                        <span class="info-label" data-i18n="lbl_result">Result</span>
+                        <span
+                            class="info-label"
+                            data-i18n="lbl_result"
+                        >
+                            Result
+                        </span>
+
                         <span class="info-colon">:</span>
-                        <span class="info-val" data-i18n="edu2_res">
+
+                        <span
+                            class="info-val"
+                            data-i18n="edu2_res"
+                        >
                             CGPA: 2.51 / 4.00
                         </span>
                     </li>
+
                 </ul>
             </div>
 
             <div class="edu-grid-item" data-aos="fade-up">
-                <div class="role-title" data-i18n="edu3_title">
+
+                <div
+                    class="role-title"
+                    data-i18n="edu3_title"
+                >
                     Higher Secondary Certificate (HSC)
                 </div>
 
-                <div class="company" style="margin-top: 0.25rem;" data-i18n="edu3_inst">
+                <div
+                    class="company"
+                    style="margin-top: 0.25rem;"
+                    data-i18n="edu3_inst"
+                >
                     Thakurgaon Govt. Technical School &amp; College, Thakurgaon
                 </div>
 
                 <ul class="aligned-info-list">
+
                     <li>
-                        <span class="info-label" data-i18n="lbl_subject">Subject</span>
+                        <span
+                            class="info-label"
+                            data-i18n="lbl_subject"
+                        >
+                            Subject
+                        </span>
+
                         <span class="info-colon">:</span>
-                        <span class="info-val" data-i18n="edu3_sub">
+
+                        <span
+                            class="info-val"
+                            data-i18n="edu3_sub"
+                        >
                             Computer Science
                         </span>
                     </li>
 
                     <li>
-                        <span class="info-label" data-i18n="lbl_result">Result</span>
+                        <span
+                            class="info-label"
+                            data-i18n="lbl_result"
+                        >
+                            Result
+                        </span>
+
                         <span class="info-colon">:</span>
-                        <span class="info-val" data-i18n="edu3_res">
+
+                        <span
+                            class="info-val"
+                            data-i18n="edu3_res"
+                        >
                             GPA: 3.50 / 5.00
                         </span>
                     </li>
+
                 </ul>
             </div>
 
             <div class="edu-grid-item" data-aos="fade-up">
-                <div class="role-title" data-i18n="edu4_title">
+
+                <div
+                    class="role-title"
+                    data-i18n="edu4_title"
+                >
                     Secondary School Certificate (SSC)
                 </div>
 
-                <div class="company" style="margin-top: 0.25rem;" data-i18n="edu4_inst">
+                <div
+                    class="company"
+                    style="margin-top: 0.25rem;"
+                    data-i18n="edu4_inst"
+                >
                     Thakurgaon Govt. Technical School &amp; College, Thakurgaon
                 </div>
 
                 <ul class="aligned-info-list">
+
                     <li>
-                        <span class="info-label" data-i18n="lbl_subject">Subject</span>
+                        <span
+                            class="info-label"
+                            data-i18n="lbl_subject"
+                        >
+                            Subject
+                        </span>
+
                         <span class="info-colon">:</span>
-                        <span class="info-val" data-i18n="edu4_sub">
+
+                        <span
+                            class="info-val"
+                            data-i18n="edu4_sub"
+                        >
                             Computer Science
                         </span>
                     </li>
 
                     <li>
-                        <span class="info-label" data-i18n="lbl_result">Result</span>
+                        <span
+                            class="info-label"
+                            data-i18n="lbl_result"
+                        >
+                            Result
+                        </span>
+
                         <span class="info-colon">:</span>
-                        <span class="info-val" data-i18n="edu4_res">
+
+                        <span
+                            class="info-val"
+                            data-i18n="edu4_res"
+                        >
                             GPA: 3.36 / 5.00
                         </span>
                     </li>
+
                 </ul>
             </div>
 
@@ -2023,160 +2567,314 @@
 
     <!-- Training & Certifications -->
     <section id="training" data-aos="fade-up">
-        <h2 class="section-title" data-i18n="training_title">
+
+        <h2
+            class="section-title"
+            data-i18n="training_title"
+        >
             Training &amp; Certifications
         </h2>
 
         <div class="training-grid">
 
             <div class="training-card">
-                <div class="role-title" data-i18n="tr1_title">
+
+                <div
+                    class="role-title"
+                    data-i18n="tr1_title"
+                >
                     Basic Counseling
                 </div>
 
-                <div class="company" style="margin-top: 0.25rem;" data-i18n="tr1_inst">
+                <div
+                    class="company"
+                    style="margin-top: 0.25rem;"
+                    data-i18n="tr1_inst"
+                >
                     Dhaka Ahsania Mission
                 </div>
 
-                <p style="margin-top: 0.5rem; font-size: 0.9rem;">
-                    <strong data-i18n="lbl_duration">Duration</strong>:
-                    <span data-i18n="tr1_dur">5 Days</span>
+                <p
+                    style="margin-top: 0.5rem; font-size: 0.9rem;"
+                >
+                    <strong data-i18n="lbl_duration">
+                        Duration
+                    </strong>:
+                    <span data-i18n="tr1_dur">
+                        5 Days
+                    </span>
                 </p>
+
             </div>
 
             <div class="training-card">
-                <div class="role-title" data-i18n="tr2_title">
+
+                <div
+                    class="role-title"
+                    data-i18n="tr2_title"
+                >
                     Impact Hub IRSOP
                 </div>
 
-                <div class="company" style="margin-top: 0.25rem;" data-i18n="tr2_inst">
+                <div
+                    class="company"
+                    style="margin-top: 0.25rem;"
+                    data-i18n="tr2_inst"
+                >
                     GIZ Bangladesh
                 </div>
 
-                <p style="margin-top: 0.5rem; font-size: 0.9rem;">
-                    <strong data-i18n="lbl_duration">Duration</strong>:
-                    <span data-i18n="tr2_dur">1 Day</span>
+                <p
+                    style="margin-top: 0.5rem; font-size: 0.9rem;"
+                >
+                    <strong data-i18n="lbl_duration">
+                        Duration
+                    </strong>:
+                    <span data-i18n="tr2_dur">
+                        1 Day
+                    </span>
                 </p>
+
             </div>
 
             <div class="training-card">
-                <div class="role-title" data-i18n="tr3_title">
+
+                <div
+                    class="role-title"
+                    data-i18n="tr3_title"
+                >
                     Orientation on Foundation and Gender Policy
                 </div>
 
-                <div class="company" style="margin-top: 0.25rem;" data-i18n="tr3_inst">
+                <div
+                    class="company"
+                    style="margin-top: 0.25rem;"
+                    data-i18n="tr3_inst"
+                >
                     RDRS Bangladesh
                 </div>
 
-                <p style="margin-top: 0.5rem; font-size: 0.9rem;">
-                    <strong data-i18n="lbl_duration">Duration</strong>:
-                    <span data-i18n="tr3_dur">3 Days</span>
+                <p
+                    style="margin-top: 0.5rem; font-size: 0.9rem;"
+                >
+                    <strong data-i18n="lbl_duration">
+                        Duration
+                    </strong>:
+                    <span data-i18n="tr3_dur">
+                        3 Days
+                    </span>
                 </p>
+
             </div>
 
             <div class="training-card">
-                <div class="role-title" data-i18n="tr4_title">
+
+                <div
+                    class="role-title"
+                    data-i18n="tr4_title"
+                >
                     Basic Criminal Law
                 </div>
 
-                <div class="company" style="margin-top: 0.25rem;" data-i18n="tr4_inst">
+                <div
+                    class="company"
+                    style="margin-top: 0.25rem;"
+                    data-i18n="tr4_inst"
+                >
                     RDRS Bangladesh
                 </div>
 
-                <p style="margin-top: 0.5rem; font-size: 0.9rem;">
-                    <strong data-i18n="lbl_duration">Duration</strong>:
-                    <span data-i18n="tr4_dur">15 Days</span>
+                <p
+                    style="margin-top: 0.5rem; font-size: 0.9rem;"
+                >
+                    <strong data-i18n="lbl_duration">
+                        Duration
+                    </strong>:
+                    <span data-i18n="tr4_dur">
+                        15 Days
+                    </span>
                 </p>
+
             </div>
 
             <div class="training-card">
-                <div class="role-title" data-i18n="tr5_title">
+
+                <div
+                    class="role-title"
+                    data-i18n="tr5_title"
+                >
                     IRSOP Wrap-up
                 </div>
 
-                <div class="company" style="margin-top: 0.25rem;" data-i18n="tr5_inst">
+                <div
+                    class="company"
+                    style="margin-top: 0.25rem;"
+                    data-i18n="tr5_inst"
+                >
                     GIZ Bangladesh
                 </div>
 
-                <p style="margin-top: 0.5rem; font-size: 0.9rem;">
-                    <strong data-i18n="lbl_duration">Duration</strong>:
-                    <span data-i18n="tr5_dur">5 Days</span>
+                <p
+                    style="margin-top: 0.5rem; font-size: 0.9rem;"
+                >
+                    <strong data-i18n="lbl_duration">
+                        Duration
+                    </strong>:
+                    <span data-i18n="tr5_dur">
+                        5 Days
+                    </span>
                 </p>
+
             </div>
 
             <div class="training-card">
-                <div class="role-title" data-i18n="tr6_title">
+
+                <div
+                    class="role-title"
+                    data-i18n="tr6_title"
+                >
                     IMS (Information Management System)
                 </div>
 
-                <div class="company" style="margin-top: 0.25rem;" data-i18n="tr6_inst">
+                <div
+                    class="company"
+                    style="margin-top: 0.25rem;"
+                    data-i18n="tr6_inst"
+                >
                     GIZ Bangladesh
                 </div>
 
-                <p style="margin-top: 0.5rem; font-size: 0.9rem;">
-                    <strong data-i18n="lbl_duration">Duration</strong>:
-                    <span data-i18n="tr6_dur">5 Days</span>
+                <p
+                    style="margin-top: 0.5rem; font-size: 0.9rem;"
+                >
+                    <strong data-i18n="lbl_duration">
+                        Duration
+                    </strong>:
+                    <span data-i18n="tr6_dur">
+                        5 Days
+                    </span>
                 </p>
+
             </div>
 
             <div class="training-card">
-                <div class="role-title" data-i18n="tr7_title">
+
+                <div
+                    class="role-title"
+                    data-i18n="tr7_title"
+                >
                     PLC (Paralegal Aid Clinic)
                 </div>
 
-                <div class="company" style="margin-top: 0.25rem;" data-i18n="tr7_inst">
+                <div
+                    class="company"
+                    style="margin-top: 0.25rem;"
+                    data-i18n="tr7_inst"
+                >
                     GIZ Bangladesh
                 </div>
 
-                <p style="margin-top: 0.5rem; font-size: 0.9rem;">
-                    <strong data-i18n="lbl_duration">Duration</strong>:
-                    <span data-i18n="tr7_dur">5 Days</span>
+                <p
+                    style="margin-top: 0.5rem; font-size: 0.9rem;"
+                >
+                    <strong data-i18n="lbl_duration">
+                        Duration
+                    </strong>:
+                    <span data-i18n="tr7_dur">
+                        5 Days
+                    </span>
                 </p>
+
             </div>
 
             <div class="training-card">
-                <div class="role-title" data-i18n="tr8_title">
+
+                <div
+                    class="role-title"
+                    data-i18n="tr8_title"
+                >
                     Automobile and Driving
                 </div>
 
-                <div class="company" style="margin-top: 0.25rem;" data-i18n="tr8_inst">
+                <div
+                    class="company"
+                    style="margin-top: 0.25rem;"
+                    data-i18n="tr8_inst"
+                >
                     Minal Computer Training Academy (MCTA), Thakurgaon
                 </div>
 
-                <p style="margin-top: 0.5rem; font-size: 0.9rem;">
-                    <strong data-i18n="lbl_duration">Duration</strong>:
-                    <span data-i18n="tr8_dur">6 Months</span>
+                <p
+                    style="margin-top: 0.5rem; font-size: 0.9rem;"
+                >
+                    <strong data-i18n="lbl_duration">
+                        Duration
+                    </strong>:
+                    <span data-i18n="tr8_dur">
+                        6 Months
+                    </span>
                 </p>
+
             </div>
 
             <div class="training-card">
-                <div class="role-title" data-i18n="tr9_title">
+
+                <div
+                    class="role-title"
+                    data-i18n="tr9_title"
+                >
                     Electrical Installation and Maintenance
                 </div>
 
-                <div class="company" style="margin-top: 0.25rem;" data-i18n="tr9_inst">
+                <div
+                    class="company"
+                    style="margin-top: 0.25rem;"
+                    data-i18n="tr9_inst"
+                >
                     Technical Training Center (TTC), Thakurgaon
                 </div>
 
-                <p style="margin-top: 0.5rem; font-size: 0.9rem;">
-                    <strong data-i18n="lbl_duration">Duration</strong>:
-                    <span data-i18n="tr9_dur">6 Months</span>
+                <p
+                    style="margin-top: 0.5rem; font-size: 0.9rem;"
+                >
+                    <strong data-i18n="lbl_duration">
+                        Duration
+                    </strong>:
+                    <span data-i18n="tr9_dur">
+                        6 Months
+                    </span>
                 </p>
+
             </div>
 
             <div class="training-card">
-                <div class="role-title" data-i18n="tr10_title">
+
+                <div
+                    class="role-title"
+                    data-i18n="tr10_title"
+                >
                     Outsourcing &amp; Freelancing
                 </div>
 
-                <div class="company" style="margin-top: 0.25rem;" data-i18n="tr10_inst">
+                <div
+                    class="company"
+                    style="margin-top: 0.25rem;"
+                    data-i18n="tr10_inst"
+                >
                     TMSS/Upazila Office, Thakurgaon
                 </div>
 
-                <p style="margin-top: 0.5rem; font-size: 0.9rem;">
-                    <strong data-i18n="lbl_duration">Duration</strong>:
-                    <span data-i18n="tr10_dur">5 Days</span>
+                <p
+                    style="margin-top: 0.5rem; font-size: 0.9rem;"
+                >
+                    <strong data-i18n="lbl_duration">
+                        Duration
+                    </strong>:
+                    <span data-i18n="tr10_dur">
+                        5 Days
+                    </span>
                 </p>
+
             </div>
 
         </div>
@@ -2184,16 +2882,22 @@
 
     <!-- Image Gallery -->
     <section id="gallery" data-aos="fade-up">
-        <h2 class="section-title" data-i18n="gallery_title">
+
+        <h2
+            class="section-title"
+            data-i18n="gallery_title"
+        >
             My Gallery
         </h2>
 
         <div class="card">
+
             <div
                 class="scrollable-gallery-wrapper"
                 tabindex="0"
                 aria-label="Image gallery"
             >
+
                 <div class="gallery-container">
 
                     <div
@@ -2255,6 +2959,7 @@
         aria-label="Image preview"
         aria-hidden="true"
     >
+
         <div class="lightbox-controls">
 
             <button
@@ -2295,7 +3000,10 @@
 
         </div>
 
-        <div class="lightbox-img-wrapper" id="lightboxWrapper">
+        <div
+            class="lightbox-img-wrapper"
+            id="lightboxWrapper"
+        >
             <img
                 id="lightboxImg"
                 src=""
@@ -2303,21 +3011,30 @@
                 draggable="false"
             >
         </div>
+
     </div>
 
     <!-- Contact -->
     <section id="contact" data-aos="fade-up">
-        <h2 class="section-title" data-i18n="contact_title">
+
+        <h2
+            class="section-title"
+            data-i18n="contact_title"
+        >
             Contact &amp; Social Channels
         </h2>
 
         <div class="card">
+
             <div class="contact-layout">
 
                 <div class="contact-grid">
 
                     <div class="info-group">
-                        <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                        <i
+                            class="fa-solid fa-location-dot"
+                            aria-hidden="true"
+                        ></i>
 
                         <div>
                             <strong data-i18n="lbl_address">
@@ -2331,7 +3048,10 @@
                     </div>
 
                     <div class="info-group">
-                        <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                        <i
+                            class="fa-solid fa-envelope"
+                            aria-hidden="true"
+                        ></i>
 
                         <div>
                             <strong data-i18n="lbl_email">
@@ -2347,7 +3067,10 @@
                     </div>
 
                     <div class="info-group">
-                        <i class="fa-solid fa-phone" aria-hidden="true"></i>
+                        <i
+                            class="fa-solid fa-phone"
+                            aria-hidden="true"
+                        ></i>
 
                         <div>
                             <strong data-i18n="lbl_phone">
@@ -2355,7 +3078,10 @@
                             </strong>
 
                             <p>
-                                <a href="tel:+8801711305367" data-i18n="val_phone">
+                                <a
+                                    href="tel:+8801711305367"
+                                    data-i18n="val_phone"
+                                >
                                     +880 1711-305367
                                 </a>
                             </p>
@@ -2363,7 +3089,10 @@
                     </div>
 
                     <div class="info-group">
-                        <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+                        <i
+                            class="fa-brands fa-linkedin-in"
+                            aria-hidden="true"
+                        ></i>
 
                         <div>
                             <strong>
@@ -2380,7 +3109,10 @@
                     </div>
 
                     <div class="info-group">
-                        <i class="fa-solid fa-users-rectangle" aria-hidden="true"></i>
+                        <i
+                            class="fa-solid fa-users-rectangle"
+                            aria-hidden="true"
+                        ></i>
 
                         <div>
                             <strong>
@@ -2397,7 +3129,10 @@
                     </div>
 
                     <div class="info-group">
-                        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+                        <i
+                            class="fa-brands fa-whatsapp"
+                            aria-hidden="true"
+                        ></i>
 
                         <div>
                             <strong>
@@ -2415,9 +3150,16 @@
 
                 </div>
 
-                <form id="contactForm" class="contact-form" novalidate>
+                <form
+                    id="contactForm"
+                    class="contact-form"
+                    novalidate
+                >
 
-                    <div class="honeypot" aria-hidden="true">
+                    <div
+                        class="honeypot"
+                        aria-hidden="true"
+                    >
                         <label for="website">
                             Leave this field empty
                         </label>
@@ -2432,7 +3174,11 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="senderName" data-i18n="lbl_form_name">
+
+                        <label
+                            for="senderName"
+                            data-i18n="lbl_form_name"
+                        >
                             Your Name
                         </label>
 
@@ -2446,10 +3192,15 @@
                             data-i18n-ph="ph_name"
                             placeholder=""
                         >
+
                     </div>
 
                     <div class="form-group">
-                        <label for="senderEmail" data-i18n="lbl_form_email">
+
+                        <label
+                            for="senderEmail"
+                            data-i18n="lbl_form_email"
+                        >
                             Your Email
                         </label>
 
@@ -2462,10 +3213,15 @@
                             maxlength="160"
                             placeholder="name@example.com"
                         >
+
                     </div>
 
                     <div class="form-group">
-                        <label for="message" data-i18n="lbl_form_msg">
+
+                        <label
+                            for="message"
+                            data-i18n="lbl_form_msg"
+                        >
                             Message
                         </label>
 
@@ -2478,6 +3234,7 @@
                             data-i18n-ph="ph_msg"
                             placeholder=""
                         ></textarea>
+
                     </div>
 
                     <button
@@ -2503,8 +3260,12 @@
     <footer>
         <p>
             © 2026
-            <span data-i18n="footer_name">Farshid Rupon</span>.
-            <span data-i18n="footer_rights">All rights reserved.</span>
+            <span data-i18n="footer_name">
+                Farshid Rupon
+            </span>.
+            <span data-i18n="footer_rights">
+                All rights reserved.
+            </span>
         </p>
     </footer>
 
@@ -2529,6 +3290,7 @@
                 nav_contact: "Contact",
 
                 hero_loc: "Thakurgaon, Bangladesh",
+
                 val_phone: "+880 1711-305367",
                 val_linkedin: "LinkedIn",
                 val_msteams: "Microsoft Teams",
@@ -2542,7 +3304,7 @@
                 summary_title: "Professional Summary",
 
                 summary_desc:
-                    "Experienced and results-driven Survey Programmer with 10+ years of overall professional experience, including extensive experience in survey programming, research technology, operational compliance, and project operations. Skilled in developing complex market research surveys, implementing advanced logic and routing, performing quality assurance, managing live fieldwork, and supporting data processing and analytics. Strong analytical problem-solving skills, attention to detail, and a proven ability to optimize workflows and deliver high-quality results in dynamic environments.",
+                    "Experienced and results-driven Survey Programmer with 10+ years of overall professional experience, including extensive experience in survey programming, research technology, operational compliance, and project operations. Skilled in developing complex market research surveys, implementing advanced logic and routing, performing quality assurance, managing live fieldwork, and supporting data processing and analytics. Strong analytical and problem-solving skills, attention to detail, and a proven ability to optimize workflows and deliver high-quality results in dynamic environments.",
 
                 about_title: "Professional Profile",
                 about_details: "Professional Details",
@@ -2592,49 +3354,65 @@
                 btn_filter_ops: "Operations & Legal Assistance",
 
                 exp1_role: "Survey Programmer",
-                exp1_company: "Analyticsify Research Limited, Thakurgaon",
-                exp1_date: "01 Dec 2022 – Present",
+                exp1_company:
+                    "Analyticsify Research Limited, Thakurgaon",
+                exp1_date:
+                    "01 Dec 2022 – Present",
 
-                exp1_t1: "Survey Coding & Development",
+                exp1_t1:
+                    "Survey Coding & Development",
                 exp1_r1:
                     "Develop and program complex market research surveys using platforms such as Decipher (Forsta), Qualtrics, and Confirmit, with HTML5, CSS3, JavaScript, XML, and platform-specific scripting.",
 
-                exp1_t2: "Logic & Routing Implementation",
+                exp1_t2:
+                    "Logic & Routing Implementation",
                 exp1_r2:
                     "Implement complex survey logic, including dynamic skip patterns, quotas, piping, looping, randomization, and masking to ensure accurate and reliable data collection.",
 
-                exp1_t3: "Quality Assurance & Testing",
+                exp1_t3:
+                    "Quality Assurance & Testing",
                 exp1_r3:
-                    "Perform end-to-end testing, debug custom scripts across multiple devices and browsers, and validate survey logic and functionality before launching surveys to fieldwork.",
+                    "Perform end-to-end testing, debug custom scripts across multiple devices and browsers, and validate survey logic and functionality before launching surveys into fieldwork.",
 
-                exp1_t4: "Data Integration & Cleaning",
+                exp1_t4:
+                    "Data Integration & Cleaning",
                 exp1_r4:
                     "Configure structured data exports in SPSS (.sav), CSV, JSON, and Excel formats; map variables and develop data-cleaning workflows to support seamless downstream analysis.",
 
-                exp1_t5: "UI/UX Optimization",
+                exp1_t5:
+                    "UI/UX Optimization",
                 exp1_r5:
                     "Develop custom interactive survey components, including sliders, rank-order tools, and media test players, with a focus on respondent usability and responsive cross-device performance.",
 
-                exp1_t6: "Field Maintenance",
+                exp1_t6:
+                    "Field Maintenance",
                 exp1_r6:
                     "Monitor live survey operations, implement real-time fixes while protecting collected data integrity, and manage quota updates throughout fieldwork.",
 
-                matrix_title: "Technical Skill Matrix",
+                matrix_title:
+                    "Technical Skill Matrix",
 
-                lbl_platforms: "Survey Platforms",
+                lbl_platforms:
+                    "Survey Platforms",
+
                 val_platforms:
                     "Decipher (Forsta), Qualtrics, Confirmit, Unomer, Alchemer",
 
                 lbl_languages_tech:
                     "Programming & Web Technologies",
+
                 val_languages_tech:
                     "JavaScript, HTML5, CSS3, XML, Python, SQL",
 
-                lbl_formats: "Data & Analytics",
+                lbl_formats:
+                    "Data & Analytics",
+
                 val_formats:
                     "SPSS (.sav), CSV, JSON, Excel, Tableau-ready Data",
 
-                lbl_sp_prog: "Survey Programming",
+                lbl_sp_prog:
+                    "Survey Programming",
+
                 val_sp_prog:
                     "Skip Logic, Quotas, Piping, Looping, Randomization, Masking, Custom UI/UX",
 
@@ -2701,9 +3479,12 @@
                 exp_agro_r18:
                     "Provided operational support to management to ensure efficient and smooth farm operations.",
 
-                exp2_role: "Paralegal",
+                exp2_role:
+                    "Paralegal",
+
                 exp2_company:
                     "RDRS Bangladesh, Thakurgaon",
+
                 exp2_date:
                     "18 Jan 2016 – 28 Feb 2022",
 
@@ -2725,9 +3506,12 @@
                 exp2_r6:
                     "Managed project financial operations, including advance processing, voucher adjustments, and VAT/tax compliance.",
 
-                exp3_role: "Sales Executive",
+                exp3_role:
+                    "Sales Executive",
+
                 exp3_company:
                     "Grameenphone Authorized Distribution House, Thakurgaon",
+
                 exp3_date:
                     "01 Oct 2014 – 30 Sep 2015",
 
@@ -2740,9 +3524,12 @@
                 exp3_r3:
                     "Participated in strategic retail sales workshops.",
 
-                exp4_role: "Compliance Officer",
+                exp4_role:
+                    "Compliance Officer",
+
                 exp4_company:
                     "Grameenphone Authorized Distribution House, Thakurgaon",
+
                 exp4_date:
                     "02 Dec 2013 – 31 Jul 2014",
 
@@ -2755,41 +3542,54 @@
                 exp4_r3:
                     "Maintained daily operational inventory and sales records in internal databases.",
 
-                edu_title: "Academic Qualifications",
+                edu_title:
+                    "Academic Qualifications",
 
                 edu1_title:
                     "Bachelor of Laws - LL.B. Part 1 (Professional)",
+
                 edu1_inst:
                     "Dinajpur Law College, Dinajpur",
+
                 edu1_sub:
                     "Bachelor of Laws",
+
                 edu1_res:
                     "2nd Class",
 
                 edu2_title:
                     "Bachelor of Social Science (BSS)",
+
                 edu2_inst:
                     "Thakurgaon Govt. College, Thakurgaon",
+
                 edu2_sub:
                     "Political Science",
+
                 edu2_res:
                     "CGPA: 2.51 / 4.00",
 
                 edu3_title:
                     "Higher Secondary Certificate (HSC)",
+
                 edu3_inst:
                     "Thakurgaon Govt. Technical School & College, Thakurgaon",
+
                 edu3_sub:
                     "Computer Science",
+
                 edu3_res:
                     "GPA: 3.50 / 5.00",
 
                 edu4_title:
                     "Secondary School Certificate (SSC)",
+
                 edu4_inst:
                     "Thakurgaon Govt. Technical School & College, Thakurgaon",
+
                 edu4_sub:
                     "Computer Science",
+
                 edu4_res:
                     "GPA: 3.36 / 5.00",
 
@@ -2801,71 +3601,91 @@
 
                 tr1_title:
                     "Basic Counseling",
+
                 tr1_inst:
                     "Dhaka Ahsania Mission",
+
                 tr1_dur:
                     "5 Days",
 
                 tr2_title:
                     "Impact Hub IRSOP",
+
                 tr2_inst:
                     "GIZ Bangladesh",
+
                 tr2_dur:
                     "1 Day",
 
                 tr3_title:
                     "Orientation on Foundation and Gender Policy",
+
                 tr3_inst:
                     "RDRS Bangladesh",
+
                 tr3_dur:
                     "3 Days",
 
                 tr4_title:
                     "Basic Criminal Law",
+
                 tr4_inst:
                     "RDRS Bangladesh",
+
                 tr4_dur:
                     "15 Days",
 
                 tr5_title:
                     "IRSOP Wrap-up",
+
                 tr5_inst:
                     "GIZ Bangladesh",
+
                 tr5_dur:
                     "5 Days",
 
                 tr6_title:
                     "IMS (Information Management System)",
+
                 tr6_inst:
                     "GIZ Bangladesh",
+
                 tr6_dur:
                     "5 Days",
 
                 tr7_title:
                     "PLC (Paralegal Aid Clinic)",
+
                 tr7_inst:
                     "GIZ Bangladesh",
+
                 tr7_dur:
                     "5 Days",
 
                 tr8_title:
                     "Automobile and Driving",
+
                 tr8_inst:
                     "Minal Computer Training Academy (MCTA), Thakurgaon",
+
                 tr8_dur:
                     "6 Months",
 
                 tr9_title:
                     "Electrical Installation and Maintenance",
+
                 tr9_inst:
                     "Technical Training Center (TTC), Thakurgaon",
+
                 tr9_dur:
                     "6 Months",
 
                 tr10_title:
                     "Outsourcing & Freelancing",
+
                 tr10_inst:
                     "TMSS/Upazila Office, Thakurgaon",
+
                 tr10_dur:
                     "5 Days",
 
@@ -2910,7 +3730,7 @@
 
                 typed: [
                     "Expert in Decipher (Forsta), Qualtrics, Alchemer, custom scripting, and data analysis",
-                    "Previous Roles:",
+                    "Previous Professional Roles:",
                     "Senior Manager, Operations | Dinajpur Agro Farms",
                     "Paralegal | RDRS Bangladesh",
                     "Sales Executive | Grameenphone Authorized Distribution House",
@@ -2919,21 +3739,38 @@
             },
 
             bn: {
-                logo_name: "ফারশিদ রুপন",
+                logo_name:
+                    "ফারশিদ রুপন",
 
-                hero_name: "ফারশিদ রুপন",
+                hero_name:
+                    "ফারশিদ রুপন",
+
                 hero_role:
-                    "সার্ভে প্রোগ্রামার | সার্ভে টেকনোলজি বিশেষজ্ঞ",
+                    "Survey Programmer | Survey Technology Specialist",
 
-                footer_name: "ফারশিদ রুপন",
+                footer_name:
+                    "ফারশিদ রুপন",
 
-                nav_summary: "সারসংক্ষেপ",
-                nav_about: "পরিচিতি",
-                nav_exp: "কর্মঅভিজ্ঞতা",
-                nav_edu: "শিক্ষাগত যোগ্যতা",
-                nav_training: "প্রশিক্ষণ",
-                nav_gallery: "গ্যালারি",
-                nav_contact: "যোগাযোগ",
+                nav_summary:
+                    "সারসংক্ষেপ",
+
+                nav_about:
+                    "পরিচিতি",
+
+                nav_exp:
+                    "কর্মঅভিজ্ঞতা",
+
+                nav_edu:
+                    "শিক্ষাগত যোগ্যতা",
+
+                nav_training:
+                    "প্রশিক্ষণ",
+
+                nav_gallery:
+                    "গ্যালারি",
+
+                nav_contact:
+                    "যোগাযোগ",
 
                 hero_loc:
                     "ঠাকুরগাঁও, বাংলাদেশ",
@@ -2942,15 +3779,16 @@
                     "+৮৮০ ১৭১১-৩০৫৩৬৭",
 
                 val_linkedin:
-                    "লিংকডইন",
+                    "LinkedIn",
 
                 val_msteams:
-                    "মাইক্রোসফ্ট টিমস",
+                    "Microsoft Teams",
 
                 val_whatsapp:
-                    "হোয়াটসঅ্যাপ",
+                    "WhatsApp",
 
-                ph_name: "",
+                ph_name:
+                    "",
 
                 ph_msg:
                     "হ্যালো ফারশিদ, আমি একটি প্রজেক্ট নিয়ে আলোচনা করতে চাই...",
@@ -2962,7 +3800,7 @@
                     "পেশাগত সারসংক্ষেপ",
 
                 summary_desc:
-                    "সার্বিকভাবে ১০+ বছরের পেশাগত অভিজ্ঞতাসম্পন্ন একজন দক্ষ ও ফলাফলভিত্তিক সার্ভে প্রোগ্রামার, যার মধ্যে সার্ভে প্রোগ্রামিং, রিসার্চ টেকনোলজি, অপারেশনাল কমপ্লায়েন্স এবং প্রজেক্ট অপারেশনে ব্যাপক অভিজ্ঞতা রয়েছে। জটিল মার্কেট রিসার্চ সার্ভে তৈরি, উন্নত লজিক ও রাউটিং বাস্তবায়ন, কোয়ালিটি অ্যাস্যুরেন্স, লাইভ ফিল্ডওয়ার্ক পরিচালনা এবং ডেটা প্রসেসিং ও অ্যানালিটিক্সে সহায়তা প্রদানে দক্ষ। শক্তিশালী বিশ্লেষণাত্মক সমস্যা সমাধানের দক্ষতা, সূক্ষ্ম বিষয়ে মনোযোগ এবং কার্যপ্রবাহ উন্নত করে গতিশীল কর্মপরিবেশে উচ্চমানের ফলাফল প্রদানের সক্ষমতা রয়েছে।",
+                    "সার্বিকভাবে ১০+ বছরের পেশাগত অভিজ্ঞতাসম্পন্ন একজন দক্ষ ও ফলাফলভিত্তিক Survey Programmer, যার মধ্যে survey programming, research technology, operational compliance এবং project operations-এ ব্যাপক অভিজ্ঞতা রয়েছে। জটিল market research survey তৈরি, advanced logic ও routing বাস্তবায়ন, quality assurance পরিচালনা, live fieldwork ব্যবস্থাপনা এবং data processing ও analytics-এ সহায়তা প্রদানে দক্ষ। শক্তিশালী analytical ও problem-solving skills, সূক্ষ্ম বিষয়ে মনোযোগ এবং কার্যপ্রবাহ উন্নত করে dynamic work environment-এ high-quality results প্রদানের প্রমাণিত সক্ষমতা রয়েছে।",
 
                 about_title:
                     "পেশাগত পরিচিতি",
@@ -2971,7 +3809,7 @@
                     "পেশাগত বিবরণ",
 
                 about_expertise:
-                    "টেকনিক্যাল দক্ষতা",
+                    "Technical Expertise",
 
                 lbl_nationality:
                     "জাতীয়তা",
@@ -2983,7 +3821,7 @@
                     "বর্তমান পদ",
 
                 val_current_position:
-                    "সার্ভে প্রোগ্রামার",
+                    "Survey Programmer",
 
                 lbl_prof_exp:
                     "পেশাগত অভিজ্ঞতা",
@@ -3007,391 +3845,391 @@
                     "কাজের পরিবেশ",
 
                 val_work_env:
-                    "রিমোট, অফিসভিত্তিক ও হাইব্রিড",
+                    "Remote, On-site & Hybrid",
 
                 lbl_career_bg:
                     "কর্মজীবনের অভিজ্ঞতা",
 
                 val_career_bg:
-                    "রিসার্চ, অপারেশনস, আইন ও সেলস",
+                    "Research, Operations, Legal & Sales",
 
                 lbl_prof_strengths:
                     "পেশাগত শক্তি",
 
                 val_prof_strengths:
-                    "সমস্যা সমাধান, গুণগত মান যাচাই ও সূক্ষ্ম বিষয়ে মনোযোগ",
+                    "Problem Solving, Quality Assurance & Attention to Detail",
 
                 lbl_driving:
                     "ড্রাইভিং লাইসেন্স",
 
                 val_driving:
-                    "বৈধ মোটরসাইকেল ড্রাইভিং লাইসেন্স",
+                    "বৈধ Motorcycle Driving License",
 
                 skill_platforms_title:
-                    "সার্ভে প্ল্যাটফর্ম",
+                    "Survey Platforms",
 
                 skill_programming_title:
-                    "প্রোগ্রামিং ও ওয়েব",
+                    "Programming & Web",
 
                 skill_data_title:
-                    "ডেটা ও অ্যানালিটিক্স",
+                    "Data & Analytics",
 
                 skill_logic_title:
-                    "সার্ভে প্রোগ্রামিং",
+                    "Survey Programming",
 
                 exp_title:
                     "কর্মঅভিজ্ঞতা",
 
                 btn_filter_all:
-                    "সকল ভূমিকা",
+                    "সকল পদ",
 
                 btn_filter_sp:
-                    "সার্ভে প্রোগ্রামিং",
+                    "Survey Programming",
 
                 btn_filter_ops:
-                    "অপারেশনস ও আইনগত সহায়তা",
+                    "Operations & Legal Assistance",
 
                 exp1_role:
-                    "সার্ভে প্রোগ্রামার",
+                    "Survey Programmer",
 
                 exp1_company:
-                    "অ্যানালিটিক্সিফাই রিসার্চ লিমিটেড, ঠাকুরগাঁও",
+                    "Analyticsify Research Limited, Thakurgaon",
 
                 exp1_date:
                     "০১ ডিসেম্বর ২০২২ – বর্তমান",
 
                 exp1_t1:
-                    "সার্ভে কোডিং ও ডেভেলপমেন্ট",
+                    "Survey Coding & Development",
 
                 exp1_r1:
-                    "ডিসাইফার (ফরস্টা), কোয়ালট্রিক্স এবং কনফারমিট-এর মতো প্ল্যাটফর্ম ব্যবহার করে এইচটিএমএল ৫, সিএসএস ৩, জাভাস্ক্রিপ্ট, এক্সএমএল এবং প্ল্যাটফর্ম-নির্দিষ্ট স্ক্রিপ্টিং-এর মাধ্যমে জটিল মার্কেট রিসার্চ সার্ভে তৈরি ও প্রোগ্রাম করা।",
+                    "Decipher (Forsta), Qualtrics এবং Confirmit-এর মতো platform ব্যবহার করে HTML5, CSS3, JavaScript, XML এবং platform-specific scripting-এর মাধ্যমে জটিল market research survey তৈরি ও program করা।",
 
                 exp1_t2:
-                    "লজিক ও রাউটিং বাস্তবায়ন",
+                    "Logic & Routing Implementation",
 
                 exp1_r2:
-                    "সঠিক ও নির্ভরযোগ্য ডেটা সংগ্রহ নিশ্চিত করতে ডাইনামিক স্কিপ প্যাটার্ন, কোটা, পাইপিং, লুপিং, র‍্যান্ডমাইজেশন এবং মাস্কিং-সহ জটিল সার্ভে লজিক বাস্তবায়ন করা।",
+                    "সঠিক ও নির্ভরযোগ্য data collection নিশ্চিত করতে dynamic skip patterns, quotas, piping, looping, randomization এবং masking-সহ জটিল survey logic বাস্তবায়ন করা।",
 
                 exp1_t3:
-                    "কোয়ালিটি অ্যাস্যুরেন্স ও টেস্টিং",
+                    "Quality Assurance & Testing",
 
                 exp1_r3:
-                    "এন্ড-টু-এন্ড টেস্টিং পরিচালনা, বিভিন্ন ডিভাইস ও ব্রাউজারে কাস্টম স্ক্রিপ্ট ডিবাগ করা এবং ফিল্ডওয়ার্কে সার্ভে চালুর আগে সার্ভে লজিক ও ফাংশনালিটি যাচাই করা।",
+                    "End-to-end testing পরিচালনা, বিভিন্ন device ও browser-এ custom scripts debug করা এবং fieldwork-এ survey launch করার আগে survey logic ও functionality যাচাই করা।",
 
                 exp1_t4:
-                    "ডেটা ইন্টিগ্রেশন ও ক্লিনিং",
+                    "Data Integration & Cleaning",
 
                 exp1_r4:
-                    "এসপিএসএস (.sav), সিএসভি, জেসন এবং এক্সেল ফরম্যাটে কাঠামোবদ্ধ ডেটা এক্সপোর্ট কনফিগার করা, ভেরিয়েবল ম্যাপিং করা এবং পরবর্তী ডেটা অ্যানালাইসিসের জন্য ডেটা ক্লিনিং ওয়ার্কফ্লো তৈরি করা।",
+                    "SPSS (.sav), CSV, JSON এবং Excel format-এ structured data exports configure করা; variables map করা এবং downstream analysis support করার জন্য data-cleaning workflows তৈরি করা।",
 
                 exp1_t5:
-                    "UI/UX অপ্টিমাইজেশন",
+                    "UI/UX Optimization",
 
                 exp1_r5:
-                    "রেসপন্ডেন্ট ব্যবহারযোগ্যতা এবং বিভিন্ন ডিভাইসে রেসপন্সিভ পারফরম্যান্স নিশ্চিত করতে স্লাইডার, র‍্যাঙ্ক-অর্ডার টুল এবং মিডিয়া টেস্ট প্লেয়ার-সহ কাস্টম ইন্টারঅ্যাকটিভ সার্ভে কম্পোনেন্ট তৈরি করা।",
+                    "Respondent usability এবং বিভিন্ন device-এ responsive performance নিশ্চিত করতে sliders, rank-order tools এবং media test players-সহ custom interactive survey components তৈরি করা।",
 
                 exp1_t6:
-                    "ফিল্ড মেইনটেন্যান্স",
+                    "Field Maintenance",
 
                 exp1_r6:
-                    "লাইভ সার্ভে কার্যক্রম পর্যবেক্ষণ করা, সংগৃহীত ডেটার ইন্টিগ্রিটি বজায় রেখে রিয়েল-টাইম ফিক্স বাস্তবায়ন করা এবং ফিল্ডওয়ার্ক চলাকালীন কোটা আপডেট পরিচালনা করা।",
+                    "Live survey operations monitor করা, collected data integrity বজায় রেখে real-time fixes implement করা এবং fieldwork চলাকালীন quota updates manage করা।",
 
                 matrix_title:
-                    "টেকনিক্যাল স্কিল ম্যাট্রিক্স",
+                    "Technical Skill Matrix",
 
                 lbl_platforms:
-                    "সার্ভে প্ল্যাটফর্ম",
+                    "Survey Platforms",
 
                 val_platforms:
-                    "ডিসাইফার (ফরস্টা), কোয়ালট্রিক্স, কনফারমিট, ইউনোমার, অ্যালকেমার",
+                    "Decipher (Forsta), Qualtrics, Confirmit, Unomer, Alchemer",
 
                 lbl_languages_tech:
-                    "প্রোগ্রামিং ও ওয়েব টেকনোলজি",
+                    "Programming & Web Technologies",
 
                 val_languages_tech:
-                    "জাভাস্ক্রিপ্ট, এইচটিএমএল ৫, সিএসএস ৩, এক্সএমএল, পাইথন, এসকিউএল",
+                    "JavaScript, HTML5, CSS3, XML, Python, SQL",
 
                 lbl_formats:
-                    "ডেটা ও অ্যানালিটিক্স",
+                    "Data & Analytics",
 
                 val_formats:
-                    "এসপিএসএস (.sav), সিএসভি, জেসন, এক্সেল, ট্যাবলো-প্রস্তুত ডেটা",
+                    "SPSS (.sav), CSV, JSON, Excel, Tableau-ready Data",
 
                 lbl_sp_prog:
-                    "সার্ভে প্রোগ্রামিং",
+                    "Survey Programming",
 
                 val_sp_prog:
-                    "স্কিপ লজিক, কোটা, পাইপিং, লুপিং, র‍্যান্ডমাইজেশন, মাস্কিং, কাস্টম ইউআই/ইউএক্স",
+                    "Skip Logic, Quotas, Piping, Looping, Randomization, Masking, Custom UI/UX",
 
                 exp_agro_role:
-                    "সিনিয়র ম্যানেজার, অপারেশনস",
+                    "Senior Manager, Operations",
 
                 exp_agro_company:
-                    "দিনাজপুর এগ্রো ফার্মস, দিনাজপুর",
+                    "Dinajpur Agro Farms, Dinajpur",
 
                 exp_agro_date:
                     "০১ মার্চ ২০২২ – ৩০ নভেম্বর ২০২২",
 
                 exp_agro_r1:
-                    "গবাদিপশু, পোল্ট্রি ও মাছ চাষসহ দৈনন্দিন খামার পরিচালনা কার্যক্রম পরিচালনা ও সমন্বয় করা।",
+                    "Livestock, poultry এবং fish farming-সহ দৈনন্দিন farm operations পরিচালনা ও সংশ্লিষ্ট কার্যক্রম সমন্বয় করা।",
 
                 exp_agro_r2:
-                    "নিয়মিত বাজার গবেষণা পরিচালনা এবং নির্ভরযোগ্য বাজার সরবরাহকারীদের কাছ থেকে প্রতিদিনের লেয়ার মুরগির বর্তমান বাজারমূল্য সংগ্রহ করা।",
+                    "Daily market research পরিচালনা এবং নির্ভরযোগ্য market suppliers-এর কাছ থেকে current layer chicken prices সংগ্রহ করা।",
 
                 exp_agro_r3:
-                    "দৈনিক বাজারমূল্যের তথ্য সংগ্রহ করে নির্ধারিত অনলাইন রিপোর্টিং ফাইলে নিয়মিত আপডেট করা।",
+                    "Daily market price information সংগ্রহ করে designated online reporting files-এ নিয়মিত update করা।",
 
                 exp_agro_r4:
-                    "গরু, মাছ ও পোল্ট্রির সময়মতো খাবার সরবরাহ এবং যথাযথ পরিচর্যা নিশ্চিত করা।",
+                    "Cows, fish এবং poultry-কে সময়মতো feeding এবং proper care নিশ্চিত করা।",
 
                 exp_agro_r5:
-                    "সরবরাহকারীদের কাছ থেকে পণ্য গ্রহণ, গ্রহণের রেকর্ড সংরক্ষণ এবং পণ্যের যথাযথ সংরক্ষণ ও বিতরণে সমন্বয় করা।",
+                    "Suppliers-এর কাছ থেকে goods গ্রহণ, receiving records সংরক্ষণ এবং proper storage ও distribution সমন্বয় করা।",
 
                 exp_agro_r6:
-                    "স্টক ও কার্যক্রম-সংক্রান্ত তথ্য নিয়মিত আপডেট রাখা এবং গুরুত্বপূর্ণ তথ্য জেনারেল ম্যানেজার ও অ্যাকাউন্টস টিমকে প্রদান করা।",
+                    "Stock ও operational information update রাখা এবং General Manager ও Accounts team-কে নিয়মিত key updates report করা।",
 
                 exp_agro_r7:
-                    "খামারের অভ্যন্তরীণ ও আশপাশের এলাকা, বিভিন্ন সুবিধা এবং দৈনন্দিন কার্যক্রম তদারকি করে যথাযথ রক্ষণাবেক্ষণ নিশ্চিত করা।",
+                    "Farm premises, surrounding areas, facilities এবং day-to-day operational activities supervise করে proper maintenance নিশ্চিত করা।",
 
                 exp_agro_r8:
-                    "নির্ধারিত সময় অনুযায়ী নিয়মিত গবাদিপশুর ওজন এবং অন্যান্য প্রয়োজনীয় তথ্য পর্যবেক্ষণ ও রেকর্ড করা।",
+                    "Predetermined intervals অনুযায়ী livestock weight এবং অন্যান্য relevant information নিয়মিত monitor ও record করা।",
 
                 exp_agro_r9:
-                    "নির্ধারিত রিপোর্টিং ফরম্যাট অনুযায়ী অপারেশনস ম্যানেজারদের কাছ থেকে কার্যক্রম ও আয়-সংক্রান্ত তথ্য সংগ্রহ করে জেনারেল ম্যানেজার বা ব্যবস্থাপনা কর্তৃপক্ষের কাছে প্রতিবেদন জমা দেওয়া।",
+                    "Predefined reporting formats ব্যবহার করে Operations Managers-এর কাছ থেকে operational ও income-related information সংগ্রহ করা এবং General Manager বা management authority-এর কাছে reports submit করা।",
 
                 exp_agro_r10:
-                    "অপারেশনাল রিসার্চ, মার্কেট রিসার্চ এবং মাঠপর্যায়ের কার্যক্রমে অংশগ্রহণ করা এবং সংশ্লিষ্ট তথ্য ও প্রাপ্ত ফলাফল নথিভুক্ত করা।",
+                    "Operational research, market research এবং field-level activities-এ অংশগ্রহণ করা এবং relevant findings document করা।",
 
                 exp_agro_r11:
-                    "মাছ, মুরগি, ছাগল এবং অন্যান্য পশুপালন-সংক্রান্ত পণ্যের প্রচলিত বাজারমূল্য পর্যবেক্ষণের জন্য নিয়মিত শারীরিক বাজার জরিপ পরিচালনা করা।",
+                    "Fish, chicken, goats এবং অন্যান্য livestock-related products-এর prevailing prices monitor করার জন্য নিয়মিত physical market surveys পরিচালনা করা।",
 
                 exp_agro_r12:
-                    "নির্ধারিত অনলাইন ফর্মের মাধ্যমে কার্যক্রম, বাজার ও স্টক-সংক্রান্ত তথ্য সংরক্ষণ ও আপডেট করা।",
+                    "Designated online forms-এর মাধ্যমে operational, market এবং stock information maintain ও update করা।",
 
                 exp_agro_r13:
-                    "সুপারভাইজারদের সঙ্গে সমন্বয় করে পরবর্তী মাসের কর্মপরিকল্পনা ও কার্যক্রমের সময়সূচি প্রস্তুত করা।",
+                    "Supervisors-এর সঙ্গে coordination করে following month's work plan ও activity schedule প্রস্তুত করা।",
 
                 exp_agro_r14:
-                    "পরিকল্পিত কার্যক্রম সময়মতো সম্পন্ন করার জন্য সুপারভাইজার ও ম্যানেজারদের সঙ্গে সমন্বয় করা।",
+                    "Planned operational activities সময়মতো complete করার জন্য supervisors এবং managers-এর সঙ্গে coordination করা।",
 
                 exp_agro_r15:
-                    "গবাদিপশু ব্যবস্থাপনা কার্যক্রমে সহায়তা করা, যার মধ্যে নির্ধারিত স্থান অনুযায়ী গরু, মুরগি ও মাছের স্থানান্তর ও ব্যবস্থাপনাও অন্তর্ভুক্ত।",
+                    "Livestock management activities-এ support প্রদান করা, যার মধ্যে designated areas-এর মধ্যে cows, chickens এবং fish-এর movement ও transfer অন্তর্ভুক্ত।",
 
                 exp_agro_r16:
-                    "গবাদিপশুর ওজন ও তাপমাত্রা রেকর্ড করা এবং মনিটরিং ও ব্যবস্থাপনার জন্য সংশ্লিষ্ট ডেটা সংরক্ষণ করা।",
+                    "Livestock body weight ও temperature record করা এবং monitoring ও management purposes-এর জন্য relevant data maintain করা।",
 
                 exp_agro_r17:
-                    "মাছ ধরার আগে এবং সংশ্লিষ্ট অপারেশনাল কার্যক্রমের সময় মাছের অবস্থা, ওজন ও অন্যান্য প্রয়োজনীয় তথ্য সংগ্রহ ও সংরক্ষণ করা।",
+                    "Fishing-এর আগে এবং relevant operational activities-এর সময় fish condition, weight এবং related factors-এর information collect ও maintain করা।",
 
                 exp_agro_r18:
-                    "খামারের কার্যক্রম দক্ষ ও সুষ্ঠুভাবে পরিচালনার জন্য ব্যবস্থাপনাকে প্রয়োজনীয় কার্যক্রম-সংক্রান্ত সহায়তা প্রদান করা।",
+                    "Efficient ও smooth farm operations নিশ্চিত করতে management-কে operational support প্রদান করা।",
 
                 exp2_role:
-                    "প্যারালিগ্যাল",
+                    "Paralegal",
 
                 exp2_company:
-                    "আরডিআরএস বাংলাদেশ, ঠাকুরগাঁও",
+                    "RDRS Bangladesh, Thakurgaon",
 
                 exp2_date:
                     "১৮ জানুয়ারি ২০১৬ – ২৮ ফেব্রুয়ারি ২০২২",
 
                 exp2_r1:
-                    "কারাগার ও কিশোর উন্নয়ন কেন্দ্রে প্যারালিগ্যাল এইড ক্লিনিক পরিচালনা করে আটক ব্যক্তিদের মৌলিক ফৌজদারি আইন ও বিচারিক প্রক্রিয়া সম্পর্কে অবহিত করা।",
+                    "Prisons এবং Juvenile Development Centres-এ paralegal aid clinics পরিচালনা করে detainees-দের basic criminal law ও judicial procedures সম্পর্কে educate করা।",
 
                 exp2_r2:
-                    "জেলা আইনগত সহায়তা কমিটি, এনজিও এবং সাংবিধানিক সংস্থার কাছে আইনগত মামলাসমূহ রেফার করা।",
+                    "Legal cases District Legal Aid Committees, NGOs এবং constitutional bodies-এর কাছে refer করা।",
 
                 exp2_r3:
-                    "সংঘাত-প্রভাবিত যুবকদের পরিবারের সদস্যদের খুঁজে বের করা এবং সংশ্লিষ্ট বিচারিক সংস্থার সঙ্গে জামিনদারী সমন্বয় করা।",
+                    "Conflict-affected youth-দের families trace করা এবং relevant justice agencies-এর সঙ্গে sureties coordinate করা।",
 
                 exp2_r4:
-                    "অপারেশনাল ডেটাবেস সংকলন এবং মাসিক, ত্রৈমাসিক ও বার্ষিক অগ্রগতি প্রতিবেদন প্রস্তুত করা।",
+                    "Operational databases compile করা এবং monthly, quarterly ও annual progress reports প্রস্তুত করা।",
 
                 exp2_r5:
-                    "মামলা সমন্বয় সভা পরিচালনা এবং আইনশৃঙ্খলা রক্ষাকারী বাহিনী, বিচার বিভাগ ও স্বাস্থ্যসেবা প্রতিষ্ঠানের সঙ্গে সমন্বয় করে আইনগত সহায়তা প্রদান করা।",
+                    "Case Coordination Meetings facilitate করা এবং legal assistance support করার জন্য law enforcement, judiciary এবং health services-এর সঙ্গে liaise করা।",
 
                 exp2_r6:
-                    "অগ্রিম প্রক্রিয়াকরণ, ভাউচার সমন্বয় এবং ভ্যাট/ট্যাক্স পরিপালন-সহ প্রজেক্টের আর্থিক কার্যক্রম পরিচালনা করা।",
+                    "Advance processing, voucher adjustments এবং VAT/tax compliance-সহ project financial operations manage করা।",
 
                 exp3_role:
-                    "সেলস এক্সিকিউটিভ",
+                    "Sales Executive",
 
                 exp3_company:
-                    "গ্রামীণফোন অনুমোদিত ডিস্ট্রিবিউশন হাউস, ঠাকুরগাঁও",
+                    "Grameenphone Authorized Distribution House, Thakurgaon",
 
                 exp3_date:
                     "০১ অক্টোবর ২০১৪ – ৩০ সেপ্টেম্বর ২০১৫",
 
                 exp3_r1:
-                    "গ্রামীণফোনের পণ্য ও সেবার মাসিক বিক্রয় লক্ষ্যমাত্রা ধারাবাহিকভাবে অর্জন করা।",
+                    "Grameenphone products ও services-এর monthly sales targets ধারাবাহিকভাবে achieve করা।",
 
                 exp3_r2:
-                    "কমপ্লায়েন্স ম্যানেজারদের সঙ্গে সমন্বয় করে দৈনিক আর্থিক নিষ্পত্তি ও হিসাব সমন্বয় পরিচালনা করা।",
+                    "Compliance managers-এর সঙ্গে coordination করে daily financial settlements ও account reconciliation manage করা।",
 
                 exp3_r3:
-                    "কৌশলগত খুচরা বিক্রয় কর্মশালায় অংশগ্রহণ করা।",
+                    "Strategic retail sales workshops-এ অংশগ্রহণ করা।",
 
                 exp4_role:
-                    "কমপ্লায়েন্স অফিসার",
+                    "Compliance Officer",
 
                 exp4_company:
-                    "গ্রামীণফোন অনুমোদিত ডিস্ট্রিবিউশন হাউস, ঠাকুরগাঁও",
+                    "Grameenphone Authorized Distribution House, Thakurgaon",
 
                 exp4_date:
                     "০২ ডিসেম্বর ২০১৩ – ৩১ জুলাই ২০১৪",
 
                 exp4_r1:
-                    "নিয়ন্ত্রক পরিপালন নিশ্চিত করতে জাতীয় পরিচয়পত্রের তথ্যের সঙ্গে সিম নিবন্ধন তথ্য যাচাই করা।",
+                    "Regulatory compliance নিশ্চিত করতে national identity records-এর সঙ্গে SIM registration data audit ও verify করা।",
 
                 exp4_r2:
-                    "গ্রামীণফোনের কেন্দ্রীয় সিস্টেমে সিম ভেরিফিকেশন রেকর্ড পরিচালনা করা।",
+                    "Grameenphone-এর central system-এ SIM verification records manage করা।",
 
                 exp4_r3:
-                    "অভ্যন্তরীণ ডেটাবেসে দৈনিক কার্যক্রম-সংক্রান্ত ইনভেন্টরি ও বিক্রয় রেকর্ড সংরক্ষণ করা।",
+                    "Internal databases-এ daily operational inventory ও sales records maintain করা।",
 
                 edu_title:
                     "শিক্ষাগত যোগ্যতা",
 
                 edu1_title:
-                    "ব্যাচেলর অব ল – এলএল.বি. পার্ট-১ (প্রফেশনাল)",
+                    "Bachelor of Laws – LL.B. Part 1 (Professional)",
 
                 edu1_inst:
-                    "দিনাজপুর ল’ কলেজ, দিনাজপুর",
+                    "Dinajpur Law College, Dinajpur",
 
                 edu1_sub:
-                    "ব্যাচেলর অব ল",
+                    "Bachelor of Laws",
 
                 edu1_res:
                     "২য় শ্রেণি",
 
                 edu2_title:
-                    "ব্যাচেলর অব সোশ্যাল সায়েন্স (বিএসএস)",
+                    "Bachelor of Social Science (BSS)",
 
                 edu2_inst:
-                    "ঠাকুরগাঁও সরকারি কলেজ, ঠাকুরগাঁও",
+                    "Thakurgaon Govt. College, Thakurgaon",
 
                 edu2_sub:
-                    "রাষ্ট্রবিজ্ঞান",
+                    "Political Science",
 
                 edu2_res:
-                    "সিজিপিএ: ২.৫১ / ৪.০০",
+                    "CGPA: ২.৫১ / ৪.০০",
 
                 edu3_title:
-                    "উচ্চ মাধ্যমিক সার্টিফিকেট (এইচএসসি)",
+                    "Higher Secondary Certificate (HSC)",
 
                 edu3_inst:
-                    "ঠাকুরগাঁও সরকারি টেকনিক্যাল স্কুল ও কলেজ, ঠাকুরগাঁও",
+                    "Thakurgaon Govt. Technical School & College, Thakurgaon",
 
                 edu3_sub:
-                    "কম্পিউটার বিজ্ঞান",
+                    "Computer Science",
 
                 edu3_res:
-                    "জিপিএ: ৩.৫০ / ৫.০০",
+                    "GPA: ৩.৫০ / ৫.০০",
 
                 edu4_title:
-                    "মাধ্যমিক স্কুল সার্টিফিকেট (এসএসসি)",
+                    "Secondary School Certificate (SSC)",
 
                 edu4_inst:
-                    "ঠাকুরগাঁও সরকারি টেকনিক্যাল স্কুল ও কলেজ, ঠাকুরগাঁও",
+                    "Thakurgaon Govt. Technical School & College, Thakurgaon",
 
                 edu4_sub:
-                    "কম্পিউটার বিজ্ঞান",
+                    "Computer Science",
 
                 edu4_res:
-                    "জিপিএ: ৩.৩৬ / ৫.০০",
+                    "GPA: ৩.৩৬ / ৫.০০",
 
                 training_title:
-                    "প্রশিক্ষণ ও সনদসমূহ",
+                    "Training & Certifications",
 
                 lbl_duration:
-                    "সময়কাল",
+                    "Duration",
 
                 tr1_title:
-                    "বেসিক কাউন্সেলিং",
+                    "Basic Counseling",
 
                 tr1_inst:
-                    "ঢাকা আহসানিয়া মিশন",
+                    "Dhaka Ahsania Mission",
 
                 tr1_dur:
                     "৫ দিন",
 
                 tr2_title:
-                    "ইমপ্যাক্ট হাব আইআরএসওপি",
+                    "Impact Hub IRSOP",
 
                 tr2_inst:
-                    "জিআইজেড বাংলাদেশ",
+                    "GIZ Bangladesh",
 
                 tr2_dur:
                     "১ দিন",
 
                 tr3_title:
-                    "ফাউন্ডেশন ও জেন্ডার পলিসি বিষয়ক ওরিয়েন্টেশন",
+                    "Orientation on Foundation and Gender Policy",
 
                 tr3_inst:
-                    "আরডিআরএস বাংলাদেশ",
+                    "RDRS Bangladesh",
 
                 tr3_dur:
                     "৩ দিন",
 
                 tr4_title:
-                    "মৌলিক ফৌজদারি আইন",
+                    "Basic Criminal Law",
 
                 tr4_inst:
-                    "আরডিআরএস বাংলাদেশ",
+                    "RDRS Bangladesh",
 
                 tr4_dur:
                     "১৫ দিন",
 
                 tr5_title:
-                    "আইআরএসওপি র‍্যাপ-আপ",
+                    "IRSOP Wrap-up",
 
                 tr5_inst:
-                    "জিআইজেড বাংলাদেশ",
+                    "GIZ Bangladesh",
 
                 tr5_dur:
                     "৫ দিন",
 
                 tr6_title:
-                    "আইএমএস (তথ্য ব্যবস্থাপনা ব্যবস্থা)",
+                    "IMS (Information Management System)",
 
                 tr6_inst:
-                    "জিআইজেড বাংলাদেশ",
+                    "GIZ Bangladesh",
 
                 tr6_dur:
                     "৫ দিন",
 
                 tr7_title:
-                    "পিএলসি (প্যারালিগ্যাল এইড ক্লিনিক)",
+                    "PLC (Paralegal Aid Clinic)",
 
                 tr7_inst:
-                    "জিআইজেড বাংলাদেশ",
+                    "GIZ Bangladesh",
 
                 tr7_dur:
                     "৫ দিন",
 
                 tr8_title:
-                    "অটোমোবাইল ও ড্রাইভিং",
+                    "Automobile and Driving",
 
                 tr8_inst:
-                    "মিনাল কম্পিউটার ট্রেনিং একাডেমি (এমসিটিএ), ঠাকুরগাঁও",
+                    "Minal Computer Training Academy (MCTA), Thakurgaon",
 
                 tr8_dur:
                     "৬ মাস",
 
                 tr9_title:
-                    "ইলেকট্রিক্যাল ইনস্টলেশন ও মেইনটেন্যান্স",
+                    "Electrical Installation and Maintenance",
 
                 tr9_inst:
-                    "টেকনিক্যাল ট্রেনিং সেন্টার (টিটিসি), ঠাকুরগাঁও",
+                    "Technical Training Center (TTC), Thakurgaon",
 
                 tr9_dur:
                     "৬ মাস",
 
                 tr10_title:
-                    "আউটসোর্সিং ও ফ্রিল্যান্সিং",
+                    "Outsourcing & Freelancing",
 
                 tr10_inst:
-                    "টিএমএসএস/উপজেলা অফিস, ঠাকুরগাঁও",
+                    "TMSS/Upazila Office, Thakurgaon",
 
                 tr10_dur:
                     "৫ দিন",
@@ -3406,7 +4244,7 @@
                     "আমার গ্যালারি",
 
                 contact_title:
-                    "যোগাযোগ ও সামাজিক যোগাযোগ মাধ্যম",
+                    "যোগাযোগ ও Social Channels",
 
                 lbl_address:
                     "অবস্থান",
@@ -3436,31 +4274,49 @@
                     "সর্বস্বত্ব সংরক্ষিত।",
 
                 typed: [
-                    "ডিসাইফার (ফরস্টা), কোয়ালট্রিক্স, অ্যালকেমার, কাস্টম স্ক্রিপ্টিং ও ডেটা অ্যানালাইসিসে বিশেষজ্ঞ।",
-                    "পূর্ববর্তী পদসমূহ:",
-                    "সিনিয়র ম্যানেজার, অপারেশনস | দিনাজপুর এগ্রো ফার্মস",
-                    "প্যারালিগ্যাল | আরডিআরএস বাংলাদেশ",
-                    "সেলস এক্সিকিউটিভ | গ্রামীণফোন অনুমোদিত ডিস্ট্রিবিউশন হাউস",
-                    "কমপ্লায়েন্স অফিসার | গ্রামীণফোন অনুমোদিত ডিস্ট্রিবিউশন হাউস"
+                    "Decipher (Forsta), Qualtrics, Alchemer, custom scripting ও data analysis-এ বিশেষজ্ঞ",
+                    "পূর্ববর্তী Professional Roles:",
+                    "Senior Manager, Operations | Dinajpur Agro Farms",
+                    "Paralegal | RDRS Bangladesh",
+                    "Sales Executive | Grameenphone Authorized Distribution House",
+                    "Compliance Officer | Grameenphone Authorized Distribution House"
                 ]
             }
         };
 
-        let currentLang = localStorage.getItem('lang') || 'en';
+        let currentLang =
+            localStorage.getItem('lang') || 'en';
+
         let typedInstance = null;
         let previousFocusElement = null;
         let zoomLevel = 1;
 
-        const nav = document.getElementById('mainNav');
-        const progressBar = document.getElementById('progressBar');
-        const modal = document.getElementById('lightboxModal');
-        const lightboxImg = document.getElementById('lightboxImg');
-        const lightboxWrapper = document.getElementById('lightboxWrapper');
-        const themeToggleBtn = document.getElementById('themeToggle');
-        const themeIcon = themeToggleBtn.querySelector('i');
+        const nav =
+            document.getElementById('mainNav');
+
+        const progressBar =
+            document.getElementById('progressBar');
+
+        const modal =
+            document.getElementById('lightboxModal');
+
+        const lightboxImg =
+            document.getElementById('lightboxImg');
+
+        const lightboxWrapper =
+            document.getElementById('lightboxWrapper');
+
+        const themeToggleBtn =
+            document.getElementById('themeToggle');
+
+        const themeIcon =
+            themeToggleBtn.querySelector('i');
 
         function syncNavHeight() {
-            const navHeight = nav ? nav.offsetHeight + 4 : 80;
+            const navHeight =
+                nav
+                    ? nav.offsetHeight + 4
+                    : 80;
 
             document.documentElement.style.setProperty(
                 '--nav-height',
@@ -3488,7 +4344,8 @@
                       )
                     : 0;
 
-            progressBar.style.width = `${percentage}%`;
+            progressBar.style.width =
+                `${percentage}%`;
         }
 
         function updateLanguage(lang) {
@@ -3498,56 +4355,79 @@
 
             currentLang = lang;
 
-            localStorage.setItem('lang', lang);
+            localStorage.setItem(
+                'lang',
+                lang
+            );
 
             document.documentElement.lang =
-                lang === 'bn' ? 'bn' : 'en';
+                lang === 'bn'
+                    ? 'bn'
+                    : 'en';
 
-            document.getElementById('langText').innerText =
-                lang === 'en' ? 'EN' : 'বাংলা';
+            document.getElementById(
+                'langText'
+            ).innerText =
+                lang === 'en'
+                    ? 'EN'
+                    : 'বাংলা';
 
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key =
-                    el.getAttribute('data-i18n');
+            document
+                .querySelectorAll('[data-i18n]')
+                .forEach(el => {
+                    const key =
+                        el.getAttribute(
+                            'data-i18n'
+                        );
 
-                if (
-                    Object.prototype.hasOwnProperty.call(
-                        i18n[lang],
-                        key
-                    )
-                ) {
-                    el.innerHTML = i18n[lang][key];
-                }
-            });
+                    if (
+                        Object.prototype.hasOwnProperty.call(
+                            i18n[lang],
+                            key
+                        )
+                    ) {
+                        el.innerHTML =
+                            i18n[lang][key];
+                    }
+                });
 
-            document.querySelectorAll('[data-i18n-ph]').forEach(el => {
-                const key =
-                    el.getAttribute('data-i18n-ph');
+            document
+                .querySelectorAll('[data-i18n-ph]')
+                .forEach(el => {
+                    const key =
+                        el.getAttribute(
+                            'data-i18n-ph'
+                        );
 
-                if (
-                    Object.prototype.hasOwnProperty.call(
-                        i18n[lang],
-                        key
-                    )
-                ) {
-                    el.placeholder =
-                        i18n[lang][key];
-                }
-            });
+                    if (
+                        Object.prototype.hasOwnProperty.call(
+                            i18n[lang],
+                            key
+                        )
+                    ) {
+                        el.placeholder =
+                            i18n[lang][key];
+                    }
+                });
 
             if (typedInstance) {
                 typedInstance.destroy();
             }
 
-            typedInstance = new Typed('#typed', {
-                strings: i18n[lang].typed,
-                typeSpeed: 50,
-                backSpeed: 30,
-                backDelay: 2000,
-                loop: true,
-                showCursor: true,
-                cursorChar: '|'
-            });
+            typedInstance =
+                new Typed(
+                    '#typed',
+                    {
+                        strings:
+                            i18n[lang].typed,
+                        typeSpeed: 50,
+                        backSpeed: 30,
+                        backDelay: 2000,
+                        loop: true,
+                        showCursor: true,
+                        cursorChar: '|'
+                    }
+                );
 
             syncNavHeight();
             updateActiveNav();
@@ -3555,71 +4435,78 @@
 
         document
             .getElementById('langToggle')
-            .addEventListener('click', () => {
-                updateLanguage(
-                    currentLang === 'en'
-                        ? 'bn'
-                        : 'en'
-                );
-            });
+            .addEventListener(
+                'click',
+                () => {
+                    updateLanguage(
+                        currentLang === 'en'
+                            ? 'bn'
+                            : 'en'
+                    );
+                }
+            );
 
-        themeToggleBtn.addEventListener('click', () => {
-            const dark =
-                document.documentElement.getAttribute(
-                    'data-theme'
-                ) === 'dark';
+        themeToggleBtn.addEventListener(
+            'click',
+            () => {
+                const dark =
+                    document.documentElement.getAttribute(
+                        'data-theme'
+                    ) === 'dark';
 
-            if (dark) {
-                document.documentElement.removeAttribute(
-                    'data-theme'
-                );
+                if (dark) {
+                    document.documentElement.removeAttribute(
+                        'data-theme'
+                    );
 
-                themeIcon.className =
-                    'fa-solid fa-moon';
+                    themeIcon.className =
+                        'fa-solid fa-moon';
 
-                themeToggleBtn.setAttribute(
-                    'aria-label',
-                    'Toggle dark mode'
-                );
+                    themeToggleBtn.setAttribute(
+                        'aria-label',
+                        'Toggle dark mode'
+                    );
 
-                themeToggleBtn.setAttribute(
-                    'title',
-                    'Toggle Dark Theme'
-                );
+                    themeToggleBtn.setAttribute(
+                        'title',
+                        'Toggle Dark Theme'
+                    );
 
-                localStorage.setItem(
-                    'theme',
-                    'light'
-                );
-            } else {
-                document.documentElement.setAttribute(
-                    'data-theme',
-                    'dark'
-                );
+                    localStorage.setItem(
+                        'theme',
+                        'light'
+                    );
+                } else {
+                    document.documentElement.setAttribute(
+                        'data-theme',
+                        'dark'
+                    );
 
-                themeIcon.className =
-                    'fa-solid fa-sun';
+                    themeIcon.className =
+                        'fa-solid fa-sun';
 
-                themeToggleBtn.setAttribute(
-                    'aria-label',
-                    'Toggle light mode'
-                );
+                    themeToggleBtn.setAttribute(
+                        'aria-label',
+                        'Toggle light mode'
+                    );
 
-                themeToggleBtn.setAttribute(
-                    'title',
-                    'Toggle Light Theme'
-                );
+                    themeToggleBtn.setAttribute(
+                        'title',
+                        'Toggle Light Theme'
+                    );
 
-                localStorage.setItem(
-                    'theme',
-                    'dark'
-                );
+                    localStorage.setItem(
+                        'theme',
+                        'dark'
+                    );
+                }
             }
-        });
+        );
 
         if (
-            localStorage.getItem('theme') ===
-            'dark'
+            localStorage.getItem(
+                'theme'
+            ) === 'dark'
         ) {
             document.documentElement.setAttribute(
                 'data-theme',
@@ -3645,7 +4532,9 @@
             clickedButton
         ) {
             document
-                .querySelectorAll('.filter-btn')
+                .querySelectorAll(
+                    '.filter-btn'
+                )
                 .forEach(btn =>
                     btn.classList.remove(
                         'active'
@@ -3657,7 +4546,9 @@
             );
 
             document
-                .querySelectorAll('.timeline-item')
+                .querySelectorAll(
+                    '.timeline-item'
+                )
                 .forEach(item => {
                     const show =
                         category === 'all' ||
@@ -3671,16 +4562,22 @@
                     );
                 });
 
-            requestAnimationFrame(() => {
-                syncNavHeight();
-                updateProgress();
-                updateActiveNav();
-            });
+            requestAnimationFrame(
+                () => {
+                    syncNavHeight();
+                    updateProgress();
+                    updateActiveNav();
+                }
+            );
         }
 
-        function openLightbox(element) {
+        function openLightbox(
+            element
+        ) {
             const image =
-                element?.querySelector('img');
+                element?.querySelector(
+                    'img'
+                );
 
             if (!image) {
                 return;
@@ -3697,7 +4594,9 @@
                 image.alt ||
                 'Popup Preview';
 
-            modal.classList.add('active');
+            modal.classList.add(
+                'active'
+            );
 
             modal.setAttribute(
                 'aria-hidden',
@@ -3746,23 +4645,25 @@
         }
 
         function zoomIn() {
-            zoomLevel = Math.min(
-                3,
-                +(
-                    zoomLevel + 0.25
-                ).toFixed(2)
-            );
+            zoomLevel =
+                Math.min(
+                    3,
+                    +(
+                        zoomLevel + 0.25
+                    ).toFixed(2)
+                );
 
             applyZoom();
         }
 
         function zoomOut() {
-            zoomLevel = Math.max(
-                0.5,
-                +(
-                    zoomLevel - 0.25
-                ).toFixed(2)
-            );
+            zoomLevel =
+                Math.max(
+                    0.5,
+                    +(
+                        zoomLevel - 0.25
+                    ).toFixed(2)
+                );
 
             applyZoom();
         }
@@ -3773,11 +4674,13 @@
             applyZoom();
 
             if (lightboxWrapper) {
-                lightboxWrapper.scrollTo({
-                    top: 0,
-                    left: 0,
-                    behavior: 'auto'
-                });
+                lightboxWrapper.scrollTo(
+                    {
+                        top: 0,
+                        left: 0,
+                        behavior: 'auto'
+                    }
+                );
             }
         }
 
@@ -3791,7 +4694,9 @@
             ) {
                 event.preventDefault();
 
-                openLightbox(element);
+                openLightbox(
+                    element
+                );
             }
         }
 
@@ -3923,9 +4828,7 @@
                         return;
                     }
 
-                    if (
-                        !window.emailjs
-                    ) {
+                    if (!window.emailjs) {
                         status.style.color =
                             '#dc2626';
 
@@ -3967,47 +4870,51 @@
                             'template_pscfvya',
                             templateParams
                         )
-                        .then(function () {
-                            status.style.color =
-                                '#16a34a';
+                        .then(
+                            function () {
+                                status.style.color =
+                                    '#16a34a';
 
-                            status.innerText =
-                                currentLang ===
-                                'en'
-                                    ? 'Thank you! Your message has been sent successfully.'
-                                    : 'ধন্যবাদ! আপনার বার্তা সফলভাবে পাঠানো হয়েছে।';
+                                status.innerText =
+                                    currentLang ===
+                                    'en'
+                                        ? 'Thank you! Your message has been sent successfully.'
+                                        : 'ধন্যবাদ! আপনার বার্তা সফলভাবে পাঠানো হয়েছে।';
 
-                            form.reset();
+                                form.reset();
 
-                            updateLanguage(
-                                currentLang
-                            );
-                        })
-                        .catch(function (
-                            error
-                        ) {
-                            status.style.color =
-                                '#dc2626';
+                                updateLanguage(
+                                    currentLang
+                                );
+                            }
+                        )
+                        .catch(
+                            function (error) {
+                                status.style.color =
+                                    '#dc2626';
 
-                            status.innerText =
-                                currentLang ===
-                                'en'
-                                    ? 'Failed to send message. Please try again later.'
-                                    : 'বার্তা পাঠানো ব্যর্থ হয়েছে। অনুগ্রহ করে পরে আবার চেষ্টা করুন।';
+                                status.innerText =
+                                    currentLang ===
+                                    'en'
+                                        ? 'Failed to send message. Please try again later.'
+                                        : 'বার্তা পাঠানো ব্যর্থ হয়েছে। অনুগ্রহ করে পরে আবার চেষ্টা করুন।';
 
-                            console.error(
-                                'EmailJS error:',
-                                error
-                            );
-                        })
-                        .finally(function () {
-                            submitButton.disabled =
-                                false;
+                                console.error(
+                                    'EmailJS error:',
+                                    error
+                                );
+                            }
+                        )
+                        .finally(
+                            function () {
+                                submitButton.disabled =
+                                    false;
 
-                            submitButton.removeAttribute(
-                                'aria-busy'
-                            );
-                        });
+                                submitButton.removeAttribute(
+                                    'aria-busy'
+                                );
+                            }
+                        );
                 }
             );
 
@@ -4023,8 +4930,11 @@
 
         const sections =
             sectionIds
-                .map(id =>
-                    document.getElementById(id)
+                .map(
+                    id =>
+                        document.getElementById(
+                            id
+                        )
                 )
                 .filter(Boolean);
 
@@ -4036,29 +4946,36 @@
             );
 
         function setActiveNav(id) {
-            navLinks.forEach(link => {
-                const active =
-                    link.getAttribute(
-                        'href'
-                    ) === `#${id}`;
+            navLinks.forEach(
+                link => {
+                    const active =
+                        link.getAttribute(
+                            'href'
+                        ) === `#${id}`;
 
-                link.classList.toggle(
-                    'active',
-                    active
-                );
+                    link.classList.toggle(
+                        'active',
+                        active
+                    );
 
-                if (
-                    active &&
-                    window.innerWidth <=
-                        768
-                ) {
-                    link.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'nearest',
-                        inline: 'center'
-                    });
+                    if (
+                        active &&
+                        window.innerWidth <=
+                            768
+                    ) {
+                        link.scrollIntoView(
+                            {
+                                behavior:
+                                    'smooth',
+                                block:
+                                    'nearest',
+                                inline:
+                                    'center'
+                            }
+                        );
+                    }
                 }
-            });
+            );
         }
 
         function updateActiveNav() {
@@ -4074,40 +4991,44 @@
             let activeSection =
                 sections[0].id;
 
-            sections.forEach(section => {
-                if (
-                    section.offsetTop <=
-                    scrollPosition
-                ) {
-                    activeSection =
-                        section.id;
+            sections.forEach(
+                section => {
+                    if (
+                        section.offsetTop <=
+                        scrollPosition
+                    ) {
+                        activeSection =
+                            section.id;
+                    }
                 }
-            });
+            );
 
             setActiveNav(
                 activeSection
             );
         }
 
-        navLinks.forEach(link => {
-            link.addEventListener(
-                'click',
-                function () {
-                    const targetId =
-                        this
-                            .getAttribute(
-                                'href'
-                            )
-                            ?.slice(1);
+        navLinks.forEach(
+            link => {
+                link.addEventListener(
+                    'click',
+                    function () {
+                        const targetId =
+                            this
+                                .getAttribute(
+                                    'href'
+                                )
+                                ?.slice(1);
 
-                    if (targetId) {
-                        setActiveNav(
-                            targetId
-                        );
+                        if (targetId) {
+                            setActiveNav(
+                                targetId
+                            );
+                        }
                     }
-                }
-            );
-        });
+                );
+            }
+        );
 
         window.addEventListener(
             'scroll',
@@ -4147,11 +5068,13 @@
         );
 
         if (window.AOS) {
-            AOS.init({
-                duration: 800,
-                once: true,
-                offset: 80
-            });
+            AOS.init(
+                {
+                    duration: 800,
+                    once: true,
+                    offset: 80
+                }
+            );
         }
 
         syncNavHeight();
@@ -4161,5 +5084,6 @@
         updateProgress();
         updateActiveNav();
     </script>
+
 </body>
 </html>
