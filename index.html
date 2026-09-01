@@ -17,6 +17,15 @@
     <meta name="theme-color" content="#0f172a">
     <link rel="canonical" href="https://farshidrupon.is-local.org/">
 
+    <!-- Browser / Mobile Shortcut Icon -->
+    <link rel="icon" type="image/jpeg" href="profile.jpg">
+    <link rel="shortcut icon" type="image/jpeg" href="profile.jpg">
+    <link rel="apple-touch-icon" href="profile.jpg">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Farshid Rupon">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -755,6 +764,14 @@
 
         .lightbox-img-wrapper.is-dragging {
             cursor: grabbing;
+        }
+
+        .lightbox-img-wrapper.is-dragging img {
+            transition: none;
+        }
+
+        body.lightbox-open {
+            overscroll-behavior: none;
         }
 
         .lightbox-img-wrapper img {
@@ -4283,6 +4300,11 @@
         const activeLightboxPointers = new Map();
         let pinchStartDistance = 0;
         let pinchStartZoom = 1;
+        let lastTouchTapTime = 0;
+        let lastTouchTapX = 0;
+        let lastTouchTapY = 0;
+        let savedBodyOverflow = '';
+        let lightboxGestureMoved = false;
 
         const nav =
             document.getElementById('mainNav');
@@ -4590,7 +4612,24 @@
             lightboxImg.onload =
                 () => {
                     resetZoom();
+                    lightboxImg.setAttribute(
+                        'aria-busy',
+                        'false'
+                    );
                 };
+
+            lightboxImg.onerror =
+                () => {
+                    lightboxImg.removeAttribute(
+                        'aria-busy'
+                    );
+                    resetZoom();
+                };
+
+            lightboxImg.setAttribute(
+                'aria-busy',
+                'true'
+            );
 
             modal.classList.add(
                 'active'
@@ -4599,6 +4638,13 @@
             modal.setAttribute(
                 'aria-hidden',
                 'false'
+            );
+
+            savedBodyOverflow =
+                document.body.style.overflow;
+
+            document.body.classList.add(
+                'lightbox-open'
             );
 
             document.body.style.overflow =
@@ -4861,13 +4907,27 @@
                 }
             );
 
+            if (
+                event.pointerType === 'touch' ||
+                zoomLevel > 1
+            ) {
+                event.preventDefault();
+            }
+
             lightboxImg.setPointerCapture?.(
                 event.pointerId
             );
 
             if (
+                activeLightboxPointers.size === 1
+            ) {
+                lightboxGestureMoved = false;
+            }
+
+            if (
                 activeLightboxPointers.size === 2
             ) {
+                lightboxGestureMoved = true;
                 isLightboxDragging = false;
                 dragPointerId = null;
                 pinchStartDistance =
@@ -4961,6 +5021,13 @@
                 isLightboxDragging &&
                 dragPointerId === event.pointerId
             ) {
+                if (
+                    Math.abs(event.clientX - dragStartX) > 5 ||
+                    Math.abs(event.clientY - dragStartY) > 5
+                ) {
+                    lightboxGestureMoved = true;
+                }
+
                 panX =
                     dragOriginX +
                     (
@@ -4983,6 +5050,13 @@
         function endLightboxPointer(
             event
         ) {
+            const wasSingleTouch =
+                event.pointerType === 'touch' &&
+                activeLightboxPointers.size === 1;
+
+            const tapX = event.clientX;
+            const tapY = event.clientY;
+
             activeLightboxPointers.delete(
                 event.pointerId
             );
@@ -5008,6 +5082,48 @@
                 isLightboxDragging = false;
                 dragPointerId = null;
                 applyZoom();
+            }
+
+            // Mobile double-tap: zoom at the tapped point, or reset.
+            const wasTap =
+                wasSingleTouch &&
+                !lightboxGestureMoved;
+
+            if (
+                wasTap &&
+                !isLightboxDragging
+            ) {
+                const now = performance.now();
+                const timeDelta = now - lastTouchTapTime;
+                const tapDistance = Math.hypot(
+                    tapX - lastTouchTapX,
+                    tapY - lastTouchTapY
+                );
+
+                if (
+                    timeDelta > 0 &&
+                    timeDelta < 320 &&
+                    tapDistance < 28
+                ) {
+                    if (zoomLevel > 1) {
+                        resetZoom();
+                    } else {
+                        setZoom(
+                            2,
+                            tapX,
+                            tapY
+                        );
+                    }
+                    lastTouchTapTime = 0;
+                } else {
+                    lastTouchTapTime = now;
+                    lastTouchTapX = tapX;
+                    lastTouchTapY = tapY;
+                }
+            }
+
+            if (activeLightboxPointers.size === 0) {
+                lightboxGestureMoved = false;
             }
         }
 
@@ -5043,12 +5159,22 @@
             lightboxImg.style.transform =
                 'translate3d(0, 0, 0) scale(1)';
 
+            lightboxImg.removeAttribute(
+                'aria-busy'
+            );
+
             lightboxWrapper?.classList.remove(
                 'is-dragging'
             );
 
+            document.body.classList.remove(
+                'lightbox-open'
+            );
+
             document.body.style.overflow =
-                '';
+                savedBodyOverflow;
+
+            savedBodyOverflow = '';
 
             previousFocusElement?.focus?.();
         }
@@ -5174,6 +5300,15 @@
             }
         );
 
+        lightboxImg.addEventListener(
+            'contextmenu',
+            function (event) {
+                if (zoomLevel > 1) {
+                    event.preventDefault();
+                }
+            }
+        );
+
         modal.addEventListener(
             'click',
             function (event) {
@@ -5202,6 +5337,28 @@
                     event.key === 'Escape'
                 ) {
                     closeLightbox();
+                    return;
+                }
+
+                if (event.key === 'Tab') {
+                    const focusable = Array.from(
+                        modal.querySelectorAll(
+                            'button:not([disabled])'
+                        )
+                    );
+
+                    if (focusable.length) {
+                        const first = focusable[0];
+                        const last = focusable[focusable.length - 1];
+
+                        if (event.shiftKey && document.activeElement === first) {
+                            event.preventDefault();
+                            last.focus();
+                        } else if (!event.shiftKey && document.activeElement === last) {
+                            event.preventDefault();
+                            first.focus();
+                        }
+                    }
                     return;
                 }
 
@@ -5576,6 +5733,14 @@
                 syncNavHeight();
                 updateProgress();
                 updateActiveNav();
+
+                if (
+                    modal?.classList.contains('active')
+                ) {
+                    requestAnimationFrame(
+                        applyZoom
+                    );
+                }
             },
             {
                 passive: true
