@@ -744,9 +744,17 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: auto;
+            overflow: hidden;
             overscroll-behavior: contain;
-            touch-action: pinch-zoom;
+            touch-action: none;
+            cursor: grab;
+            -webkit-user-select: none;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .lightbox-img-wrapper.is-dragging {
+            cursor: grabbing;
         }
 
         .lightbox-img-wrapper img {
@@ -759,7 +767,11 @@
             transition: transform 0.15s ease-out;
             user-select: none;
             -webkit-user-drag: none;
+            -webkit-touch-callout: none;
+            touch-action: none;
+            pointer-events: auto;
             transform-origin: center center;
+            will-change: transform;
         }
 
         .lightbox-controls {
@@ -4260,6 +4272,17 @@
         let typedInstance = null;
         let previousFocusElement = null;
         let zoomLevel = 1;
+        let panX = 0;
+        let panY = 0;
+        let isLightboxDragging = false;
+        let dragPointerId = null;
+        let dragStartX = 0;
+        let dragStartY = 0;
+        let dragOriginX = 0;
+        let dragOriginY = 0;
+        const activeLightboxPointers = new Map();
+        let pinchStartDistance = 0;
+        let pinchStartZoom = 1;
 
         const nav =
             document.getElementById('mainNav');
@@ -4564,6 +4587,11 @@
                 image.alt ||
                 'Popup Preview';
 
+            lightboxImg.onload =
+                () => {
+                    resetZoom();
+                };
+
             modal.classList.add(
                 'active'
             );
@@ -4586,6 +4614,411 @@
             closeButton?.focus();
         }
 
+        function getLightboxImageBaseSize() {
+            return {
+                width: lightboxImg.offsetWidth || lightboxImg.getBoundingClientRect().width,
+                height: lightboxImg.offsetHeight || lightboxImg.getBoundingClientRect().height
+            };
+        }
+
+        function clampPan() {
+            if (!lightboxWrapper || !lightboxImg) {
+                panX = 0;
+                panY = 0;
+                return;
+            }
+
+            if (zoomLevel <= 1) {
+                panX = 0;
+                panY = 0;
+                return;
+            }
+
+            const baseSize = getLightboxImageBaseSize();
+            const maxPanX = Math.max(
+                0,
+                (baseSize.width * zoomLevel - lightboxWrapper.clientWidth) / 2
+            );
+            const maxPanY = Math.max(
+                0,
+                (baseSize.height * zoomLevel - lightboxWrapper.clientHeight) / 2
+            );
+
+            panX = Math.min(
+                maxPanX,
+                Math.max(-maxPanX, panX)
+            );
+
+            panY = Math.min(
+                maxPanY,
+                Math.max(-maxPanY, panY)
+            );
+        }
+
+        function applyZoom() {
+            clampPan();
+
+            lightboxImg.style.transform =
+                `translate3d(${panX}px, ${panY}px, 0) scale(${zoomLevel})`;
+
+            lightboxWrapper.classList.toggle(
+                'is-dragging',
+                isLightboxDragging
+            );
+
+            lightboxImg.style.cursor =
+                zoomLevel > 1
+                    ? (isLightboxDragging ? 'grabbing' : 'grab')
+                    : 'default';
+        }
+
+        function getZoomFromPointer(
+            nextZoom,
+            clientX,
+            clientY
+        ) {
+            if (!lightboxWrapper) {
+                return;
+            }
+
+            const rect =
+                lightboxWrapper.getBoundingClientRect();
+
+            const centerX =
+                rect.left +
+                rect.width / 2;
+
+            const centerY =
+                rect.top +
+                rect.height / 2;
+
+            const imagePointX =
+                (
+                    clientX -
+                    centerX -
+                    panX
+                ) / zoomLevel;
+
+            const imagePointY =
+                (
+                    clientY -
+                    centerY -
+                    panY
+                ) / zoomLevel;
+
+            panX =
+                clientX -
+                centerX -
+                imagePointX * nextZoom;
+
+            panY =
+                clientY -
+                centerY -
+                imagePointY * nextZoom;
+        }
+
+        function setZoom(
+            nextZoom,
+            focalX = null,
+            focalY = null
+        ) {
+            const clampedZoom =
+                Math.min(
+                    3,
+                    Math.max(
+                        1,
+                        +nextZoom.toFixed(2)
+                    )
+                );
+
+            if (
+                focalX !== null &&
+                focalY !== null &&
+                clampedZoom !== zoomLevel
+            ) {
+                getZoomFromPointer(
+                    clampedZoom,
+                    focalX,
+                    focalY
+                );
+            }
+
+            zoomLevel = clampedZoom;
+
+            if (zoomLevel === 1) {
+                panX = 0;
+                panY = 0;
+            }
+
+            applyZoom();
+        }
+
+        function zoomIn(
+            focalX = null,
+            focalY = null
+        ) {
+            setZoom(
+                zoomLevel + 0.25,
+                focalX,
+                focalY
+            );
+        }
+
+        function zoomOut(
+            focalX = null,
+            focalY = null
+        ) {
+            setZoom(
+                zoomLevel - 0.25,
+                focalX,
+                focalY
+            );
+        }
+
+        function resetZoom() {
+            zoomLevel = 1;
+            panX = 0;
+            panY = 0;
+            isLightboxDragging = false;
+            dragPointerId = null;
+            activeLightboxPointers.clear();
+            pinchStartDistance = 0;
+            pinchStartZoom = 1;
+
+            if (lightboxWrapper) {
+                lightboxWrapper.classList.remove(
+                    'is-dragging'
+                );
+            }
+
+            applyZoom();
+        }
+
+        function getPointerDistance() {
+            const pointers =
+                Array.from(
+                    activeLightboxPointers.values()
+                );
+
+            if (pointers.length < 2) {
+                return 0;
+            }
+
+            const dx =
+                pointers[0].x -
+                pointers[1].x;
+
+            const dy =
+                pointers[0].y -
+                pointers[1].y;
+
+            return Math.hypot(
+                dx,
+                dy
+            );
+        }
+
+        function getPointerMidpoint() {
+            const pointers =
+                Array.from(
+                    activeLightboxPointers.values()
+                );
+
+            if (pointers.length < 2) {
+                return null;
+            }
+
+            return {
+                x:
+                    (
+                        pointers[0].x +
+                        pointers[1].x
+                    ) / 2,
+                y:
+                    (
+                        pointers[0].y +
+                        pointers[1].y
+                    ) / 2
+            };
+        }
+
+        function startLightboxPointer(
+            event
+        ) {
+            if (
+                !modal.classList.contains(
+                    'active'
+                )
+            ) {
+                return;
+            }
+
+            activeLightboxPointers.set(
+                event.pointerId,
+                {
+                    x: event.clientX,
+                    y: event.clientY
+                }
+            );
+
+            lightboxImg.setPointerCapture?.(
+                event.pointerId
+            );
+
+            if (
+                activeLightboxPointers.size === 2
+            ) {
+                isLightboxDragging = false;
+                dragPointerId = null;
+                pinchStartDistance =
+                    getPointerDistance();
+                pinchStartZoom =
+                    zoomLevel;
+                applyZoom();
+                event.preventDefault();
+                return;
+            }
+
+            if (
+                activeLightboxPointers.size === 1 &&
+                zoomLevel > 1
+            ) {
+                isLightboxDragging = true;
+                dragPointerId =
+                    event.pointerId;
+
+                dragStartX =
+                    event.clientX;
+                dragStartY =
+                    event.clientY;
+                dragOriginX =
+                    panX;
+                dragOriginY =
+                    panY;
+
+                applyZoom();
+                event.preventDefault();
+            }
+        }
+
+        function moveLightboxPointer(
+            event
+        ) {
+            if (
+                !activeLightboxPointers.has(
+                    event.pointerId
+                )
+            ) {
+                return;
+            }
+
+            activeLightboxPointers.set(
+                event.pointerId,
+                {
+                    x: event.clientX,
+                    y: event.clientY
+                }
+            );
+
+            if (
+                activeLightboxPointers.size >= 2
+            ) {
+                const distance =
+                    getPointerDistance();
+
+                if (
+                    pinchStartDistance > 0 &&
+                    distance > 0
+                ) {
+                    const midpoint =
+                        getPointerMidpoint();
+
+                    const nextZoom =
+                        pinchStartZoom *
+                        (
+                            distance /
+                            pinchStartDistance
+                        );
+
+                    if (midpoint) {
+                        setZoom(
+                            nextZoom,
+                            midpoint.x,
+                            midpoint.y
+                        );
+                    } else {
+                        setZoom(
+                            nextZoom
+                        );
+                    }
+                }
+
+                event.preventDefault();
+                return;
+            }
+
+            if (
+                isLightboxDragging &&
+                dragPointerId === event.pointerId
+            ) {
+                panX =
+                    dragOriginX +
+                    (
+                        event.clientX -
+                        dragStartX
+                    );
+
+                panY =
+                    dragOriginY +
+                    (
+                        event.clientY -
+                        dragStartY
+                    );
+
+                applyZoom();
+                event.preventDefault();
+            }
+        }
+
+        function endLightboxPointer(
+            event
+        ) {
+            activeLightboxPointers.delete(
+                event.pointerId
+            );
+
+            try {
+                lightboxImg.releasePointerCapture?.(
+                    event.pointerId
+                );
+            } catch (error) {
+                // Pointer capture may already be released.
+            }
+
+            if (
+                activeLightboxPointers.size < 2
+            ) {
+                pinchStartDistance = 0;
+                pinchStartZoom = zoomLevel;
+            }
+
+            if (
+                dragPointerId === event.pointerId
+            ) {
+                isLightboxDragging = false;
+                dragPointerId = null;
+                applyZoom();
+            }
+        }
+
+        function cancelLightboxPointer(
+            event
+        ) {
+            endLightboxPointer(
+                event
+            );
+        }
+
         function closeLightbox() {
             modal.classList.remove(
                 'active'
@@ -4598,60 +5031,26 @@
 
             lightboxImg.src = '';
 
-            lightboxImg.style.transform =
-                'scale(1)';
-
             zoomLevel = 1;
+            panX = 0;
+            panY = 0;
+            isLightboxDragging = false;
+            dragPointerId = null;
+            activeLightboxPointers.clear();
+            pinchStartDistance = 0;
+            pinchStartZoom = 1;
+
+            lightboxImg.style.transform =
+                'translate3d(0, 0, 0) scale(1)';
+
+            lightboxWrapper?.classList.remove(
+                'is-dragging'
+            );
 
             document.body.style.overflow =
                 '';
 
             previousFocusElement?.focus?.();
-        }
-
-        function applyZoom() {
-            lightboxImg.style.transform =
-                `scale(${zoomLevel})`;
-        }
-
-        function zoomIn() {
-            zoomLevel =
-                Math.min(
-                    3,
-                    +(
-                        zoomLevel + 0.25
-                    ).toFixed(2)
-                );
-
-            applyZoom();
-        }
-
-        function zoomOut() {
-            zoomLevel =
-                Math.max(
-                    0.5,
-                    +(
-                        zoomLevel - 0.25
-                    ).toFixed(2)
-                );
-
-            applyZoom();
-        }
-
-        function resetZoom() {
-            zoomLevel = 1;
-
-            applyZoom();
-
-            if (lightboxWrapper) {
-                lightboxWrapper.scrollTo(
-                    {
-                        top: 0,
-                        left: 0,
-                        behavior: 'auto'
-                    }
-                );
-            }
         }
 
         function handleGalleryKey(
@@ -4670,7 +5069,7 @@
             }
         }
 
-        lightboxImg.addEventListener(
+        lightboxWrapper.addEventListener(
             'wheel',
             function (event) {
                 if (
@@ -4683,14 +5082,95 @@
 
                 event.preventDefault();
 
-                if (event.deltaY < 0) {
-                    zoomIn();
-                } else {
-                    zoomOut();
-                }
+                const direction =
+                    event.deltaY < 0
+                        ? 1
+                        : -1;
+
+                const nextZoom =
+                    zoomLevel +
+                    direction *
+                    (
+                        event.ctrlKey
+                            ? 0.1
+                            : 0.25
+                    );
+
+                setZoom(
+                    nextZoom,
+                    event.clientX,
+                    event.clientY
+                );
             },
             {
                 passive: false
+            }
+        );
+
+        lightboxImg.addEventListener(
+            'pointerdown',
+            startLightboxPointer
+        );
+
+        lightboxImg.addEventListener(
+            'pointermove',
+            moveLightboxPointer
+        );
+
+        lightboxImg.addEventListener(
+            'pointerup',
+            endLightboxPointer
+        );
+
+        lightboxImg.addEventListener(
+            'pointercancel',
+            cancelLightboxPointer
+        );
+
+        lightboxImg.addEventListener(
+            'lostpointercapture',
+            function (event) {
+                if (
+                    activeLightboxPointers.has(
+                        event.pointerId
+                    )
+                ) {
+                    endLightboxPointer(
+                        event
+                    );
+                }
+            }
+        );
+
+        lightboxWrapper.addEventListener(
+            'dblclick',
+            function (event) {
+                if (
+                    !modal.classList.contains(
+                        'active'
+                    )
+                ) {
+                    return;
+                }
+
+                event.preventDefault();
+
+                if (zoomLevel > 1) {
+                    resetZoom();
+                } else {
+                    setZoom(
+                        2,
+                        event.clientX,
+                        event.clientY
+                    );
+                }
+            }
+        );
+
+        lightboxImg.addEventListener(
+            'dragstart',
+            function (event) {
+                event.preventDefault();
             }
         );
 
@@ -4711,12 +5191,86 @@
             'keydown',
             function (event) {
                 if (
-                    event.key === 'Escape' &&
-                    modal.classList.contains(
+                    !modal.classList.contains(
                         'active'
                     )
                 ) {
+                    return;
+                }
+
+                if (
+                    event.key === 'Escape'
+                ) {
                     closeLightbox();
+                    return;
+                }
+
+                if (
+                    event.key === '+' ||
+                    event.key === '='
+                ) {
+                    event.preventDefault();
+                    zoomIn();
+                    return;
+                }
+
+                if (
+                    event.key === '-' ||
+                    event.key === '_'
+                ) {
+                    event.preventDefault();
+                    zoomOut();
+                    return;
+                }
+
+                if (
+                    event.key === '0'
+                ) {
+                    event.preventDefault();
+                    resetZoom();
+                    return;
+                }
+
+                if (
+                    zoomLevel > 1 &&
+                    [
+                        'ArrowLeft',
+                        'ArrowRight',
+                        'ArrowUp',
+                        'ArrowDown'
+                    ].includes(
+                        event.key
+                    )
+                ) {
+                    const step =
+                        event.shiftKey
+                            ? 50
+                            : 25;
+
+                    if (
+                        event.key ===
+                        'ArrowLeft'
+                    ) {
+                        panX -= step;
+                    } else if (
+                        event.key ===
+                        'ArrowRight'
+                    ) {
+                        panX += step;
+                    } else if (
+                        event.key ===
+                        'ArrowUp'
+                    ) {
+                        panY -= step;
+                    } else if (
+                        event.key ===
+                        'ArrowDown'
+                    ) {
+                        panY += step;
+                    }
+
+                    event.preventDefault();
+                    applyZoom();
                 }
             }
         );
