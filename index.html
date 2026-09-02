@@ -251,6 +251,12 @@
         .nav-links a:hover { color:var(--primary); background:var(--primary-soft); transform:translateY(-1px); }
         .nav-links a.active { color:#fff; background:var(--primary); border-color:var(--primary); box-shadow:0 8px 22px rgba(37,99,235,.22); }
         .nav-links a.active::after { display:none; }
+        .nav-links a, .logo { -webkit-tap-highlight-color: transparent; }
+        .nav-links a:focus, .logo:focus { outline:none; border-radius:999px; }
+        .nav-links a:focus-visible, .logo:focus-visible {
+            outline:none; border-radius:999px;
+            box-shadow:0 0 0 4px rgba(37,99,235,.18);
+        }
 
         .toggle-btn,
         .lightbox-btn,
@@ -591,7 +597,8 @@
             .nav-links { width:100%; justify-content:flex-start; overflow-x:auto; overflow-y:hidden; flex-wrap:nowrap; scrollbar-width:none; -webkit-overflow-scrolling:touch; gap:.34rem; padding:2px 1px 4px; }
             .nav-links::-webkit-scrollbar { display:none; }
             .nav-links li { flex:0 0 auto; }
-            .nav-links a { font-size:.79rem; padding:.42rem .62rem; }
+            .nav-links a { font-size:.79rem; padding:.42rem .62rem; border-radius:999px; -webkit-tap-highlight-color:transparent; }
+            .nav-links a:focus, .nav-links a:focus-visible { outline:none; border-radius:999px; box-shadow:0 0 0 4px rgba(37,99,235,.18); }
             .nav-controls { justify-content:flex-end; }
             .toggle-btn { min-height:38px; }
             .toggle-btn.icon-only { width:38px; }
