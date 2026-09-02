@@ -500,6 +500,8 @@
         .site-tool { width:44px; height:44px; border:1px solid var(--border); border-radius:50%; background:var(--surface-solid); color:var(--text-main); display:grid; place-items:center; cursor:pointer; box-shadow:var(--shadow); transition:all var(--transition); }
         .site-tool:hover { background:var(--primary); color:#fff; border-color:var(--primary); transform:translateY(-3px); box-shadow:0 15px 30px rgba(37,99,235,.22); }
         .site-tool[hidden] { display:none; }
+        .mobile-tools-toggle { display:none; }
+        .mobile-tools-menu { display:none; }
 
         .command-palette { position:fixed; inset:0; z-index:110000; display:grid; place-items:start center; padding:8vh 1rem 1rem; background:rgba(2,6,23,.60); backdrop-filter:blur(10px); opacity:0; visibility:hidden; pointer-events:none; transition:opacity 180ms ease, visibility 180ms ease; }
         .command-palette.active { opacity:1; visibility:visible; pointer-events:auto; }
@@ -530,6 +532,29 @@
             .responsibilities li, .aligned-info-list li { grid-template-columns:minmax(145px,180px) 15px minmax(0,1fr); }
         }
         @media (max-width: 768px) {
+            .site-tools { right:12px; bottom:12px; display:flex; flex-direction:column; align-items:flex-end; gap:.5rem; }
+            .site-tools > .site-tool { display:none; }
+            .site-tools .mobile-tools-toggle { display:grid; width:44px; height:44px; }
+            .mobile-tools-menu {
+                display:flex; flex-direction:column; align-items:stretch; gap:.4rem;
+                min-width:190px; padding:.5rem; border:1px solid var(--border);
+                border-radius:1rem; background:color-mix(in srgb, var(--surface-solid) 94%, transparent);
+                box-shadow:0 18px 45px rgba(15,23,42,.16);
+                backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+                opacity:0; visibility:hidden; transform:translateY(8px) scale(.97);
+                transform-origin:bottom right; pointer-events:none;
+                transition:opacity 160ms ease, transform 160ms ease, visibility 160ms ease;
+            }
+            .site-tools.menu-open .mobile-tools-menu { opacity:1; visibility:visible; transform:none; pointer-events:auto; }
+            .mobile-menu-item {
+                width:100%; min-height:42px; display:flex; align-items:center; gap:.65rem;
+                border:1px solid transparent; border-radius:.72rem; padding:.55rem .7rem;
+                background:transparent; color:var(--text-main); font-size:.83rem; font-weight:700;
+                text-align:left; cursor:pointer;
+            }
+            .mobile-menu-item i { width:1.1rem; color:var(--primary); text-align:center; }
+            .mobile-menu-item:hover, .mobile-menu-item:focus-visible { background:var(--primary-soft); color:var(--primary); }
+            .mobile-menu-item[hidden] { display:none; }
             nav { padding:.55rem 0; }
             nav.nav-scrolled { padding:.4rem 0; }
             .nav-container { flex-direction:column; align-items:stretch; gap:.5rem; }
@@ -646,22 +671,27 @@
   <a class="skip-link" data-ui="skip" href="#summary">
    Skip to content
   </a>
-  <div aria-label="Page tools" class="site-tools">
+  <div aria-label="Page tools" class="site-tools" id="siteTools">
+   <button aria-controls="mobileToolsMenu" aria-expanded="false" aria-label="More page tools" class="site-tool mobile-tools-toggle" id="mobileToolsToggle" title="More page tools" type="button">
+    <i aria-hidden="true" class="fa-solid fa-ellipsis"></i>
+   </button>
+   <div aria-label="Mobile page tools" class="mobile-tools-menu" id="mobileToolsMenu" role="menu">
+    <button class="mobile-menu-item" data-action="share" role="menuitem" type="button"><i aria-hidden="true" class="fa-solid fa-share-nodes"></i><span id="mobileShareText">Share this page</span></button>
+    <button class="mobile-menu-item" data-action="print" role="menuitem" type="button"><i aria-hidden="true" class="fa-solid fa-print"></i><span id="mobilePrintText">Print this page</span></button>
+    <button class="mobile-menu-item" data-action="navigate" role="menuitem" type="button"><i aria-hidden="true" class="fa-solid fa-magnifying-glass"></i><span id="mobileNavigateText">Open page navigation</span></button>
+    <button class="mobile-menu-item" data-action="top" id="mobileTopAction" role="menuitem" type="button"><i aria-hidden="true" class="fa-solid fa-arrow-up"></i><span id="mobileTopText">Back to top</span></button>
+   </div>
    <button aria-label="Share this page" class="site-tool" id="shareButton" title="Share this page" type="button">
-    <i aria-hidden="true" class="fa-solid fa-share-nodes">
-    </i>
+    <i aria-hidden="true" class="fa-solid fa-share-nodes"></i>
    </button>
    <button aria-label="Print this page" class="site-tool" id="printButton" title="Print this page" type="button">
-    <i aria-hidden="true" class="fa-solid fa-print">
-    </i>
+    <i aria-hidden="true" class="fa-solid fa-print"></i>
    </button>
    <button aria-label="Open page navigation" class="site-tool" id="paletteButton" title="Open page navigation" type="button">
-    <i aria-hidden="true" class="fa-solid fa-magnifying-glass">
-    </i>
+    <i aria-hidden="true" class="fa-solid fa-magnifying-glass"></i>
    </button>
    <button aria-label="Back to top" class="site-tool" hidden="" id="topButton" title="Back to top" type="button">
-    <i aria-hidden="true" class="fa-solid fa-arrow-up">
-    </i>
+    <i aria-hidden="true" class="fa-solid fa-arrow-up"></i>
    </button>
   </div>
   <div aria-hidden="true" aria-label="Page navigation" aria-modal="true" class="command-palette" id="commandPalette" role="dialog">
@@ -844,6 +874,17 @@
        </span>
        <span class="info-val" data-i18n="val_current_position">
         Survey Programmer
+       </span>
+      </li>
+      <li>
+       <span class="info-label" data-i18n="lbl_tech_platforms">
+        Technical Platforms
+       </span>
+       <span class="info-colon">
+        :
+       </span>
+       <span class="info-val" data-i18n="val_tech_platforms">
+        Decipher (Forsta), Qualtrics &amp; Alchemer
        </span>
       </li>
       <li>
@@ -1879,6 +1920,9 @@
                 lbl_current_position: "Current Position",
                 val_current_position: "Survey Programmer",
 
+                lbl_tech_platforms: "Technical Platforms",
+                val_tech_platforms: "Decipher (Forsta), Qualtrics & Alchemer",
+
                 lbl_prof_exp: "Professional Experience",
                 val_prof_exp: "10+ Years",
 
@@ -2387,6 +2431,12 @@
                 val_current_position:
                     "সার্ভে প্রোগ্রামার",
 
+                lbl_tech_platforms:
+                    "কারিগরি প্ল্যাটফর্ম",
+
+                val_tech_platforms:
+                    "Decipher (Forsta), Qualtrics ও Alchemer",
+
                 lbl_prof_exp:
                     "পেশাগত অভিজ্ঞতা",
 
@@ -2865,6 +2915,14 @@
     const paletteButton = document.getElementById('paletteButton');
     const printButton = document.getElementById('printButton');
     const shareButton = document.getElementById('shareButton');
+    const siteTools = document.getElementById('siteTools');
+    const mobileToolsToggle = document.getElementById('mobileToolsToggle');
+    const mobileToolsMenu = document.getElementById('mobileToolsMenu');
+    const mobileTopAction = document.getElementById('mobileTopAction');
+    const mobileShareText = document.getElementById('mobileShareText');
+    const mobilePrintText = document.getElementById('mobilePrintText');
+    const mobileNavigateText = document.getElementById('mobileNavigateText');
+    const mobileTopText = document.getElementById('mobileTopText');
     const palette = document.getElementById('commandPalette');
     const paletteInput = document.getElementById('commandInput');
     const paletteList = document.getElementById('commandList');
@@ -3046,6 +3104,11 @@
         if (printButton) { printButton.title = t('print'); printButton.setAttribute('aria-label', t('print')); }
         if (paletteButton) { paletteButton.title = t('navigate'); paletteButton.setAttribute('aria-label', t('navigate')); }
         if (topButton) { topButton.title = t('top'); topButton.setAttribute('aria-label', t('top')); }
+        if (mobileShareText) mobileShareText.textContent = t('share');
+        if (mobilePrintText) mobilePrintText.textContent = t('print');
+        if (mobileNavigateText) mobileNavigateText.textContent = t('navigate');
+        if (mobileTopText) mobileTopText.textContent = t('top');
+        if (mobileToolsToggle) { mobileToolsToggle.title = currentLang === 'en' ? 'More page tools' : 'অতিরিক্ত পেজ টুল'; mobileToolsToggle.setAttribute('aria-label', currentLang === 'en' ? 'More page tools' : 'অতিরিক্ত পেজ টুল'); }
         if (paletteClose) { paletteClose.title = t('close'); paletteClose.setAttribute('aria-label', t('close')); }
         if (paletteInput) { paletteInput.placeholder = t('search'); paletteInput.setAttribute('aria-label', t('search')); }
         initializeTyped();
@@ -3325,6 +3388,17 @@
         });
     }
 
+    function closeMobileTools() {
+        siteTools?.classList.remove('menu-open');
+        mobileToolsToggle?.setAttribute('aria-expanded','false');
+    }
+
+    function toggleMobileTools() {
+        if (!siteTools) return;
+        const open = siteTools.classList.toggle('menu-open');
+        mobileToolsToggle?.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+
     function bindEvents() {
         langToggle?.addEventListener('click',()=>updateLanguage(currentLang==='en'?'bn':'en'));
         themeToggle?.addEventListener('click',()=>{ const dark=root.getAttribute('data-theme')==='dark'; themePreference=dark?'light':'dark'; applyTheme(themePreference,true); });
@@ -3333,9 +3407,21 @@
         printButton?.addEventListener('click',()=>window.print());
         shareButton?.addEventListener('click',sharePage);
         paletteButton?.addEventListener('click',openPalette);
+        mobileToolsToggle?.addEventListener('click',toggleMobileTools);
+        mobileToolsMenu?.addEventListener('click',event=>{
+            const actionButton=event.target.closest('[data-action]');
+            if(!actionButton) return;
+            const action=actionButton.getAttribute('data-action');
+            if(action==='share') sharePage();
+            else if(action==='print') window.print();
+            else if(action==='navigate') openPalette();
+            else if(action==='top') window.scrollTo({top:0,behavior:'smooth'});
+            closeMobileTools();
+        });
         paletteClose?.addEventListener('click',closePalette);
         paletteInput?.addEventListener('input',()=>buildCommandList(paletteInput.value));
         palette?.addEventListener('click',e=>{if(e.target===palette)closePalette();});
+        document.addEventListener('click',event=>{ if(siteTools && !siteTools.contains(event.target)) closeMobileTools(); });
         modal?.addEventListener('click',e=>{if(e.target===modal)closeLightbox();});
         bindLightboxGestures();
         wireForm();
