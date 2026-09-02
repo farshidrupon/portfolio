@@ -37,10 +37,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Noto+Sans+Bengali:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
-  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12">
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
-  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <style>
    :root {
             color-scheme: light;
@@ -1827,8 +1825,7 @@
     </span>
    </p>
   </footer>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js">
-  </script>
+  <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
    (function () {
     'use strict';
@@ -3317,18 +3314,30 @@
     }
 
     // EmailJS public key retained exactly from the source.
-    try { if (window.emailjs && typeof emailjs.init==='function') emailjs.init('ycJcbgkXIHkZtVEA7'); } catch (error) { console.warn('EmailJS initialization failed:',error); }
+    function initEmailService() {
+        try { if (window.emailjs && typeof emailjs.init==='function') emailjs.init('ycJcbgkXIHkZtVEA7'); } catch (error) { console.warn('EmailJS initialization failed:',error); }
+    }
+    initEmailService();
+    window.addEventListener('load', initEmailService, { once: true });
 
-    initializeTheme();
-    bindEvents();
-    updateLanguage(currentLang);
-    initAos();
-    initIntersectionNav();
-    initMouseSpotlight();
-    buildCommandList('');
-    syncNavHeight();
-    updateProgress();
-    updateActiveNav();
+    function startApp() {
+        initializeTheme();
+        bindEvents();
+        updateLanguage(currentLang);
+        initAos();
+        initIntersectionNav();
+        initMouseSpotlight();
+        buildCommandList('');
+        syncNavHeight();
+        updateProgress();
+        updateActiveNav();
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', startApp, { once: true });
+    } else {
+        startApp();
+    }
 })();
   </script>
  </body>
