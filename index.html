@@ -415,6 +415,27 @@
         .skill-tag:hover { transform:translateY(-2px); background:rgba(37,99,235,.18); }
 
         .filter-container { display:flex; gap:.55rem; flex-wrap:wrap; margin-bottom:1.5rem; }
+        /* Semantic icon accents — decorative only, so bilingual text remains unchanged. */
+        .skill-title, .matrix-title { display:flex; align-items:center; gap:.52rem; }
+        .skill-title::before, .matrix-title::before {
+            font-family:'Font Awesome 6 Free'; font-weight:900; color:var(--primary);
+            width:1.05rem; flex:0 0 1.05rem; text-align:center; font-size:.88em;
+        }
+        .skill-platforms::before { content:'\f108'; }
+        .skill-programming::before { content:'\f121'; }
+        .skill-data::before { content:'\f201'; }
+        .skill-logic::before { content:'\f126'; }
+        .matrix-title::before { content:'\f080'; }
+        .filter-btn::before {
+            font-family:'Font Awesome 6 Free'; font-weight:900; margin-right:.42rem; font-size:.86em;
+        }
+        .filter-all::before { content:'\f03a'; }
+        .filter-sp::before { content:'\f1d8'; }
+        .filter-ops::before { content:'\f0b1'; }
+        .contact-form .btn::before {
+            content:'\f1d8'; font-family:'Font Awesome 6 Free'; font-weight:900; margin-right:.45rem;
+        }
+
         .filter-btn { min-height:40px; background:var(--surface-solid); color:var(--text-main); border:1px solid var(--border); padding:.46rem .9rem; border-radius:999px; font-size:.84rem; font-weight:700; cursor:pointer; transition:all var(--transition); }
         .filter-btn:hover { color:var(--primary); border-color:rgba(37,99,235,.35); background:var(--primary-soft); transform:translateY(-1px); }
         .filter-btn.active { background:var(--primary); color:#fff; border-color:var(--primary); box-shadow:0 8px 20px rgba(37,99,235,.2); }
@@ -910,7 +931,7 @@
       </span>
      </h3>
      <div class="skill-group">
-      <h4 data-i18n="skill_platforms_title">
+      <h4 class="skill-title skill-platforms" data-i18n="skill_platforms_title">
        Survey Platforms
       </h4>
       <div class="skills-tag-container">
@@ -932,7 +953,7 @@
       </div>
      </div>
      <div class="skill-group">
-      <h4 data-i18n="skill_programming_title">
+      <h4 class="skill-title skill-programming" data-i18n="skill_programming_title">
        Programming &amp; Web
       </h4>
       <div class="skills-tag-container">
@@ -957,7 +978,7 @@
       </div>
      </div>
      <div class="skill-group">
-      <h4 data-i18n="skill_data_title">
+      <h4 class="skill-title skill-data" data-i18n="skill_data_title">
        Data &amp; Analytics
       </h4>
       <div class="skills-tag-container">
@@ -979,7 +1000,7 @@
       </div>
      </div>
      <div class="skill-group">
-      <h4 data-i18n="skill_logic_title">
+      <h4 class="skill-title skill-logic" data-i18n="skill_logic_title">
        Survey Programming
       </h4>
       <div class="skills-tag-container">
@@ -1015,13 +1036,13 @@
     Work Experience
    </h2>
    <div class="filter-container" data-aos="fade-up">
-    <button class="filter-btn active" data-i18n="btn_filter_all" onclick="filterTimeline('all', this)" type="button">
+    <button class="filter-btn filter-all active" data-i18n="btn_filter_all" onclick="filterTimeline('all', this)" type="button">
      All Roles
     </button>
-    <button class="filter-btn" data-i18n="btn_filter_sp" onclick="filterTimeline('sp', this)" type="button">
+    <button class="filter-btn filter-sp" data-i18n="btn_filter_sp" onclick="filterTimeline('sp', this)" type="button">
      Survey Programming
     </button>
-    <button class="filter-btn" data-i18n="btn_filter_ops" onclick="filterTimeline('ops', this)" type="button">
+    <button class="filter-btn filter-ops" data-i18n="btn_filter_ops" onclick="filterTimeline('ops', this)" type="button">
      Operations &amp; Legal Assistance
     </button>
    </div>
@@ -1110,7 +1131,7 @@
       </li>
      </ul>
      <div class="tech-matrix">
-      <h4 data-i18n="matrix_title">
+      <h4 class="matrix-title" data-i18n="matrix_title">
        Technical Skill Matrix
       </h4>
       <ul class="aligned-info-list">
