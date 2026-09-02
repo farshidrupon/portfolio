@@ -541,6 +541,18 @@
             .site-tools .mobile-tools-toggle {
                 display:grid; width:44px; height:44px; flex:0 0 44px;
                 order:2;
+                background:transparent;
+                border-color:transparent;
+                box-shadow:none;
+                color:var(--text-main);
+            }
+            .site-tools .mobile-tools-toggle:hover,
+            .site-tools .mobile-tools-toggle:focus-visible {
+                background:transparent;
+                border-color:transparent;
+                color:var(--primary);
+                box-shadow:none;
+                transform:none;
             }
             .mobile-tools-menu {
                 display:flex; flex-direction:column; align-items:center; justify-content:flex-end; gap:.5rem;
