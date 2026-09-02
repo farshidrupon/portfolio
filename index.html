@@ -635,6 +635,40 @@
         @media (hover:hover) and (pointer:fine) {
             .card, .timeline-item, .edu-grid-item, .training-card { --mx:50%; --my:50%; }
         }
+        .share-toast {
+            position:fixed;
+            left:50%;
+            bottom:max(22px, env(safe-area-inset-bottom) + 22px);
+            transform:translate(-50%, 14px);
+            z-index:120000;
+            max-width:min(92vw, 520px);
+            padding:.72rem 1rem;
+            border:1px solid var(--border);
+            border-radius:999px;
+            background:var(--surface-solid);
+            color:var(--text-main);
+            box-shadow:0 14px 34px rgba(15,23,42,.18);
+            font-size:.88rem;
+            font-weight:700;
+            text-align:center;
+            opacity:0;
+            visibility:hidden;
+            pointer-events:none;
+            transition:opacity 180ms ease, transform 180ms ease, visibility 180ms ease;
+        }
+        .share-toast.show { opacity:1; visibility:visible; transform:translate(-50%, 0); }
+
+        /* Consistent rounded focus/tap feedback for every circular tool. */
+        .site-tool:focus,
+        .site-tool:focus-visible,
+        .mobile-menu-item:focus,
+        .mobile-menu-item:focus-visible {
+            outline:3px solid rgba(37,99,235,.28);
+            outline-offset:3px;
+            box-shadow:0 0 0 0 transparent, var(--shadow);
+        }
+        .site-tool, .mobile-menu-item { -webkit-tap-highlight-color:transparent; }
+
         @media print {
             html, body { background:#fff !important; color:#111827 !important; }
             body::before, .progress-container, nav, .site-tools, .command-palette, .lightbox-modal, .social-links-hero, .hero .btn { display:none !important; }
@@ -3303,9 +3337,54 @@
     async function sharePage() {
         const data={ title:document.title, text:document.title, url:window.location.href };
         try {
-            if (navigator.share) await navigator.share(data);
-            else if (navigator.clipboard) { await navigator.clipboard.writeText(window.location.href); announce(currentLang==='en'?'Link copied to clipboard.':'লিংক ক্লিপবোর্ডে কপি হয়েছে।'); }
-        } catch (error) { if (error?.name !== 'AbortError') console.warn('Share failed:',error); }
+            if (navigator.share) {
+                await navigator.share(data);
+                announce(currentLang==='en'?'Share dialog opened.':'শেয়ার ডায়ালগ খোলা হয়েছে।');
+                return;
+            }
+            if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+                await navigator.clipboard.writeText(window.location.href);
+                announce(currentLang==='en'?'Link copied to clipboard.':'লিংক ক্লিপবোর্ডে কপি হয়েছে।');
+                showShareToast(currentLang==='en'?'Link copied to clipboard.':'লিংক ক্লিপবোর্ডে কপি হয়েছে।');
+                return;
+            }
+            const ta=document.createElement('textarea');
+            ta.value=window.location.href;
+            ta.setAttribute('readonly','');
+            ta.style.position='fixed'; ta.style.opacity='0'; ta.style.pointerEvents='none';
+            document.body.appendChild(ta);
+            ta.select();
+            const copied=document.execCommand('copy');
+            ta.remove();
+            const message=copied
+                ? (currentLang==='en'?'Link copied to clipboard.':'লিংক ক্লিপবোর্ডে কপি হয়েছে।')
+                : (currentLang==='en'?'Copy the page link from your browser address bar.':'ব্রাউজারের অ্যাড্রেস বার থেকে পেজের লিংক কপি করুন।');
+            announce(message);
+            showShareToast(message);
+        } catch (error) {
+            if (error?.name !== 'AbortError') {
+                console.warn('Share failed:',error);
+                const message=currentLang==='en'?'Copy the page link from your browser address bar.':'ব্রাউজারের অ্যাড্রেস বার থেকে পেজের লিংক কপি করুন।';
+                announce(message);
+                showShareToast(message);
+            }
+        }
+    }
+
+    function showShareToast(message) {
+        let toast=document.getElementById('shareToast');
+        if(!toast){
+            toast=document.createElement('div');
+            toast.id='shareToast';
+            toast.setAttribute('role','status');
+            toast.setAttribute('aria-live','polite');
+            toast.className='share-toast';
+            document.body.appendChild(toast);
+        }
+        toast.textContent=message;
+        toast.classList.add('show');
+        clearTimeout(toast._timer);
+        toast._timer=setTimeout(()=>toast.classList.remove('show'),2600);
     }
     function announce(message) {
         let live=document.getElementById('site-live');
@@ -3440,7 +3519,7 @@
             const actionButton=event.target.closest('[data-action]');
             if(!actionButton) return;
             const action=actionButton.getAttribute('data-action');
-            if(action==='share') sharePage();
+            if(action==='share') { sharePage(); }
             else if(action==='print') window.print();
             else if(action==='navigate') openPalette();
             else if(action==='top') window.scrollTo({top:0,behavior:'smooth'});
@@ -3458,7 +3537,12 @@
         window.addEventListener('keydown',event=>{
             const key=event.key.toLowerCase();
             if((event.ctrlKey||event.metaKey) && key==='k'){ event.preventDefault(); openPalette(); return; }
-            if(event.key==='Escape'){ if(palette?.classList.contains('active')) closePalette(); else if(modal?.classList.contains('active')) closeLightbox(); return; }
+            if(event.key==='Escape'){
+                if(siteTools?.classList.contains('menu-open')) { closeMobileTools(); mobileToolsToggle?.focus(); return; }
+                if(palette?.classList.contains('active')) closePalette();
+                else if(modal?.classList.contains('active')) closeLightbox();
+                return;
+            }
             if(modal?.classList.contains('active')) {
                 if(key==='+' || event.key==='='){ event.preventDefault(); zoomIn(); }
                 else if(key==='-'){ event.preventDefault(); zoomOut(); }
