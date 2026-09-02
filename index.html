@@ -34,11 +34,10 @@
   <meta content="Farshid Rupon" name="apple-mobile-web-app-title"/>
   <link href="https://fonts.googleapis.com" rel="preconnect"/>
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Noto+Sans+Bengali:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
-  <script defer src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Noto+Sans+Bengali:wght@400;500;600;700&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Noto+Sans+Bengali:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/></noscript>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" media="print" onload="this.media='all'"/>
+  <noscript><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/></noscript>
   <style>
    :root {
             color-scheme: light;
@@ -596,6 +595,13 @@
             *, *::before, *::after { scroll-behavior:auto !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
             .hero::before, .hero::after { animation:none !important; }
         }
+        /* Lightweight native reveal animations; no AOS dependency required. */
+        [data-aos] { opacity:0; transform:translate3d(0,18px,0); transition:opacity 700ms cubic-bezier(.2,.7,.2,1), transform 700ms cubic-bezier(.2,.7,.2,1); }
+        [data-aos="fade-down"] { transform:translate3d(0,-18px,0); }
+        [data-aos="fade-up"] { transform:translate3d(0,18px,0); }
+        [data-aos].aos-animate { opacity:1; transform:none; }
+        @media (prefers-reduced-motion: reduce) { [data-aos] { opacity:1 !important; transform:none !important; } }
+
         @supports not (background: color-mix(in srgb, white, black)) {
             nav { background:rgba(255,255,255,.94); }
             [data-theme="dark"] nav { background:rgba(15,23,42,.94); }
@@ -1825,7 +1831,6 @@
     </span>
    </p>
   </footer>
-  <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
    (function () {
     'use strict';
@@ -2995,29 +3000,31 @@
 
     function initializeTyped() {
         if (!typedEl) return;
-        if (typedInstance && typeof typedInstance.destroy === 'function') {
-            typedInstance.destroy();
-            typedInstance = null;
-        }
-        typedEl.textContent = '';
         const strings = safeTypedStrings(currentLang);
-        if (window.Typed && strings.length) {
-            try {
-                typedInstance = new Typed('#typed', {
-                    strings,
-                    typeSpeed: 44,
-                    backSpeed: 26,
-                    backDelay: 1800,
-                    loop: true,
-                    showCursor: true,
-                    cursorChar: '|'
-                });
-            } catch (error) {
-                typedEl.textContent = strings[0] || '';
+        if (!strings.length) { typedEl.textContent = ''; return; }
+        if (typedEl._typeTimer) { clearInterval(typedEl._typeTimer); typedEl._typeTimer = null; }
+        if (typedEl._typePause) { clearTimeout(typedEl._typePause); typedEl._typePause = null; }
+        let index = 0, charIndex = 0, deleting = false;
+        typedEl.textContent = '';
+        const tick = () => {
+            const text = strings[index] || '';
+            if (!deleting) {
+                charIndex = Math.min(text.length, charIndex + 1);
+                typedEl.textContent = text.slice(0, charIndex);
+                if (charIndex >= text.length) {
+                    typedEl._typePause = setTimeout(() => { deleting = true; tick(); }, 1800);
+                    return;
+                }
+            } else {
+                charIndex = Math.max(0, charIndex - 1);
+                typedEl.textContent = text.slice(0, charIndex);
+                if (charIndex === 0) { deleting = false; index = (index + 1) % strings.length; }
             }
-        } else {
-            typedEl.textContent = strings[0] || '';
-        }
+            typedEl._typeTimer = setTimeout(tick, deleting ? 26 : 44);
+        };
+        const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+        if (reduce) { typedEl.textContent = strings[0]; return; }
+        tick();
     }
 
     function updateLanguage(lang) {
@@ -3215,6 +3222,31 @@
         live.textContent=message;
     }
 
+    let emailJsPromise = null;
+    function ensureEmailJs() {
+        if (window.emailjs && typeof window.emailjs.send === 'function') return Promise.resolve(window.emailjs);
+        if (emailJsPromise) return emailJsPromise;
+        emailJsPromise = new Promise((resolve, reject) => {
+            const existing = document.querySelector('script[data-emailjs-loader]');
+            if (existing) {
+                existing.addEventListener('load', () => resolve(window.emailjs));
+                existing.addEventListener('error', reject);
+                return;
+            }
+            const script = document.createElement('script');
+            script.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js';
+            script.async = true;
+            script.dataset.emailjsLoader = 'true';
+            script.onload = () => {
+                try { if (window.emailjs && typeof window.emailjs.init === 'function') window.emailjs.init('ycJcbgkXIHkZtVEA7'); } catch (_) {}
+                resolve(window.emailjs);
+            };
+            script.onerror = reject;
+            document.head.appendChild(script);
+        });
+        return emailJsPromise;
+    }
+
     function wireForm() {
         const form=document.getElementById('contactForm');
         if (!form) return;
@@ -3235,15 +3267,16 @@
             if (status){ status.style.color='var(--primary)'; status.textContent=currentLang==='en'?'Sending message...':'বার্তা পাঠানো হচ্ছে...'; }
             if(submitButton){ submitButton.disabled=true; submitButton.setAttribute('aria-busy','true'); }
             try {
-                if (window.emailjs && typeof emailjs.send === 'function') {
-                    await emailjs.send('service_jxl4kqo','template_pscfvya',{ from_name:name, from_email:email, message, to_email:'farshidrupon@gmail.com' });
+                    const emailApi = await ensureEmailJs();
+                    if (emailApi && typeof emailApi.send === 'function') {
+                    await emailApi.send('service_jxl4kqo','template_pscfvya',{ from_name:name, from_email:email, message, to_email:'farshidrupon@gmail.com' });
                     if(status){ status.style.color='#16a34a'; status.textContent=currentLang==='en'?'Thank you! Your message has been sent successfully.':'ধন্যবাদ! আপনার বার্তা সফলভাবে পাঠানো হয়েছে।'; }
                     form.reset(); updateLanguage(currentLang);
-                } else {
-                    const mailto=`mailto:farshidrupon@gmail.com?subject=${encodeURIComponent('Website Contact Message')}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`)}`;
+                    } else {
+                        const mailto=`mailto:farshidrupon@gmail.com?subject=${encodeURIComponent('Website Contact Message')}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`)}`;
                     window.location.href=mailto;
-                    if(status){ status.style.color='var(--primary)'; status.textContent=currentLang==='en'?'Opening your email app...':'আপনার ইমেইল অ্যাপ খোলা হচ্ছে...'; }
-                }
+                        if(status){ status.style.color='var(--primary)'; status.textContent=currentLang==='en'?'Opening your email app...':'আপনার ইমেইল অ্যাপ খোলা হচ্ছে...'; }
+                    }
             } catch (error) {
                 console.error('Email service error:',error);
                 const mailto=`mailto:farshidrupon@gmail.com?subject=${encodeURIComponent('Website Contact Message')}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`)}`;
@@ -3256,12 +3289,24 @@
     }
 
     function initAos() {
-        if (window.AOS && typeof AOS.init==='function') {
-            AOS.init({duration:760, once:true, offset:70, easing:'ease-out-cubic', disable:window.matchMedia('(prefers-reduced-motion: reduce)').matches});
-        } else {
-            const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('aos-animate');observer.unobserve(entry.target);}}),{threshold:.08,rootMargin:'0px 0px -8% 0px'});
-            document.querySelectorAll('[data-aos]').forEach(el=>observer.observe(el));
+        const nodes = document.querySelectorAll('[data-aos]');
+        if (!nodes.length) return;
+        const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+        if (reduce || !('IntersectionObserver' in window)) {
+            nodes.forEach(el => el.classList.add('aos-animate'));
+            return;
         }
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const delay = Number(entry.target.getAttribute('data-aos-delay')) || 0;
+                    if (delay) entry.target.style.transitionDelay = delay + 'ms';
+                    entry.target.classList.add('aos-animate');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold:.08, rootMargin:'0px 0px -8% 0px' });
+        nodes.forEach(el => observer.observe(el));
     }
 
     function initIntersectionNav() {
