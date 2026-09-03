@@ -850,7 +850,35 @@
             nav { background:rgba(255,255,255,.94); }
             [data-theme="dark"] nav { background:rgba(15,23,42,.94); }
         }
-  </style>
+  
+/* Final print pagination controls: preserve desktop-style structure while keeping the requested page limits. */
+@media print {
+  /* Gallery is intentionally screen-only. */
+  body.print-a4 #gallery,
+  body.print-legal #gallery { display:none !important; }
+
+  body.print-a4 section#summary,
+  body.print-a4 section#about { page-break-before:auto !important; break-before:auto !important; }
+  body.print-a4 section#experience { page-break-before:always !important; break-before:page !important; }
+  body.print-a4 section#education { page-break-before:always !important; break-before:page !important; }
+  body.print-a4 section#training { page-break-before:always !important; break-before:page !important; }
+  body.print-a4 section#contact { page-break-before:always !important; break-before:page !important; }
+
+  body.print-legal section#summary,
+  body.print-legal section#about { page-break-before:auto !important; break-before:auto !important; }
+  body.print-legal section#experience { page-break-before:always !important; break-before:page !important; }
+  body.print-legal section#education { page-break-before:auto !important; break-before:auto !important; }
+  body.print-legal section#training { page-break-before:always !important; break-before:page !important; }
+  body.print-legal section#contact { page-break-before:auto !important; break-before:auto !important; }
+
+  body.print-a4 .hero { break-after:auto !important; page-break-after:auto !important; }
+  body.print-a4 section, body.print-legal section { page-break-inside:auto !important; break-inside:auto !important; }
+  body.print-a4 .card, body.print-a4 .timeline-item, body.print-a4 .edu-grid-item, body.print-a4 .training-card,
+  body.print-legal .card, body.print-legal .timeline-item, body.print-legal .edu-grid-item, body.print-legal .training-card {
+    page-break-inside:avoid !important; break-inside:avoid !important;
+  }
+}
+</style>
   <script type="application/ld+json">
    {
         "@context": "https://schema.org",
