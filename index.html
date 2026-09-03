@@ -826,13 +826,7 @@
             footer { display:none !important; }
             a { color:#111827 !important; text-decoration:none !important; }
 
-            /* A4: deliberately compose three coherent pages. */
-            body.print-a4 #experience { break-before:page !important; page-break-before:always !important; }
-            body.print-a4 #training { break-before:page !important; page-break-before:always !important; }
-
-            /* Legal: keep the more spacious legal sheet to two naturally-flowing pages. */
-            body.print-legal #experience,
-            body.print-legal #training { break-before:auto !important; page-break-before:auto !important; }
+            /* Natural print flow keeps every page content-dense while preserving card structure. */
         }
         
         @media (prefers-reduced-motion: reduce) {
@@ -851,31 +845,54 @@
             [data-theme="dark"] nav { background:rgba(15,23,42,.94); }
         }
   
-/* Final print pagination controls: preserve desktop-style structure while keeping the requested page limits. */
+/* Final print pagination controls: natural, content-dense pagination. */
 @media print {
-  /* Gallery is intentionally screen-only. */
   body.print-a4 #gallery,
   body.print-legal #gallery { display:none !important; }
 
-  body.print-a4 section#summary,
-  body.print-a4 section#about { page-break-before:auto !important; break-before:auto !important; }
-  body.print-a4 section#experience { page-break-before:always !important; break-before:page !important; }
-  body.print-a4 section#education { page-break-before:always !important; break-before:page !important; }
-  body.print-a4 section#training { page-break-before:always !important; break-before:page !important; }
-  body.print-a4 section#contact { page-break-before:always !important; break-before:page !important; }
+  body.print-a4 #summary,
+  body.print-a4 #about,
+  body.print-a4 #experience,
+  body.print-a4 #education,
+  body.print-a4 #training,
+  body.print-a4 #contact,
+  body.print-legal #summary,
+  body.print-legal #about,
+  body.print-legal #experience,
+  body.print-legal #education,
+  body.print-legal #training,
+  body.print-legal #contact {
+    break-before:auto !important;
+    page-break-before:auto !important;
+    break-inside:auto !important;
+    page-break-inside:auto !important;
+  }
 
-  body.print-legal section#summary,
-  body.print-legal section#about { page-break-before:auto !important; break-before:auto !important; }
-  body.print-legal section#experience { page-break-before:always !important; break-before:page !important; }
-  body.print-legal section#education { page-break-before:auto !important; break-before:auto !important; }
-  body.print-legal section#training { page-break-before:always !important; break-before:page !important; }
-  body.print-legal section#contact { page-break-before:auto !important; break-before:auto !important; }
+  /* Long work entries may continue naturally so unused page space is not left blank. */
+  body.print-a4 .timeline-item,
+  body.print-legal .timeline-item {
+    break-inside:auto !important;
+    page-break-inside:auto !important;
+  }
 
-  body.print-a4 .hero { break-after:auto !important; page-break-after:auto !important; }
-  body.print-a4 section, body.print-legal section { page-break-inside:auto !important; break-inside:auto !important; }
-  body.print-a4 .card, body.print-a4 .timeline-item, body.print-a4 .edu-grid-item, body.print-a4 .training-card,
-  body.print-legal .card, body.print-legal .timeline-item, body.print-legal .edu-grid-item, body.print-legal .training-card {
-    page-break-inside:avoid !important; break-inside:avoid !important;
+  /* Keep compact cards together whenever they reasonably fit. */
+  body.print-a4 .card,
+  body.print-a4 .edu-grid-item,
+  body.print-a4 .training-card,
+  body.print-legal .card,
+  body.print-legal .edu-grid-item,
+  body.print-legal .training-card {
+    break-inside:avoid !important;
+    page-break-inside:avoid !important;
+  }
+
+  /* Do not orphan a section heading at the bottom of a sheet. */
+  body.print-a4 .section-title,
+  body.print-legal .section-title {
+    break-after:avoid !important;
+    page-break-after:avoid !important;
+    orphans:3;
+    widows:3;
   }
 }
 </style>
