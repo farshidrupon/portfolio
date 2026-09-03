@@ -3078,16 +3078,39 @@
         });
     }
 
+    function scrollActiveNavIntoView(force = false) {
+        if (window.innerWidth > 768) return;
+        const activeLink = navLinks.find(link => link.classList.contains('active'));
+        const navScroller = activeLink?.closest('.nav-links');
+        if (!activeLink || !navScroller) return;
+
+        const linkRect = activeLink.getBoundingClientRect();
+        const navRect = navScroller.getBoundingClientRect();
+        const edgePadding = 18;
+        const isVisible = linkRect.left >= navRect.left + edgePadding &&
+            linkRect.right <= navRect.right - edgePadding;
+
+        if (force || !isVisible) {
+            activeLink.scrollIntoView({
+                behavior: 'smooth',
+                block: 'nearest',
+                inline: 'center'
+            });
+        }
+    }
+
     function setActiveNav(id, smoothOnMobile = false) {
-        activeSection = id || activeSection;
+        const nextSection = id || activeSection;
+        const sectionChanged = nextSection !== activeSection;
+        activeSection = nextSection;
         navLinks.forEach(link => {
             const isActive = link.getAttribute('href') === `#${activeSection}`;
             link.classList.toggle('active', isActive);
             link.setAttribute('aria-current', isActive ? 'page' : 'false');
-            if (isActive && smoothOnMobile && window.innerWidth <= 768) {
-                link.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-            }
         });
+        if (window.innerWidth <= 768 && (sectionChanged || smoothOnMobile)) {
+            requestAnimationFrame(() => scrollActiveNavIntoView(smoothOnMobile));
+        }
         buildCommandList(paletteInput ? paletteInput.value : '');
     }
 
