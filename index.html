@@ -125,8 +125,7 @@
         [data-theme="dark"] body::before { opacity: .20; }
 
         body.lightbox-open,
-        body.palette-open,
-        body.print-format-open {
+        body.palette-open {
             overflow: hidden;
             overscroll-behavior: none;
         }
@@ -677,20 +676,7 @@
         }
         .site-tool, .mobile-menu-item { -webkit-tap-highlight-color:transparent; }
 
-        .print-format-modal { position:fixed; inset:0; z-index:110001; display:flex; align-items:center; justify-content:center; padding:1rem; background:rgba(2,6,23,.55); backdrop-filter:blur(8px); opacity:0; visibility:hidden; pointer-events:none; transition:opacity 160ms ease, visibility 160ms ease; }
-        .print-format-modal.active { opacity:1; visibility:visible; pointer-events:auto; }
-        .print-format-panel { width:min(360px,92vw); padding:1.1rem; border:1px solid var(--border); border-radius:1rem; background:var(--surface-solid); color:var(--text-main); box-shadow:0 24px 80px rgba(0,0,0,.25); }
-        .print-format-panel h3 { color:var(--secondary); margin-bottom:.8rem; font-size:1.05rem; }
-        .print-format-panel p { display:grid; gap:.55rem; }
-        .print-format-choice { width:100%; min-height:46px; display:flex; align-items:center; gap:.65rem; padding:.7rem .85rem; border:1px solid var(--border); border-radius:.8rem; background:var(--surface-solid); color:var(--text-main); cursor:pointer; font-weight:750; text-align:left; transition:all var(--transition); }
-        .print-format-choice i { width:28px; color:var(--primary); text-align:center; }
-        .print-format-choice:hover, .print-format-choice:focus-visible { background:var(--primary-soft); border-color:var(--primary); color:var(--primary); outline:none; box-shadow:var(--focus-ring); }
-        .print-format-cancel { width:100%; margin-top:.7rem; min-height:40px; border:0; background:transparent; color:var(--text-muted); border-radius:.8rem; cursor:pointer; font-weight:700; }
-        .print-format-cancel:hover, .print-format-cancel:focus-visible { background:var(--primary-soft); color:var(--primary); outline:none; }
-
-        @page { size: A4 portrait; margin: 4mm 5mm; }
-        @page a4 { size: A4 portrait; margin: 4mm 5mm; }
-        @page legal { size: legal portrait; margin: 4mm 5mm; }
+        @page { size: A4 portrait; margin: 8mm 9mm; }
 
         @media print {
             html, body {
@@ -698,137 +684,90 @@
                 color:#111827 !important;
                 width:auto !important;
                 min-width:0 !important;
-                overflow:visible !important;
-                -webkit-print-color-adjust:exact !important;
-                print-color-adjust:exact !important;
+                font-size:9.25pt !important;
             }
-            body.print-a4 { page:a4; font-size:6.35pt !important; line-height:1.16 !important; }
-            body.print-legal { page:legal; font-size:6.05pt !important; line-height:1.15 !important; }
-
-            * { box-shadow:none !important; text-shadow:none !important; }
-            body::before,
-            .progress-container,
-            nav,
-            .site-tools,
-            .command-palette,
-            .print-format-modal,
-            .lightbox-modal,
-            .social-links-hero,
-            .hero .btn,
-            .filter-container,
-            .skip-link { display:none !important; }
-
+            body::before, .progress-container, nav, .site-tools, .command-palette, .lightbox-modal, .social-links-hero, .hero .btn { display:none !important; }
             .hero {
                 min-height:auto !important;
                 height:auto !important;
-                padding:2mm 0 1.8mm !important;
-                margin:0 !important;
-                background:#020617 !important;
-                color:#fff !important;
-                break-after:avoid-page !important;
+                padding:7mm 0 5mm !important;
+                background:#000 !important;
                 page-break-after:avoid !important;
+                break-after:avoid-page !important;
             }
-            .profile-pic {
-                width:22mm !important;
-                height:22mm !important;
-                margin:0 auto 1.5mm !important;
-                border-width:1.5px !important;
-                box-shadow:none !important;
-            }
-            .hero h1 { font-size:15.5pt !important; margin-bottom:.5mm !important; line-height:1.1 !important; }
-            .hero-subtitle { font-size:8pt !important; margin-bottom:.3mm !important; line-height:1.15 !important; }
-            .typed-container { min-height:5.5mm !important; max-width:none !important; margin:0 auto 1mm !important; padding:0 !important; font-size:5.5pt !important; line-height:1.2 !important; }
-            .hero-meta { gap:1mm 3mm !important; margin:0 !important; font-size:5.8pt !important; line-height:1.15 !important; }
+            .profile-pic { width:34mm !important; height:34mm !important; margin-bottom:3mm !important; border-width:2px !important; box-shadow:none !important; }
+            .hero h1 { font-size:22pt !important; margin-bottom:1mm !important; }
+            .hero-subtitle { font-size:11pt !important; margin-bottom:1mm !important; }
+            .typed-container { min-height:8mm !important; margin-bottom:2mm !important; font-size:8.5pt !important; }
+            .hero-meta { gap:2mm 4mm !important; margin-bottom:0 !important; font-size:8pt !important; }
 
             section {
                 width:100% !important;
-                padding:1.35mm 0 !important;
+                padding:4mm 0 !important;
                 margin:0 !important;
                 content-visibility:visible !important;
                 contain-intrinsic-size:auto !important;
                 break-inside:auto !important;
                 page-break-inside:auto !important;
             }
-            .section-title {
-                font-size:9.7pt !important;
-                line-height:1.1 !important;
-                margin:0 0 .9mm !important;
-                padding:0 0 .55mm !important;
-                break-after:avoid-page !important;
-                page-break-after:avoid !important;
-            }
-            .section-title::after { height:1.2px !important; box-shadow:none !important; }
-            h2, h3, h4, .role-title, .company, .date-badge, .info-group { break-after:avoid !important; page-break-after:avoid !important; }
-            .section-title, .card > h3, .card > h2 { break-after:avoid !important; page-break-after:avoid !important; }
+            .section-title { font-size:15pt !important; margin-bottom:3mm !important; padding-bottom:1.5mm !important; }
+            .section-title::after { height:2px !important; box-shadow:none !important; }
 
-            .grid-2, .contact-layout { grid-template-columns:1fr 1fr !important; gap:1.3mm !important; }
-            .edu-grid, .training-grid { grid-template-columns:1fr 1fr !important; gap:1.3mm !important; margin-top:.8mm !important; }
-            .gallery-container { grid-template-columns:1fr 1fr 1fr !important; gap:.8mm !important; }
+            /* Keep logical section groups together so headings never become detached from their cards. */
+            #summary { break-after:avoid-page !important; page-break-after:avoid !important; }
+            #about { break-before:avoid-page !important; page-break-before:avoid !important; }
+            #experience { break-before:page !important; page-break-before:always !important; }
+            #education { break-before:avoid-page !important; page-break-before:avoid !important; }
+            #training { break-before:page !important; page-break-before:always !important; }
+            #gallery, #contact { break-before:avoid-page !important; page-break-before:avoid !important; }
+
+            .grid-2, .contact-layout { grid-template-columns:1fr 1fr !important; gap:3mm !important; }
+            .edu-grid, .training-grid { grid-template-columns:1fr 1fr !important; gap:3mm !important; margin-top:2mm !important; }
+            .gallery-container { grid-template-columns:1fr 1fr 1fr !important; gap:3mm !important; }
 
             .card, .timeline-item, .edu-grid-item, .training-card {
+                box-shadow:none !important;
                 background:#fff !important;
                 border:1px solid #cbd5e1 !important;
                 backdrop-filter:none !important;
                 -webkit-backdrop-filter:none !important;
-                transform:none !important;
                 break-inside:avoid !important;
                 page-break-inside:avoid !important;
+                transform:none !important;
             }
-            .card { padding:1.45mm !important; border-radius:1.8mm !important; }
-            .timeline-item, .edu-grid-item, .training-card {
-                padding:1.45mm 1.45mm 1.45mm 6.4mm !important;
-                margin-bottom:.9mm !important;
-                border-radius:1.8mm !important;
-            }
-            .timeline-item::before, .edu-grid-item::before, .training-card::after {
-                left:1.35mm !important;
-                top:1.35mm !important;
-                width:3.6mm !important;
-                height:3.6mm !important;
-                box-shadow:none !important;
-                font-size:4.8pt !important;
-            }
-            .timeline-header { gap:.4mm !important; margin-bottom:.65mm !important; }
-            .role-title { font-size:6.8pt !important; line-height:1.1 !important; }
-            .company { font-size:5.35pt !important; line-height:1.1 !important; }
-            .date-badge { min-height:auto !important; font-size:4.8pt !important; padding:.45mm 1mm !important; }
-            .responsibilities { margin-top:.8mm !important; }
-            .responsibilities li, .aligned-info-list li {
-                font-size:5.45pt !important;
-                line-height:1.12 !important;
-                margin-bottom:.38mm !important;
-            }
-            .responsibilities li { grid-template-columns:27.5mm 2.3mm minmax(0,1fr) !important; padding-left:0 !important; }
+            .card { padding:4mm !important; }
+            .timeline-item, .edu-grid-item, .training-card { padding:3.5mm 3.5mm 3.5mm 11mm !important; margin-bottom:3mm !important; }
+            .timeline-item::before, .edu-grid-item::before, .training-card::after { left:3mm !important; top:3mm !important; width:6mm !important; height:6mm !important; box-shadow:none !important; font-size:7pt !important; }
+            .role-title { font-size:9.5pt !important; line-height:1.25 !important; }
+            .company { font-size:8pt !important; line-height:1.25 !important; }
+            .date-badge { min-height:auto !important; font-size:7pt !important; padding:1mm 2mm !important; }
+            .responsibilities { margin-top:2mm !important; }
+            .responsibilities li, .aligned-info-list li { font-size:7.7pt !important; line-height:1.35 !important; margin-bottom:1.2mm !important; }
+            .responsibilities li { grid-template-columns:39mm 4mm minmax(0,1fr) !important; padding-left:0 !important; }
             .responsibilities li::before { display:none !important; }
-            .aligned-info-list { margin-top:.8mm !important; }
-            .aligned-info-list li { grid-template-columns:22.5mm 2.3mm minmax(0,1fr) !important; }
-            .skill-group { margin-top:.7mm !important; }
-            .skill-group h4, .tech-matrix h4 { font-size:5.65pt !important; }
-            .skills-tag-container { gap:.45mm !important; margin-top:.4mm !important; }
-            .skill-tag { min-height:3.0mm !important; padding:.35mm .7mm !important; font-size:4.8pt !important; }
-            .tech-matrix { margin-top:.65mm !important; padding:.75mm !important; border-radius:1.3mm !important; }
-            .tech-matrix .aligned-info-list { margin-top:.5mm !important; }
-
-            .gallery-item { aspect-ratio:4/3 !important; }
+            .aligned-info-list { margin-top:2mm !important; }
+            .aligned-info-list li { grid-template-columns:33mm 4mm minmax(0,1fr) !important; }
+            .skill-group { margin-top:2.5mm !important; }
+            .skill-group h4, .tech-matrix h4 { font-size:8pt !important; }
+            .skills-tag-container { gap:1.2mm !important; margin-top:1.5mm !important; }
+            .skill-tag { min-height:5.5mm !important; padding:1mm 1.6mm !important; font-size:6.8pt !important; }
+            .tech-matrix { margin-top:2.5mm !important; padding:2.5mm !important; }
+            .filter-container { display:none !important; }
+            .gallery-item { aspect-ratio:4/3 !important; box-shadow:none !important; }
             .gallery-item::after { display:none !important; }
             .gallery-item img { filter:none !important; transform:none !important; }
             .scrollable-gallery-wrapper { max-height:none !important; overflow:visible !important; padding:0 !important; }
-
-            .contact-grid { gap:.65mm !important; }
-            .info-group { gap:.8mm !important; }
-            .info-group i { width:4mm !important; height:4mm !important; flex:0 0 4mm !important; font-size:5pt !important; }
-            .form-group { gap:.45mm !important; }
-            .form-group label, .form-group input, .form-group textarea { font-size:5.35pt !important; }
-            .form-group input { min-height:4.1mm !important; padding:.55mm .85mm !important; }
-            .form-group textarea { min-height:10mm !important; padding:.55mm .85mm !important; }
-            .contact-form .btn { min-height:5mm !important; padding:.65mm 1.5mm !important; font-size:5.35pt !important; }
-            #form-status { min-height:0 !important; font-size:5.2pt !important; }
-            footer { display:none !important; }
+            .contact-grid { gap:2mm !important; }
+            .info-group { gap:2.5mm !important; }
+            .info-group i { width:8mm !important; height:8mm !important; flex:0 0 8mm !important; }
+            .form-group { gap:1mm !important; }
+            .form-group label, .form-group input, .form-group textarea { font-size:8pt !important; }
+            .form-group input { min-height:7mm !important; padding:1.5mm 2mm !important; }
+            .form-group textarea { min-height:20mm !important; padding:1.5mm 2mm !important; }
+            .contact-form .btn { min-height:8mm !important; padding:1.5mm 3mm !important; font-size:8pt !important; }
+            footer { margin-top:2mm !important; padding:3mm 0 !important; font-size:7pt !important; }
             a { color:#111827 !important; text-decoration:none !important; }
-
-            /* Natural print flow keeps every page content-dense while preserving card structure. */
         }
-        
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after { scroll-behavior:auto !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
             .hero::before, .hero::after { animation:none !important; }
@@ -844,58 +783,7 @@
             nav { background:rgba(255,255,255,.94); }
             [data-theme="dark"] nav { background:rgba(15,23,42,.94); }
         }
-  
-/* Final print pagination controls: natural, content-dense pagination. */
-@media print {
-  body.print-a4 #gallery,
-  body.print-legal #gallery { display:none !important; }
-
-  body.print-a4 #summary,
-  body.print-a4 #about,
-  body.print-a4 #experience,
-  body.print-a4 #education,
-  body.print-a4 #training,
-  body.print-a4 #contact,
-  body.print-legal #summary,
-  body.print-legal #about,
-  body.print-legal #experience,
-  body.print-legal #education,
-  body.print-legal #training,
-  body.print-legal #contact {
-    break-before:auto !important;
-    page-break-before:auto !important;
-    break-inside:auto !important;
-    page-break-inside:auto !important;
-  }
-
-  /* Long work entries may continue naturally so unused page space is not left blank. */
-  body.print-a4 .timeline-item,
-  body.print-legal .timeline-item {
-    break-inside:auto !important;
-    page-break-inside:auto !important;
-  }
-
-  /* Keep compact cards together whenever they reasonably fit. */
-  body.print-a4 .card,
-  body.print-a4 .edu-grid-item,
-  body.print-a4 .training-card,
-  body.print-legal .card,
-  body.print-legal .edu-grid-item,
-  body.print-legal .training-card {
-    break-inside:avoid !important;
-    page-break-inside:avoid !important;
-  }
-
-  /* Do not orphan a section heading at the bottom of a sheet. */
-  body.print-a4 .section-title,
-  body.print-legal .section-title {
-    break-after:avoid !important;
-    page-break-after:avoid !important;
-    orphans:3;
-    widows:3;
-  }
-}
-</style>
+  </style>
   <script type="application/ld+json">
    {
         "@context": "https://schema.org",
@@ -3191,9 +3079,6 @@
     const paletteInput = document.getElementById('commandInput');
     const paletteList = document.getElementById('commandList');
     const paletteClose = document.getElementById('paletteClose');
-    const printFormatModal = document.getElementById('printFormatModal');
-    const printFormatCancel = document.getElementById('printFormatCancel');
-    const printFormatChoices = Array.from(document.querySelectorAll('[data-print-mode]'));
 
     let currentLang = localStorage.getItem('lang') === 'bn' ? 'bn' : 'en';
     let themePreference = localStorage.getItem('theme');
@@ -3734,33 +3619,12 @@
         mobileToolsToggle?.setAttribute('aria-expanded', open ? 'true' : 'false');
     }
 
-    function openPrintChooser() {
-        if (!printFormatModal) { window.print(); return; }
-        printFormatModal.classList.add('active');
-        printFormatModal.setAttribute('aria-hidden','false');
-        body.classList.add('print-format-open');
-        printFormatChoices[0]?.focus();
-    }
-    function closePrintChooser() {
-        if (!printFormatModal) return;
-        printFormatModal.classList.remove('active');
-        printFormatModal.setAttribute('aria-hidden','true');
-        body.classList.remove('print-format-open');
-    }
-    function printWithMode(mode) {
-        const selected = mode === 'legal' ? 'print-legal' : 'print-a4';
-        body.classList.remove('print-a4','print-legal');
-        body.classList.add(selected);
-        closePrintChooser();
-        requestAnimationFrame(() => setTimeout(() => window.print(), 30));
-    }
-
     function bindEvents() {
         langToggle?.addEventListener('click',()=>updateLanguage(currentLang==='en'?'bn':'en'));
         themeToggle?.addEventListener('click',()=>{ const dark=root.getAttribute('data-theme')==='dark'; themePreference=dark?'light':'dark'; applyTheme(themePreference,true); });
         navLinks.forEach(link=>link.addEventListener('click',()=>setActiveNav(link.getAttribute('href')?.slice(1)||'',true)));
         topButton?.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
-        printButton?.addEventListener('click',openPrintChooser);
+        printButton?.addEventListener('click',()=>window.print());
         shareButton?.addEventListener('click',sharePage);
         paletteButton?.addEventListener('click',openPalette);
         mobileToolsToggle?.addEventListener('click',toggleMobileTools);
@@ -3769,16 +3633,12 @@
             if(!actionButton) return;
             const action=actionButton.getAttribute('data-action');
             if(action==='share') { sharePage(); }
-            else if(action==='print') openPrintChooser();
+            else if(action==='print') window.print();
             else if(action==='navigate') openPalette();
             else if(action==='top') window.scrollTo({top:0,behavior:'smooth'});
             closeMobileTools();
         });
         paletteClose?.addEventListener('click',closePalette);
-        printFormatCancel?.addEventListener('click',closePrintChooser);
-        printFormatModal?.addEventListener('click',event=>{ if(event.target===printFormatModal) closePrintChooser(); });
-        printFormatChoices.forEach(button=>button.addEventListener('click',()=>printWithMode(button.getAttribute('data-print-mode'))));
-        window.addEventListener('afterprint',()=>{ body.classList.remove('print-a4','print-legal'); closePrintChooser(); });
         paletteInput?.addEventListener('input',()=>buildCommandList(paletteInput.value));
         palette?.addEventListener('click',e=>{if(e.target===palette)closePalette();});
         document.addEventListener('click',event=>{ if(siteTools && !siteTools.contains(event.target)) closeMobileTools(); });
