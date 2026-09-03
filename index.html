@@ -676,13 +676,96 @@
         }
         .site-tool, .mobile-menu-item { -webkit-tap-highlight-color:transparent; }
 
+        @page { size: A4 portrait; margin: 8mm 9mm; }
+
         @media print {
-            html, body { background:#fff !important; color:#111827 !important; }
+            html, body {
+                background:#fff !important;
+                color:#111827 !important;
+                width:auto !important;
+                min-width:0 !important;
+                font-size:9.25pt !important;
+            }
             body::before, .progress-container, nav, .site-tools, .command-palette, .lightbox-modal, .social-links-hero, .hero .btn { display:none !important; }
-            .hero { min-height:auto; padding:2rem 0; background:#000 !important; }
-            section { width:100%; padding:1.25rem 0; page-break-inside:auto; }
-            .card, .timeline-item, .edu-grid-item, .training-card { box-shadow:none !important; break-inside:avoid; background:#fff !important; border:1px solid #d1d5db !important; }
-            footer { margin-top:1rem; }
+            .hero {
+                min-height:auto !important;
+                height:auto !important;
+                padding:7mm 0 5mm !important;
+                background:#000 !important;
+                page-break-after:avoid !important;
+                break-after:avoid-page !important;
+            }
+            .profile-pic { width:34mm !important; height:34mm !important; margin-bottom:3mm !important; border-width:2px !important; box-shadow:none !important; }
+            .hero h1 { font-size:22pt !important; margin-bottom:1mm !important; }
+            .hero-subtitle { font-size:11pt !important; margin-bottom:1mm !important; }
+            .typed-container { min-height:8mm !important; margin-bottom:2mm !important; font-size:8.5pt !important; }
+            .hero-meta { gap:2mm 4mm !important; margin-bottom:0 !important; font-size:8pt !important; }
+
+            section {
+                width:100% !important;
+                padding:4mm 0 !important;
+                margin:0 !important;
+                content-visibility:visible !important;
+                contain-intrinsic-size:auto !important;
+                break-inside:auto !important;
+                page-break-inside:auto !important;
+            }
+            .section-title { font-size:15pt !important; margin-bottom:3mm !important; padding-bottom:1.5mm !important; }
+            .section-title::after { height:2px !important; box-shadow:none !important; }
+
+            /* Keep logical section groups together so headings never become detached from their cards. */
+            #summary { break-after:avoid-page !important; page-break-after:avoid !important; }
+            #about { break-before:avoid-page !important; page-break-before:avoid !important; }
+            #experience { break-before:page !important; page-break-before:always !important; }
+            #education { break-before:avoid-page !important; page-break-before:avoid !important; }
+            #training { break-before:page !important; page-break-before:always !important; }
+            #gallery, #contact { break-before:avoid-page !important; page-break-before:avoid !important; }
+
+            .grid-2, .contact-layout { grid-template-columns:1fr 1fr !important; gap:3mm !important; }
+            .edu-grid, .training-grid { grid-template-columns:1fr 1fr !important; gap:3mm !important; margin-top:2mm !important; }
+            .gallery-container { grid-template-columns:1fr 1fr 1fr !important; gap:3mm !important; }
+
+            .card, .timeline-item, .edu-grid-item, .training-card {
+                box-shadow:none !important;
+                background:#fff !important;
+                border:1px solid #cbd5e1 !important;
+                backdrop-filter:none !important;
+                -webkit-backdrop-filter:none !important;
+                break-inside:avoid !important;
+                page-break-inside:avoid !important;
+                transform:none !important;
+            }
+            .card { padding:4mm !important; }
+            .timeline-item, .edu-grid-item, .training-card { padding:3.5mm 3.5mm 3.5mm 11mm !important; margin-bottom:3mm !important; }
+            .timeline-item::before, .edu-grid-item::before, .training-card::after { left:3mm !important; top:3mm !important; width:6mm !important; height:6mm !important; box-shadow:none !important; font-size:7pt !important; }
+            .role-title { font-size:9.5pt !important; line-height:1.25 !important; }
+            .company { font-size:8pt !important; line-height:1.25 !important; }
+            .date-badge { min-height:auto !important; font-size:7pt !important; padding:1mm 2mm !important; }
+            .responsibilities { margin-top:2mm !important; }
+            .responsibilities li, .aligned-info-list li { font-size:7.7pt !important; line-height:1.35 !important; margin-bottom:1.2mm !important; }
+            .responsibilities li { grid-template-columns:39mm 4mm minmax(0,1fr) !important; padding-left:0 !important; }
+            .responsibilities li::before { display:none !important; }
+            .aligned-info-list { margin-top:2mm !important; }
+            .aligned-info-list li { grid-template-columns:33mm 4mm minmax(0,1fr) !important; }
+            .skill-group { margin-top:2.5mm !important; }
+            .skill-group h4, .tech-matrix h4 { font-size:8pt !important; }
+            .skills-tag-container { gap:1.2mm !important; margin-top:1.5mm !important; }
+            .skill-tag { min-height:5.5mm !important; padding:1mm 1.6mm !important; font-size:6.8pt !important; }
+            .tech-matrix { margin-top:2.5mm !important; padding:2.5mm !important; }
+            .filter-container { display:none !important; }
+            .gallery-item { aspect-ratio:4/3 !important; box-shadow:none !important; }
+            .gallery-item::after { display:none !important; }
+            .gallery-item img { filter:none !important; transform:none !important; }
+            .scrollable-gallery-wrapper { max-height:none !important; overflow:visible !important; padding:0 !important; }
+            .contact-grid { gap:2mm !important; }
+            .info-group { gap:2.5mm !important; }
+            .info-group i { width:8mm !important; height:8mm !important; flex:0 0 8mm !important; }
+            .form-group { gap:1mm !important; }
+            .form-group label, .form-group input, .form-group textarea { font-size:8pt !important; }
+            .form-group input { min-height:7mm !important; padding:1.5mm 2mm !important; }
+            .form-group textarea { min-height:20mm !important; padding:1.5mm 2mm !important; }
+            .contact-form .btn { min-height:8mm !important; padding:1.5mm 3mm !important; font-size:8pt !important; }
+            footer { margin-top:2mm !important; padding:3mm 0 !important; font-size:7pt !important; }
             a { color:#111827 !important; text-decoration:none !important; }
         }
         @media (prefers-reduced-motion: reduce) {
