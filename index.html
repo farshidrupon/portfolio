@@ -708,6 +708,11 @@
                 overflow: visible !important;
             }
 
+            /* Print only: hide the accessibility skip-link so it cannot overlay content on mobile print. */
+            .skip-link {
+                display: none !important;
+            }
+
             body::before,
             .progress-container,
             nav,
@@ -969,8 +974,8 @@
             }
 
             .print-signature-image-wrap {
-                width: min(74%, 320px) !important;
-                height: 74px !important;
+                width: min(48%, 190px) !important;
+                height: 50px !important;
                 display: flex !important;
                 align-items: flex-end !important;
                 justify-content: center !important;
@@ -982,24 +987,24 @@
                 display: block !important;
                 width: 100% !important;
                 height: auto !important;
-                max-width: 320px !important;
-                max-height: 74px !important;
+                max-width: 190px !important;
+                max-height: 50px !important;
                 object-fit: contain !important;
                 object-position: center bottom !important;
             }
 
             .print-signature-line {
-                width: min(74%, 300px) !important;
-                height: 2px !important;
+                width: min(48%, 190px) !important;
+                height: 1.5px !important;
                 margin: 0 auto 3px !important;
                 background: #60a5fa !important;
             }
 
             .print-signature-label {
                 color: #111827 !important;
-                font-size: 20px !important;
-                line-height: 1.15 !important;
-                font-weight: 500 !important;
+                font-size: 10px !important;
+                line-height: 1.42 !important;
+                font-weight: 700 !important;
                 text-align: center !important;
             }
 
