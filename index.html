@@ -841,8 +841,10 @@
                 transform: none !important;
                 break-inside: auto !important;
                 page-break-inside: auto !important;
-                -webkit-box-decoration-break: clone;
-                box-decoration-break: clone;
+                /* Print only: keep a split card visually continuous across pages.
+                   Do not clone its border/decorations at page-fragment boundaries. */
+                -webkit-box-decoration-break: slice !important;
+                box-decoration-break: slice !important;
             }
 
             .card {
