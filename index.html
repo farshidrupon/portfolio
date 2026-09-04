@@ -4040,8 +4040,18 @@
         printFallbackOk?.focus();
     }
 
+    function buildExternalPrintUrl() {
+        try {
+            const url = new URL(window.location.href);
+            url.searchParams.set('autoprint', '1');
+            return url.toString();
+        } catch (_) {
+            return window.location.href + (window.location.href.includes('?') ? '&' : '?') + 'autoprint=1';
+        }
+    }
+
     function openInExternalBrowser() {
-        const url = window.location.href;
+        const url = buildExternalPrintUrl();
         const ua = navigator.userAgent || '';
         if (/Android/i.test(ua)) {
             const clean = url.replace(/^https?:\/\//i, '');
@@ -4055,6 +4065,29 @@
             if (opened) { try { opened.opener = null; opened.focus?.(); } catch (_) {} return; }
         } catch (_) {}
         openPrintFallback();
+    }
+
+    function consumeAutoPrintFlag() {
+        try {
+            const url = new URL(window.location.href);
+            if (url.searchParams.get('autoprint') !== '1') return false;
+            url.searchParams.delete('autoprint');
+            const cleanUrl = url.pathname + (url.searchParams.toString() ? `?${url.searchParams.toString()}` : '') + url.hash;
+            window.history.replaceState({}, document.title, cleanUrl);
+            return true;
+        } catch (_) {
+            return /(?:[?&])autoprint=1(?:&|$)/i.test(window.location.search);
+        }
+    }
+
+    function startExternalAutoPrint() {
+        if (!consumeAutoPrintFlag()) return;
+        // Give the external browser a moment to finish rendering before requesting print.
+        setTimeout(() => {
+            try {
+                if (typeof window.print === 'function') window.print();
+            } catch (_) {}
+        }, 900);
     }
 
     async function copyPageLinkFromFallback() {
@@ -4104,6 +4137,7 @@
         topButton?.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
         printButton?.addEventListener('click',requestPrintPreview);
         shareButton?.addEventListener('click',sharePage);
+        startExternalAutoPrint();
         paletteButton?.addEventListener('click',openPalette);
         mobileToolsToggle?.addEventListener('click',toggleMobileTools);
         mobileToolsMenu?.addEventListener('click',event=>{
