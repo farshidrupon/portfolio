@@ -676,6 +676,10 @@
         }
         .site-tool, .mobile-menu-item { -webkit-tap-highlight-color:transparent; }
 
+        .print-signature {
+            display: none;
+        }
+
         /* =========================================================
            PRINT LAYOUT — A4 / Legal, compact, desktop-like layout
            ========================================================= */
@@ -946,6 +950,57 @@
             .contact-grid,
             .contact-form {
                 gap: 7px !important;
+            }
+
+            /* Print only: replace the on-page contact form with the signature block. */
+            .contact-form {
+                display: none !important;
+            }
+
+            .print-signature {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                justify-content: center !important;
+                align-self: stretch !important;
+                min-width: 0 !important;
+                padding: 8px 18px 4px !important;
+                text-align: center !important;
+            }
+
+            .print-signature-image-wrap {
+                width: min(74%, 320px) !important;
+                height: 74px !important;
+                display: flex !important;
+                align-items: flex-end !important;
+                justify-content: center !important;
+                overflow: hidden !important;
+                margin: 0 auto 3px !important;
+            }
+
+            .print-signature-image-wrap img {
+                display: block !important;
+                width: 100% !important;
+                height: auto !important;
+                max-width: 320px !important;
+                max-height: 74px !important;
+                object-fit: contain !important;
+                object-position: center bottom !important;
+            }
+
+            .print-signature-line {
+                width: min(74%, 300px) !important;
+                height: 2px !important;
+                margin: 0 auto 3px !important;
+                background: #60a5fa !important;
+            }
+
+            .print-signature-label {
+                color: #111827 !important;
+                font-size: 20px !important;
+                line-height: 1.15 !important;
+                font-weight: 500 !important;
+                text-align: center !important;
             }
 
             .form-group {
@@ -2249,6 +2304,13 @@
       <div aria-live="polite" id="form-status" role="status">
       </div>
      </form>
+    <div class="print-signature" aria-hidden="true">
+     <div class="print-signature-image-wrap">
+      <img alt="" src="signature.png"/>
+     </div>
+     <div class="print-signature-line"></div>
+     <div class="print-signature-label" data-i18n="print_signature_label">Signature</div>
+    </div>
     </div>
    </div>
   </section>
@@ -2272,6 +2334,7 @@
                 hero_role: "Professional Survey Programmer",
 
                 footer_name: "Farshid Rupon",
+                print_signature_label: "Signature",
 
                 nav_summary: "Summary",
                 nav_about: "About",
@@ -2746,6 +2809,8 @@
 
                 footer_name:
                     "ফারশিদ রুপন",
+                print_signature_label:
+                    "স্বাক্ষর",
 
                 nav_summary:
                     "সংক্ষিপ্তসার",
