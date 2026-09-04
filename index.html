@@ -717,6 +717,23 @@
         .print-fallback-copy, .print-fallback-open { gap:.4rem; }
         @media print { .print-fallback { display:none !important; } }
 
+        /* Print preparation: force lazy/reveal content to be fully laid out before the print engine captures the page. */
+        body.print-preparing [data-aos],
+        body.print-preparing [data-aos].aos-animate {
+            opacity: 1 !important;
+            transform: none !important;
+            visibility: visible !important;
+        }
+        body.print-preparing section,
+        body.print-preparing [style*="content-visibility"] {
+            content-visibility: visible !important;
+            contain: none !important;
+        }
+        body.print-preparing,
+        body.print-preparing * {
+            overflow: visible !important;
+        }
+
         @media print {
             :root { color-scheme: light !important; }
 
@@ -735,6 +752,21 @@
 
             body {
                 overflow: visible !important;
+            }
+
+            /* Force every reveal/lazy section to participate in print layout,
+               even when it was never scrolled into view before Print was clicked. */
+            [data-aos],
+            [data-aos].aos-animate {
+                opacity: 1 !important;
+                transform: none !important;
+                visibility: visible !important;
+            }
+
+            section,
+            [style*="content-visibility"] {
+                content-visibility: visible !important;
+                contain: none !important;
             }
 
             /* Print only: hide the accessibility skip-link so it cannot overlay content on mobile print. */
@@ -4082,12 +4114,21 @@
 
     function startExternalAutoPrint() {
         if (!consumeAutoPrintFlag()) return;
-        // Give the external browser a moment to finish rendering before requesting print.
-        setTimeout(() => {
-            try {
-                if (typeof window.print === 'function') window.print();
-            } catch (_) {}
-        }, 900);
+        // Wait for the page to finish loading, then force all lazy/reveal content into
+        // the print layout before requesting the preview.
+        const run = () => {
+            prepareDocumentForPrint();
+            setTimeout(() => {
+                try {
+                    if (typeof window.print === 'function') window.print();
+                } catch (_) {}
+            }, 250);
+        };
+        if (document.readyState === 'complete') {
+            setTimeout(run, 500);
+        } else {
+            window.addEventListener('load', () => setTimeout(run, 300), { once:true });
+        }
     }
 
     async function copyPageLinkFromFallback() {
@@ -4110,24 +4151,74 @@
         setTimeout(() => { if (printFallbackCopyText) printFallbackCopyText.textContent = t('printFallbackCopy'); }, 2200);
     }
 
+    let printPrepActive = false;
+
+    function prepareDocumentForPrint() {
+        if (printPrepActive) return;
+        printPrepActive = true;
+        document.body?.classList.add('print-preparing');
+
+        // Force a layout pass so browsers/WebViews capture the complete document,
+        // not only the portion that has been painted/visible in the current scroll.
+        try {
+            const root = document.documentElement;
+            const body = document.body;
+            void root.offsetHeight;
+            void body.offsetHeight;
+            document.querySelectorAll('section, [data-aos]').forEach(el => {
+                el.style.setProperty('content-visibility', 'visible', 'important');
+                if (el.hasAttribute('data-aos')) {
+                    el.style.setProperty('opacity', '1', 'important');
+                    el.style.setProperty('transform', 'none', 'important');
+                    el.style.setProperty('visibility', 'visible', 'important');
+                }
+            });
+            void body.offsetHeight;
+        } catch (_) {}
+    }
+
+    function cleanupAfterPrint() {
+        if (!printPrepActive) return;
+        printPrepActive = false;
+        document.body?.classList.remove('print-preparing');
+        document.querySelectorAll('section, [data-aos]').forEach(el => {
+            el.style.removeProperty('content-visibility');
+            if (el.hasAttribute('data-aos')) {
+                el.style.removeProperty('opacity');
+                el.style.removeProperty('transform');
+                el.style.removeProperty('visibility');
+            }
+        });
+    }
+
+    window.addEventListener('afterprint', cleanupAfterPrint);
+
     function requestPrintPreview() {
         closeMobileTools();
+        prepareDocumentForPrint();
         let printStarted = false;
         const beforePrintHandler = () => { printStarted = true; };
         window.addEventListener('beforeprint', beforePrintHandler, { once:true });
-        try {
-            if (typeof window.print !== 'function') throw new Error('window.print unavailable');
-            window.print();
-        } catch (_) {
-            window.removeEventListener('beforeprint', beforePrintHandler);
-            if (isLikelyInAppBrowser()) openPrintFallback();
-            return;
-        }
-        if (!isLikelyInAppBrowser()) return;
+
+        // Give the browser one rendering tick after forcing all lazy/reveal content
+        // visible, then ask for print. This is especially important on mobile WebViews.
         setTimeout(() => {
-            if (printStarted || window.matchMedia?.('print')?.matches) return;
-            openInExternalBrowser();
-        }, 1200);
+            try {
+                if (typeof window.print !== 'function') throw new Error('window.print unavailable');
+                window.print();
+            } catch (_) {
+                window.removeEventListener('beforeprint', beforePrintHandler);
+                cleanupAfterPrint();
+                if (isLikelyInAppBrowser()) openPrintFallback();
+                return;
+            }
+            if (!isLikelyInAppBrowser()) return;
+            setTimeout(() => {
+                if (printStarted || window.matchMedia?.('print')?.matches) return;
+                cleanupAfterPrint();
+                openInExternalBrowser();
+            }, 1200);
+        }, 80);
     }
 
     function bindEvents() {
