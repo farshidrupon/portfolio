@@ -332,6 +332,7 @@
         .hero h1 { font-size:clamp(2.15rem, 6vw, 3.3rem); line-height:1.08; letter-spacing:-.04em; font-weight:800; margin-bottom:.65rem; }
         .hero-subtitle { color:#60a5fa; font-size:clamp(1.05rem, 2.8vw, 1.45rem); font-weight:700; margin-bottom:.55rem; }
         .typed-container { min-height:3.4rem; max-width:790px; margin:0 auto 1.7rem; padding:0 .35rem; color:#bfdbfe; font-size:clamp(1rem, 2.5vw, 1.22rem); font-weight:500; }
+        .typed-print { display:none !important; }
         .hero-meta { display:flex; flex-wrap:wrap; justify-content:center; gap:.65rem .95rem; margin:0 auto 1.55rem; color:#cbd5e1; font-size:.92rem; }
         .hero-meta > span { display:inline-flex; align-items:center; gap:.42rem; }
         .hero-meta a { color:inherit !important; text-decoration:none !important; transition:color var(--transition); }
@@ -776,6 +777,17 @@
                 min-height: 0 !important;
                 margin: 0 auto 8px !important;
                 font-size: 12px !important;
+            }
+
+            /* Print the complete text from the animated hero line.
+               The live typing effect remains unchanged on screen. */
+            .typed-container #typed {
+                display: none !important;
+            }
+            .typed-container .typed-print {
+                display: block !important;
+                white-space: normal !important;
+                line-height: 1.42 !important;
             }
 
             .hero-meta {
@@ -1238,6 +1250,7 @@
     <div class="typed-container" data-aos="fade-down" data-aos-delay="200">
      <span id="typed">
      </span>
+     <span aria-hidden="true" id="typedPrint" class="typed-print"></span>
     </div>
     <div class="hero-meta" data-aos="fade-up" data-aos-delay="300">
      <span>
@@ -3365,6 +3378,7 @@
     const themeToggle = document.getElementById('themeToggle');
     const themeIcon = themeToggle ? themeToggle.querySelector('i') : null;
     const typedEl = document.getElementById('typed');
+    const typedPrintEl = document.getElementById('typedPrint');
     const modal = document.getElementById('lightboxModal');
     const lightboxImg = document.getElementById('lightboxImg');
     const lightboxWrapper = document.getElementById('lightboxWrapper');
@@ -3536,9 +3550,16 @@
         return Array.isArray(i18n[lang]?.typed) ? i18n[lang].typed : [];
     }
 
+    function updateTypedPrintText(lang = currentLang) {
+        if (!typedPrintEl) return;
+        const strings = safeTypedStrings(lang);
+        typedPrintEl.innerHTML = strings.map(text => String(text || '')).join('<br>');
+    }
+
     function initializeTyped() {
         if (!typedEl) return;
         const strings = safeTypedStrings(currentLang);
+        updateTypedPrintText(currentLang);
         if (!strings.length) { typedEl.textContent = ''; return; }
         if (typedEl._typeTimer) { clearInterval(typedEl._typeTimer); typedEl._typeTimer = null; }
         if (typedEl._typePause) { clearTimeout(typedEl._typePause); typedEl._typePause = null; }
@@ -3567,6 +3588,7 @@
 
     function updateLanguage(lang) {
         currentLang = i18n[lang] ? lang : 'en';
+        updateTypedPrintText(currentLang);
         localStorage.setItem('lang', currentLang);
         root.lang = currentLang === 'bn' ? 'bn' : 'en';
         document.body.classList.toggle('lang-bn', currentLang === 'bn');
