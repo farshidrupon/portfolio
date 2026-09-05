@@ -15,6 +15,15 @@
   <meta content="https://farshidrupon.is-local.org/" property="og:url"/>
   <meta content="Farshid Rupon | Survey Programmer" property="og:site_name"/>
   <meta content="index, follow" name="robots"/>
+  <meta content="summary_large_image" name="twitter:card"/>
+  <meta content="Farshid Rupon | Survey Programmer" name="twitter:title"/>
+  <meta content="Explore Farshid Rupon's survey programming expertise, technical skills, professional experience, and research technology background." name="twitter:description"/>
+  <meta content="https://farshidrupon.is-local.org/profile.jpg" name="twitter:image"/>
+  <meta content="en_BD" property="og:locale"/>
+  <meta content="bn_BD" property="og:locale:alternate"/>
+  <meta content="1200" property="og:image:width"/>
+  <meta content="1200" property="og:image:height"/>
+  <meta content="image/jpeg" property="og:image:type"/>
   <meta content="#0f172a" name="theme-color"/>
   <link href="https://farshidrupon.is-local.org/" rel="canonical"/>
   <!-- Browser / Mobile / PWA Icons -->
@@ -34,6 +43,8 @@
   <meta content="Farshid Rupon" name="apple-mobile-web-app-title"/>
   <link href="https://fonts.googleapis.com" rel="preconnect"/>
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://cdnjs.cloudflare.com" rel="preconnect"/>
+  <link href="https://cdn.jsdelivr.net" rel="dns-prefetch"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Noto+Sans+Bengali:wght@400;500;600;700&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
   <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Noto+Sans+Bengali:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/></noscript>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" media="print" onload="this.media='all'"/>
@@ -1141,6 +1152,103 @@
                 break-inside: auto !important;
                 page-break-inside: auto !important;
             }
+
+            /* Dark-theme print: preserve the active on-screen dark palette.
+               This block intentionally changes print colors only; all print
+               sizing, spacing, pagination, hiding rules and layout above remain unchanged. */
+            html[data-theme="dark"] {
+                color-scheme: dark !important;
+            }
+
+            html[data-theme="dark"],
+            html[data-theme="dark"] body {
+                background: #070a0f !important;
+                color: #e2e8f0 !important;
+            }
+
+            html[data-theme="dark"] body {
+                background:
+                    radial-gradient(circle at 10% 0%, rgba(37, 99, 235, 0.065), transparent 30rem),
+                    radial-gradient(circle at 90% 18%, rgba(14, 165, 233, 0.045), transparent 26rem),
+                    #070a0f !important;
+            }
+
+            html[data-theme="dark"] .hero {
+                background:
+                    radial-gradient(circle at 50% 16%, rgba(59,130,246,.16), transparent 22rem),
+                    radial-gradient(circle at 20% 70%, rgba(14,165,233,.08), transparent 24rem),
+                    radial-gradient(circle at 80% 60%, rgba(99,102,241,.08), transparent 22rem),
+                    linear-gradient(135deg, #020617 0%, #07101f 55%, #020617 100%) !important;
+                color: #f8fafc !important;
+            }
+
+            html[data-theme="dark"] .section-title,
+            html[data-theme="dark"] .card h3,
+            html[data-theme="dark"] .role-title,
+            html[data-theme="dark"] .skill-group h4,
+            html[data-theme="dark"] .tech-matrix h4,
+            html[data-theme="dark"] .aligned-info-list .info-label,
+            html[data-theme="dark"] .aligned-info-list .info-colon,
+            html[data-theme="dark"] .bullet-title,
+            html[data-theme="dark"] .bullet-colon,
+            html[data-theme="dark"] .form-group label {
+                color: #f8fafc !important;
+            }
+
+            html[data-theme="dark"] .card,
+            html[data-theme="dark"] .timeline-item,
+            html[data-theme="dark"] .edu-grid-item,
+            html[data-theme="dark"] .training-card {
+                background: #0f172a !important;
+                color: #e2e8f0 !important;
+                border-color: rgba(148, 163, 184, 0.16) !important;
+            }
+
+            html[data-theme="dark"] .tech-matrix {
+                background: #070a0f !important;
+                color: #e2e8f0 !important;
+                border-color: rgba(148, 163, 184, 0.16) !important;
+            }
+
+            html[data-theme="dark"] .skill-tag,
+            html[data-theme="dark"] .date-badge {
+                background: rgba(96, 165, 250, 0.14) !important;
+                color: #60a5fa !important;
+                border-color: rgba(96, 165, 250, 0.18) !important;
+            }
+
+            html[data-theme="dark"] .company,
+            html[data-theme="dark"] .info-group a,
+            html[data-theme="dark"] .skill-title::before,
+            html[data-theme="dark"] .matrix-title::before,
+            html[data-theme="dark"] .hero-subtitle {
+                color: #60a5fa !important;
+            }
+
+            html[data-theme="dark"] .typed-container {
+                color: #bfdbfe !important;
+            }
+
+            html[data-theme="dark"] .hero-meta {
+                color: #cbd5e1 !important;
+            }
+
+            html[data-theme="dark"] .info-group i {
+                background: rgba(96, 165, 250, 0.14) !important;
+                color: #60a5fa !important;
+            }
+
+            html[data-theme="dark"] a {
+                color: inherit !important;
+            }
+
+            html[data-theme="dark"] .print-signature-label {
+                color: #e2e8f0 !important;
+            }
+
+            html[data-theme="dark"] .print-signature-line {
+                background: #60a5fa !important;
+            }
         }
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after { scroll-behavior:auto !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
@@ -1244,7 +1352,7 @@
       </i>
      </button>
     </div>
-    <div class="command-list" id="commandList">
+    <div aria-label="Section results" class="command-list" id="commandList" role="listbox">
     </div>
    </div>
   </div>
@@ -1313,7 +1421,7 @@
   </nav>
   <header class="hero">
    <div class="hero-content">
-    <img alt="Farshid Rupon" class="profile-pic" data-aos="fade-down" decoding="async" fetchpriority="high" src="profile.jpg"/>
+    <img alt="Farshid Rupon" class="profile-pic" data-aos="fade-down" decoding="async" fetchpriority="high" height="250" src="profile.jpg" width="250"/>
     <h1 data-aos="fade-down" data-aos-delay="100" data-i18n="hero_name">
      Farshid Rupon
     </h1>
@@ -2377,19 +2485,19 @@
        <label data-i18n="lbl_form_name" for="senderName">
         Your Name
        </label>
-       <input autocomplete="name" data-i18n-ph="ph_name" id="senderName" maxlength="100" name="senderName" placeholder="" required="" type="text"/>
+       <input autocomplete="name" aria-describedby="form-status" data-i18n-ph="ph_name" id="senderName" maxlength="100" name="senderName" placeholder="" required="" type="text"/>
       </div>
       <div class="form-group">
        <label data-i18n="lbl_form_email" for="senderEmail">
         Your Email
        </label>
-       <input autocomplete="email" id="senderEmail" maxlength="160" name="senderEmail" placeholder="name@example.com" required="" type="email"/>
+       <input autocomplete="email" aria-describedby="form-status" id="senderEmail" maxlength="160" name="senderEmail" placeholder="name@example.com" required="" type="email"/>
       </div>
       <div class="form-group">
        <label data-i18n="lbl_form_msg" for="message">
         Message
        </label>
-       <textarea data-i18n-ph="ph_msg" id="message" maxlength="3000" name="message" placeholder="" required="" rows="5"></textarea>
+       <textarea aria-describedby="form-status" data-i18n-ph="ph_msg" id="message" maxlength="3000" name="message" placeholder="" required="" rows="5"></textarea>
       </div>
       <button class="btn" data-i18n="btn_send" type="submit">
        Send Message
@@ -3486,6 +3594,7 @@
     let themePreference = localStorage.getItem('theme');
     let typedInstance = null;
     let previousFocusElement = null;
+    let precisionLightboxFocus = null;
     let palettePreviousFocus = null;
     let paletteActiveIndex = -1;
     let activeSection = '';
@@ -3780,10 +3889,12 @@
         const image = element?.querySelector('img');
         if (!image || !modal || !lightboxImg) return;
         previousFocusElement = document.activeElement;
+        precisionLightboxFocus = previousFocusElement;
         lightboxImg.src = image.currentSrc || image.src;
         lightboxImg.alt = image.alt || 'Popup Preview';
         modal.classList.add('active');
         modal.setAttribute('aria-hidden','false');
+        modal.setAttribute('role','dialog');
         body.classList.add('lightbox-open');
         resetZoom();
         const close = modal.querySelector('.lightbox-btn:last-child');
@@ -3799,7 +3910,9 @@
         isLightboxDragging=false; dragPointerId=null; activePointers.clear();
         resetZoom();
         if (lightboxImg) { lightboxImg.removeAttribute('aria-busy'); lightboxImg.removeAttribute('src'); }
-        previousFocusElement?.focus?.();
+        const restoreTarget = precisionLightboxFocus || previousFocusElement;
+        restoreTarget?.focus?.();
+        precisionLightboxFocus=null;
         previousFocusElement=null;
     }
     window.closeLightbox = closeLightbox;
@@ -3865,6 +3978,8 @@
         items.forEach(item => {
             const button=document.createElement('button');
             button.type='button'; button.className='command-item';
+            button.setAttribute('role','option');
+            button.setAttribute('aria-selected','false');
             button.innerHTML=`<span>${escapeHtml(item.label)}</span><span>#${item.id}</span>`;
             button.addEventListener('click',()=>{ closePalette(); document.getElementById(item.id)?.scrollIntoView({behavior:'smooth',block:'start'}); setActiveNav(item.id,true); });
             paletteList.appendChild(button);
@@ -3879,11 +3994,37 @@
         items.forEach((item,i)=>{
             const active=i===paletteActiveIndex;
             item.classList.toggle('is-active', active);
+            item.setAttribute('aria-selected', active ? 'true' : 'false');
             item.setAttribute('aria-current', active ? 'true' : 'false');
         });
         if (focusItem) items[paletteActiveIndex]?.focus();
         else items[paletteActiveIndex]?.scrollIntoView({block:'nearest'});
     }
+
+    function precisionFocusable(container) {
+        if (!container) return [];
+        return Array.from(container.querySelectorAll(
+            'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        )).filter(el => el.offsetParent !== null && !el.hasAttribute('hidden'));
+    }
+
+    function precisionTrapFocus(event, container) {
+        if (event.key !== 'Tab') return;
+        const items = precisionFocusable(container);
+        if (!items.length) return;
+
+        const first = items[0];
+        const last = items[items.length - 1];
+
+        if (event.shiftKey && document.activeElement === first) {
+            event.preventDefault();
+            last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+            event.preventDefault();
+            first.focus();
+        }
+    }
+
     function openPalette() {
         if (!palette) return;
         palettePreviousFocus=document.activeElement;
@@ -4004,7 +4145,10 @@
             try {
                     const emailApi = await ensureEmailJs();
                     if (emailApi && typeof emailApi.send === 'function') {
-                    await emailApi.send('service_jxl4kqo','template_pscfvya',{ from_name:name, from_email:email, message, to_email:'farshidrupon@gmail.com' });
+                    await Promise.race([
+                        emailApi.send('service_jxl4kqo','template_pscfvya',{ from_name:name, from_email:email, message, to_email:'farshidrupon@gmail.com' }),
+                        new Promise((_, reject) => setTimeout(() => reject(new Error('Email service timeout')), 15000))
+                    ]);
                     if(status){ status.style.color='#16a34a'; status.textContent=currentLang==='en'?'Thank you! Your message has been sent successfully.':'ধন্যবাদ! আপনার বার্তা সফলভাবে পাঠানো হয়েছে।'; }
                     form.reset(); updateLanguage(currentLang);
                     } else {
@@ -4116,6 +4260,11 @@
                 return;
             } catch (_) {}
         }
+        // Final direct-navigation fallback for Android browsers that reject the intent scheme.
+        try {
+            window.location.href = url;
+            return;
+        } catch (_) {}
         try {
             const opened = window.open(url, '_blank', 'noopener,noreferrer');
             if (opened) { try { opened.opener = null; opened.focus?.(); } catch (_) {} return; }
@@ -4138,21 +4287,19 @@
 
     function startExternalAutoPrint() {
         if (!consumeAutoPrintFlag()) return;
-        // Wait for the page to finish loading, then force all lazy/reveal content into
-        // the print layout before requesting the preview.
+
         const run = async () => {
             await prepareDocumentForPrint();
-            setTimeout(() => {
-                try {
-                    if (typeof window.print === 'function') window.print();
-                } catch (_) {}
-            }, 120);
+            try {
+                if (typeof window.print === 'function') {
+                    await new Promise(requestAnimationFrame);
+                    window.print();
+                }
+            } catch (_) {}
         };
-        if (document.readyState === 'complete') {
-            setTimeout(run, 500);
-        } else {
-            window.addEventListener('load', () => setTimeout(run, 300), { once:true });
-        }
+
+        if (document.readyState === 'complete') run();
+        else window.addEventListener('load', run, { once:true });
     }
 
     async function copyPageLinkFromFallback() {
@@ -4177,15 +4324,47 @@
 
     let printPrepActive = false;
 
+
+    async function waitForPrintAssets() {
+        try {
+            if (document.fonts?.ready) await document.fonts.ready;
+        } catch (_) {}
+
+        const printableImages = Array.from(document.images).filter(img => {
+            const rect = img.getBoundingClientRect();
+            return rect.width > 0 || rect.height > 0 || img.classList.contains('profile-pic');
+        });
+
+        await Promise.all(printableImages.map(img => new Promise(resolve => {
+            let settled = false;
+            const finish = () => {
+                if (settled) return;
+                settled = true;
+                resolve();
+            };
+            if (img.complete && img.naturalWidth > 0) {
+                if (typeof img.decode === 'function') img.decode().catch(() => {}).finally(finish);
+                else finish();
+                return;
+            }
+            img.addEventListener('load', finish, { once:true });
+            img.addEventListener('error', finish, { once:true });
+            setTimeout(finish, 1800);
+        })));
+
+        await new Promise(requestAnimationFrame);
+        await new Promise(requestAnimationFrame);
+    }
+
     async function prepareDocumentForPrint() {
         if (printPrepActive) return;
         printPrepActive = true;
         document.body?.classList.add('print-preparing');
 
-        // Force every deferred/reveal section into the print layout before capture.
         try {
             const root = document.documentElement;
             const body = document.body;
+
             document.querySelectorAll('section, [data-aos]').forEach(el => {
                 el.style.setProperty('content-visibility', 'visible', 'important');
                 if (el.hasAttribute('data-aos')) {
@@ -4194,23 +4373,14 @@
                     el.style.setProperty('visibility', 'visible', 'important');
                 }
             });
+
             void root.offsetHeight;
             void body.offsetHeight;
 
-            if (document.fonts?.ready) await document.fonts.ready.catch(() => {});
-            const printableImages = Array.from(document.images).filter(img => img.offsetWidth || img.offsetHeight);
-            await Promise.allSettled(printableImages.map(img => {
-                if (img.complete) return img.decode?.().catch(() => {});
-                return new Promise(resolve => {
-                    const done=()=>resolve();
-                    img.addEventListener('load',done,{once:true});
-                    img.addEventListener('error',done,{once:true});
-                    setTimeout(done,1200);
-                });
-            }));
+            await waitForPrintAssets();
 
-            await new Promise(requestAnimationFrame);
-            await new Promise(requestAnimationFrame);
+            void root.scrollHeight;
+            void body.scrollHeight;
             void body.offsetHeight;
         } catch (_) {}
     }
@@ -4339,6 +4509,9 @@
                     if(event.shiftKey && index<=0) { event.preventDefault(); focusables[focusables.length-1].focus(); return; }
                     if(!event.shiftKey && index===focusables.length-1) { event.preventDefault(); focusables[0].focus(); return; }
                 }
+            }
+            if(palette?.classList.contains('active')) {
+                precisionTrapFocus(event, palette);
             }
             if(modal?.classList.contains('active')) {
                 if(event.key==='Tab') {
