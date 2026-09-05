@@ -4221,10 +4221,36 @@
         }, 80);
     }
 
+
+    // Make the hero "Get In Touch" link reliable even when content-visibility:auto
+    // has not yet laid out the lower sections.
+    function goToContactSection(event) {
+        if (event) event.preventDefault();
+        const target = document.getElementById('contact');
+        if (!target) return;
+
+        // Force all sections to participate in layout before calculating the target
+        // position. This prevents browsers from using contain-intrinsic-size for
+        // skipped, unvisited sections and landing on the wrong section.
+        document.querySelectorAll('section').forEach(section => {
+            section.style.setProperty('content-visibility', 'visible', 'important');
+        });
+
+        // Let the browser complete the layout pass, then perform the normal smooth
+        // navigation using the page's existing scroll-padding/fixed-nav behavior.
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                setActiveNav('contact', true);
+            });
+        });
+    }
+
     function bindEvents() {
         langToggle?.addEventListener('click',()=>updateLanguage(currentLang==='en'?'bn':'en'));
         themeToggle?.addEventListener('click',()=>{ const dark=root.getAttribute('data-theme')==='dark'; themePreference=dark?'light':'dark'; applyTheme(themePreference,true); });
         navLinks.forEach(link=>link.addEventListener('click',()=>setActiveNav(link.getAttribute('href')?.slice(1)||'',true)));
+        document.querySelector('[data-i18n="btn_contact"]')?.addEventListener('click',goToContactSection);
         topButton?.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
         printButton?.addEventListener('click',requestPrintPreview);
         shareButton?.addEventListener('click',sharePage);
