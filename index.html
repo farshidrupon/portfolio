@@ -746,7 +746,10 @@
         }
 
         @media print {
-            :root { color-scheme: light !important; }
+            /* Always print using the same light print design, regardless of the active screen theme. */
+            :root, html, html[data-theme="dark"] {
+                color-scheme: light !important;
+            }
 
             html, body {
                 width: 100% !important;
@@ -1153,102 +1156,6 @@
                 page-break-inside: auto !important;
             }
 
-            /* Dark-theme print: preserve the active on-screen dark palette.
-               This block intentionally changes print colors only; all print
-               sizing, spacing, pagination, hiding rules and layout above remain unchanged. */
-            html[data-theme="dark"] {
-                color-scheme: dark !important;
-            }
-
-            html[data-theme="dark"],
-            html[data-theme="dark"] body {
-                background: #070a0f !important;
-                color: #e2e8f0 !important;
-            }
-
-            html[data-theme="dark"] body {
-                background:
-                    radial-gradient(circle at 10% 0%, rgba(37, 99, 235, 0.065), transparent 30rem),
-                    radial-gradient(circle at 90% 18%, rgba(14, 165, 233, 0.045), transparent 26rem),
-                    #070a0f !important;
-            }
-
-            html[data-theme="dark"] .hero {
-                background:
-                    radial-gradient(circle at 50% 16%, rgba(59,130,246,.16), transparent 22rem),
-                    radial-gradient(circle at 20% 70%, rgba(14,165,233,.08), transparent 24rem),
-                    radial-gradient(circle at 80% 60%, rgba(99,102,241,.08), transparent 22rem),
-                    linear-gradient(135deg, #020617 0%, #07101f 55%, #020617 100%) !important;
-                color: #f8fafc !important;
-            }
-
-            html[data-theme="dark"] .section-title,
-            html[data-theme="dark"] .card h3,
-            html[data-theme="dark"] .role-title,
-            html[data-theme="dark"] .skill-group h4,
-            html[data-theme="dark"] .tech-matrix h4,
-            html[data-theme="dark"] .aligned-info-list .info-label,
-            html[data-theme="dark"] .aligned-info-list .info-colon,
-            html[data-theme="dark"] .bullet-title,
-            html[data-theme="dark"] .bullet-colon,
-            html[data-theme="dark"] .form-group label {
-                color: #f8fafc !important;
-            }
-
-            html[data-theme="dark"] .card,
-            html[data-theme="dark"] .timeline-item,
-            html[data-theme="dark"] .edu-grid-item,
-            html[data-theme="dark"] .training-card {
-                background: #0f172a !important;
-                color: #e2e8f0 !important;
-                border-color: rgba(148, 163, 184, 0.16) !important;
-            }
-
-            html[data-theme="dark"] .tech-matrix {
-                background: #070a0f !important;
-                color: #e2e8f0 !important;
-                border-color: rgba(148, 163, 184, 0.16) !important;
-            }
-
-            html[data-theme="dark"] .skill-tag,
-            html[data-theme="dark"] .date-badge {
-                background: rgba(96, 165, 250, 0.14) !important;
-                color: #60a5fa !important;
-                border-color: rgba(96, 165, 250, 0.18) !important;
-            }
-
-            html[data-theme="dark"] .company,
-            html[data-theme="dark"] .info-group a,
-            html[data-theme="dark"] .skill-title::before,
-            html[data-theme="dark"] .matrix-title::before,
-            html[data-theme="dark"] .hero-subtitle {
-                color: #60a5fa !important;
-            }
-
-            html[data-theme="dark"] .typed-container {
-                color: #bfdbfe !important;
-            }
-
-            html[data-theme="dark"] .hero-meta {
-                color: #cbd5e1 !important;
-            }
-
-            html[data-theme="dark"] .info-group i {
-                background: rgba(96, 165, 250, 0.14) !important;
-                color: #60a5fa !important;
-            }
-
-            html[data-theme="dark"] a {
-                color: inherit !important;
-            }
-
-            html[data-theme="dark"] .print-signature-label {
-                color: #e2e8f0 !important;
-            }
-
-            html[data-theme="dark"] .print-signature-line {
-                background: #60a5fa !important;
-            }
         }
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after { scroll-behavior:auto !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
